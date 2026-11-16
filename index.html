@@ -1,0 +1,576 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>中文学习 · HSK 3.0 & Giao tiếp</title><style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;600;700&display=swap');
+
+        :root {
+            --paper: #f5ebd7;
+            --ivory: #fff9ed;
+            --jade: #356b60;
+            --deep: #244d45;
+            --cinnabar: #a63d32;
+            --gold: #b79555;
+            --ink: #302c28
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+            background: radial-gradient(ellipse at 85% 8%, #c9d8c5 0%, transparent 31%), radial-gradient(ellipse at 12% 35%, #e9dfc7 0%, transparent 42%), var(--paper);
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        body:before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .22;
+            background-image: repeating-linear-gradient(0deg, transparent 0 5px, #ab9b7e10 6px 7px);
+            z-index: 0
+        }
+
+        .scene {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            perspective: 850px
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: -60px;
+            width: 85%;
+            height: 200px;
+            left: 20%;
+            border-radius: 50% 50% 0 0;
+            background: linear-gradient(0deg, #52796a66, transparent);
+            filter: blur(24px);
+            transform: rotate(-8deg)
+        }
+
+        .mountain.two {
+            left: -20%;
+            bottom: -110px;
+            height: 260px;
+            background: linear-gradient(0deg, #8a9c8666, transparent);
+            transform: rotate(10deg)
+        }
+
+        .sun {
+            position: absolute;
+            right: 11%;
+            top: 15%;
+            width: 135px;
+            height: 135px;
+            border-radius: 50%;
+            background: #bd8c5b55;
+            box-shadow: 0 0 85px #d7aa6b55
+        }
+
+        .seal {
+            position: absolute;
+            right: 7%;
+            top: 15%;
+            font-family: 'Noto Serif SC', serif;
+            color: #9a4437aa;
+            border: 2px solid #9a443799;
+            padding: 9px;
+            font-size: 17px;
+            writing-mode: vertical-rl;
+            letter-spacing: 3px;
+            transform: rotate(8deg)
+        }
+
+        main {
+            position: relative;
+            max-width: 1480px;
+            margin: auto;
+            padding: 30px 35px 70px;
+            z-index: 1
+        }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 300px;
+            padding: 54px 65px;
+            border: 1px solid #bba879;
+            border-radius: 8px;
+            background: linear-gradient(110deg, #fff9edee, #f5ebd7dd 65%, #e3e7d9b3);
+            box-shadow: 0 22px 60px #3c46372b, inset 0 0 0 7px #fff9ed9c;
+            transform-style: preserve-3d
+        }
+
+        .hero:after {
+            content: '';
+            position: absolute;
+            inset: 13px;
+            border: 1px solid #b7955566;
+            pointer-events: none
+        }
+
+        .hero small {
+            font-size: 15px;
+            letter-spacing: 4px;
+            color: var(--cinnabar);
+            font-weight: 800
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(50px, 7vw, 94px);
+            line-height: 1.15;
+            letter-spacing: 5px;
+            margin: 14px 0;
+            color: var(--deep);
+            text-shadow: 2px 4px 0 #c2d0bb, 5px 9px 16px #42594a40;
+            transform: translateZ(35px)
+        }
+
+        .hero h1 span {
+            color: var(--gold)
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin: 0;
+            color: #5c584b;
+            letter-spacing: 1px
+        }
+
+        .hero .ornament {
+            position: absolute;
+            right: 12%;
+            top: 15%;
+            font: 800 160px 'Noto Serif SC', serif;
+            color: #356b6017;
+            transform: rotate(-12deg);
+            user-select: none
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            align-items: center;
+            margin: 36px 0 24px;
+            flex-wrap: wrap
+        }
+
+        .toolbar strong {
+            font: 700 25px 'Noto Serif SC', serif;
+            color: var(--deep);
+            letter-spacing: 2px
+        }
+
+        .toolbar strong:before {
+            content: '◆';
+            font-size: 14px;
+            color: var(--gold);
+            margin-right: 12px
+        }
+
+        input {
+            font: inherit;
+            padding: 14px 18px;
+            border: 1px solid #c9b88f;
+            border-radius: 6px;
+            min-width: 250px;
+            background: #fffaf0;
+            color: var(--ink);
+            outline-color: var(--jade)
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+            perspective: 1200px
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(155deg, #fffdf6, #f6ecd9);
+            border: 1px solid #c8b58e;
+            border-radius: 8px;
+            padding: 25px 23px 23px;
+            box-shadow: 0 7px 0 #c9bb9c, 0 16px 25px #3b4e3b20;
+            transform-style: preserve-3d;
+            transition: transform .32s ease, box-shadow .32s ease
+        }
+
+        .card:before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid #b7955540;
+            pointer-events: none
+        }
+
+        .card:after {
+            content: '卷';
+            position: absolute;
+            right: 20px;
+            top: 11px;
+            font: 800 62px 'Noto Serif SC', serif;
+            color: #356b6010;
+            pointer-events: none
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotateX(3deg) rotateY(-2deg);
+            box-shadow: 0 12px 0 #b7a880, 0 26px 38px #344b3b33
+        }
+
+        .num {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--cinnabar);
+            font-weight: 800
+        }
+
+        .card h2 {
+            font: 800 34px 'Noto Serif SC', serif;
+            margin: 12px 0 2px;
+            color: var(--deep)
+        }
+
+        .sub {
+            font: 600 17px 'Noto Serif SC', serif;
+            color: #857552;
+            margin-bottom: 22px
+        }
+
+        .ppt,
+        .practice button {
+            width: 100%;
+            border-radius: 5px;
+            padding: 14px 8px;
+            font-weight: 700;
+            transition: background .2s, transform .2s
+        }
+
+        .ppt {
+            background: var(--jade);
+            color: #fffaf0;
+            border: 1px solid var(--deep);
+            font-size: 17px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 0 #244d45
+        }
+
+        .ppt:hover {
+            background: var(--deep);
+            transform: translateY(-2px)
+        }
+
+        .practice {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .practice button {
+            background: #f8f0df;
+            color: var(--deep);
+            border: 1px solid #c5b58e;
+            font-size: 14px
+        }
+
+        .practice button:hover {
+            background: #e2e9da;
+            transform: translateY(-2px)
+        }
+
+        .note {
+            text-align: center;
+            color: #6f705e;
+            margin: 38px 0;
+            font-size: 14px
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: #1b302bc4;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 10;
+            backdrop-filter: blur(5px)
+        }
+
+        .modal.on {
+            display: flex
+        }
+
+        .dialog {
+            background: var(--ivory);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            box-shadow: 0 22px 80px #0005;
+            padding: 34px;
+            max-width: 530px;
+            width: 100%
+        }
+
+        .dialog h2 {
+            margin-top: 0;
+            color: var(--jade);
+            font-family: 'Noto Serif SC', serif
+        }
+
+        .dialog input {
+            width: 100%;
+            margin: 12px 0
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px
+        }
+
+        .actions button {
+            border: 1px solid #b9aa8a;
+            border-radius: 5px;
+            padding: 12px 18px
+        }
+
+        .save {
+            background: var(--jade);
+            color: white
+        }
+
+        .cancel {
+            background: #f3ead6;
+            color: var(--ink)
+        }
+
+        @media(max-width:1150px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+
+        @media(max-width:780px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .hero {
+                padding: 35px;
+                min-height: 240px
+            }
+
+            .hero .ornament {
+                font-size: 100px
+            }
+        }
+
+        @media(max-width:530px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            main {
+                padding: 14px
+            }
+
+            .toolbar input {
+                width: 100%
+            }
+
+            .hero {
+                padding: 34px 26px
+            }
+
+            .hero h1 {
+                letter-spacing: 0
+            }
+
+            .seal {
+                display: none
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *:before,
+            *:after {
+                transition: none !important;
+                animation: none !important
+            }
+        }
+
+        .ppt,
+        .practice a {
+            display: block;
+            text-align: center;
+            text-decoration: none
+        }
+
+        .practice a {
+            width: 100%;
+            border-radius: 5px;
+            padding: 14px 8px;
+            font-weight: 700;
+            transition: background .2s, transform .2s;
+            background: #f8f0df;
+            color: var(--deep);
+            border: 1px solid #c5b58e;
+            font-size: 14px
+        }
+
+        .practice a:hover {
+            background: #e2e9da;
+            transform: translateY(-2px)
+        }
+
+        .ppt:focus-visible,
+        .practice a:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px
+        }
+
+        .login-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: linear-gradient(140deg, #203e36e8, #182c27ed);
+            display: grid;
+            place-items: center;
+            padding: 18px;
+            overflow: auto
+        }
+
+        .login-layer[hidden] {
+            display: none
+        }
+
+        .login-box {
+            background: var(--ivory);
+            border: 2px solid var(--gold);
+            box-shadow: 0 25px 90px #0008;
+            border-radius: 15px;
+            max-width: 510px;
+            width: 100%;
+            padding: clamp(24px, 5vw, 44px);
+            position: relative
+        }
+
+        .login-box:before {
+            content: '卷';
+            position: absolute;
+            right: 25px;
+            top: 9px;
+            color: #b7955530;
+            font: 100px 'Noto Serif SC', serif;
+            pointer-events: none
+        }
+
+        .login-box h2 {
+            font: 700 clamp(29px, 5vw, 39px) 'Noto Serif SC', serif;
+            color: var(--deep);
+            margin: 0 0 8px
+        }
+
+        .login-box p {
+            color: #6c6b5e;
+            line-height: 1.7
+        }
+
+        .login-box label {
+            display: block;
+            margin: 17px 0 5px;
+            font-weight: 700;
+            color: var(--deep)
+        }
+
+        .login-box input {
+            width: 100%;
+            border: 1px solid #c6b996;
+            background: #fffdf6;
+            border-radius: 7px;
+            padding: 14px;
+            font: inherit;
+            color: var(--ink)
+        }
+
+        .login-box button,
+        .userbar button {
+            background: var(--jade);
+            color: white;
+            border: 0;
+            border-radius: 7px;
+            padding: 13px 22px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .login-box button {
+            width: 100%;
+            margin-top: 20px
+        }
+
+        .login-box button:disabled {
+            opacity: .6;
+            cursor: wait
+        }
+
+        .login-error {
+            min-height: 1.4em;
+            color: #9d413a;
+            font-size: 14px
+        }
+
+        .userbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 14px;
+            margin: 12px 0;
+            color: var(--deep);
+            flex-wrap: wrap
+        }
+
+        .userbar button {
+            padding: 8px 14px
+        }
+
+        .login-note {
+            font-size: 13px
+        }
+    
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}.nav button{padding:12px 20px;border:1px solid #b79555;background:#fff9ed;color:#244d45;border-radius:6px;font-weight:700}.nav button.active{background:#356b60;color:white}.back{border:0;background:transparent;color:#356b60;font-weight:800;padding:12px 0}.course-card{cursor:pointer;text-align:left;width:100%;font:inherit}.course-card h2{font-size:29px}.course-card .sub{margin-bottom:10px}.course-card .meta{color:#73694e;font-size:14px}.lesson-card h2{font-size:27px}.lesson-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.lesson-links a{display:block;text-decoration:none;text-align:center;background:#f8f0df;color:#244d45;border:1px solid #c5b58e;padding:12px 5px;border-radius:5px;font-weight:700;font-size:13px}.lesson-links a:hover{background:#e2e9da}.lesson-links a.main-link{grid-column:1/-1;background:#356b60;color:white;border-color:#244d45}.lesson-links a.main-link:hover{background:#244d45}.crumb{color:#857552;font-size:14px}.empty{padding:25px}.hero h1{font-size:clamp(37px,6vw,76px)}.course-card:focus-visible,.back:focus-visible,.nav button:focus-visible{outline:3px solid #b79555;outline-offset:3px}
+</style></head><body><main><header class="hero"><div class="scene"><div class="sun"></div><div class="mountain"></div><div class="mountain two"></div><div class="seal">学而时习之</div></div><div class="ornament">書</div><small>中文学习 · CHƯƠNG TRÌNH TIẾNG TRUNG</small><h1 id="heroTitle">HSK <span>3.0</span> & Giao tiếp</h1><p id="heroDesc">十二 khóa học · 二百五十八 bài học · Học mỗi ngày</p></header><nav class="nav" aria-label="Chọn chương trình"><button type="button" data-tab="all" class="active">Tất cả</button><button type="button" data-tab="hsk">TỔNG HỢP HSK 3.0</button><button type="button" data-tab="gt">GIAO TIẾP</button></nav><div class="toolbar"><div><button id="back" class="back" type="button" hidden>← Trở về các khóa học</button><strong id="sectionTitle">课程目录 · Danh sách khóa học</strong><div class="crumb" id="crumb"></div></div><input id="search" placeholder="Tìm khóa học..." aria-label="Tìm kiếm"></div><section class="grid" id="grid"></section><p class="note">Các nút PPT và luyện tập dẫn tới file HTML trong thư mục tương ứng.</p></main><script>
+const courses=[...([15,15,18,20,30,20].map((count,i)=>({type:'hsk',level:i+1,count,name:'HSK '+(i+1)+' · 3.0'}))),...([15,15,20,20,30,40].map((count,i)=>({type:'gt',level:i+1,count,name:'GIAO TIẾP '+(i+1)})))];
+const chinese=['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十','三十一','三十二','三十三','三十四','三十五','三十六','三十七','三十八','三十九','四十'];
+let tab='all',selected=null;const grid=document.getElementById('grid'),search=document.getElementById('search');
+function path(c,n,item){const root=(c.type==='hsk'?'HSK-':'Giao-tiep-')+c.level;return root+'/Bai-'+n+'/'+item+'/index.html'}
+function make(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el}
+function render(){grid.replaceChildren();const q=search.value.trim().toLocaleLowerCase('vi');document.getElementById('back').hidden=!selected;document.getElementById('sectionTitle').textContent=selected?'课程目录 · '+selected.count+' bài học':'课程目录 · Danh sách khóa học';document.getElementById('crumb').textContent=selected?selected.name:'';search.placeholder=selected?'Tìm bài học...':'Tìm khóa học...';document.getElementById('heroTitle').innerHTML=selected?(selected.type==='hsk'?'HSK '+selected.level+' <span>3.0</span>':'Giao tiếp <span>'+selected.level+'</span>'):'HSK <span>3.0</span> & Giao tiếp';document.getElementById('heroDesc').textContent=selected?selected.count+' bài học · '+(selected.type==='hsk'?'PPT · Luyện tập':'PPT · Luyện tập 1–3'):'12 khóa học · 258 bài học · Học mỗi ngày';
+if(!selected){for(const c of courses.filter(c=>(tab==='all'||c.type===tab)&&(!q||c.name.toLowerCase().includes(q)||(''+c.level).includes(q)))){const b=make('button','card course-card');b.type='button';b.append(make('div','num',c.type==='hsk'?'TỔNG HỢP · HSK 3.0':'GIAO TIẾP'),make('h2','',c.name),make('div','sub',c.count+' bài học'),make('div','meta',c.type==='hsk'?'PPT · Luyện tập 1–5':'Bài giảng PPT · Luyện tập 1–3'));b.onclick=()=>{selected=c;search.value='';render();window.scrollTo({top:0,behavior:'smooth'})};grid.append(b)}}else{for(let n=1;n<=selected.count;n++){if(q&&!('bài '+n+' lesson '+n+' 第'+chinese[n-1]+'课').includes(q))continue;const card=make('article','card lesson-card');card.append(make('div','num','LESSON '+String(n).padStart(2,'0')),make('h2','', 'Bài '+n),make('div','sub','第'+chinese[n-1]+'课'));const links=make('div','lesson-links');const items=selected.type==='gt'?[['PPT','PPT']]:[...(selected.level===1&&n<=8?[['Ngữ âm','Ngu-am']]:[]),['PPT','PPT']];items.push(...Array.from({length:selected.type==='gt'?3:5},(_,i)=>['Luyện tập '+(i+1),'Luyen-tap-'+(i+1)]));for(const [label,folder] of items){const a=make('a',label==='PPT'?'main-link':'',label);a.href=path(selected,n,folder);links.append(a)}card.append(links);grid.append(card)}}if(!grid.children.length)grid.append(make('p','empty','Không tìm thấy kết quả phù hợp.'))}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;selected=null;search.value='';document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));render()});document.getElementById('back').onclick=()=>{selected=null;search.value='';render()};search.addEventListener('input',render);render();
+const hero=document.querySelector('.hero');if(window.matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;hero.style.transform=`rotateY(${x*3}deg) rotateX(${-y*2}deg)`});hero.addEventListener('pointerleave',()=>hero.style.transform='')}
+</script></body></html>
