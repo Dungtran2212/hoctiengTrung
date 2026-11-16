@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 2 · 听读练</title>
+
+<style>
+:root{
+  --blue:#8fd3f4;
+  --blue2:#eaf8ff;
+  --orange:#ffae83;
+  --orange2:#fff1e7;
+  --green:#70cbb0;
+  --red:#ff7a70;
+  --text:#355f76;
+  --muted:#7891a0;
+  --shadow:0 16px 42px rgba(69,132,166,.14);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Segoe UI","Arial","Noto Sans SC",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 7% 8%,#ffe1cf 0 78px,transparent 80px),
+    radial-gradient(circle at 92% 11%,#dff4ff 0 115px,transparent 117px),
+    radial-gradient(circle at 95% 88%,#fff0df 0 100px,transparent 102px),
+    linear-gradient(180deg,#f8fdff 0%,#eef9ff 52%,#fff8f2 100%);
+  min-height:100vh;
+}
+
+.page{
+  width:min(1120px,94%);
+  margin:auto;
+  padding:28px 0 70px;
+}
+
+.hero,.exercise,.result-box{
+  background:#fffffff2;
+  border-radius:28px;
+  box-shadow:var(--shadow);
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:28px;
+  margin-bottom:22px;
+}
+
+.hero:after{
+  content:"☁️ ✨ 🧡";
+  position:absolute;
+  right:28px;
+  top:25px;
+  font-size:30px;
+}
+
+.chapter{
+  display:inline-block;
+  background:linear-gradient(135deg,#ff8874,#ffbd8f);
+  color:white;
+  font-weight:900;
+  padding:9px 15px;
+  border-radius:14px;
+}
+
+.hero h1{
+  font-size:clamp(28px,5vw,44px);
+  margin:15px 0 6px;
+}
+
+.hero p,.subtitle,.hint,.note{
+  color:var(--muted);
+}
+
+.student{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:12px;
+  margin-top:20px;
+}
+
+input[type=text],select{
+  font:inherit;
+  border:2px solid #d6ebf6;
+  background:white;
+  border-radius:13px;
+  padding:10px 12px;
+  outline:none;
+}
+
+.student input{
+  width:100%;
+}
+
+.exercise{
+  padding:24px;
+  margin:20px 0;
+}
+
+.heading{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.num{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  flex:none;
+  border-radius:13px;
+  background:linear-gradient(135deg,#ff776e,#ffa078);
+  color:white;
+  font-size:20px;
+  font-weight:900;
+}
+
+h2{
+  font-size:21px;
+  margin:2px 0 4px;
+}
+
+.hint{
+  font-size:14px;
+  margin:8px 0 18px 54px;
+}
+
+.audio-panel{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  background:linear-gradient(90deg,#eaf8ff,#fff3e9);
+  border:2px dashed #a9d9ef;
+  border-radius:17px;
+  padding:14px;
+  margin:17px 0;
+}
+
+.play-section{
+  border:0;
+  cursor:pointer;
+  padding:11px 17px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#5db9e8,#7dc8ee);
+  color:#fff;
+  font-weight:900;
+}
+
+.play-section.playing{
+  background:linear-gradient(135deg,#ff9274,#ffb48b);
+}
+
+.answers{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+
+.answer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  background:#fbfdff;
+  border:1px solid #e1eef5;
+  border-radius:14px;
+  padding:12px;
+}
+
+.answer input{
+  width:95px;
+  border:0;
+  border-bottom:2px solid #869eab;
+  border-radius:0;
+  background:transparent;
+  text-align:center;
+  padding:7px;
+}
+
+.fixed{
+  font-size:18px;
+  font-weight:800;
+}
+
+.tone-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.tone{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:9px;
+  border:1px solid #dcecf5;
+  border-radius:14px;
+  background:#f9fcff;
+  padding:12px;
+}
+
+.tone b{
+  font-size:18px;
+}
+
+.dialogues{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+  margin-bottom:18px;
+}
+
+.dialogue{
+  background:#fff6ee;
+  border:2px solid #ffd8bf;
+  border-radius:16px;
+  padding:14px;
+  font-weight:750;
+  cursor:grab;
+  user-select:none;
+  line-height:1.65;
+  min-height:110px;
+}
+
+.dialogue .tag{
+  display:inline-grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:#ff866f;
+  color:white;
+  font-weight:900;
+  margin-right:7px;
+}
+
+.dialogue.selected{
+  outline:4px solid rgba(90,174,231,.20);
+  border-color:#67b8ec;
+  background:#eef9ff;
+}
+
+.drop-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.dropzone{
+  background:#f9fcff;
+  border:2px dashed #a5d4f0;
+  border-radius:18px;
+  padding:9px;
+  min-height:285px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  align-items:center;
+}
+
+.dropzone.over{
+  background:#e9f7ff;
+}
+
+.dropzone img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid #dce9f0;
+}
+
+.drop-label{
+  font-weight:900;
+}
+
+.drop-answer{
+  width:100%;
+  min-height:58px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid #dfeaf0;
+  padding:9px;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#5b7180;
+}
+
+.submit{
+  text-align:center;
+  padding:13px;
+}
+
+.submit button{
+  border:0;
+  cursor:pointer;
+  padding:14px 27px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#5db7eb,#76cdb3);
+  color:white;
+  font-weight:900;
+  font-size:18px;
+}
+
+.result-box{
+  display:none;
+  padding:25px;
+  margin-top:24px;
+}
+
+.score{
+  text-align:center;
+  font-size:46px;
+  font-weight:900;
+  color:#ff7d68;
+  margin:8px 0;
+}
+
+.result-section{
+  margin-top:20px;
+}
+
+.result-line{
+  margin:6px 0;
+  padding:8px 10px;
+  border-radius:10px;
+  background:#f8fbfd;
+}
+
+.ok{
+  background:#effbf5;
+  color:#277d60;
+}
+
+.bad{
+  background:#fff2f0;
+  color:#be554e;
+}
+
+#toast{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  background:#31596f;
+  color:white;
+  padding:11px 16px;
+  border-radius:12px;
+  transition:.2s;
+  z-index:9999;
+  pointer-events:none;
+}
+
+#toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+@media(max-width:900px){
+  .drop-grid{grid-template-columns:repeat(2,1fr)}
+  .tone-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:700px){
+  .answers{grid-template-columns:1fr}
+  .dialogues{grid-template-columns:1fr}
+  .student{grid-template-columns:1fr}
+  .hero:after{display:none}
+  .hint{margin-left:0}
+}
+
+@media(max-width:520px){
+  .exercise,.hero{padding:18px}
+  .drop-grid,.tone-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="hero">
+  <div class="chapter">二、听读练 · Bài 2</div>
+
+  <h1>Chinese Listening Practice 🌈</h1>
+
+  <p>
+    Nghe thật kỹ, viết thật chuẩn và đọc to theo audio nhé ✨
+  </p>
+
+  <div class="student">
+    <input
+      id="studentName"
+      type="text"
+      placeholder="Họ và tên học sinh *"
+    >
+
+    <input
+      id="studentClass"
+      type="text"
+      placeholder="Lớp"
+    >
+  </div>
+</header>
+
+
+<audio
+  id="masterAudio"
+  preload="auto"
+  src="听读练2.mp3">
+</audio>
+
+
+<form id="practiceForm">
+
+<!-- =========================
+     BÀI 1
+========================= -->
+
+<section class="exercise">
+
+  <div class="heading">
+
+    <div class="num">1</div>
+
+    <div>
+      <h2>
+        听录音，写出听到的声母并大声朗读。
+      </h2>
+
+      <div class="subtitle">
+        Listen, write down the initials you hear, then read aloud.
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="audio-panel">
+
+    <span>🎧</span>
+
+    <button
+      class="play-section"
+      type="button"
+      data-section="1">
+      ▶ Nghe Bài 1
+    </button>
+
+    <span class="subtitle">
+      Audio: 00:03 → 00:55
+    </span>
+
+  </div>
+
+
+  <div
+    id="ex1"
+    class="answers">
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     BÀI 2
+========================= -->
+
+<section class="exercise">
+
+  <div class="heading">
+
+    <div class="num">2</div>
+
+    <div>
+      <h2>
+        听录音，写出听到的韵母并大声朗读。
+      </h2>
+
+      <div class="subtitle">
+        Listen, write down the finals you hear, then read aloud.
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="audio-panel">
+
+    <span>🎧</span>
+
+    <button
+      class="play-section"
+      type="button"
+      data-section="2">
+      ▶ Nghe Bài 2
+    </button>
+
+    <span class="subtitle">
+      Audio: 00:57 → 02:16
+    </span>
+
+  </div>
+
+
+  <div
+    id="ex2"
+    class="answers">
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     BÀI 3
+========================= -->
+
+<section class="exercise">
+
+  <div class="heading">
+
+    <div class="num">3</div>
+
+    <div>
+      <h2>
+        听录音，写出听到的声调并大声朗读。
+      </h2>
+
+      <div class="subtitle">
+        Listen, mark the tones you hear, then read aloud.
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="audio-panel">
+
+    <span>🎧</span>
+
+    <button
+      class="play-section"
+      type="button"
+      data-section="3">
+      ▶ Nghe Bài 3
+    </button>
+
+    <span class="subtitle">
+      Audio: 02:19 → 03:27
+    </span>
+
+  </div>
+
+
+  <div
+    id="ex3"
+    class="tone-grid">
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     BÀI 4
+========================= -->
+
+<section class="exercise">
+
+  <div class="heading">
+
+    <div class="num">4</div>
+
+    <div>
+
+      <h2>
+        看图片，选择正确的对话。
+      </h2>
+
+      <div class="subtitle">
+        Look at the pictures and choose the correct dialogue.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="audio-panel">
+
+    <span>🎧</span>
+
+    <button
+      class="play-section"
+      type="button"
+      data-section="4">
+      ▶ Nghe Bài 4
+    </button>
+
+    <span class="subtitle">
+      Audio: 03:28 → 04:10
+    </span>
+
+  </div>
+
+
+  <p class="hint">
+    Máy tính: kéo hội thoại vào hình.
+    Điện thoại: chạm hội thoại rồi chạm hình.
+  </p>
+
+
+  <div
+    id="dialogues"
+    class="dialogues">
+  </div>
+
+
+  <div
+    id="dropGrid"
+    class="drop-grid">
+  </div>
+
+</section>
+
+
+
+<div class="submit">
+
+  <button
+    id="submitBtn"
+    type="submit">
+    ✅ Nộp bài & Xem kết quả
+  </button>
+
+  <p class="note">
+    Bài sẽ được chấm ngay trên trang.
+  </p>
+
+</div>
+
+</form>
+
+
+<div
+  id="resultBox"
+  class="result-box">
+</div>
+
+</div>
+
+
+<div id="toast"></div>
+
+
+<script>
+
+/* =====================================
+   AUDIO
+===================================== */
+
+const SECTION_AUDIO = {
+
+  1:{
+    start:3,
+    end:55
+  },
+
+  2:{
+    start:57,
+    end:136
+  },
+
+  3:{
+    start:139,
+    end:207
+  },
+
+  4:{
+    start:208,
+    end:250
+  }
+
+};
+
+
+/* =====================================
+   BÀI 1
+   qián jīn xiǎng
+   jiào xiè qǐng
+   jǐ qù xià
+===================================== */
+
+const EX1_FINALS = [
+
+  'ián',
+  'īn',
+  'iǎng',
+
+  'iào',
+  'iè',
+  'ǐng',
+
+  'ǐ',
+  'ù',
+  'ià'
+
+];
+
+
+const EX1_INITIALS = [
+
+  'q',
+  'j',
+  'x',
+
+  'j',
+  'x',
+  'q',
+
+  'j',
+  'q',
+  'x'
+
+];
+
+
+const EX1_FULL = [
+
+  'qián',
+  'jīn',
+  'xiǎng',
+
+  'jiào',
+  'xiè',
+  'qǐng',
+
+  'jǐ',
+  'qù',
+  'xià'
+
+];
+
+
+
+/* =====================================
+   BÀI 2
+
+   jiàn xiě qù jiào qǐng
+   xué jiǎo xīng jiě qián
+   xiàn qǐ jiā xiū quán
+
+   Học sinh điền VẬN MẪU
+===================================== */
+
+const EX2_INITIALS = [
+
+  'j',
+  'x',
+  'q',
+  'j',
+  'q',
+
+  'x',
+  'j',
+  'x',
+  'j',
+  'q',
+
+  'x',
+  'q',
+  'j',
+  'x',
+  'q'
+
+];
+
+
+const EX2_FINALS = [
+
+  'ian',
+  'ie',
+  'u',
+  'iao',
+  'ing',
+
+  'ue',
+  'iao',
+  'ing',
+  'ie',
+  'ian',
+
+  'ian',
+  'i',
+  'ia',
+  'iu',
+  'uan'
+
+];
+
+
+const EX2_FULL = [
+
+  'jiàn',
+  'xiě',
+  'qù',
+  'jiào',
+  'qǐng',
+
+  'xué',
+  'jiǎo',
+  'xīng',
+  'jiě',
+  'qián',
+
+  'xiàn',
+  'qǐ',
+  'jiā',
+  'xiū',
+  'quán'
+
+];
+
+
+
+/* =====================================
+   BÀI 3
+
+   xué jiào qún jiǔ
+   xīn qǐng xià jiā
+   qù jī xiǎo jiě
+===================================== */
+
+const EX3_BASE = [
+
+  'xue',
+  'jiao',
+  'qun',
+  'jiu',
+
+  'xin',
+  'qing',
+  'xia',
+  'jia',
+
+  'qu',
+  'ji',
+  'xiao',
+  'jie'
+
+];
+
+
+const EX3_TONES = [
+
+  '2',
+  '4',
+  '2',
+  '3',
+
+  '1',
+  '3',
+  '4',
+  '1',
+
+  '4',
+  '1',
+  '3',
+  '3'
+
+];
+
+
+const EX3_FULL = [
+
+  'xué',
+  'jiào',
+  'qún',
+  'jiǔ',
+
+  'xīn',
+  'qǐng',
+  'xià',
+  'jiā',
+
+  'qù',
+  'jī',
+  'xiǎo',
+  'jiě'
+
+];
+
+
+
+/* =====================================
+   BÀI 4
+===================================== */
+
+const DIALOGUES = [
+
+  {
+    id:'d1',
+    label:'1',
+    html:`
+      A：老师，再见！<br>
+      B：再见！
+    `
+  },
+
+  {
+    id:'d2',
+    label:'2',
+    html:`
+      A：对不起。<br>
+      B：没关系。
+    `
+  },
+
+  {
+    id:'d3',
+    label:'3',
+    html:`
+      A：很高兴认识你。<br>
+      B：认识你我也很高兴。
+    `
+  },
+
+  {
+    id:'d4',
+    label:'4',
+    html:`
+      A：大家好，我叫白家月。<br>
+      B：白家月，你好。
+    `
+  }
+
+];
+
+
+/*
+Hình 1 → hội thoại 3
+Hình 2 → hội thoại 1
+Hình 3 → hội thoại 4
+Hình 4 → hội thoại 2
+*/
+
+const ANSWER4 = {
+
+  '1':'d3',
+  '2':'d1',
+  '3':'d4',
+  '4':'d2'
+
+};
+
+const SCENE_IMAGES = [
+  'scene1.png',
+  'scene2.png',
+  'scene3.png',
+  'scene4.png'
+];
+
+
+/* =====================================
+   TOAST
+===================================== */
+
+function toast(msg){
+
+  const t =
+  document.getElementById(
+    'toast'
+  );
+
+  t.textContent =
+    msg;
+
+  t.classList.add(
+    'show'
+  );
+
+  clearTimeout(
+    window.__toastTimer
+  );
+
+  window.__toastTimer =
+  setTimeout(
+    ()=>{
+      t.classList.remove(
+        'show'
+      );
+    },
+    2600
+  );
+
+}
+
+
+
+/* =====================================
+   AUDIO PLAYER
+===================================== */
+
+const masterAudio =
+document.getElementById(
+  'masterAudio'
+);
+
+let activeSection =
+null;
+
+let sectionTimer =
+null;
+
+
+function stopSection(){
+
+  if(sectionTimer){
+
+    clearInterval(
+      sectionTimer
+    );
+
+    sectionTimer =
+    null;
+
+  }
+
+  masterAudio.pause();
+
+  document
+  .querySelectorAll(
+    '.play-section'
+  )
+  .forEach(
+    btn=>{
+
+      btn.classList.remove(
+        'playing'
+      );
+
+      btn.textContent =
+      '▶ Nghe Bài ' +
+      btn.dataset.section;
+
+    }
+  );
+
+  activeSection =
+  null;
+
+}
+
+
+
+document
+.querySelectorAll(
+  '.play-section'
+)
+.forEach(
+  btn=>{
+
+    btn.addEventListener(
+      'click',
+      ()=>{
+
+        const n =
+        btn.dataset.section;
+
+        const range =
+        SECTION_AUDIO[n];
+
+
+        if(
+          activeSection === n &&
+          !masterAudio.paused
+        ){
+
+          stopSection();
+          return;
+
+        }
+
+
+        stopSection();
+
+
+        masterAudio.currentTime =
+        range.start;
+
+
+        masterAudio
+        .play()
+        .then(
+          ()=>{
+
+            activeSection =
+            n;
+
+            btn.classList.add(
+              'playing'
+            );
+
+            btn.textContent =
+            '⏸ Dừng Bài ' + n;
+
+
+            sectionTimer =
+            setInterval(
+              ()=>{
+
+                if(
+                  masterAudio.currentTime >=
+                  range.end ||
+                  masterAudio.ended
+                ){
+
+                  stopSection();
+
+                }
+
+              },
+              120
+            );
+
+          }
+        )
+        .catch(
+          ()=>{
+
+            toast(
+              'Bấm lại nút nghe giúp mình nha.'
+            );
+
+          }
+        );
+
+      }
+    );
+
+  }
+);
+
+
+
+/* =====================================
+   HIỆN BÀI 1
+===================================== */
+
+const ex1 =
+document.getElementById(
+  'ex1'
+);
+
+
+EX1_FINALS.forEach(
+  (finalPart,index)=>{
+
+    const item =
+    document.createElement(
+      'div'
+    );
+
+    item.className =
+    'answer';
+
+
+    item.innerHTML = `
+
+      <input
+        type="text"
+        data-ex1="${index}"
+        maxlength="3"
+        aria-label="Bài 1 câu ${index+1}"
+      >
+
+      <span class="fixed">
+        ${finalPart}
+      </span>
+
+    `;
+
+
+    ex1.appendChild(
+      item
+    );
+
+  }
+);
+
+
+
+/* =====================================
+   HIỆN BÀI 2
+===================================== */
+
+const ex2 =
+document.getElementById(
+  'ex2'
+);
+
+
+EX2_INITIALS.forEach(
+  (initial,index)=>{
+
+    const item =
+    document.createElement(
+      'div'
+    );
+
+    item.className =
+    'answer';
+
+
+    item.innerHTML = `
+
+      <span class="fixed">
+        ${initial}
+      </span>
+
+      <input
+        type="text"
+        data-ex2="${index}"
+        aria-label="Bài 2 câu ${index+1}"
+      >
+
+    `;
+
+
+    ex2.appendChild(
+      item
+    );
+
+  }
+);
+
+
+
+/* =====================================
+   HIỆN BÀI 3
+===================================== */
+
+const ex3 =
+document.getElementById(
+  'ex3'
+);
+
+
+EX3_BASE.forEach(
+  (word,index)=>{
+
+    const item =
+    document.createElement(
+      'div'
+    );
+
+    item.className =
+    'tone';
+
+
+    item.innerHTML = `
+
+      <b>
+        ${word}
+      </b>
+
+      <select
+        data-ex3="${index}"
+        aria-label="Bài 3 câu ${index+1}"
+      >
+
+        <option value="">
+          Chọn thanh
+        </option>
+
+        <option value="1">
+          Thanh 1
+        </option>
+
+        <option value="2">
+          Thanh 2
+        </option>
+
+        <option value="3">
+          Thanh 3
+        </option>
+
+        <option value="4">
+          Thanh 4
+        </option>
+
+      </select>
+
+    `;
+
+
+    ex3.appendChild(
+      item
+    );
+
+  }
+);
+
+
+
+/* =====================================
+   HIỆN BÀI 4
+===================================== */
+
+let selectedDialogue =
+null;
+
+
+const dlgWrap =
+document.getElementById(
+  'dialogues'
+);
+
+
+DIALOGUES.forEach(
+  dialogue=>{
+
+    const el =
+    document.createElement(
+      'div'
+    );
+
+
+    el.className =
+    'dialogue';
+
+    el.draggable =
+    true;
+
+    el.dataset.id =
+    dialogue.id;
+
+
+    el.innerHTML = `
+
+      <span class="tag">
+        ${dialogue.label}
+      </span>
+
+      ${dialogue.html}
+
+    `;
+
+
+    el.addEventListener(
+      'dragstart',
+      event=>{
+
+        event.dataTransfer.setData(
+          'text/plain',
+          dialogue.id
+        );
+
+      }
+    );
+
+
+    el.addEventListener(
+      'click',
+      ()=>{
+
+        document
+        .querySelectorAll(
+          '.dialogue'
+        )
+        .forEach(
+          item=>
+          item.classList.remove(
+            'selected'
+          )
+        );
+
+
+        selectedDialogue =
+        dialogue.id;
+
+
+        el.classList.add(
+          'selected'
+        );
+
+
+        toast(
+          'Đã chọn hội thoại ' +
+          dialogue.label +
+          '. Giờ chạm vào hình.'
+        );
+
+      }
+    );
+
+
+    dlgWrap.appendChild(
+      el
+    );
+
+  }
+);
+
+
+
+const dropGrid =
+document.getElementById(
+  'dropGrid'
+);
+
+
+[1,2,3,4].forEach(
+  number=>{
+
+    const zone =
+    document.createElement(
+      'div'
+    );
+
+
+    zone.className =
+    'dropzone';
+
+
+    zone.dataset.scene =
+    number;
+
+
+    zone.innerHTML = `
+
+      <div class="drop-label">
+        Hình ${number}
+      </div>
+
+      <img
+        src="${SCENE_IMAGES[number-1]}"
+        alt="Hình ${number}"
+      >
+
+      <div class="drop-answer">
+        Thả hội thoại vào đây
+      </div>
+
+    `;
+
+
+    zone.addEventListener(
+      'dragover',
+      event=>{
+
+        event.preventDefault();
+
+        zone.classList.add(
+          'over'
+        );
+
+      }
+    );
+
+
+    zone.addEventListener(
+      'dragleave',
+      ()=>{
+
+        zone.classList.remove(
+          'over'
+        );
+
+      }
+    );
+
+
+    zone.addEventListener(
+      'drop',
+      event=>{
+
+        event.preventDefault();
+
+        zone.classList.remove(
+          'over'
+        );
+
+
+        assignDialogue(
+          zone,
+          event.dataTransfer.getData(
+            'text/plain'
+          )
+        );
+
+      }
+    );
+
+
+    zone.addEventListener(
+      'click',
+      ()=>{
+
+        if(
+          selectedDialogue
+        ){
+
+          assignDialogue(
+            zone,
+            selectedDialogue
+          );
+
+        }
+
+      }
+    );
+
+
+    dropGrid.appendChild(
+      zone
+    );
+
+  }
+);
+
+
+
+function assignDialogue(
+  zone,
+  id
+){
+
+  const dialogue =
+  DIALOGUES.find(
+    item=>
+    item.id === id
+  );
+
+
+  if(!dialogue){
+    return;
+  }
+
+
+  document
+  .querySelectorAll(
+    `.dropzone[data-dialogue="${id}"]`
+  )
+  .forEach(
+    old=>{
+
+      old.removeAttribute(
+        'data-dialogue'
+      );
+
+
+      old
+      .querySelector(
+        '.drop-answer'
+      )
+      .textContent =
+      'Thả hội thoại vào đây';
+
+    }
+  );
+
+
+  zone.dataset.dialogue =
+  id;
+
+
+  zone
+  .querySelector(
+    '.drop-answer'
+  )
+  .innerHTML = `
+
+    <b>
+      ${dialogue.label}
+    </b>
+
+    ·
+
+    ${dialogue.html}
+
+  `;
+
+
+  selectedDialogue =
+  null;
+
+
+  document
+  .querySelectorAll(
+    '.dialogue'
+  )
+  .forEach(
+    item=>
+    item.classList.remove(
+      'selected'
+    )
+  );
+
+}
+
+
+
+/* =====================================
+   CHUẨN HÓA ĐÁP ÁN
+===================================== */
+
+function normalizeAnswer(value){
+
+  return String(
+    value || ''
+  )
+  .normalize(
+    'NFC'
+  )
+  .trim()
+  .toLowerCase()
+  .replace(
+    /\s+/g,
+    ''
+  );
+
+}
+
+
+
+function resultLine(
+  number,
+  student,
+  answer,
+  correct
+){
+
+  return `
+
+    <div class="
+      result-line
+      ${correct ? 'ok' : 'bad'}
+    ">
+
+      ${correct ? '✅' : '❌'}
+
+      <b>
+        ${number}.
+      </b>
+
+      Bạn làm:
+
+      <b>
+        ${student || '(trống)'}
+      </b>
+
+      ${
+        correct
+        ?
+        ''
+        :
+        ` → Đáp án:
+          <b>${answer}</b>`
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =====================================
+   SUBMIT + CHẤM ĐIỂM
+===================================== */
+
+document
+.getElementById(
+  'practiceForm'
+)
+.addEventListener(
+  'submit',
+  event=>{
+
+    event.preventDefault();
+
+    stopSection();
+
+
+    const name =
+    document
+    .getElementById(
+      'studentName'
+    )
+    .value
+    .trim();
+
+
+    const studentClass =
+    document
+    .getElementById(
+      'studentClass'
+    )
+    .value
+    .trim();
+
+
+    if(!name){
+
+      toast(
+        'Nhập tên học sinh trước khi nộp bài nha.'
+      );
+
+      document
+      .getElementById(
+        'studentName'
+      )
+      .focus();
+
+      return;
+
+    }
+
+
+
+    /* =====================
+       CHẤM BÀI 1
+    ===================== */
+
+    let correct1 =
+    0;
+
+    let html1 =
+    '';
+
+
+    document
+    .querySelectorAll(
+      '[data-ex1]'
+    )
+    .forEach(
+      (input,index)=>{
+
+        const student =
+        normalizeAnswer(
+          input.value
+        );
+
+
+        const answer =
+        normalizeAnswer(
+          EX1_INITIALS[index]
+        );
+
+
+        const correct =
+        student === answer;
+
+
+        if(correct){
+          correct1++;
+        }
+
+
+        html1 +=
+        resultLine(
+          index + 1,
+          input.value.trim(),
+          EX1_INITIALS[index]
+          +
+          ' → '
+          +
+          EX1_FULL[index],
+          correct
+        );
+
+      }
+    );
+
+
+
+    /* =====================
+       CHẤM BÀI 2
+    ===================== */
+
+    let correct2 =
+    0;
+
+    let html2 =
+    '';
+
+
+    document
+    .querySelectorAll(
+      '[data-ex2]'
+    )
+    .forEach(
+      (input,index)=>{
+
+        const student =
+        normalizeAnswer(
+          input.value
+        );
+
+
+        const answer =
+        normalizeAnswer(
+          EX2_FINALS[index]
+        );
+
+
+        const correct =
+        student === answer;
+
+
+        if(correct){
+          correct2++;
+        }
+
+
+        html2 +=
+        resultLine(
+          index + 1,
+          input.value.trim(),
+          EX2_FINALS[index]
+          +
+          ' → '
+          +
+          EX2_FULL[index],
+          correct
+        );
+
+      }
+    );
+
+
+
+    /* =====================
+       CHẤM BÀI 3
+    ===================== */
+
+    let correct3 =
+    0;
+
+    let html3 =
+    '';
+
+
+    document
+    .querySelectorAll(
+      '[data-ex3]'
+    )
+    .forEach(
+      (select,index)=>{
+
+        const student =
+        String(
+          select.value || ''
+        );
+
+
+        const answer =
+        EX3_TONES[index];
+
+
+        const correct =
+        student === answer;
+
+
+        if(correct){
+          correct3++;
+        }
+
+
+        html3 +=
+        resultLine(
+          index + 1,
+          student
+          ?
+          'Thanh ' + student
+          :
+          '',
+          'Thanh '
+          +
+          answer
+          +
+          ' → '
+          +
+          EX3_FULL[index],
+          correct
+        );
+
+      }
+    );
+
+
+
+    /* =====================
+       CHẤM BÀI 4
+    ===================== */
+
+    let correct4 =
+    0;
+
+    let html4 =
+    '';
+
+
+    document
+    .querySelectorAll(
+      '.dropzone'
+    )
+    .forEach(
+      zone=>{
+
+        const scene =
+        String(
+          zone.dataset.scene
+        );
+
+
+        const student =
+        zone.dataset.dialogue
+        ||
+        '';
+
+
+        const answer =
+        ANSWER4[scene];
+
+
+        const correct =
+        student === answer;
+
+
+        if(correct){
+          correct4++;
+        }
+
+
+        const studentDialogue =
+        DIALOGUES.find(
+          item=>
+          item.id === student
+        );
+
+
+        const answerDialogue =
+        DIALOGUES.find(
+          item=>
+          item.id === answer
+        );
+
+
+        html4 +=
+        resultLine(
+          'Hình ' + scene,
+          studentDialogue
+          ?
+          'Hội thoại '
+          +
+          studentDialogue.label
+          :
+          '',
+          'Hội thoại '
+          +
+          answerDialogue.label,
+          correct
+        );
+
+      }
+    );
+
+
+
+    /* =====================
+       TỔNG ĐIỂM
+    ===================== */
+
+    const totalQuestions =
+    40;
+
+
+    const correctTotal =
+    correct1
+    +
+    correct2
+    +
+    correct3
+    +
+    correct4;
+
+
+    const score =
+    (
+      correctTotal
+      /
+      totalQuestions
+      *
+      10
+    )
+    .toFixed(
+      1
+    );
+
+
+    const percent =
+    Math.round(
+      correctTotal
+      /
+      totalQuestions
+      *
+      100
+    );
+
+
+
+    /* =====================
+       HIỆN KẾT QUẢ
+    ===================== */
+
+    const resultBox =
+    document
+    .getElementById(
+      'resultBox'
+    );
+
+
+    resultBox.innerHTML = `
+
+      <div style="
+        text-align:center;
+      ">
+
+        <h2 style="
+          margin-bottom:4px;
+        ">
+          🎉 Kết quả của ${name}
+        </h2>
+
+        <div class="score">
+          ${score}/10
+        </div>
+
+        <div>
+          Đúng
+          <b>
+            ${correctTotal}/${totalQuestions}
+          </b>
+          câu · ${percent}%
+        </div>
+
+        ${
+          studentClass
+          ?
+          `<div style="
+            margin-top:6px;
+          ">
+            Lớp ${studentClass}
+          </div>`
+          :
+          ''
+        }
+
+      </div>
+
+
+      <div class="result-section">
+
+        <h3>
+          🎧 Bài 1 —
+          ${correct1}/9
+        </h3>
+
+        ${html1}
+
+      </div>
+
+
+      <div class="result-section">
+
+        <h3>
+          🎧 Bài 2 —
+          ${correct2}/15
+        </h3>
+
+        ${html2}
+
+      </div>
+
+
+      <div class="result-section">
+
+        <h3>
+          🎵 Bài 3 —
+          ${correct3}/12
+        </h3>
+
+        ${html3}
+
+      </div>
+
+
+      <div class="result-section">
+
+        <h3>
+          🖼️ Bài 4 —
+          ${correct4}/4
+        </h3>
+
+        ${html4}
+
+      </div>
+
+    `;
+
+
+    resultBox.style.display =
+    'block';
+
+
+    resultBox.scrollIntoView({
+      behavior:'smooth',
+      block:'start'
+    });
+
+  }
+);
+
+</script>
+
+</body>
+</html>

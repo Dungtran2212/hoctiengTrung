@@ -1,0 +1,3517 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>气球炸弹 · Balloon Bomb</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+:root{
+  --ink:#17232d;
+  --paper:#fffaf2;
+  --wine:#7d2637;
+  --wine-dark:#5e1927;
+  --navy:#17374f;
+  --gold:#e6b94f;
+  --green:#2f7d59;
+  --red:#b83d4c;
+  --sky1:#9fd7ea;
+  --sky2:#dff4f2;
+  --line:#d7c9b8;
+}
+
+html,
+body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  font-family:
+    Inter,
+    "Noto Sans SC",
+    "Microsoft YaHei",
+    Arial,
+    sans-serif;
+
+  color:var(--ink);
+
+  overflow-x:hidden;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #8cc8df 0%,
+      #bfe7ec 50%,
+      #eaf6ed 100%
+    );
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none !important;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+  width:min(
+    1180px,
+    calc(100% - 18px)
+  );
+
+  margin:
+    10px auto
+    40px;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+
+  margin-bottom:10px;
+}
+
+.brand{
+  color:#fff;
+
+  font-size:18px;
+  font-weight:1000;
+
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.18);
+}
+
+.homeBtn{
+  border:1px solid rgba(255,255,255,.7);
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.92);
+
+  color:var(--wine);
+
+  padding:9px 14px;
+
+  font-weight:900;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+  position:relative;
+
+  overflow:hidden;
+
+  padding:27px;
+
+  border:2px solid rgba(23,35,45,.16);
+
+  border-radius:24px;
+
+  background:
+    rgba(255,250,242,.96);
+
+  box-shadow:
+    0 22px 60px rgba(38,49,54,.15);
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+.startScreen{
+  text-align:center;
+}
+
+.kicker{
+  color:var(--wine);
+
+  font-size:12px;
+  font-weight:1000;
+
+  letter-spacing:.18em;
+}
+
+.gameIcon{
+  margin-top:10px;
+  font-size:82px;
+}
+
+h1{
+  margin:
+    8px auto;
+
+  max-width:900px;
+
+  font-size:
+    clamp(
+      38px,
+      6vw,
+      66px
+    );
+
+  line-height:1.05;
+}
+
+.subtitle{
+  max-width:780px;
+
+  margin:
+    13px auto 0;
+
+  color:#61717b;
+
+  line-height:1.65;
+
+  font-size:
+    clamp(
+      15px,
+      2vw,
+      19px
+    );
+}
+
+.ruleGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:10px;
+
+  margin:
+    25px auto 23px;
+
+  max-width:900px;
+}
+
+.rule{
+  padding:16px 10px;
+
+  border:1px solid #d6c8b6;
+
+  border-radius:14px;
+
+  background:white;
+
+  font-weight:900;
+}
+
+.rule span{
+  display:block;
+
+  margin-bottom:5px;
+
+  font-size:36px;
+}
+
+.startBtn{
+  border:0;
+
+  border-radius:14px;
+
+  background:var(--wine);
+
+  color:white;
+
+  padding:14px 26px;
+
+  font-size:18px;
+  font-weight:1000;
+
+  box-shadow:
+    0 7px 0 var(--wine-dark);
+}
+
+.startBtn:active{
+  transform:translateY(4px);
+
+  box-shadow:
+    0 3px 0 var(--wine-dark);
+}
+
+
+/* =========================================================
+   GAME TOP
+========================================================= */
+
+.gameHeader{
+  display:grid;
+
+  grid-template-columns:
+    auto 1fr auto;
+
+  gap:14px;
+
+  align-items:center;
+
+  margin-bottom:12px;
+}
+
+.roundBadge{
+  min-width:115px;
+
+  padding:10px 14px;
+
+  border:2px solid var(--ink);
+
+  border-radius:999px;
+
+  background:#fff3be;
+
+  text-align:center;
+
+  font-weight:1000;
+}
+
+.mission{
+  text-align:center;
+
+  padding:12px 15px;
+
+  border:3px solid var(--ink);
+
+  border-radius:18px;
+
+  background:white;
+
+  box-shadow:
+    5px 5px 0 rgba(23,35,45,.85);
+}
+
+.missionLabel{
+  color:#6f7c84;
+
+  font-size:13px;
+  font-weight:900;
+
+  letter-spacing:.08em;
+}
+
+.target{
+  margin-top:4px;
+
+  font-size:
+    clamp(
+      30px,
+      5vw,
+      54px
+    );
+
+  font-weight:1000;
+
+  line-height:1.15;
+}
+
+.timeBox{
+  min-width:110px;
+
+  padding:10px 13px;
+
+  border:2px solid var(--ink);
+
+  border-radius:14px;
+
+  background:white;
+
+  text-align:center;
+
+  font-weight:1000;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+  display:flex;
+
+  justify-content:center;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:10px;
+}
+
+.stat{
+  min-width:115px;
+
+  padding:8px 12px;
+
+  border:1px solid #cbbba6;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.94);
+
+  text-align:center;
+
+  font-weight:900;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.field{
+  position:relative;
+
+  height:600px;
+
+  overflow:hidden;
+
+  border:3px solid var(--ink);
+
+  border-radius:24px;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(255,255,255,.7),
+      transparent 20%
+    ),
+    linear-gradient(
+      to bottom,
+      #8fd0e8 0%,
+      #b7e6ec 64%,
+      #a6d999 64%,
+      #6cae65 100%
+    );
+}
+
+.field::before{
+  content:"☁️　　　☁️　　　　　　　☁️";
+
+  position:absolute;
+
+  top:22px;
+
+  width:100%;
+
+  color:white;
+
+  opacity:.75;
+
+  text-align:center;
+
+  font-size:50px;
+
+  animation:
+    cloudFloat 18s linear infinite;
+}
+
+.field::after{
+  content:"⛰️　🏯　⛰️　　⛰️";
+
+  position:absolute;
+
+  left:0;
+  bottom:12px;
+
+  width:100%;
+
+  text-align:center;
+
+  font-size:72px;
+
+  opacity:.36;
+
+  pointer-events:none;
+}
+
+@keyframes cloudFloat{
+  from{
+    transform:translateX(-80px);
+  }
+
+  to{
+    transform:translateX(90px);
+  }
+}
+
+
+/* =========================================================
+   BALLOON
+========================================================= */
+
+.balloon{
+  position:absolute;
+
+  width:138px;
+  min-height:155px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:
+    19px 11px 23px;
+
+  border:3px solid var(--ink);
+
+  border-radius:
+    50% 50% 47% 47%;
+
+  color:var(--ink);
+
+  font-weight:1000;
+
+  text-align:center;
+
+  cursor:pointer;
+
+  user-select:none;
+
+  box-shadow:
+    6px 8px 0 rgba(23,35,45,.2);
+
+  transform-origin:center bottom;
+
+  transition:
+    transform .12s,
+    filter .12s;
+
+  z-index:5;
+}
+
+.balloon::after{
+  content:"";
+
+  position:absolute;
+
+  bottom:-15px;
+
+  width:2px;
+  height:22px;
+
+  background:#4b4b4b;
+}
+
+.balloon:hover{
+  transform:scale(1.06);
+}
+
+.balloon.normal{
+  background:
+    linear-gradient(
+      145deg,
+      #fff8df,
+      #f3d889
+    );
+}
+
+.balloon.alt1{
+  background:
+    linear-gradient(
+      145deg,
+      #e9f6ff,
+      #a8d8ed
+    );
+}
+
+.balloon.alt2{
+  background:
+    linear-gradient(
+      145deg,
+      #ffe8ef,
+      #efb4c4
+    );
+}
+
+.balloon.gold{
+  background:
+    linear-gradient(
+      145deg,
+      #fff0a4,
+      #d9a92f
+    );
+
+  box-shadow:
+    0 0 22px rgba(255,221,82,.8),
+    6px 8px 0 rgba(23,35,45,.2);
+}
+
+.balloon.freeze{
+  background:
+    linear-gradient(
+      145deg,
+      #e9fbff,
+      #8fe1f6
+    );
+
+  box-shadow:
+    0 0 22px rgba(112,223,255,.75),
+    6px 8px 0 rgba(23,35,45,.2);
+}
+
+.balloon.bomb{
+  background:
+    linear-gradient(
+      145deg,
+      #4c5961,
+      #20292f
+    );
+
+  color:white;
+
+  border-color:#111;
+}
+
+.balloonIcon{
+  margin-bottom:5px;
+
+  font-size:31px;
+}
+
+.balloonText{
+  width:100%;
+
+  font-size:
+    clamp(
+      18px,
+      2vw,
+      23px
+    );
+
+  line-height:1.18;
+
+  overflow-wrap:anywhere;
+}
+
+.balloonSmall{
+  margin-top:4px;
+
+  font-size:12px;
+
+  opacity:.72;
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.feedback{
+  min-height:52px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  margin-top:10px;
+
+  border:2px solid var(--ink);
+
+  border-radius:13px;
+
+  background:white;
+
+  padding:10px 14px;
+
+  font-size:17px;
+  font-weight:1000;
+
+  text-align:center;
+}
+
+.feedback.good{
+  background:#dcf4e5;
+
+  color:#12693e;
+}
+
+.feedback.bad{
+  background:#ffe2e6;
+
+  color:#a8283b;
+}
+
+.feedback.special{
+  background:#fff3bd;
+
+  color:#805e00;
+}
+
+
+/* =========================================================
+   FREEZE OVERLAY
+========================================================= */
+
+.freezeOverlay{
+  position:absolute;
+
+  inset:0;
+
+  z-index:20;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(173,232,255,.18);
+
+  pointer-events:none;
+}
+
+.freezeOverlay.show{
+  display:flex;
+
+  animation:
+    freezeFlash .4s;
+}
+
+.freezeText{
+  padding:12px 18px;
+
+  border:3px solid var(--ink);
+
+  border-radius:999px;
+
+  background:#e8fbff;
+
+  font-size:24px;
+  font-weight:1000;
+}
+
+@keyframes freezeFlash{
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+}
+
+
+/* =========================================================
+   POP
+========================================================= */
+
+.balloon.pop{
+  animation:
+    pop .24s forwards;
+}
+
+@keyframes pop{
+  50%{
+    transform:scale(1.22);
+  }
+
+  100%{
+    transform:scale(0);
+    opacity:0;
+  }
+}
+
+
+/* =========================================================
+   COMBO
+========================================================= */
+
+.comboFlash{
+  position:absolute;
+
+  z-index:30;
+
+  left:50%;
+  top:45%;
+
+  transform:
+    translate(-50%,-50%)
+    scale(.7);
+
+  opacity:0;
+
+  color:#fff;
+
+  text-shadow:
+    0 3px 12px rgba(0,0,0,.4);
+
+  font-size:
+    clamp(
+      38px,
+      7vw,
+      78px
+    );
+
+  font-weight:1000;
+
+  pointer-events:none;
+}
+
+.comboFlash.show{
+  animation:
+    comboBoom .7s;
+}
+
+@keyframes comboBoom{
+  0%{
+    opacity:0;
+    transform:
+      translate(-50%,-50%)
+      scale(.5);
+  }
+
+  35%{
+    opacity:1;
+    transform:
+      translate(-50%,-50%)
+      scale(1.1);
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translate(-50%,-50%)
+      scale(1.25);
+  }
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+.resultScreen{
+  text-align:center;
+}
+
+.resultIcon{
+  font-size:85px;
+}
+
+.resultGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+
+  max-width:760px;
+
+  margin:
+    24px auto;
+}
+
+.resultItem{
+  padding:17px;
+
+  border:1px solid #d0c3b1;
+
+  border-radius:14px;
+
+  background:white;
+}
+
+.resultItem span{
+  display:block;
+
+  margin-top:4px;
+
+  font-size:31px;
+  font-weight:1000;
+}
+
+.resultMessage{
+  max-width:720px;
+
+  margin:
+    0 auto 20px;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  background:#fff2c9;
+
+  font-weight:850;
+
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:760px){
+
+  .app{
+    width:calc(100% - 8px);
+
+    margin-top:4px;
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  .ruleGrid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .gameHeader{
+    grid-template-columns:
+      1fr;
+  }
+
+  .roundBadge,
+  .timeBox{
+    justify-self:center;
+  }
+
+  .field{
+    height:560px;
+  }
+
+  .balloon{
+    width:105px;
+    min-height:125px;
+
+    padding:
+      14px 7px 19px;
+  }
+
+  .balloonIcon{
+    font-size:25px;
+  }
+
+  .balloonText{
+    font-size:
+      clamp(
+        15px,
+        4.2vw,
+        19px
+      );
+  }
+
+  .resultGrid{
+    grid-template-columns:1fr;
+  }
+
+}
+/* =========================================================
+   FULLSCREEN 16:9 · KHÔNG SCROLL
+========================================================= */
+
+html,
+body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  margin:0;
+  background:#0f2433;
+}
+
+.viewport{
+  position:fixed;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      #315c73,
+      #102330 70%
+    );
+}
+
+/*
+  Khung logic kiểu PowerPoint 16:9
+*/
+
+.gameFrame{
+  position:absolute;
+
+  width:1600px;
+  height:900px;
+
+  transform-origin:center center;
+
+  overflow:hidden;
+}
+
+/*
+  App chiếm toàn bộ khung
+*/
+
+.app{
+  width:100%;
+  height:100%;
+
+  margin:0;
+
+  padding:18px;
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+}
+
+/*
+  Card không kéo dài quá màn hình
+*/
+
+.card{
+  width:100%;
+
+  margin:0;
+
+  overflow:hidden;
+}
+
+/*
+  Game screen phải fit cả màn
+*/
+
+#gameScreen{
+  flex:1;
+
+  display:flex;
+  flex-direction:column;
+
+  min-height:0;
+}
+
+/*
+  Field tự lấy phần chiều cao còn lại
+*/
+
+.field{
+  flex:1;
+
+  height:auto;
+  min-height:0;
+
+  overflow:hidden;
+}
+
+/*
+  Start / result cũng nằm gọn
+*/
+
+#startScreen,
+#resultScreen{
+  flex:1;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+
+  min-height:0;
+}
+
+/*
+  Start screen gọn lại một chút
+*/
+
+.ruleGrid{
+  margin:
+    18px auto 18px;
+}
+
+.gameIcon{
+  font-size:65px;
+}
+
+h1{
+  font-size:
+    clamp(
+      34px,
+      4.6vw,
+      58px
+    );
+}
+
+.subtitle{
+  margin-top:9px;
+}
+
+/*
+  Không cho phần field quá cao
+*/
+
+.gameHeader{
+  margin-bottom:8px;
+}
+
+.stats{
+  margin-bottom:7px;
+}
+
+.feedback{
+  margin-top:7px;
+  min-height:46px;
+}
+
+/*
+  Bong bóng nhỏ hơn chút để fit
+*/
+
+.balloon{
+  width:125px;
+  min-height:140px;
+}
+
+/*
+  Mobile landscape vẫn fit
+*/
+
+@media(max-width:900px){
+
+  .app{
+    padding:10px;
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  .ruleGrid{
+    grid-template-columns:
+      repeat(4,1fr);
+
+    gap:7px;
+  }
+
+  .rule{
+    padding:10px 7px;
+  }
+
+  .rule span{
+    font-size:28px;
+  }
+
+  .field{
+    min-height:0;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+<div class="viewport">
+<div class="gameFrame" id="gameFrame">
+
+<div class="app">
+
+
+<!-- =========================================================
+     TOPBAR
+========================================================= -->
+
+<div class="topbar">
+
+  <div class="brand">
+    🎈 气球炸弹 · BONG BÓNG & BOM
+  </div>
+
+
+  <button
+    class="homeBtn"
+    onclick="goHome()">
+
+    ⌂ Trang chủ
+
+  </button>
+
+</div>
+
+
+<!-- =========================================================
+     START SCREEN
+========================================================= -->
+
+<section
+  class="card startScreen"
+  id="startScreen">
+
+
+  <div class="kicker">
+    CHINESE VOCABULARY ARCADE
+  </div>
+
+
+  <div class="gameIcon">
+    🎈💣❄️
+  </div>
+
+
+  <h1>
+    气球炸弹 · BONG BÓNG & BOM
+  </h1>
+
+
+  <p class="subtitle">
+
+    看问题，打正确的气球。
+    <br>
+
+    Nhìn câu hỏi và
+    <strong>chọc đúng bong bóng</strong>.
+
+    <br>
+
+    Có bong bóng vàng,
+    freeze và bom xuất hiện ngẫu nhiên.
+
+  </p>
+
+
+  <div class="ruleGrid">
+
+
+    <div class="rule">
+
+      <span>
+        🎈
+      </span>
+
+      正确答案
+      <br>
+      Đúng +100
+
+    </div>
+
+
+    <div class="rule">
+
+      <span>
+        🟡
+      </span>
+
+      金色气球
+      <br>
+      Điểm ×2
+
+    </div>
+
+
+    <div class="rule">
+
+      <span>
+        ❄️
+      </span>
+
+      冰冻气球
+      <br>
+      Làm chậm
+
+    </div>
+
+
+    <div class="rule">
+
+      <span>
+        💣
+      </span>
+
+      炸弹
+      <br>
+      Trừ điểm
+
+    </div>
+
+
+  </div>
+
+
+  <button
+    class="startBtn"
+    onclick="startGame()">
+
+    🎈 开始游戏 · BẮT ĐẦU
+
+  </button>
+
+
+</section>
+
+
+<!-- =========================================================
+     GAME SCREEN
+========================================================= -->
+
+<section
+  class="card hidden"
+  id="gameScreen">
+
+
+  <div class="gameHeader">
+
+
+    <div
+      class="roundBadge"
+      id="roundBadge">
+
+      ROUND 1
+
+    </div>
+
+
+    <div class="mission">
+
+
+      <div
+        class="missionLabel"
+        id="missionLabel">
+
+        看汉字，找拼音
+        · NHÌN HÁN TỰ, TÌM PINYIN
+
+      </div>
+
+
+      <div
+        class="target"
+        id="target">
+
+        请问
+
+      </div>
+
+
+    </div>
+
+
+    <div class="timeBox">
+
+      ⏱️
+      <span id="timeText">
+        50
+      </span>s
+
+    </div>
+
+
+  </div>
+
+
+  <div class="stats">
+
+
+    <div class="stat">
+
+      ⭐
+      <span id="scoreText">
+        0
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      🔥 Combo
+      <span id="comboText">
+        0
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      🎯
+      <span id="accuracyText">
+        100%
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      ✅
+      <span id="correctText">
+        0
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+  <div
+    class="field"
+    id="field">
+
+
+    <div
+      class="freezeOverlay"
+      id="freezeOverlay">
+
+      <div class="freezeText">
+
+        ❄️ 冰冻！
+        · FREEZE!
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="comboFlash"
+      id="comboFlash">
+
+      COMBO!
+
+    </div>
+
+
+  </div>
+
+
+  <div
+    class="feedback"
+    id="feedback">
+
+    🎈 准备好了吗？
+    · Chuẩn bị nào!
+
+  </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     RESULT SCREEN
+========================================================= -->
+
+<section
+  class="card resultScreen hidden"
+  id="resultScreen">
+
+
+  <div class="kicker">
+    GAME COMPLETE
+  </div>
+
+
+  <div class="resultIcon">
+    🎈🏆
+  </div>
+
+
+  <h1>
+    完成了！
+  </h1>
+
+
+  <div class="resultGrid">
+
+
+    <div class="resultItem">
+
+      分数 · Điểm
+
+      <span id="finalScore">
+        0
+      </span>
+
+    </div>
+
+
+    <div class="resultItem">
+
+      正确率 · Chính xác
+
+      <span id="finalAccuracy">
+        0%
+      </span>
+
+    </div>
+
+
+    <div class="resultItem">
+
+      最高连击 · Combo
+
+      <span id="finalCombo">
+        0
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+  <div
+    class="resultMessage"
+    id="resultMessage">
+  </div>
+
+
+  <button
+    class="startBtn"
+    onclick="restartGame()">
+
+    🔄 再玩一次 · CHƠI LẠI
+
+  </button>
+
+
+</section>
+
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   VOCABULARY
+========================================================= */
+
+const vocabulary = [
+
+  {
+    hanzi:"请问",
+    pinyin:"qǐngwèn",
+    meaning:"Cho hỏi, xin hỏi"
+  },
+
+  {
+    hanzi:"你",
+    pinyin:"nǐ",
+    meaning:"Bạn, cậu"
+  },
+
+  {
+    hanzi:"叫",
+    pinyin:"jiào",
+    meaning:"Gọi / tên gọi"
+  },
+
+  {
+    hanzi:"什么",
+    pinyin:"shénme",
+    meaning:"Cái gì"
+  },
+
+  {
+    hanzi:"名字",
+    pinyin:"míngzi",
+    meaning:"Tên"
+  },
+
+  {
+    hanzi:"我",
+    pinyin:"wǒ",
+    meaning:"Tôi, tớ, mình"
+  },
+
+  {
+    hanzi:"不",
+    pinyin:"bù",
+    meaning:"Không, chẳng"
+  },
+
+  {
+    hanzi:"是",
+    pinyin:"shì",
+    meaning:"Là"
+  },
+
+  {
+    hanzi:"对不起",
+    pinyin:"duìbuqǐ",
+    meaning:"Xin lỗi"
+  },
+
+  {
+    hanzi:"没关系",
+    pinyin:"méi guānxi",
+    meaning:"Không sao"
+  },
+
+  {
+    hanzi:"没事",
+    pinyin:"méishì",
+    meaning:"Không sao, không có việc gì"
+  },
+
+  {
+    hanzi:"很",
+    pinyin:"hěn",
+    meaning:"Rất"
+  },
+
+  {
+    hanzi:"高兴",
+    pinyin:"gāoxìng",
+    meaning:"Vui, vui vẻ"
+  },
+
+  {
+    hanzi:"认识",
+    pinyin:"rènshi",
+    meaning:"Quen biết, nhận biết"
+  },
+
+  {
+    hanzi:"也",
+    pinyin:"yě",
+    meaning:"Cũng"
+  }
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let round =
+  1;
+
+
+let score =
+  0;
+
+
+let combo =
+  0;
+
+
+let bestCombo =
+  0;
+
+
+let correctCount =
+  0;
+
+
+let attemptCount =
+  0;
+
+
+let targetItem =
+  null;
+
+
+let gameRunning =
+  false;
+
+
+let seconds =
+  50;
+
+
+let timerID =
+  null;
+
+
+let spawnID =
+  null;
+
+
+let frozen =
+  false;
+
+
+let freezeTimer =
+  null;
+
+
+/* =========================================================
+   START
+========================================================= */
+
+function startGame(){
+
+  score =
+    0;
+
+
+  combo =
+    0;
+
+
+  bestCombo =
+    0;
+
+
+  correctCount =
+    0;
+
+
+  attemptCount =
+    0;
+
+
+  round =
+    1;
+
+
+  document
+  .getElementById(
+    "startScreen"
+  )
+  .classList
+  .add(
+    "hidden"
+  );
+
+
+  document
+  .getElementById(
+    "resultScreen"
+  )
+  .classList
+  .add(
+    "hidden"
+  );
+
+
+  document
+  .getElementById(
+    "gameScreen"
+  )
+  .classList
+  .remove(
+    "hidden"
+  );
+
+
+  startRound();
+
+}
+
+
+/* =========================================================
+   ROUND
+========================================================= */
+
+function startRound(){
+
+  clearGameTimers();
+
+
+  removeAllBalloons();
+
+
+  gameRunning =
+    true;
+
+
+  seconds =
+    round === 1
+    ?
+    50
+    :
+    round === 2
+    ?
+    48
+    :
+    45;
+
+
+  document
+  .getElementById(
+    "timeText"
+  )
+  .textContent =
+    seconds;
+
+
+  updateRoundLabels();
+
+
+  chooseNewTarget();
+
+
+  updateStats();
+
+
+  spawnWave();
+
+
+  timerID =
+    setInterval(
+      () => {
+
+
+        seconds--;
+
+
+        document
+        .getElementById(
+          "timeText"
+        )
+        .textContent =
+          seconds;
+
+
+        if(
+          seconds <=
+          0
+        ){
+
+          finishRound();
+
+        }
+
+
+      },
+      1000
+    );
+
+}
+
+
+/* =========================================================
+   ROUND LABEL
+========================================================= */
+
+function updateRoundLabels(){
+
+  const badge =
+    document
+    .getElementById(
+      "roundBadge"
+    );
+
+
+  const label =
+    document
+    .getElementById(
+      "missionLabel"
+    );
+
+
+  badge.textContent =
+    `ROUND ${round}`;
+
+
+  if(
+    round ===
+    1
+  ){
+
+    label.textContent =
+      "看汉字，找拼音 · NHÌN HÁN TỰ, TÌM PINYIN";
+
+  }
+
+
+  else if(
+    round ===
+    2
+  ){
+
+    label.textContent =
+      "看拼音，找越南语 · NHÌN PINYIN, TÌM NGHĨA VIỆT";
+
+  }
+
+
+  else{
+
+    label.textContent =
+      "看越南语，找汉字 · NHÌN NGHĨA VIỆT, TÌM HÁN TỰ";
+
+  }
+
+}
+
+
+/* =========================================================
+   TARGET
+========================================================= */
+
+function chooseNewTarget(){
+
+  const previous =
+    targetItem;
+
+
+  do{
+
+    targetItem =
+      randomItem(
+        vocabulary
+      );
+
+  }
+  while(
+    previous
+    &&
+    targetItem.hanzi ===
+    previous.hanzi
+  );
+
+
+  let text;
+
+
+  if(
+    round ===
+    1
+  ){
+
+    text =
+      targetItem.hanzi;
+
+  }
+
+
+  else if(
+    round ===
+    2
+  ){
+
+    text =
+      targetItem.pinyin;
+
+  }
+
+
+  else{
+
+    text =
+      targetItem.meaning;
+
+  }
+
+
+  document
+  .getElementById(
+    "target"
+  )
+  .textContent =
+    text;
+
+}
+
+
+/* =========================================================
+   SPAWN WAVE
+========================================================= */
+
+function spawnWave(){
+
+  if(
+    !gameRunning
+  ){
+
+    return;
+
+  }
+
+
+  /*
+    Mỗi wave sinh 3-5 bong bóng.
+  */
+
+  const count =
+    randomInt(
+      3,
+      5
+    );
+
+
+  const correctIndex =
+    randomInt(
+      0,
+      count - 1
+    );
+
+
+  for(
+    let i =
+      0;
+
+    i <
+      count;
+
+    i++
+  ){
+
+    setTimeout(
+      () => {
+
+        if(
+          !gameRunning
+        ){
+
+          return;
+
+        }
+
+
+        if(
+          i ===
+          correctIndex
+        ){
+
+          createAnswerBalloon(
+            true
+          );
+
+        }
+
+        else{
+
+          const roll =
+            Math.random();
+
+
+          if(
+            roll <
+            .10
+          ){
+
+            createBomb();
+
+          }
+
+
+          else if(
+            roll <
+            .19
+          ){
+
+            createFreeze();
+
+          }
+
+
+          else{
+
+            createAnswerBalloon(
+              false
+            );
+
+          }
+
+        }
+
+
+      },
+      i * 260
+    );
+
+  }
+
+
+  let nextWave =
+    round === 1
+    ?
+    2350
+    :
+    round === 2
+    ?
+    2150
+    :
+    1950;
+
+
+  if(
+    frozen
+  ){
+
+    nextWave *=
+      1.6;
+
+  }
+
+
+  clearTimeout(
+    spawnID
+  );
+
+
+  spawnID =
+    setTimeout(
+      spawnWave,
+      nextWave
+    );
+
+}
+
+
+/* =========================================================
+   ANSWER BALLOON
+========================================================= */
+
+function createAnswerBalloon(
+  correct
+){
+
+  let item;
+
+
+  if(correct){
+
+    item =
+      targetItem;
+
+  }
+
+  else{
+
+    do{
+
+      item =
+        randomItem(
+          vocabulary
+        );
+
+    }
+    while(
+      item.hanzi ===
+      targetItem.hanzi
+    );
+
+  }
+
+
+  const isGold =
+    Math.random()
+    <
+    .15;
+
+
+  let text;
+
+
+  if(
+    round ===
+    1
+  ){
+
+    text =
+      item.pinyin;
+
+  }
+
+
+  else if(
+    round ===
+    2
+  ){
+
+    text =
+      item.meaning;
+
+  }
+
+
+  else{
+
+    text =
+      item.hanzi;
+
+  }
+
+
+  const balloon =
+    createBaseBalloon();
+
+
+  balloon.classList.add(
+    isGold
+    ?
+    "gold"
+    :
+    randomItem(
+      [
+        "normal",
+        "alt1",
+        "alt2"
+      ]
+    )
+  );
+
+
+  balloon.dataset.type =
+    correct
+    ?
+    isGold
+      ?
+      "goldCorrect"
+      :
+      "correct"
+    :
+    isGold
+      ?
+      "goldWrong"
+      :
+      "wrong";
+
+
+  balloon.innerHTML =
+    `
+    <div class="balloonIcon">
+
+      ${
+        isGold
+        ?
+        "🟡"
+        :
+        "🎈"
+      }
+
+    </div>
+
+    <div class="balloonText">
+
+      ${escapeHTML(text)}
+
+    </div>
+
+    ${
+      isGold
+      ?
+      `
+      <div class="balloonSmall">
+        金色 ×2
+      </div>
+      `
+      :
+      ""
+    }
+    `;
+
+
+  balloon.onclick =
+    () =>
+      hitBalloon(
+        balloon
+      );
+
+
+  launchBalloon(
+    balloon
+  );
+
+}
+
+
+/* =========================================================
+   BOMB
+========================================================= */
+
+function createBomb(){
+
+  const balloon =
+    createBaseBalloon();
+
+
+  balloon.classList.add(
+    "bomb"
+  );
+
+
+  balloon.dataset.type =
+    "bomb";
+
+
+  balloon.innerHTML =
+    `
+    <div class="balloonIcon">
+      💣
+    </div>
+
+    <div class="balloonText">
+      炸弹
+    </div>
+
+    <div class="balloonSmall">
+      ĐỪNG CHỌC
+    </div>
+    `;
+
+
+  balloon.onclick =
+    () =>
+      hitBalloon(
+        balloon
+      );
+
+
+  launchBalloon(
+    balloon
+  );
+
+}
+
+
+/* =========================================================
+   FREEZE
+========================================================= */
+
+function createFreeze(){
+
+  const balloon =
+    createBaseBalloon();
+
+
+  balloon.classList.add(
+    "freeze"
+  );
+
+
+  balloon.dataset.type =
+    "freeze";
+
+
+  balloon.innerHTML =
+    `
+    <div class="balloonIcon">
+      ❄️
+    </div>
+
+    <div class="balloonText">
+      冰冻
+    </div>
+
+    <div class="balloonSmall">
+      FREEZE
+    </div>
+    `;
+
+
+  balloon.onclick =
+    () =>
+      hitBalloon(
+        balloon
+      );
+
+
+  launchBalloon(
+    balloon
+  );
+
+}
+
+
+/* =========================================================
+   BASE BALLOON
+========================================================= */
+
+function createBaseBalloon(){
+
+  const balloon =
+    document
+    .createElement(
+      "div"
+    );
+
+
+  balloon.className =
+    "balloon";
+
+
+  const field =
+    document
+    .getElementById(
+      "field"
+    );
+
+
+  field.appendChild(
+    balloon
+  );
+
+
+  return balloon;
+
+}
+
+
+/* =========================================================
+   LAUNCH
+========================================================= */
+
+function launchBalloon(
+  balloon
+){
+
+  const field =
+    document
+    .getElementById(
+      "field"
+    );
+
+
+  const maxX =
+    Math.max(
+      field.clientWidth
+      -
+      150,
+      10
+    );
+
+
+  const x =
+    Math.random()
+    *
+    maxX;
+
+
+  balloon.style.left =
+    `${x}px`;
+
+
+  balloon.style.top =
+    `${field.clientHeight + 30}px`;
+
+
+  /*
+    Người mới:
+    giữ tốc độ vừa phải.
+  */
+
+  let duration =
+    round === 1
+    ?
+    randomInt(
+      7200,
+      9000
+    )
+    :
+    round === 2
+    ?
+    randomInt(
+      6500,
+      8200
+    )
+    :
+    randomInt(
+      5900,
+      7600
+    );
+
+
+  if(
+    frozen
+  ){
+
+    duration *=
+      1.65;
+
+  }
+
+
+  const drift =
+    randomInt(
+      -70,
+      70
+    );
+
+
+  const animation =
+    balloon.animate(
+      [
+
+        {
+          transform:
+            "translate(0,0)"
+        },
+
+        {
+          transform:
+            `translate(${drift}px,-${field.clientHeight + 260}px)`
+        }
+
+      ],
+
+      {
+        duration,
+        easing:"linear",
+        fill:"forwards"
+      }
+    );
+
+
+  animation.onfinish =
+    () => {
+
+      if(
+        balloon
+        .isConnected
+      ){
+
+        balloon.remove();
+
+      }
+
+    };
+
+
+  balloon._animation =
+    animation;
+
+}
+
+
+/* =========================================================
+   HIT
+========================================================= */
+
+function hitBalloon(
+  balloon
+){
+
+  if(
+    !gameRunning
+  ){
+
+    return;
+
+  }
+
+
+  const type =
+    balloon.dataset.type;
+
+
+  if(
+    type ===
+    "bomb"
+  ){
+
+    attemptCount++;
+
+
+    score =
+      Math.max(
+        0,
+        score - 150
+      );
+
+
+    combo =
+      0;
+
+
+    feedback(
+      "💣 炸弹！· Trúng bom! -150",
+      "bad"
+    );
+
+
+    playTone(
+      170,
+      .18
+    );
+
+
+    popBalloon(
+      balloon
+    );
+
+
+    updateStats();
+
+
+    return;
+
+  }
+
+
+  if(
+    type ===
+    "freeze"
+  ){
+
+    score +=
+      50;
+
+
+    feedback(
+      "❄️ 冰冻！· Freeze 4 giây!",
+      "special"
+    );
+
+
+    activateFreeze();
+
+
+    popBalloon(
+      balloon
+    );
+
+
+    updateStats();
+
+
+    return;
+
+  }
+
+
+  attemptCount++;
+
+
+  if(
+    type ===
+    "correct"
+    ||
+    type ===
+    "goldCorrect"
+  ){
+
+    correctCount++;
+
+
+    combo++;
+
+
+    bestCombo =
+      Math.max(
+        bestCombo,
+        combo
+      );
+
+
+    let points =
+      100;
+
+
+    if(
+      type ===
+      "goldCorrect"
+    ){
+
+      points *=
+        2;
+
+    }
+
+
+    if(
+      combo >=
+      5
+    ){
+
+      points +=
+        50;
+
+    }
+
+
+    score +=
+      points;
+
+
+    feedback(
+      type === "goldCorrect"
+      ?
+      `🟡 太棒了！· Đúng! +${points}`
+      :
+      `✅ 对！· Chính xác +${points}`,
+      "good"
+    );
+
+
+    playCorrectSound();
+
+
+    if(
+      combo > 0
+      &&
+      combo % 5 ===
+      0
+    ){
+
+      showComboFlash();
+
+    }
+
+
+    popBalloon(
+      balloon
+    );
+
+
+    removeWrongAnswerBalloons();
+
+
+    chooseNewTarget();
+
+
+    updateStats();
+
+  }
+
+
+  else{
+
+    combo =
+      0;
+
+
+    score =
+      Math.max(
+        0,
+        score - 50
+      );
+
+
+    feedback(
+      "❌ 不对 · Chưa đúng! -50",
+      "bad"
+    );
+
+
+    playTone(
+      220,
+      .13
+    );
+
+
+    popBalloon(
+      balloon
+    );
+
+
+    updateStats();
+
+  }
+
+}
+
+
+/* =========================================================
+   POP
+========================================================= */
+
+function popBalloon(
+  balloon
+){
+
+  if(
+    balloon._animation
+  ){
+
+    balloon
+    ._animation
+    .cancel();
+
+  }
+
+
+  balloon.classList.add(
+    "pop"
+  );
+
+
+  setTimeout(
+    () => {
+
+      balloon.remove();
+
+    },
+    240
+  );
+
+}
+
+
+/* =========================================================
+   REMOVE ANSWERS
+========================================================= */
+
+function removeWrongAnswerBalloons(){
+
+  document
+  .querySelectorAll(
+    ".balloon"
+  )
+  .forEach(
+    balloon => {
+
+
+      const type =
+        balloon.dataset.type;
+
+
+      if(
+        type === "correct"
+        ||
+        type === "goldCorrect"
+        ||
+        type === "wrong"
+        ||
+        type === "goldWrong"
+      ){
+
+        balloon.remove();
+
+      }
+
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   FREEZE
+========================================================= */
+
+function activateFreeze(){
+
+  frozen =
+    true;
+
+
+  const overlay =
+    document
+    .getElementById(
+      "freezeOverlay"
+    );
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+
+  document
+  .querySelectorAll(
+    ".balloon"
+  )
+  .forEach(
+    balloon => {
+
+
+      if(
+        balloon._animation
+      ){
+
+        balloon
+        ._animation
+        .playbackRate =
+          .45;
+
+      }
+
+
+    }
+  );
+
+
+  clearTimeout(
+    freezeTimer
+  );
+
+
+  freezeTimer =
+    setTimeout(
+      () => {
+
+
+        frozen =
+          false;
+
+
+        overlay
+        .classList
+        .remove(
+          "show"
+        );
+
+
+        document
+        .querySelectorAll(
+          ".balloon"
+        )
+        .forEach(
+          balloon => {
+
+
+            if(
+              balloon._animation
+            ){
+
+              balloon
+              ._animation
+              .playbackRate =
+                1;
+
+            }
+
+
+          }
+        );
+
+
+      },
+      4000
+    );
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+function feedback(
+  text,
+  type
+){
+
+  const box =
+    document
+    .getElementById(
+      "feedback"
+    );
+
+
+  box.className =
+    `feedback ${type}`;
+
+
+  box.textContent =
+    text;
+
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+function updateStats(){
+
+  document
+  .getElementById(
+    "scoreText"
+  )
+  .textContent =
+    score;
+
+
+  document
+  .getElementById(
+    "comboText"
+  )
+  .textContent =
+    combo;
+
+
+  document
+  .getElementById(
+    "correctText"
+  )
+  .textContent =
+    correctCount;
+
+
+  const accuracy =
+    attemptCount === 0
+    ?
+    100
+    :
+    Math.round(
+      correctCount
+      /
+      attemptCount
+      *
+      100
+    );
+
+
+  document
+  .getElementById(
+    "accuracyText"
+  )
+  .textContent =
+    `${accuracy}%`;
+
+}
+
+
+/* =========================================================
+   COMBO FLASH
+========================================================= */
+
+function showComboFlash(){
+
+  const flash =
+    document
+    .getElementById(
+      "comboFlash"
+    );
+
+
+  flash.textContent =
+    `🔥 ${combo} COMBO!`;
+
+
+  flash.classList.remove(
+    "show"
+  );
+
+
+  void flash.offsetWidth;
+
+
+  flash.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   ROUND END
+========================================================= */
+
+function finishRound(){
+
+  clearGameTimers();
+
+
+  removeAllBalloons();
+
+
+  gameRunning =
+    false;
+
+
+  if(
+    round <
+    3
+  ){
+
+    round++;
+
+
+    feedback(
+      `🎉 ROUND ${round - 1} 完成 · Hoàn thành vòng ${round - 1}!`,
+      "special"
+    );
+
+
+    setTimeout(
+      startRound,
+      1600
+    );
+
+  }
+
+
+  else{
+
+    finishGame();
+
+  }
+
+}
+
+
+/* =========================================================
+   FINISH GAME
+========================================================= */
+
+function finishGame(){
+
+  clearGameTimers();
+
+
+  gameRunning =
+    false;
+
+
+  document
+  .getElementById(
+    "gameScreen"
+  )
+  .classList
+  .add(
+    "hidden"
+  );
+
+
+  document
+  .getElementById(
+    "resultScreen"
+  )
+  .classList
+  .remove(
+    "hidden"
+  );
+
+
+  const accuracy =
+    attemptCount === 0
+    ?
+    0
+    :
+    Math.round(
+      correctCount
+      /
+      attemptCount
+      *
+      100
+    );
+
+
+  document
+  .getElementById(
+    "finalScore"
+  )
+  .textContent =
+    score;
+
+
+  document
+  .getElementById(
+    "finalAccuracy"
+  )
+  .textContent =
+    `${accuracy}%`;
+
+
+  document
+  .getElementById(
+    "finalCombo"
+  )
+  .textContent =
+    bestCombo;
+
+
+  let message;
+
+
+  if(
+    accuracy >=
+    90
+  ){
+
+    message =
+      "🏆 非常棒！Độ chính xác rất cao. Thử chơi lại để phá kỷ lục điểm.";
+
+  }
+
+
+  else if(
+    accuracy >=
+    75
+  ){
+
+    message =
+      "🌟 很好！Bạn đã nhớ khá chắc từ vựng. Ôn thêm vài từ dễ nhầm rồi chơi lại.";
+
+  }
+
+
+  else{
+
+    message =
+      "💪 加油！Chơi thêm một vòng sẽ giúp phản xạ Hán tự – pinyin – nghĩa nhanh hơn.";
+
+  }
+
+
+  document
+  .getElementById(
+    "resultMessage"
+  )
+  .textContent =
+    message;
+
+
+  playWinSound();
+
+}
+
+
+/* =========================================================
+   RESTART
+========================================================= */
+
+function restartGame(){
+
+  document
+  .getElementById(
+    "resultScreen"
+  )
+  .classList
+  .add(
+    "hidden"
+  );
+
+
+  document
+  .getElementById(
+    "startScreen"
+  )
+  .classList
+  .remove(
+    "hidden"
+  );
+
+}
+
+
+/* =========================================================
+   REMOVE ALL
+========================================================= */
+
+function removeAllBalloons(){
+
+  document
+  .querySelectorAll(
+    ".balloon"
+  )
+  .forEach(
+    balloon => {
+
+      if(
+        balloon._animation
+      ){
+
+        balloon
+        ._animation
+        .cancel();
+
+      }
+
+
+      balloon.remove();
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   TIMERS
+========================================================= */
+
+function clearGameTimers(){
+
+  clearInterval(
+    timerID
+  );
+
+
+  clearTimeout(
+    spawnID
+  );
+
+
+  timerID =
+    null;
+
+
+  spawnID =
+    null;
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function goHome(){
+
+  /*
+    Nếu file này nằm:
+    Bai-xx/Luyen-tap-x/index.html
+
+    thì ../../index.html
+    sẽ về trang chủ HSK.
+  */
+
+  window.location.href =
+    "../../index.html";
+
+}
+
+
+/* =========================================================
+   AUDIO EFFECT
+========================================================= */
+
+let audioContext =
+  null;
+
+
+function getAudioContext(){
+
+  if(
+    !audioContext
+  ){
+
+    audioContext =
+      new (
+        window.AudioContext
+        ||
+        window.webkitAudioContext
+      )();
+
+  }
+
+
+  if(
+    audioContext.state ===
+    "suspended"
+  ){
+
+    audioContext.resume();
+
+  }
+
+
+  return audioContext;
+
+}
+
+
+function playTone(
+  frequency,
+  duration,
+  delay = 0
+){
+
+  const context =
+    getAudioContext();
+
+
+  const oscillator =
+    context
+    .createOscillator();
+
+
+  const gain =
+    context
+    .createGain();
+
+
+  oscillator.type =
+    "sine";
+
+
+  oscillator.frequency.value =
+    frequency;
+
+
+  oscillator.connect(
+    gain
+  );
+
+
+  gain.connect(
+    context.destination
+  );
+
+
+  const start =
+    context.currentTime
+    +
+    delay;
+
+
+  gain.gain.setValueAtTime(
+    .045,
+    start
+  );
+
+
+  gain.gain.exponentialRampToValueAtTime(
+    .001,
+    start + duration
+  );
+
+
+  oscillator.start(
+    start
+  );
+
+
+  oscillator.stop(
+    start + duration
+  );
+
+}
+
+
+function playCorrectSound(){
+
+  playTone(
+    620,
+    .1,
+    0
+  );
+
+
+  playTone(
+    840,
+    .12,
+    .08
+  );
+
+}
+
+
+function playWinSound(){
+
+  [
+
+    523,
+
+    659,
+
+    784,
+
+    1046
+
+  ]
+  .forEach(
+    (
+      note,
+      index
+    ) => {
+
+      playTone(
+        note,
+        .17,
+        index * .1
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function randomItem(
+  array
+){
+
+  return array[
+    Math.floor(
+      Math.random()
+      *
+      array.length
+    )
+  ];
+
+}
+
+
+function randomInt(
+  min,
+  max
+){
+
+  return Math.floor(
+    Math.random()
+    *
+    (
+      max
+      -
+      min
+      +
+      1
+    )
+  )
+  +
+  min;
+
+}
+
+
+function escapeHTML(
+  text
+){
+
+  return String(
+    text
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  );
+
+}
+
+</script>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ngữ âm Bài 2 · Khu vui chơi Pinyin</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --green:#5d9172;
+    --green-dark:#47745c;
+    --cream:#fffaf1;
+    --yellow:#ffd978;
+    --pink:#f4a4b5;
+    --blue:#8ccde0;
+    --purple:#ad98d4;
+    --orange:#f2ad67;
+    --red:#ec7d7d;
+    --text:#506f63;
+}
+
+body{
+    min-height:100vh;
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    color:var(--text);
+    background:linear-gradient(180deg,#dff5fa 0%,#f5faee 100%);
+}
+
+button{
+    font-family:inherit;
+}
+
+.page{
+    width:min(1180px,96%);
+    margin:auto;
+    padding:22px 0 50px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:25px 28px;
+    margin-bottom:18px;
+    border-radius:28px;
+    background:rgba(255,255,255,.94);
+    box-shadow:0 14px 35px rgba(66,102,83,.11);
+}
+
+.hero::before{
+    content:"☁️";
+    position:absolute;
+    left:30px;
+    bottom:-10px;
+    font-size:70px;
+    opacity:.18;
+}
+
+.hero::after{
+    content:"🌈";
+    position:absolute;
+    right:25px;
+    top:5px;
+    font-size:75px;
+    opacity:.18;
+}
+
+.home{
+    position:relative;
+    z-index:3;
+    text-decoration:none;
+    color:#6c8b7c;
+    font-size:14px;
+    font-weight:900;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 15px;
+    margin-bottom:7px;
+    border-radius:999px;
+    background:#fff0c8;
+    color:#9a6c3c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.hero h1{
+    font-size:clamp(31px,5vw,49px);
+    color:#47755d;
+}
+
+.hero p{
+    margin-top:7px;
+    color:#758f83;
+    line-height:1.6;
+}
+
+/* =========================================================
+   TAB
+========================================================= */
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-bottom:18px;
+}
+
+.tab{
+    border:0;
+    padding:12px 17px;
+    border-radius:16px;
+    background:white;
+    color:#668778;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 7px 17px rgba(64,91,76,.09);
+    transition:.2s;
+}
+
+.tab:hover{
+    transform:translateY(-2px);
+}
+
+.tab.active{
+    color:white;
+    background:#5a906e;
+}
+
+.panel{
+    display:none;
+}
+
+.panel.active{
+    display:block;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+    background:white;
+    box-shadow:0 15px 40px rgba(66,102,83,.12);
+}
+
+/* =========================================================
+   CHUNG
+========================================================= */
+
+.game-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:17px 20px;
+    border-bottom:1px solid #e6eee9;
+}
+
+.game-title{
+    font-size:20px;
+    font-weight:1000;
+    color:#47755d;
+}
+
+.stats{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    padding:8px 13px;
+    border-radius:999px;
+    background:#fff6df;
+    color:#896f49;
+    font-size:13px;
+    font-weight:900;
+}
+
+.game-area{
+    position:relative;
+    min-height:650px;
+    padding:25px;
+    overflow:hidden;
+    background:linear-gradient(
+        180deg,
+        #d8f1f7 0%,
+        #eff9ee 65%,
+        #a8d88b 65%,
+        #8ac56d 100%
+    );
+}
+
+.cloud{
+    position:absolute;
+    width:110px;
+    height:35px;
+    border-radius:999px;
+    background:rgba(255,255,255,.75);
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:inherit;
+}
+
+.cloud::before{
+    width:50px;
+    height:50px;
+    left:17px;
+    top:-25px;
+}
+
+.cloud::after{
+    width:65px;
+    height:65px;
+    right:8px;
+    top:-34px;
+}
+
+.cloud.c1{
+    left:80px;
+    top:70px;
+}
+
+.cloud.c2{
+    right:80px;
+    top:105px;
+    transform:scale(.7);
+}
+
+.feedback{
+    min-height:42px;
+    margin:10px auto;
+    text-align:center;
+    font-size:16px;
+    font-weight:1000;
+}
+
+/* =========================================================
+   LOA
+========================================================= */
+
+.audio-box{
+    position:relative;
+    z-index:10;
+    width:min(430px,95%);
+    margin:10px auto 20px;
+    padding:17px;
+    text-align:center;
+    border-radius:24px;
+    background:rgba(255,255,255,.93);
+    box-shadow:0 9px 25px rgba(70,95,80,.12);
+}
+
+.mascot{
+    font-size:55px;
+}
+
+.listen{
+    margin-top:4px;
+    border:0;
+    padding:12px 22px;
+    border-radius:17px;
+    background:#5c9270;
+    color:white;
+    font-size:16px;
+    font-weight:1000;
+    cursor:pointer;
+}
+
+.listen.playing{
+    animation:pulse .55s infinite alternate;
+}
+
+@keyframes pulse{
+    from{transform:scale(1)}
+    to{transform:scale(1.06)}
+}
+
+.audio-tip{
+    margin-top:7px;
+    font-size:12px;
+    color:#7c9188;
+}
+
+/* =========================================================
+   GAME 1 - BÓNG BAY
+========================================================= */
+
+.balloon-filter{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+}
+
+.filter-btn{
+    position:relative;
+    z-index:20;
+    border:1px solid #d4e6da;
+    border-radius:999px;
+    padding:9px 15px;
+    background:white;
+    color:#628273;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.filter-btn.active{
+    background:#e4f3e7;
+    border-color:#a8cfb1;
+    color:#3d7254;
+}
+
+.balloon-field{
+    position:relative;
+    z-index:5;
+    width:min(900px,100%);
+    height:355px;
+    margin:auto;
+}
+
+.balloon{
+    position:absolute;
+    width:92px;
+    height:110px;
+    border:0;
+    border-radius:52% 48% 48% 52%;
+    color:white;
+    font-size:21px;
+    font-weight:1000;
+    cursor:pointer;
+    box-shadow:
+        inset -9px -12px rgba(0,0,0,.07),
+        0 9px 16px rgba(61,82,68,.12);
+    animation:floatBalloon 3s ease-in-out infinite;
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:106px;
+    width:1px;
+    height:55px;
+    background:rgba(95,85,76,.45);
+}
+
+.balloon::before{
+    content:"";
+    position:absolute;
+    left:40px;
+    bottom:-6px;
+    border-left:7px solid transparent;
+    border-right:7px solid transparent;
+    border-top:12px solid currentColor;
+    opacity:.35;
+}
+
+@keyframes floatBalloon{
+    0%,100%{transform:translateY(0) rotate(-2deg)}
+    50%{transform:translateY(-12px) rotate(2deg)}
+}
+
+.balloon.wrong{
+    animation:shake .35s;
+}
+
+.balloon.correct{
+    animation:pop .45s forwards;
+}
+
+@keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-9px)}
+    75%{transform:translateX(9px)}
+}
+
+@keyframes pop{
+    0%{transform:scale(1)}
+    65%{transform:scale(1.35)}
+    100%{transform:scale(0);opacity:0}
+}
+
+/* =========================================================
+   GAME 2 - THANH ĐIỆU
+========================================================= */
+
+.tone-area{
+    min-height:620px;
+    padding:35px 20px;
+    background:linear-gradient(
+        180deg,
+        #eee8fa 0%,
+        #f8f5fd 62%,
+        #f5d7e1 62%,
+        #efc4d4 100%
+    );
+}
+
+.tone-machine{
+    width:min(650px,100%);
+    margin:auto;
+    text-align:center;
+}
+
+.tone-character{
+    font-size:82px;
+    margin:10px 0;
+}
+
+.tone-question{
+    padding:20px;
+    border-radius:25px;
+    background:white;
+    box-shadow:0 10px 25px rgba(87,70,104,.11);
+}
+
+.tone-question h3{
+    color:#705d91;
+    font-size:23px;
+}
+
+.tone-buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+    margin-top:25px;
+}
+
+.tone-btn{
+    min-height:105px;
+    border:0;
+    border-radius:22px;
+    background:white;
+    color:#725d90;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(90,70,110,.1);
+    transition:.2s;
+}
+
+.tone-btn:hover{
+    transform:translateY(-4px);
+}
+
+.tone-number{
+    display:block;
+    font-size:32px;
+    font-weight:1000;
+}
+
+.tone-name{
+    font-size:12px;
+    font-weight:800;
+}
+
+.tone-btn.good{
+    background:#dff3df;
+}
+
+.tone-btn.bad{
+    animation:shake .35s;
+    background:#ffe3e3;
+}
+
+/* =========================================================
+   GAME 3 - XƯỞNG PINYIN
+========================================================= */
+
+.workshop{
+    min-height:650px;
+    padding:32px 20px;
+    background:linear-gradient(
+        #fff2d5 0%,
+        #fffaf0 64%,
+        #d9c294 64%,
+        #c6a870 100%
+    );
+}
+
+.workshop-board{
+    width:min(800px,100%);
+    margin:auto;
+    padding:25px;
+    border:8px solid #a87849;
+    border-radius:25px;
+    background:#fffdf7;
+    box-shadow:0 12px 25px rgba(91,70,43,.13);
+}
+
+.rule-badge{
+    width:max-content;
+    max-width:100%;
+    margin:0 auto 12px;
+    padding:7px 14px;
+    border-radius:999px;
+    background:#e8f3df;
+    color:#527351;
+    font-size:13px;
+    font-weight:900;
+}
+
+.rule-question{
+    text-align:center;
+    font-size:25px;
+    font-weight:1000;
+    color:#765d43;
+    line-height:1.5;
+}
+
+.rule-question .arrow{
+    color:#d19250;
+    padding:0 7px;
+}
+
+.rule-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+    margin-top:24px;
+}
+
+.rule-option{
+    min-height:80px;
+    border:2px solid #ecdcc5;
+    border-radius:18px;
+    background:white;
+    color:#705b47;
+    font-size:21px;
+    font-weight:1000;
+    cursor:pointer;
+}
+
+.rule-option:hover{
+    border-color:#d9b67f;
+    transform:translateY(-2px);
+}
+
+.rule-option.good{
+    background:#e1f3dd;
+    border-color:#9ec596;
+}
+
+.rule-option.bad{
+    background:#ffe4df;
+    animation:shake .35s;
+}
+
+.rule-explain{
+    min-height:70px;
+    margin-top:18px;
+    padding:14px;
+    border-radius:16px;
+    background:#fff5df;
+    text-align:center;
+    color:#816d53;
+    line-height:1.6;
+}
+
+/* =========================================================
+   GAME 4 - TÀU
+========================================================= */
+
+.train-game{
+    min-height:680px;
+    padding:30px 20px;
+    background:linear-gradient(
+        180deg,
+        #cdebf4 0%,
+        #e9f6f2 62%,
+        #9ccf7e 62%,
+        #7db764 78%,
+        #716c68 78%,
+        #716c68 84%,
+        #9bc777 84%
+    );
+}
+
+.train-wrap{
+    width:min(980px,100%);
+    margin:auto;
+}
+
+.train-options{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+    margin-top:25px;
+}
+
+.train-car{
+    position:relative;
+    min-height:115px;
+    border:0;
+    border-radius:20px 20px 13px 13px;
+    background:#f4b466;
+    color:white;
+    cursor:pointer;
+    box-shadow:
+        inset -7px -7px rgba(0,0,0,.06),
+        0 8px 14px rgba(61,78,65,.12);
+}
+
+.train-car:nth-child(2){
+    background:#e9868c;
+}
+
+.train-car:nth-child(3){
+    background:#7fbacb;
+}
+
+.train-car:nth-child(4){
+    background:#9a8bc5;
+}
+
+.train-car::before,
+.train-car::after{
+    content:"";
+    position:absolute;
+    bottom:-14px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#5d6260;
+    border:5px solid #d8d5c8;
+}
+
+.train-car::before{
+    left:16px;
+}
+
+.train-car::after{
+    right:16px;
+}
+
+/* CHỈ THÊM PHẦN PHIÊN ÂM CHO TOA TÀU */
+
+.train-hanzi{
+    display:block;
+    font-size:27px;
+    font-weight:1000;
+    line-height:1.25;
+}
+
+.train-pinyin{
+    display:block;
+    margin-top:7px;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:.4px;
+    opacity:.92;
+}
+
+.train-car.correct{
+    animation:trainGo .65s forwards;
+}
+
+.train-car.wrong{
+    animation:shake .35s;
+}
+
+@keyframes trainGo{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(220px);opacity:0}
+}
+
+/* =========================================================
+   HOÀN THÀNH
+========================================================= */
+
+.complete{
+    display:none;
+    position:absolute;
+    z-index:500;
+    inset:0;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    text-align:center;
+    background:rgba(255,255,255,.95);
+}
+
+.complete.show{
+    display:flex;
+}
+
+.complete-box{
+    max-width:430px;
+}
+
+.complete-icon{
+    font-size:75px;
+}
+
+.complete h2{
+    margin:7px 0;
+    color:#47755d;
+    font-size:30px;
+}
+
+.complete p{
+    color:#718b7f;
+    line-height:1.6;
+}
+
+.restart{
+    margin-top:16px;
+    border:0;
+    padding:12px 20px;
+    border-radius:15px;
+    background:#5b916e;
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:750px){
+
+    .game-area{
+        padding:18px 8px;
+    }
+
+    .balloon-field{
+        height:480px;
+    }
+
+    .tone-buttons{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .rule-options{
+        grid-template-columns:1fr;
+    }
+
+    .train-options{
+        grid-template-columns:1fr 1fr;
+        gap:28px 12px;
+    }
+}
+
+@media(max-width:470px){
+
+    .train-options{
+        grid-template-columns:1fr;
+        gap:28px;
+    }
+
+    .balloon{
+        width:75px;
+        height:92px;
+        font-size:17px;
+    }
+
+    .balloon::after{
+        top:90px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="hero">
+
+    <a class="home" href="../../index.html">
+        ← 🏠 Về trang chủ
+    </a>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            第二课 · 语音游戏
+        </div>
+
+        <h1>
+            🌈 Công viên Pinyin
+        </h1>
+
+        <p>
+            Bài 2 · Luyện nghe âm, thanh điệu,
+            quy tắc viết Pinyin và nhận diện từ.
+        </p>
+
+    </div>
+
+</header>
+
+<div class="tabs">
+
+    <button class="tab active"
+        onclick="showGame('game1',this)">
+        🎈 Bắt bóng âm thanh
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game2',this)">
+        🎵 Thử thách thanh điệu
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game3',this)">
+        🧩 Xưởng ghép Pinyin
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game4',this)">
+        🚂 Chuyến tàu từ vựng
+    </button>
+
+</div>
+
+<!-- GAME 1 -->
+
+<section id="game1" class="panel active">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🎈 Nghe âm – Bắt đúng bóng
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                ⭐ <span id="balloonScore">0</span>
+            </div>
+
+            <div class="stat">
+                🎈 <span id="balloonProgress">0/3</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="game-area">
+
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+
+        <div class="balloon-filter">
+
+            <button id="initialFilter"
+                class="filter-btn active"
+                onclick="changeBalloonMode('initial')">
+                声母 · Thanh mẫu
+            </button>
+
+            <button id="finalFilter"
+                class="filter-btn"
+                onclick="changeBalloonMode('final')">
+                韵母 · Vận mẫu
+            </button>
+
+        </div>
+
+        <div class="audio-box">
+
+            <div class="mascot">🐰🎧</div>
+
+            <button id="listenButton"
+                class="listen"
+                onclick="playBalloonQuestion()">
+                🔊 NGHE ÂM
+            </button>
+
+            <div class="audio-tip">
+                Nghe thật kỹ rồi bấm đúng quả bóng.
+            </div>
+
+        </div>
+
+        <div id="balloonField"
+            class="balloon-field">
+        </div>
+
+        <div id="balloonFeedback"
+            class="feedback">
+        </div>
+
+        <div id="balloonComplete"
+            class="complete">
+
+            <div class="complete-box">
+
+                <div class="complete-icon">
+                    🎈🌟🎉
+                </div>
+
+                <h2>Bắt hết bóng rồi!</h2>
+
+                <p id="balloonCompleteText"></p>
+
+                <button class="restart"
+                    onclick="restartBalloonGame()">
+                    🔄 Chơi lại
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- GAME 2 -->
+
+<section id="game2" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🎵 Nghe và chọn thanh điệu
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                ⭐ <span id="toneScore">0</span>
+            </div>
+
+            <div class="stat">
+                🎵 <span id="toneProgress">0/28</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="tone-area">
+
+        <div class="tone-machine">
+
+            <div class="tone-character">
+                🐼🎵
+            </div>
+
+            <div class="tone-question">
+
+                <h3>
+                    Nghe âm này mang thanh mấy?
+                </h3>
+
+                <button id="toneListenButton"
+                    class="listen"
+                    onclick="playToneQuestion()">
+                    🔊 NGHE ÂM
+                </button>
+
+                <div class="tone-buttons">
+
+                    <button class="tone-btn"
+                        onclick="chooseTone(1,this)">
+                        <span class="tone-number">1</span>
+                        <span class="tone-name">第一声</span>
+                    </button>
+
+                    <button class="tone-btn"
+                        onclick="chooseTone(2,this)">
+                        <span class="tone-number">2</span>
+                        <span class="tone-name">第二声</span>
+                    </button>
+
+                    <button class="tone-btn"
+                        onclick="chooseTone(3,this)">
+                        <span class="tone-number">3</span>
+                        <span class="tone-name">第三声</span>
+                    </button>
+
+                    <button class="tone-btn"
+                        onclick="chooseTone(4,this)">
+                        <span class="tone-number">4</span>
+                        <span class="tone-name">第四声</span>
+                    </button>
+
+                </div>
+
+                <div id="toneFeedback"
+                    class="feedback">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="toneComplete"
+            class="complete">
+
+            <div class="complete-box">
+
+                <div class="complete-icon">
+                    🎼🌟
+                </div>
+
+                <h2>Giỏi quá!</h2>
+
+                <p id="toneCompleteText"></p>
+
+                <button class="restart"
+                    onclick="restartToneGame()">
+                    🔄 Chơi lại
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- GAME 3 -->
+
+<section id="game3" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🧩 Xưởng ghép Pinyin
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                ⭐ <span id="ruleScore">0</span>
+            </div>
+
+            <div class="stat">
+                🧩 <span id="ruleProgress">0/12</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="workshop">
+
+        <div class="workshop-board">
+
+            <div id="ruleBadge"
+                class="rule-badge">
+                拼写规则 · Quy tắc viết
+            </div>
+
+            <div id="ruleQuestion"
+                class="rule-question">
+            </div>
+
+            <div id="ruleOptions"
+                class="rule-options">
+            </div>
+
+            <div id="ruleExplain"
+                class="rule-explain">
+                Chọn đáp án đúng để sửa máy Pinyin nhé! 🔧
+            </div>
+
+        </div>
+
+        <div id="ruleComplete"
+            class="complete">
+
+            <div class="complete-box">
+
+                <div class="complete-icon">
+                    🧩⚙️🌟
+                </div>
+
+                <h2>Xưởng hoạt động rồi!</h2>
+
+                <p id="ruleCompleteText"></p>
+
+                <button class="restart"
+                    onclick="restartRuleGame()">
+                    🔄 Chơi lại
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- GAME 4 -->
+
+<section id="game4" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🚂 Nghe âm – Chọn đúng toa tàu
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                ⭐ <span id="trainScore">0</span>
+            </div>
+
+            <div class="stat">
+                🚂 <span id="trainProgress">0/16</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="train-game">
+
+        <div class="train-wrap">
+
+            <div class="audio-box">
+
+                <div class="mascot">
+                    🐻🚉
+                </div>
+
+                <button id="trainListenButton"
+                    class="listen"
+                    onclick="playTrainQuestion()">
+                    🔊 NGHE TỪ
+                </button>
+
+                <div class="audio-tip">
+                    Từ nào vừa được đọc?
+                    Chọn đúng toa tàu.
+                </div>
+
+            </div>
+
+            <div id="trainOptions"
+                class="train-options">
+            </div>
+
+            <div id="trainFeedback"
+                class="feedback">
+            </div>
+
+        </div>
+
+        <div id="trainComplete"
+            class="complete">
+
+            <div class="complete-box">
+
+                <div class="complete-icon">
+                    🚂🎉🌟
+                </div>
+
+                <h2>Tàu xuất phát!</h2>
+
+                <p id="trainCompleteText"></p>
+
+                <button class="restart"
+                    onclick="restartTrainGame()">
+                    🔄 Chơi lại
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</div>
+
+<audio
+    id="lessonAudio"
+    src="yuyin2.mp3"
+    preload="auto">
+</audio>
+
+<script>
+
+/* =========================================================
+   AUDIO MAP
+========================================================= */
+
+const soundAudio = {
+
+    /* 声母 */
+
+    "j": { start:62.25, end:63.12 },
+    "q": { start:64.50, end:65.46 },
+    "x": { start:66.85, end:67.85 },
+
+    /* 韵母 */
+
+    "i": { start:71.68, end:72.62 },
+    "ü": { start:74.00, end:74.96 },
+
+    "ia": { start:76.30, end:77.23 },
+    "ie": { start:78.88, end:79.87 },
+
+    "iao": { start:81.18, end:82.30 },
+    "iou": { start:83.58, end:84.72 },
+
+    "ian": { start:86.08, end:87.65 },
+    "in": { start:88.52, end:89.62 },
+
+    "iang": { start:90.92, end:92.13 },
+    "ing": { start:93.47, end:94.67 },
+
+    "iong": { start:95.88, end:97.16 },
+    "üe": { start:98.38, end:99.42 },
+
+    "üan": { start:100.65, end:101.91 },
+    "ün": { start:103.18, end:104.38 },
+
+    /* j / q / x + thanh điệu */
+
+    "jī": { start:115.00, end:116.38 },
+    "jí": { start:117.22, end:118.78 },
+    "jǐ": { start:119.88, end:121.43 },
+    "jì": { start:122.30, end:123.70 },
+
+    "qū": { start:126.75, end:128.18 },
+    "qú": { start:129.30, end:130.87 },
+    "qǔ": { start:131.78, end:133.47 },
+    "qù": { start:134.22, end:135.50 },
+
+    "xū": { start:138.50, end:139.85 },
+    "xú": { start:140.98, end:142.46 },
+    "xǔ": { start:143.40, end:145.08 },
+    "xù": { start:145.95, end:147.18 },
+
+    "jiào": { start:149.00, end:151.70 },
+    "jiàn": { start:152.08, end:154.30 },
+    "quán": { start:155.48, end:157.45 },
+    "qǐng": { start:159.03, end:160.98 },
+    "xiǎng": { start:162.62, end:164.55 },
+    "xīn": { start:166.06, end:167.68 },
+
+    /* HÌNH MINH HỌA */
+
+    "鸡": { start:176.05, end:177.42 },
+    "七": { start:178.90, end:180.32 },
+    "写": { start:181.88, end:183.55 },
+    "请": { start:185.00, end:186.65 },
+    "再见": { start:188.00, end:189.82 },
+    "谢谢": { start:191.08, end:192.70 },
+    "星期": { start:194.12, end:195.95 },
+    "高兴": { start:197.22, end:199.10 },
+
+    /* yi / wu / yu */
+
+    "yī": { start:222.00, end:223.12 },
+    "yí": { start:224.00, end:225.22 },
+    "yǐ": { start:225.95, end:227.52 },
+    "yì": { start:228.00, end:229.22 },
+
+    "wū": { start:232.28, end:233.53 },
+    "wú": { start:234.87, end:236.17 },
+    "wǔ": { start:237.48, end:239.08 },
+    "wù": { start:240.26, end:241.55 },
+
+    "yū": { start:244.47, end:245.65 },
+    "yú": { start:246.65, end:247.97 },
+    "yǔ": { start:249.08, end:250.58 },
+    "yù": { start:251.40, end:252.80 },
+
+    /* 雨 五 一 椅子 */
+
+    "雨": { start:262.55, end:264.40 },
+    "五": { start:266.00, end:267.57 },
+    "一": { start:269.00, end:270.30 },
+    "椅子": { start:271.53, end:273.40 },
+
+    /* j q x + ü */
+
+    "jū": { start:293.03, end:294.55 },
+    "jú": { start:295.15, end:296.98 },
+    "jǔ": { start:297.34, end:299.28 },
+    "jù": { start:299.55, end:301.37 },
+
+    "qū2": { start:303.70, end:305.40 },
+    "qú2": { start:306.00, end:307.85 },
+    "qǔ2": { start:308.28, end:310.30 },
+    "qù2": { start:310.48, end:312.15 },
+
+    "xū2": { start:314.25, end:316.32 },
+    "xú2": { start:316.78, end:318.70 },
+    "xǔ2": { start:319.22, end:321.25 },
+    "xù2": { start:321.55, end:323.25 },
+
+    /* you */
+
+    "yōu": { start:340.37, end:342.84 },
+    "yóu": { start:342.66, end:344.94 },
+    "yǒu": { start:345.07, end:347.41 },
+    "yòu": { start:347.68, end:349.74 },
+
+    "yóuyǒng": { start:351.25, end:354.65 },
+    "lǚyóu": { start:354.07, end:357.34 },
+    "péngyouA": { start:357.00, end:359.65 },
+
+    /* iu */
+
+    "miù": { start:374.55, end:376.55 },
+    "diū": { start:377.05, end:378.45 },
+    "niú": { start:379.25, end:382.40 },
+    "liǔ": { start:382.90, end:385.35 },
+    "jiù": { start:385.85, end:387.50 },
+    "qiū": { start:388.70, end:391.10 },
+    "qiú": { start:391.55, end:394.05 },
+    "xiǔ": { start:394.75, end:398.05 },
+
+    /* HÌNH CUỐI */
+
+    "九": { start:405.15, end:406.65 },
+    "朋友2": { start:408.10, end:409.85 },
+    "牛奶": { start:411.25, end:413.05 },
+    "休息": { start:414.75, end:416.55 }
+};
+
+/* =========================================================
+   AUDIO PLAYER
+========================================================= */
+
+const audio =
+    document.getElementById("lessonAudio");
+
+let stopTimer = null;
+
+function playSound(key){
+
+    const cut = soundAudio[key];
+
+    if(!cut){
+        console.warn("Không tìm thấy audio:",key);
+        return;
+    }
+
+    clearTimeout(stopTimer);
+
+    audio.pause();
+
+    function startPlaying(){
+
+        function reallyPlay(){
+
+            audio.play()
+            .then(()=>{
+
+                const buttons =
+                    document.querySelectorAll(".listen");
+
+                buttons.forEach(
+                    button =>
+                        button.classList.add("playing")
+                );
+
+                const duration =
+                    (cut.end-cut.start)*1000;
+
+                stopTimer =
+                    setTimeout(()=>{
+
+                        audio.pause();
+
+                        buttons.forEach(
+                            button =>
+                                button.classList.remove("playing")
+                        );
+
+                    },duration);
+
+            })
+            .catch(error=>{
+
+                console.error(
+                    "Lỗi phát audio:",
+                    error
+                );
+
+                alert(
+                    "Không phát được âm thanh. Hãy kiểm tra file yuyin2.mp3 có nằm cùng thư mục với index.html hay không."
+                );
+
+            });
+        }
+
+        audio.currentTime =
+            cut.start;
+
+        if(audio.seeking){
+
+            audio.addEventListener(
+                "seeked",
+                reallyPlay,
+                {once:true}
+            );
+
+        }else{
+
+            reallyPlay();
+        }
+    }
+
+    if(audio.readyState>=1){
+
+        startPlaying();
+
+    }else{
+
+        audio.addEventListener(
+            "loadedmetadata",
+            startPlaying,
+            {once:true}
+        );
+
+        audio.load();
+    }
+}
+
+/* =========================================================
+   HÀM CHUNG
+========================================================= */
+
+function shuffle(array){
+
+    const copy=[...array];
+
+    for(let i=copy.length-1;i>0;i--){
+
+        const j =
+            Math.floor(
+                Math.random()*(i+1)
+            );
+
+        [copy[i],copy[j]] =
+            [copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+function showGame(id,button){
+
+    document
+        .querySelectorAll(".panel")
+        .forEach(panel =>
+            panel.classList.remove("active")
+        );
+
+    document
+        .querySelectorAll(".tab")
+        .forEach(tab =>
+            tab.classList.remove("active")
+        );
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+    button.classList.add("active");
+}
+
+function sampleDistractors(
+    correct,
+    pool,
+    number=3
+){
+
+    const others =
+        shuffle(
+            pool.filter(
+                item => item!==correct
+            )
+        );
+
+    return shuffle([
+        correct,
+        ...others.slice(0,number)
+    ]);
+}
+
+/* =========================================================
+   GAME 1
+========================================================= */
+
+const initials=[
+    "j","q","x"
+];
+
+const finals=[
+    "i","ü",
+    "ia","ie",
+    "iao","iou",
+    "ian","in",
+    "iang","ing",
+    "iong","üe",
+    "üan","ün"
+];
+
+let balloonMode="initial";
+let balloonQuestions=[];
+let balloonCurrent=null;
+let balloonScore=0;
+let balloonDone=0;
+
+const balloonColors=[
+    "#ec7b86",
+    "#f0a25e",
+    "#7eb9d0",
+    "#9b8bc5",
+    "#79b67a",
+    "#e39cb9"
+];
+
+function getBalloonPool(){
+
+    return balloonMode==="initial"
+        ? initials
+        : finals;
+}
+
+function changeBalloonMode(mode){
+
+    balloonMode=mode;
+
+    document
+        .getElementById("initialFilter")
+        .classList.toggle(
+            "active",
+            mode==="initial"
+        );
+
+    document
+        .getElementById("finalFilter")
+        .classList.toggle(
+            "active",
+            mode==="final"
+        );
+
+    restartBalloonGame();
+}
+
+function restartBalloonGame(){
+
+    balloonQuestions =
+        shuffle(
+            getBalloonPool()
+        );
+
+    balloonCurrent=null;
+    balloonScore=0;
+    balloonDone=0;
+
+    document
+        .getElementById("balloonComplete")
+        .classList.remove("show");
+
+    nextBalloonQuestion();
+    updateBalloonStats();
+}
+
+function nextBalloonQuestion(){
+
+    if(balloonQuestions.length===0){
+
+        finishBalloonGame();
+        return;
+    }
+
+    balloonCurrent =
+        balloonQuestions.shift();
+
+    renderBalloons();
+
+    document
+        .getElementById("balloonFeedback")
+        .textContent="";
+}
+
+function renderBalloons(){
+
+    const field =
+        document.getElementById("balloonField");
+
+    field.innerHTML="";
+
+    const pool =
+        getBalloonPool();
+
+    const options =
+        sampleDistractors(
+            balloonCurrent,
+            pool,
+            Math.min(5,pool.length-1)
+        );
+
+    const positions=[
+        [5,20],
+        [22,55],
+        [39,10],
+        [56,58],
+        [73,15],
+        [84,55]
+    ];
+
+    options.forEach(
+        (sound,index)=>{
+
+            const balloon =
+                document.createElement("button");
+
+            balloon.className =
+                "balloon";
+
+            balloon.textContent =
+                sound;
+
+            balloon.style.background =
+                balloonColors[
+                    index%balloonColors.length
+                ];
+
+            balloon.style.left =
+                positions[index][0]+"%";
+
+            balloon.style.top =
+                positions[index][1]+"px";
+
+            balloon.style.animationDelay =
+                (index*.22)+"s";
+
+            balloon.onclick=()=>{
+
+                chooseBalloon(
+                    sound,
+                    balloon
+                );
+
+            };
+
+            field.appendChild(balloon);
+        }
+    );
+}
+
+function playBalloonQuestion(){
+
+    if(balloonCurrent){
+        playSound(balloonCurrent);
+    }
+}
+
+function chooseBalloon(
+    sound,
+    element
+){
+
+    if(!balloonCurrent){
+        return;
+    }
+
+    if(sound===balloonCurrent){
+
+        balloonScore+=10;
+        balloonDone++;
+
+        element.classList.add("correct");
+
+        document
+            .getElementById("balloonFeedback")
+            .textContent =
+            "🌟 Chính xác! Bắt được rồi!";
+
+        balloonCurrent=null;
+
+        updateBalloonStats();
+
+        setTimeout(
+            nextBalloonQuestion,
+            500
+        );
+
+    }else{
+
+        element.classList.remove("wrong");
+
+        void element.offsetWidth;
+
+        element.classList.add("wrong");
+
+        document
+            .getElementById("balloonFeedback")
+            .textContent =
+            "👂 Chưa đúng, nghe lại nha!";
+
+        playBalloonQuestion();
+    }
+}
+
+function updateBalloonStats(){
+
+    const total =
+        getBalloonPool().length;
+
+    document
+        .getElementById("balloonScore")
+        .textContent =
+        balloonScore;
+
+    document
+        .getElementById("balloonProgress")
+        .textContent =
+        balloonDone+"/"+total;
+}
+
+function finishBalloonGame(){
+
+    const total =
+        getBalloonPool().length;
+
+    document
+        .getElementById("balloonCompleteText")
+        .innerHTML =
+        "Bạn đã nhận diện đúng <b>"+
+        total+
+        "/"+
+        total+
+        "</b> âm.<br>"+
+        "Điểm: <b>"+
+        balloonScore+
+        "</b> ⭐";
+
+    document
+        .getElementById("balloonComplete")
+        .classList.add("show");
+}
+
+/* =========================================================
+   GAME 2
+========================================================= */
+
+const toneItems=[
+
+    {key:"jī",label:"jī",tone:1},
+    {key:"jí",label:"jí",tone:2},
+    {key:"jǐ",label:"jǐ",tone:3},
+    {key:"jì",label:"jì",tone:4},
+
+    {key:"qū",label:"qū",tone:1},
+    {key:"qú",label:"qú",tone:2},
+    {key:"qǔ",label:"qǔ",tone:3},
+    {key:"qù",label:"qù",tone:4},
+
+    {key:"xū",label:"xū",tone:1},
+    {key:"xú",label:"xú",tone:2},
+    {key:"xǔ",label:"xǔ",tone:3},
+    {key:"xù",label:"xù",tone:4},
+
+    {key:"yī",label:"yī",tone:1},
+    {key:"yí",label:"yí",tone:2},
+    {key:"yǐ",label:"yǐ",tone:3},
+    {key:"yì",label:"yì",tone:4},
+
+    {key:"wū",label:"wū",tone:1},
+    {key:"wú",label:"wú",tone:2},
+    {key:"wǔ",label:"wǔ",tone:3},
+    {key:"wù",label:"wù",tone:4},
+
+    {key:"yū",label:"yū",tone:1},
+    {key:"yú",label:"yú",tone:2},
+    {key:"yǔ",label:"yǔ",tone:3},
+    {key:"yù",label:"yù",tone:4},
+
+    {key:"yōu",label:"yōu",tone:1},
+    {key:"yóu",label:"yóu",tone:2},
+    {key:"yǒu",label:"yǒu",tone:3},
+    {key:"yòu",label:"yòu",tone:4}
+];
+
+let toneQuestions=[];
+let toneCurrent=null;
+let toneScore=0;
+let toneDone=0;
+
+function restartToneGame(){
+
+    toneQuestions =
+        shuffle(toneItems);
+
+    toneCurrent=null;
+    toneScore=0;
+    toneDone=0;
+
+    document
+        .getElementById("toneComplete")
+        .classList.remove("show");
+
+    nextToneQuestion();
+    updateToneStats();
+}
+
+function nextToneQuestion(){
+
+    if(toneQuestions.length===0){
+
+        finishToneGame();
+        return;
+    }
+
+    toneCurrent =
+        toneQuestions.shift();
+
+    document
+        .getElementById("toneFeedback")
+        .textContent="";
+
+    document
+        .querySelectorAll(".tone-btn")
+        .forEach(button=>{
+
+            button.classList.remove(
+                "good",
+                "bad"
+            );
+
+        });
+}
+
+function playToneQuestion(){
+
+    if(toneCurrent){
+        playSound(toneCurrent.key);
+    }
+}
+
+function chooseTone(
+    tone,
+    button
+){
+
+    if(!toneCurrent){
+        return;
+    }
+
+    if(tone===toneCurrent.tone){
+
+        toneScore+=10;
+        toneDone++;
+
+        button.classList.add("good");
+
+        document
+            .getElementById("toneFeedback")
+            .textContent =
+            "🌟 Chính xác! Đây là thanh "+
+            tone+
+            ".";
+
+        toneCurrent=null;
+
+        updateToneStats();
+
+        setTimeout(
+            nextToneQuestion,
+            650
+        );
+
+    }else{
+
+        button.classList.remove("bad");
+
+        void button.offsetWidth;
+
+        button.classList.add("bad");
+
+        document
+            .getElementById("toneFeedback")
+            .textContent =
+            "👂 Chưa đúng, nghe lại nào!";
+
+        playToneQuestion();
+    }
+}
+
+function updateToneStats(){
+
+    document
+        .getElementById("toneScore")
+        .textContent =
+        toneScore;
+
+    document
+        .getElementById("toneProgress")
+        .textContent =
+        toneDone+"/"+toneItems.length;
+}
+
+function finishToneGame(){
+
+    document
+        .getElementById("toneCompleteText")
+        .innerHTML =
+        "Bạn đã hoàn thành <b>"+
+        toneItems.length+
+        "</b> câu thanh điệu.<br>"+
+        "Điểm: <b>"+
+        toneScore+
+        "</b> ⭐";
+
+    document
+        .getElementById("toneComplete")
+        .classList.add("show");
+}
+
+/* =========================================================
+   GAME 3
+========================================================= */
+
+const ruleItems=[
+
+    {
+        badge:"① i đứng một mình",
+        question:"i → ?",
+        options:["yi","i","yu"],
+        answer:"yi",
+        explain:"Khi i tự tạo thành âm tiết, viết thành yi."
+    },
+
+    {
+        badge:"① u đứng một mình",
+        question:"u → ?",
+        options:["wu","yu","u"],
+        answer:"wu",
+        explain:"Khi u tự tạo thành âm tiết, viết thành wu."
+    },
+
+    {
+        badge:"① ü đứng một mình",
+        question:"ü → ?",
+        options:["yu","wu","ü"],
+        answer:"yu",
+        explain:"Khi ü tự tạo thành âm tiết, viết thành yu."
+    },
+
+    {
+        badge:"② j + ü",
+        question:"j + ü → ?",
+        options:["jü","ju","jiu"],
+        answer:"ju",
+        explain:"Sau j, hai chấm trên ü được bỏ: j + ü → ju."
+    },
+
+    {
+        badge:"② q + ü",
+        question:"q + ü → ?",
+        options:["qu","qü","qiu"],
+        answer:"qu",
+        explain:"Sau q, hai chấm trên ü được bỏ: q + ü → qu."
+    },
+
+    {
+        badge:"② x + ü",
+        question:"x + ü → ?",
+        options:["xu","xü","xiu"],
+        answer:"xu",
+        explain:"Sau x, hai chấm trên ü được bỏ: x + ü → xu."
+    },
+
+    {
+        badge:"③ iou đứng một mình",
+        question:"iou → ?",
+        options:["you","iou","yu"],
+        answer:"you",
+        explain:"Khi iou tự tạo thành âm tiết, viết thành you."
+    },
+
+    {
+        badge:"④ iou trong âm tiết",
+        question:"m + iou → ?",
+        options:["miu","miou","mou"],
+        answer:"miu",
+        explain:"Khi iou đứng sau thanh mẫu, cách viết rút gọn là iu."
+    },
+
+    {
+        badge:"④ iou trong âm tiết",
+        question:"d + iou → ?",
+        options:["diu","diou","dou"],
+        answer:"diu",
+        explain:"iou sau thanh mẫu được viết gọn thành iu."
+    },
+
+    {
+        badge:"④ iou trong âm tiết",
+        question:"j + iou → ?",
+        options:["jiu","jiou","jou"],
+        answer:"jiu",
+        explain:"j + iou được viết thành jiu."
+    },
+
+    {
+        badge:"④ iou trong âm tiết",
+        question:"q + iou → ?",
+        options:["qiu","qiou","qu"],
+        answer:"qiu",
+        explain:"q + iou được viết thành qiu."
+    },
+
+    {
+        badge:"④ iou trong âm tiết",
+        question:"x + iou → ?",
+        options:["xiu","xiou","xu"],
+        answer:"xiu",
+        explain:"x + iou được viết thành xiu."
+    }
+];
+
+let ruleQuestions=[];
+let ruleCurrent=null;
+let ruleScore=0;
+let ruleDone=0;
+
+function restartRuleGame(){
+
+    ruleQuestions =
+        shuffle(ruleItems);
+
+    ruleCurrent=null;
+    ruleScore=0;
+    ruleDone=0;
+
+    document
+        .getElementById("ruleComplete")
+        .classList.remove("show");
+
+    nextRuleQuestion();
+    updateRuleStats();
+}
+
+function nextRuleQuestion(){
+
+    if(ruleQuestions.length===0){
+
+        finishRuleGame();
+        return;
+    }
+
+    ruleCurrent =
+        ruleQuestions.shift();
+
+    document
+        .getElementById("ruleBadge")
+        .textContent =
+        ruleCurrent.badge;
+
+    document
+        .getElementById("ruleQuestion")
+        .innerHTML =
+        ruleCurrent.question.replace(
+            "→",
+            '<span class="arrow">→</span>'
+        );
+
+    const box =
+        document.getElementById("ruleOptions");
+
+    box.innerHTML="";
+
+    shuffle(ruleCurrent.options)
+    .forEach(option=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "rule-option";
+
+        button.textContent =
+            option;
+
+        button.onclick=()=>{
+
+            chooseRule(
+                option,
+                button
+            );
+
+        };
+
+        box.appendChild(button);
+    });
+
+    document
+        .getElementById("ruleExplain")
+        .textContent =
+        "Chọn cách viết đúng nhé! 🔧";
+}
+
+function chooseRule(
+    answer,
+    button
+){
+
+    if(!ruleCurrent){
+        return;
+    }
+
+    if(answer===ruleCurrent.answer){
+
+        ruleScore+=10;
+        ruleDone++;
+
+        button.classList.add("good");
+
+        document
+            .getElementById("ruleExplain")
+            .innerHTML =
+            "🌟 <b>Chính xác!</b> "+
+            ruleCurrent.explain;
+
+        ruleCurrent=null;
+
+        updateRuleStats();
+
+        setTimeout(
+            nextRuleQuestion,
+            1100
+        );
+
+    }else{
+
+        button.classList.remove("bad");
+
+        void button.offsetWidth;
+
+        button.classList.add("bad");
+
+        document
+            .getElementById("ruleExplain")
+            .textContent =
+            "🙈 Chưa đúng. Thử lại một đáp án khác nha!";
+    }
+}
+
+function updateRuleStats(){
+
+    document
+        .getElementById("ruleScore")
+        .textContent =
+        ruleScore;
+
+    document
+        .getElementById("ruleProgress")
+        .textContent =
+        ruleDone+"/"+ruleItems.length;
+}
+
+function finishRuleGame(){
+
+    document
+        .getElementById("ruleCompleteText")
+        .innerHTML =
+        "Bạn đã sửa đúng <b>"+
+        ruleItems.length+
+        "</b> quy tắc.<br>"+
+        "Điểm: <b>"+
+        ruleScore+
+        "</b> ⭐";
+
+    document
+        .getElementById("ruleComplete")
+        .classList.add("show");
+}
+
+/* =========================================================
+   GAME 4 - TỪ VỰNG
+   CHỈ SỬA PHẦN NÀY: THÊM PINYIN
+========================================================= */
+
+const trainWords=[
+
+    {key:"鸡",label:"鸡",pinyin:"jī"},
+    {key:"七",label:"七",pinyin:"qī"},
+    {key:"写",label:"写",pinyin:"xiě"},
+    {key:"请",label:"请",pinyin:"qǐng"},
+
+    {key:"再见",label:"再见",pinyin:"zàijiàn"},
+    {key:"谢谢",label:"谢谢",pinyin:"xièxie"},
+    {key:"星期",label:"星期",pinyin:"xīngqī"},
+    {key:"高兴",label:"高兴",pinyin:"gāoxìng"},
+
+    {key:"雨",label:"雨",pinyin:"yǔ"},
+    {key:"五",label:"五",pinyin:"wǔ"},
+    {key:"一",label:"一",pinyin:"yī"},
+    {key:"椅子",label:"椅子",pinyin:"yǐzi"},
+
+    {key:"九",label:"九",pinyin:"jiǔ"},
+    {key:"朋友2",label:"朋友",pinyin:"péngyou"},
+    {key:"牛奶",label:"牛奶",pinyin:"niúnǎi"},
+    {key:"休息",label:"休息",pinyin:"xiūxi"}
+
+];
+
+let trainQuestions=[];
+let trainCurrent=null;
+let trainScore=0;
+let trainDone=0;
+
+function restartTrainGame(){
+
+    trainQuestions =
+        shuffle(trainWords);
+
+    trainCurrent=null;
+    trainScore=0;
+    trainDone=0;
+
+    document
+        .getElementById("trainComplete")
+        .classList.remove("show");
+
+    nextTrainQuestion();
+    updateTrainStats();
+}
+
+function nextTrainQuestion(){
+
+    if(trainQuestions.length===0){
+
+        finishTrainGame();
+        return;
+    }
+
+    trainCurrent =
+        trainQuestions.shift();
+
+    renderTrainOptions();
+
+    document
+        .getElementById("trainFeedback")
+        .textContent="";
+}
+
+function renderTrainOptions(){
+
+    const container =
+        document.getElementById("trainOptions");
+
+    container.innerHTML="";
+
+    const options =
+        sampleDistractors(
+            trainCurrent.label,
+            trainWords.map(
+                item => item.label
+            ),
+            3
+        );
+
+    options.forEach(label=>{
+
+        const word =
+            trainWords.find(
+                item => item.label===label
+            );
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "train-car";
+
+        button.innerHTML = `
+            <span class="train-hanzi">
+                ${word.label}
+            </span>
+
+            <span class="train-pinyin">
+                ${word.pinyin}
+            </span>
+        `;
+
+        button.onclick=()=>{
+
+            chooseTrainWord(
+                label,
+                button
+            );
+
+        };
+
+        container.appendChild(button);
+    });
+}
+
+function playTrainQuestion(){
+
+    if(trainCurrent){
+        playSound(trainCurrent.key);
+    }
+}
+
+function chooseTrainWord(
+    label,
+    button
+){
+
+    if(!trainCurrent){
+        return;
+    }
+
+    if(label===trainCurrent.label){
+
+        trainScore+=10;
+        trainDone++;
+
+        button.classList.add("correct");
+
+        document
+            .getElementById("trainFeedback")
+            .textContent =
+            "🚂 Chính xác! Toa tàu xuất phát!";
+
+        trainCurrent=null;
+
+        updateTrainStats();
+
+        setTimeout(
+            nextTrainQuestion,
+            700
+        );
+
+    }else{
+
+        button.classList.remove("wrong");
+
+        void button.offsetWidth;
+
+        button.classList.add("wrong");
+
+        document
+            .getElementById("trainFeedback")
+            .textContent =
+            "👂 Chưa phải toa này, nghe lại nhé!";
+
+        playTrainQuestion();
+    }
+}
+
+function updateTrainStats(){
+
+    document
+        .getElementById("trainScore")
+        .textContent =
+        trainScore;
+
+    document
+        .getElementById("trainProgress")
+        .textContent =
+        trainDone+"/"+trainWords.length;
+}
+
+function finishTrainGame(){
+
+    document
+        .getElementById("trainCompleteText")
+        .innerHTML =
+        "Bạn đã đưa đủ <b>"+
+        trainWords.length+
+        "</b> từ lên tàu.<br>"+
+        "Điểm: <b>"+
+        trainScore+
+        "</b> ⭐";
+
+    document
+        .getElementById("trainComplete")
+        .classList.add("show");
+}
+
+/* =========================================================
+   KHỞI ĐỘNG
+========================================================= */
+
+restartBalloonGame();
+restartToneGame();
+restartRuleGame();
+restartTrainGame();
+
+</script>
+
+</body>
+</html>

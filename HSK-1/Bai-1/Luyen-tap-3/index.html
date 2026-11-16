@@ -1,0 +1,3691 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đập chuột</title>
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --ink: #17212b;
+    --cream: #fff8df;
+    --yellow: #ffd84d;
+    --green: #67c96f;
+    --red: #ff6464;
+    --blue: #75d7ff;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family:
+        "Nunito",
+        "Noto Sans SC",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+    color: var(--ink);
+
+    background:
+        linear-gradient(
+            to bottom,
+            #173d70 0%,
+            #27669a 31%,
+            #8fd4d0 31%,
+            #aee69e 58%,
+            #65b968 58%,
+            #3d914f 100%
+        );
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.world {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: 18px;
+}
+
+/* Moon */
+
+.moon {
+    position: fixed;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    right: 8%;
+    top: 5%;
+    background: #fff4bd;
+    box-shadow:
+        0 0 30px rgba(255, 244, 189, .8),
+        0 0 80px rgba(255, 244, 189, .35);
+    z-index: 0;
+}
+
+/* Stars */
+
+.star {
+    position: fixed;
+    color: white;
+    z-index: 0;
+    opacity: .8;
+    animation: twinkle 1.8s infinite alternate;
+}
+
+.star.s1 {
+    left: 8%;
+    top: 8%;
+}
+
+.star.s2 {
+    left: 23%;
+    top: 17%;
+    animation-delay: .4s;
+}
+
+.star.s3 {
+    right: 27%;
+    top: 9%;
+    animation-delay: .8s;
+}
+
+.star.s4 {
+    right: 13%;
+    top: 22%;
+    animation-delay: .2s;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .25;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* Clouds */
+
+.cloud {
+    position: fixed;
+    font-size: 75px;
+    opacity: .65;
+    z-index: 0;
+    animation: cloudMove 22s linear infinite;
+}
+
+.cloud.one {
+    top: 15%;
+    left: -120px;
+}
+
+.cloud.two {
+    top: 24%;
+    left: -200px;
+    animation-duration: 32s;
+    animation-delay: -13s;
+}
+
+@keyframes cloudMove {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(100vw + 300px));
+    }
+}
+
+/* Trees */
+
+.tree {
+    position: fixed;
+    bottom: 25%;
+    font-size: 110px;
+    z-index: 0;
+    filter: drop-shadow(4px 6px 0 rgba(0,0,0,.13));
+}
+
+.tree.left {
+    left: 1%;
+}
+
+.tree.right {
+    right: 1%;
+}
+
+/* Flowers */
+
+.flowers {
+    position: fixed;
+    bottom: 1%;
+    width: 100%;
+    left: 0;
+    font-size: 34px;
+    letter-spacing: 20px;
+    opacity: .8;
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+    width: min(1050px, 100%);
+    margin: auto;
+    position: relative;
+    z-index: 5;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.logo {
+    background: #fff8df;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    padding: 10px 15px;
+    font-weight: 1000;
+    box-shadow: 5px 5px 0 var(--ink);
+    transform: rotate(-1deg);
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: flex-end;
+}
+
+.stat {
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 1000;
+    box-shadow: 3px 3px 0 var(--ink);
+}
+
+.sound {
+    cursor: pointer;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+    border: 4px solid var(--ink);
+    border-radius: 30px;
+    background:
+        linear-gradient(
+            rgba(255,255,255,.95),
+            rgba(255,249,222,.96)
+        );
+    box-shadow:
+        10px 10px 0 rgba(23,33,43,.95);
+    padding: 27px;
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.center {
+    text-align: center;
+}
+
+h1 {
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1;
+}
+
+h2 {
+    font-size: clamp(25px, 4vw, 37px);
+}
+
+.subtitle {
+    margin-top: 14px;
+    color: #58636c;
+    line-height: 1.7;
+}
+
+.big-panda {
+    font-size: 95px;
+    animation: pandaBounce 1.6s ease-in-out infinite;
+}
+
+@keyframes pandaBounce {
+    50% {
+        transform: translateY(-8px) rotate(4deg);
+    }
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn {
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    background: var(--yellow);
+    color: var(--ink);
+    font-weight: 1000;
+    font-size: 17px;
+    padding: 14px 24px;
+    cursor: pointer;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: .12s;
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+}
+
+.btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* =========================================================
+   START
+========================================================= */
+
+.instructions {
+    max-width: 690px;
+    margin: 22px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.instruction {
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    background: white;
+    padding: 15px 8px;
+    font-weight: 900;
+}
+
+.instruction .icon {
+    display: block;
+    font-size: 38px;
+    margin-bottom: 6px;
+}
+
+/* =========================================================
+   LEVEL INTRO
+========================================================= */
+
+.level-number {
+    display: inline-block;
+    background: #ff769b;
+    color: white;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    padding: 8px 17px;
+    font-weight: 1000;
+    margin-bottom: 16px;
+    box-shadow: 3px 3px 0 var(--ink);
+}
+
+.level-info {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #e8f9ff;
+    border: 3px dashed var(--ink);
+    padding: 18px;
+    border-radius: 20px;
+    line-height: 1.65;
+}
+
+/* =========================================================
+   GAME HEADER
+========================================================= */
+
+.game-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.panda-hammer {
+    font-size: 58px;
+    transform-origin: bottom center;
+}
+
+.panda-hammer.hit {
+    animation: hammer .25s;
+}
+
+@keyframes hammer {
+    40% {
+        transform: rotate(28deg) scale(1.15);
+    }
+}
+
+.mission {
+    text-align: center;
+}
+
+.mission-small {
+    color: #66717a;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.target {
+    margin-top: 2px;
+    font-size: clamp(29px, 5vw, 47px);
+    font-weight: 1000;
+}
+
+.round-time {
+    font-size: 19px;
+    font-weight: 1000;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   ROUND TIMER
+========================================================= */
+
+.timer-shell {
+    width: 100%;
+    height: 20px;
+    background: white;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.timer {
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #ffd84d,
+            #ffd84d 13px,
+            #ffbd39 13px,
+            #ffbd39 26px
+        );
+    transition: width .1s linear;
+}
+
+/* =========================================================
+   GAME FIELD
+========================================================= */
+
+.field {
+    border: 3px solid var(--ink);
+    border-radius: 26px;
+    padding: 20px 16px 7px;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.3),
+            transparent 12%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.05) 5px,
+            transparent 5px,
+            transparent 11px
+        ),
+        #72c867;
+
+    box-shadow:
+        inset 0 -15px 0 rgba(44,113,50,.15);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.field::before {
+    content: "🌼　🌱　🌸　🌿　🌼　🌱　🌸　🌿　🌼";
+    position: absolute;
+    left: 2%;
+    top: 5px;
+    opacity: .65;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   HOLES
+========================================================= */
+
+.holes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px 24px;
+}
+
+.hole {
+    height: 165px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* actual hole */
+
+.hole::after {
+    content: "";
+    position: absolute;
+    width: 82%;
+    height: 42px;
+    left: 9%;
+    bottom: 10px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #1e1712 0%,
+            #3e291e 48%,
+            #69472d 68%,
+            #8c623d 72%
+        );
+
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+/* =========================================================
+   MOLE
+========================================================= */
+
+.mole {
+    position: absolute;
+    width: min(145px, 82%);
+    height: 135px;
+    left: 50%;
+    bottom: -145px;
+    transform: translateX(-50%);
+
+    border: 3px solid var(--ink);
+    border-radius: 65px 65px 35px 35px;
+
+    background:
+        linear-gradient(
+            #c88c5b,
+            #a96e45
+        );
+
+    box-shadow:
+        inset 0 8px 0 rgba(255,255,255,.15);
+
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+
+    transition:
+        bottom .15s cubic-bezier(.3,1.4,.6,1),
+        transform .1s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hole.up .mole {
+    bottom: 25px;
+}
+
+.mole:hover {
+    transform:
+        translateX(-50%)
+        scale(1.04);
+}
+
+.mole-face {
+    font-size: 39px;
+    line-height: 1;
+}
+
+.mole-answer {
+    background: #fff8df;
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    margin-top: 6px;
+    padding: 5px 8px;
+    min-width: 80%;
+    text-align: center;
+    font-size: clamp(14px, 2vw, 19px);
+    font-weight: 1000;
+}
+
+/* GOLD MOLE */
+
+.mole.gold {
+    background:
+        linear-gradient(
+            #ffe16b,
+            #e9a921
+        );
+}
+
+.mole.gold .mole-answer {
+    background: #fff3a4;
+}
+
+/* BOMB */
+
+.mole.bomb {
+    background:
+        linear-gradient(
+            #656565,
+            #303030
+        );
+}
+
+.mole.bomb .mole-answer {
+    background: #ffd8d8;
+}
+
+/* FREEZE */
+
+.mole.freeze {
+    background:
+        linear-gradient(
+            #bdf1ff,
+            #65c8ef
+        );
+}
+
+.mole.freeze .mole-answer {
+    background: #e9fbff;
+}
+
+/* HIT */
+
+.mole.whacked {
+    animation: whacked .3s forwards;
+}
+
+@keyframes whacked {
+    40% {
+        transform:
+            translateX(-50%)
+            scale(.75)
+            rotate(-12deg);
+    }
+
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(130px)
+            rotate(15deg);
+    }
+}
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.feedback {
+    min-height: 55px;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 21px;
+}
+
+.feedback.good {
+    color: #087638;
+}
+
+.feedback.bad {
+    color: #c72d35;
+}
+
+/* =========================================================
+   FLOATING SCORE
+=============================
+============================ */
+
+.float-score {
+    position: fixed;
+    z-index: 999;
+    pointer-events: none;
+    font-size: 25px;
+    font-weight: 1000;
+    text-shadow:
+        2px 2px 0 white;
+    animation: floatScore .75s forwards;
+}
+
+@keyframes floatScore {
+    to {
+        transform: translateY(-80px) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   COMBO
+========================================================= */
+
+.combo-popup {
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    top: 16%;
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    background: #ff633f;
+    color: white;
+    border: 4px solid var(--ink);
+    border-radius: 999px;
+    padding: 12px 24px;
+    box-shadow: 5px 5px 0 var(--ink);
+
+    font-size: 24px;
+    font-weight: 1000;
+}
+
+.combo-popup.show {
+    animation: combo .8s;
+}
+
+@keyframes combo {
+    0% {
+        transform: translateX(-50%) scale(0);
+    }
+
+    35% {
+        transform: translateX(-50%) scale(1.25) rotate(-3deg);
+    }
+
+    75% {
+        transform: translateX(-50%) scale(1);
+    }
+
+    100% {
+        transform: translateX(-50%) scale(0);
+    }
+}
+
+/* =========================================================
+   FEVER
+========================================================= */
+
+.fever-banner {
+    position: fixed;
+    z-index: 1000;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff3979;
+    color: white;
+    border: 4px solid var(--ink);
+    border-radius: 999px;
+    padding: 10px 25px;
+    font-size: 22px;
+    font-weight: 1000;
+    box-shadow: 5px 5px 0 var(--ink);
+    animation: feverPulse .5s infinite alternate;
+}
+
+@keyframes feverPulse {
+    to {
+        transform:
+            translateX(-50%)
+            scale(1.08);
+    }
+}
+
+body.fever {
+    animation: feverWorld .7s infinite alternate;
+}
+
+@keyframes feverWorld {
+    from {
+        filter: saturate(1);
+    }
+
+    to {
+        filter: saturate(1.5);
+    }
+}
+
+/* =========================================================
+   SCREEN FLASH
+========================================================= */
+
+.flash {
+    position: fixed;
+    inset: 0;
+    z-index: 800;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.flash.good {
+    background: rgba(105,255,149,.25);
+    animation: flash .25s;
+}
+
+.flash.bad {
+    background: rgba(255,65,65,.3);
+    animation: flash .3s;
+}
+
+@keyframes flash {
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+.stars-result {
+    font-size: 55px;
+    letter-spacing: 5px;
+    margin: 15px 0;
+}
+
+.result-grid {
+    max-width: 650px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.result-box {
+    border: 2px solid var(--ink);
+    border-radius: 17px;
+    padding: 15px 8px;
+    background: white;
+}
+
+.result-box strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 24px;
+}
+
+.result-message {
+    max-width: 650px;
+    margin: 18px auto;
+    background: #fff4bf;
+    border: 3px dashed var(--ink);
+    border-radius: 18px;
+    padding: 17px;
+    line-height: 1.6;
+    font-weight: 800;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width: 700px) {
+
+    .world {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 18px 12px;
+        box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .instructions {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .game-header {
+        grid-template-columns: auto 1fr;
+    }
+
+    .round-time {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .holes {
+        gap: 2px 4px;
+    }
+
+    .hole {
+        height: 130px;
+    }
+
+    .mole {
+        height: 105px;
+        width: 90%;
+    }
+
+    .mole-face {
+        font-size: 28px;
+    }
+
+    .mole-answer {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .hole.up .mole {
+        bottom: 22px;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tree {
+        display: none;
+    }
+}
+
+/* =========================================================
+   PATCH · 中文–越南语主界面 / GIAO DIỆN TRUNG–VIỆT
+========================================================= */
+
+/* Title prominent and easy to spot */
+#startScreen h1{
+    display:inline-block;
+    margin:10px auto 8px;
+    padding:14px 22px 16px;
+    max-width:900px;
+    font-size:clamp(38px,6.8vw,72px);
+    line-height:1.08;
+    letter-spacing:.02em;
+    background:linear-gradient(135deg,#fff4a8,#ffffff);
+    border:4px solid var(--ink);
+    border-radius:22px;
+    box-shadow:7px 7px 0 var(--ink);
+}
+
+#startScreen .subtitle{
+    max-width:780px;
+    margin:22px auto 4px;
+    font-size:clamp(17px,2.2vw,22px);
+    color:#34424c;
+}
+
+.logo{
+    font-size:clamp(16px,2vw,22px);
+    padding:12px 17px;
+}
+
+/* Mission/target becomes the visual focal point */
+.mission{
+    background:#fff8df;
+    border:3px solid var(--ink);
+    border-radius:18px;
+    padding:10px 16px;
+    box-shadow:4px 4px 0 var(--ink);
+}
+
+.mission-small{
+    font-size:clamp(13px,1.8vw,17px);
+    color:#4e5b64;
+}
+
+.target{
+    font-size:clamp(34px,5.5vw,58px);
+    line-height:1.15;
+    overflow-wrap:anywhere;
+}
+
+/* Slower visual pop-up transition */
+.mole{
+    height:150px;
+    bottom:-165px;
+    transition:
+        bottom .28s cubic-bezier(.25,.9,.35,1.1),
+        transform .14s;
+}
+
+/* Bigger, fully visible answer label */
+.mole-answer{
+    width:92%;
+    max-width:94%;
+    min-width:92%;
+    min-height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:7px;
+    padding:7px 9px;
+    font-size:clamp(17px,2.1vw,23px);
+    line-height:1.18;
+    white-space:normal;
+    overflow:visible;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+}
+
+/* More room so long answers are not clipped */
+.hole{
+    height:190px;
+}
+
+.hole.up .mole{
+    bottom:24px;
+}
+
+/* Boss answer/tình huống can be longer */
+body:has(#gameScreen:not(.hidden)) .field{
+    overflow:visible;
+}
+
+@media(max-width:700px){
+    #startScreen h1{
+        font-size:clamp(31px,9vw,48px);
+        padding:12px 14px;
+    }
+
+    .hole{
+        height:150px;
+    }
+
+    .mole{
+        height:125px;
+        width:94%;
+        bottom:-140px;
+    }
+
+    .mole-face{
+        font-size:30px;
+    }
+
+    .mole-answer{
+        width:94%;
+        min-width:94%;
+        min-height:38px;
+        padding:6px 5px;
+        font-size:clamp(15px,4.2vw,19px);
+        line-height:1.12;
+    }
+
+    .hole.up .mole{
+        bottom:20px;
+    }
+
+    .target{
+        font-size:clamp(29px,8vw,43px);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="world">
+
+    <!-- DECORATION -->
+
+    <div class="moon"></div>
+
+    <div class="star s1">✦</div>
+    <div class="star s2">✦</div>
+    <div class="star s3">✦</div>
+    <div class="star s4">✦</div>
+
+    <div class="cloud one">☁️</div>
+    <div class="cloud two">☁️</div>
+
+    <div class="tree left">🌳</div>
+    <div class="tree right">🌳</div>
+
+    <div class="flowers">
+        🌼 🌸 🌱 🌷 🌼 🌸 🌱 🌷 🌼 🌸 🌱 🌷
+    </div>
+
+
+    <main class="app">
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div class="logo">
+                🐼 ĐẬP CHUỘT🐼
+            </div>
+
+            <div class="stats hidden" id="stats">
+
+                <div class="stat">
+                    ⭐ <span id="score">0</span>
+                </div>
+
+                <div class="stat">
+                    🔥 <span id="combo">0</span>
+                </div>
+
+                <div class="stat">
+                    ❤️ <span id="lives">5</span>
+                </div>
+
+                <div
+                    class="stat sound"
+                    id="soundButton"
+                    onclick="toggleSound()">
+                    🔊
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             START SCREEN
+        ================================================== -->
+
+        <section class="card" id="startScreen">
+
+            <div class="center">
+
+                <div class="big-panda">
+                    🐼🔨
+                </div>
+
+                <h1>
+                    ĐẬP CHUỘT
+                </h1>
+
+                <p class="subtitle">
+                    看准答案再出手！
+                    <strong>Nhìn kỹ rồi đập đáp án đúng!</strong>
+                    <br>
+                    地鼠会从 9 个洞里出现 · Chuột sẽ xuất hiện ở 9 cái lỗ.
+                    <br>
+                    找到正确答案再打 · Tìm đúng đáp án rồi hãy đập.
+                </p>
+
+
+                <div class="instructions">
+
+                    <div class="instruction">
+                        <span class="icon">🐹</span>
+                        打正确答案 · Đập đáp án đúng
+                    </div>
+
+                    <div class="instruction">
+                        <span class="icon">🪙</span>
+                        金色地鼠 +300 · Chuột vàng +300
+                    </div>
+
+                    <div class="instruction">
+                        <span class="icon">🧊</span>
+                        冰冻减速 · Đóng băng làm chậm
+                    </div>
+
+                    <div class="instruction">
+                        <span class="icon">💣</span>
+                        别打炸弹！· Né bom!
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="btn"
+                    onclick="prepareLevel(1)">
+                    🔨 开始游戏 · BẮT ĐẦU
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LEVEL INTRO
+        ================================================== -->
+
+        <section
+            class="card hidden"
+            id="levelScreen">
+
+            <div class="center">
+
+                <div
+                    class="level-number"
+                    id="levelBadge">
+                    LEVEL 1
+                </div>
+
+                <div
+                    class="big-panda"
+                    id="levelEmoji">
+                    🐼
+                </div>
+
+                <h2 id="levelTitle"></h2>
+
+                <div
+                    class="level-info"
+                    id="levelDescription">
+                </div>
+
+                <button
+                    class="btn"
+                    onclick="startLevel()">
+                    3 · 2 · 1 · 开始！🔨
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GAME SCREEN
+        ================================================== -->
+
+        <section
+            class="card hidden"
+            id="gameScreen">
+
+            <div class="game-header">
+
+                <div
+                    class="panda-hammer"
+                    id="hammer">
+                    🐼🔨
+                </div>
+
+
+                <div class="mission">
+
+                    <div
+                        class="mission-small"
+                        id="missionLabel">
+                        找拼音 · TÌM PINYIN
+                    </div>
+
+                    <div
+                        class="target"
+                        id="target">
+                        你好
+                    </div>
+
+                </div>
+
+
+                <div class="round-time">
+                    ⏱️
+                    <span id="timeText">40</span>s
+                </div>
+
+            </div>
+
+
+            <div class="timer-shell">
+
+                <div
+                    class="timer"
+                    id="timer">
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <div
+                    class="holes"
+                    id="holes">
+
+                    <!-- 1 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 6 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 7 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 8 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                    <!-- 9 -->
+
+                    <div class="hole">
+                        <div class="mole">
+                            <div class="mole-face">🐹</div>
+                            <div class="mole-answer"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="feedback"
+                id="feedback">
+                🔨 准备好了吗？· Chuẩn bị săn đáp án...
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESULT
+        ================================================== -->
+
+        <section
+            class="card hidden"
+            id="resultScreen">
+
+            <div class="center">
+
+                <div
+                    class="big-panda"
+                    id="resultEmoji">
+                    🐼🏆
+                </div>
+
+                <h1 id="resultTitle">
+                    太棒了！
+                </h1>
+
+                <div
+                    class="stars-result"
+                    id="resultStars">
+                    ⭐⭐⭐
+                </div>
+
+
+                <div class="result-grid">
+
+                    <div class="result-box">
+                        分数 · Điểm
+                        <strong id="resultScore">0</strong>
+                    </div>
+
+                    <div class="result-box">
+                        正确率 · Chính xác
+                        <strong id="resultAccuracy">0%</strong>
+                    </div>
+
+                    <div class="result-box">
+                        最高连击 · Combo cao nhất
+                        <strong id="resultCombo">x0</strong>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="result-message"
+                    id="resultMessage">
+                </div>
+
+
+                <button
+                    class="btn"
+                    onclick="restartGame()">
+                    🔄 从第一关重玩 · CHƠI LẠI
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- EFFECTS -->
+
+<div
+    class="combo-popup"
+    id="comboPopup">
+</div>
+
+<div
+    class="fever-banner hidden"
+    id="feverBanner">
+    🔥 FEVER MODE · x2 🔥
+</div>
+
+<div
+    class="flash"
+    id="flash">
+</div>
+
+
+<script>
+
+/* =========================================================
+   VOCABULARY DATABASE
+========================================================= */
+
+const vocabulary = [
+
+    {
+        hanzi: "你好",
+        pinyin: "nǐ hǎo",
+        meaning: "xin chào"
+    },
+
+    {
+        hanzi: "您好",
+        pinyin: "nín hǎo",
+        meaning: "xin chào (lịch sự)"
+    },
+
+    {
+        hanzi: "老师",
+        pinyin: "lǎoshī",
+        meaning: "giáo viên"
+    },
+
+    {
+        hanzi: "学生",
+        pinyin: "xuésheng",
+        meaning: "học sinh"
+    },
+
+    {
+        hanzi: "同学",
+        pinyin: "tóngxué",
+        meaning: "bạn học"
+    },
+
+    {
+        hanzi: "大家",
+        pinyin: "dàjiā",
+        meaning: "mọi người"
+    },
+
+    {
+        hanzi: "你们",
+        pinyin: "nǐmen",
+        meaning: "các bạn"
+    },
+
+    {
+        hanzi: "谢谢",
+        pinyin: "xièxie",
+        meaning: "cảm ơn"
+    },
+
+    {
+        hanzi: "不客气",
+        pinyin: "bú kèqi",
+        meaning: "không có gì"
+    },
+
+    {
+        hanzi: "再见",
+        pinyin: "zàijiàn",
+        meaning: "tạm biệt"
+    },
+
+    {
+        hanzi: "您",
+        pinyin: "nín",
+        meaning: "ngài / bạn (lịch sự)"
+    },
+
+    {
+        hanzi: "们",
+        pinyin: "men",
+        meaning: "hậu tố số nhiều"
+    }
+
+];
+
+
+/* =========================================================
+   BOSS QUESTIONS
+========================================================= */
+
+const bossQuestions = [
+
+    {
+        target: "老师：同学们，你们好！",
+        correct: "老师，您好！",
+        wrong: [
+            "谢谢！",
+            "不客气！",
+            "再见！"
+        ]
+    },
+
+    {
+        target: "同学：谢谢！",
+        correct: "不客气！",
+        wrong: [
+            "你好！",
+            "大家好！",
+            "再见！"
+        ]
+    },
+
+    {
+        target: "放学时，你对老师说什么？· Tan học, bạn nói với cô giáo:",
+        correct: "老师，再见！",
+        wrong: [
+            "老师，谢谢！",
+            "老师，你好！",
+            "老师，不客气！"
+        ]
+    },
+
+    {
+        target: "王老师跟全班打招呼 · Cô Vương chào cả lớp:",
+        correct: "大家好！",
+        wrong: [
+            "谢谢大家！",
+            "同学，再见！",
+            "不客气！"
+        ]
+    },
+
+    {
+        target: "直接跟王老师说 · Nói trực tiếp với cô Vương:",
+        correct: "王老师，您好！",
+        wrong: [
+            "王老师，你好！",
+            "王老师，再见！",
+            "王老师，谢谢大家！"
+        ]
+    }
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentLevel = 1;
+
+let score = 0;
+
+let lives = 5;
+
+let combo = 0;
+
+let maxCombo = 0;
+
+let hits = 0;
+
+let misses = 0;
+
+let targetItem = null;
+
+let activeMoleIndex = -1;
+
+let gameRunning = false;
+
+let moleTimer = null;
+
+let clockTimer = null;
+
+let feverTimer = null;
+
+let frozen = false;
+
+let fever = false;
+
+let soundOn = true;
+
+let timeLeft = 40;
+
+let levelDuration = 40;
+
+const holes =
+    [...document.querySelectorAll(".hole")];
+
+const moles =
+    [...document.querySelectorAll(".mole")];
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+function showScreen(id) {
+
+    [
+        "startScreen",
+        "levelScreen",
+        "gameScreen",
+        "resultScreen"
+    ]
+    .forEach(screen => {
+
+        document
+            .getElementById(screen)
+            .classList.add("hidden");
+
+    });
+
+
+    document
+        .getElementById(id)
+        .classList.remove("hidden");
+}
+
+
+/* =========================================================
+   LEVEL INTRO
+========================================================= */
+
+function prepareLevel(level) {
+
+    currentLevel = level;
+
+
+    if (level === 1) {
+
+        document.getElementById("levelBadge").textContent =
+            "LEVEL 1";
+
+        document.getElementById("levelEmoji").textContent =
+            "🐼🔤";
+
+        document.getElementById("levelTitle").textContent =
+            "汉字猎人 · SĂN PINYIN";
+
+        document.getElementById("levelDescription").innerHTML =
+            `
+            Trên bảng sẽ xuất hiện <strong>chữ Hán</strong>.
+            <br>
+            Hãy đập con chuột đang cầm <strong>pinyin đúng</strong>.
+            <br><br>
+            🪙 Chuột vàng = điểm thưởng · 💣 Đừng đập bom!
+            `;
+
+    }
+
+
+    if (level === 2) {
+
+        document.getElementById("levelBadge").textContent =
+            "LEVEL 2";
+
+        document.getElementById("levelEmoji").textContent =
+            "🐼⚡";
+
+        document.getElementById("levelTitle").textContent =
+            "反向挑战 · ĐẢO NGƯỢC";
+
+        document.getElementById("levelDescription").innerHTML =
+            `
+            Khó hơn rồi!
+            <br>
+            Bảng sẽ hiện <strong>pinyin</strong>,
+            còn chuột cầm <strong>chữ Hán</strong>.
+            <br><br>
+            🔥 5 câu đúng liên tiếp sẽ kích hoạt
+            <strong>FEVER x2</strong>.
+            `;
+
+    }
+
+
+    if (level === 3) {
+
+        document.getElementById("levelBadge").textContent =
+            "FINAL BOSS";
+
+        document.getElementById("levelEmoji").textContent =
+            "👾🐼";
+
+        document.getElementById("levelTitle").textContent =
+            "你好大作战 · BOSS HỘI THOẠI";
+
+        document.getElementById("levelDescription").innerHTML =
+            `
+            👾 Boss xuất hiện!
+            <br>
+            Đọc tình huống rồi săn
+            <strong>câu trả lời tự nhiên nhất</strong>.
+            <br><br>
+            Chuột sẽ chạy nhanh hơn.
+            Đừng để Boss lừa!
+            `;
+
+    }
+
+
+    showScreen("levelScreen");
+}
+
+
+/* =========================================================
+   START LEVEL
+========================================================= */
+
+function startLevel() {
+
+    showScreen("gameScreen");
+
+
+    document
+        .getElementById("stats")
+        .classList.remove("hidden");
+
+
+    gameRunning = true;
+
+    frozen = false;
+
+
+    levelDuration =
+        currentLevel === 3
+        ? 45
+        : 40;
+
+
+    timeLeft =
+        levelDuration;
+
+
+    clearInterval(clockTimer);
+
+    clearTimeout(moleTimer);
+
+
+    chooseNewTarget();
+
+    spawnMole();
+
+    updateStats();
+
+    updateClock();
+
+
+    clockTimer =
+        setInterval(() => {
+
+            if (!gameRunning) {
+                return;
+            }
+
+
+            if (frozen) {
+                return;
+            }
+
+
+            timeLeft -= .1;
+
+
+            if (timeLeft <= 0) {
+
+                timeLeft = 0;
+
+                updateClock();
+
+                finishLevel();
+
+                return;
+            }
+
+
+            updateClock();
+
+        }, 100);
+
+}
+
+
+/* =========================================================
+   TARGET
+========================================================= */
+
+function chooseNewTarget() {
+
+    if (currentLevel === 3) {
+
+        targetItem =
+            randomItem(
+                bossQuestions
+            );
+
+
+        document
+            .getElementById("missionLabel")
+            .textContent =
+                "👾 BOSS · 找回答 · TÌM CÂU ĐÁP";
+
+
+        document
+            .getElementById("target")
+            .textContent =
+                targetItem.target;
+
+        return;
+
+    }
+
+
+    targetItem =
+        randomItem(
+            vocabulary
+        );
+
+
+    if (currentLevel === 1) {
+
+        document
+            .getElementById("missionLabel")
+            .textContent =
+                "🔤 找拼音 · TÌM PINYIN";
+
+
+        document
+            .getElementById("target")
+            .textContent =
+                targetItem.hanzi;
+
+    }
+
+
+    if (currentLevel === 2) {
+
+        document
+         
+   .getElementById("missionLabel")
+            .textContent =
+                "⚡ 找汉字 · TÌM CHỮ HÁN";
+
+
+        document
+            .getElementById("target")
+            .textContent =
+                targetItem.pinyin;
+
+    }
+
+}
+
+
+/* =========================================================
+   SPAWN MOLE
+========================================================= */
+
+function spawnMole() {
+
+    if (!gameRunning) {
+        return;
+    }
+
+
+    hideAllMoles();
+
+
+    const availableIndexes =
+        holes
+        .map((_, index) => index)
+        .filter(
+            index =>
+                index !== activeMoleIndex
+        );
+
+
+    activeMoleIndex =
+        randomItem(
+            availableIndexes
+        );
+
+
+    const hole =
+        holes[activeMoleIndex];
+
+
+    const mole =
+        moles[activeMoleIndex];
+
+
+    resetMole(mole);
+
+
+    /*
+        Chọn loại chuột.
+    */
+
+    const roll =
+        Math.random();
+
+
+    let type =
+        "normal";
+
+
+    if (
+        roll < .09
+        &&
+        currentLevel >= 2
+    ) {
+
+        type =
+            "freeze";
+
+    }
+
+    else if (
+        roll < .20
+    ) {
+
+        type =
+            "bomb";
+
+    }
+
+    else if (
+        roll < .33
+    ) {
+
+        type =
+            "gold";
+
+    }
+
+
+    /*
+        Boss ít special hơn
+        để tập trung hội thoại.
+    */
+
+    if (
+        currentLevel === 3
+        &&
+        Math.random() < .65
+    ) {
+
+        type =
+            "normal";
+
+    }
+
+
+    configureMole(
+        mole,
+        type
+    );
+
+
+    hole.classList.add("up");
+
+
+    /*
+        Tốc độ thay đổi theo level + combo.
+    */
+
+    /*
+        PATCH: giữ chuột trên màn hình lâu hơn để người mới học
+        có thời gian đọc Trung–Việt và nhìn rõ đáp án.
+    */
+    let speed =
+        currentLevel === 1
+        ? 1750
+        : currentLevel === 2
+        ? 1500
+        : 1280;
+
+
+    /*
+        Combo vẫn làm nhanh hơn một chút,
+        nhưng không tăng tốc quá gắt.
+    */
+    speed -=
+        Math.min(
+            combo * 12,
+            120
+        );
+
+
+    if (frozen) {
+
+        speed *= 1.8;
+
+    }
+
+
+    clearTimeout(
+        moleTimer
+    );
+
+
+    moleTimer =
+        setTimeout(() => {
+
+            if (!gameRunning) {
+                return;
+            }
+
+
+            hole
+                .classList
+                .remove("up");
+
+
+            /*
+                Nếu đáp án đúng xuất hiện
+                nhưng học viên để nó chạy mất:
+                không mất tim, chỉ reset nhẹ combo.
+            */
+
+            if (
+                mole.dataset.type === "correct"
+                ||
+                mole.dataset.type === "goldCorrect"
+            ) {
+
+                combo =
+                    Math.max(
+                        combo - 1,
+                        0
+                    );
+
+                updateStats();
+
+            }
+
+
+            setTimeout(
+                spawnMole,
+                180
+            );
+
+        }, speed);
+
+}
+
+
+/* =========================================================
+   CONFIGURE MOLE
+========================================================= */
+
+function configureMole(
+    mole,
+    specialType
+) {
+
+    const face =
+        mole.querySelector(
+            ".mole-face"
+        );
+
+
+    const answer =
+        mole.querySelector(
+            ".mole-answer"
+        );
+
+
+    /*
+        BOMB
+    */
+
+    if (specialType === "bomb") {
+
+        mole.classList.add("bomb");
+
+        mole.dataset.type =
+            "bomb";
+
+        face.textContent =
+            "💣";
+
+        answer.textContent =
+            "别打！· ĐỪNG ĐẬP!";
+
+        mole.onclick =
+            event =>
+                hitMole(
+                    mole,
+                    event
+                );
+
+        return;
+    }
+
+
+    /*
+        FREEZE
+    */
+
+    if (specialType === "freeze") {
+
+        mole.classList.add("freeze");
+
+        mole.dataset.type =
+            "freeze";
+
+        face.textContent =
+            "🧊";
+
+        answer.textContent =
+            "冰冻 · FREEZE";
+
+        mole.onclick =
+            event =>
+                hitMole(
+                    mole,
+                    event
+                );
+
+        return;
+    }
+
+
+    /*
+        NORMAL / GOLD
+
+        42% cơ hội là đáp án đúng.
+    */
+
+    const showCorrect =
+        Math.random() < .42;
+
+
+    let answerText;
+
+
+    if (showCorrect) {
+
+        answerText =
+            getCorrectAnswer();
+
+    }
+
+    else {
+
+        answerText =
+            getWrongAnswer();
+
+    }
+
+
+    if (specialType === "gold") {
+
+        mole.classList.add("gold");
+
+        face.textContent =
+            "🪙";
+
+
+        if (showCorrect) {
+
+            mole.dataset.type =
+                "goldCorrect";
+
+        }
+
+        else {
+
+            mole.dataset.type =
+                "goldWrong";
+
+        }
+
+    }
+
+    else {
+
+        face.textContent =
+            randomItem(
+                ["🐹","🐭","😼","🐹"]
+            );
+
+
+        mole.dataset.type =
+            showCorrect
+            ? "correct"
+            : "wrong";
+
+    }
+
+
+    answer.textContent =
+        answerText;
+
+
+    mole.dataset.answer =
+        answerText;
+
+
+    mole.onclick =
+        event =>
+            hitMole(
+                mole,
+                event
+            );
+
+}
+
+
+/* =========================================================
+   ANSWERS
+========================================================= */
+
+function getCorrectAnswer() {
+
+    if (currentLevel === 1) {
+
+        return targetItem.pinyin;
+
+    }
+
+
+    if (currentLevel === 2) {
+
+        return targetItem.hanzi;
+
+    }
+
+
+    return targetItem.correct;
+}
+
+
+function getWrongAnswer() {
+
+    let pool;
+
+
+    if (currentLevel === 1) {
+
+        pool =
+            vocabulary
+            .filter(
+                item =>
+                    item.pinyin
+                    !==
+                    targetItem.pinyin
+            )
+            .map(
+                item =>
+                    item.pinyin
+            );
+
+    }
+
+
+    if (currentLevel === 2) {
+
+        pool =
+            vocabulary
+            .filter(
+                item =>
+                    item.hanzi
+                    !==
+                    targetItem.hanzi
+            )
+            .map(
+                item =>
+                    item.hanzi
+            );
+
+    }
+
+
+    if (currentLevel === 3) {
+
+        pool =
+            targetItem.wrong;
+
+    }
+
+
+    return randomItem(
+        pool
+    );
+}
+
+
+/* =========================================================
+   HIT
+========================================================= */
+
+function hitMole(
+    mole,
+    event
+) {
+
+    if (!gameRunning) {
+        return;
+    }
+
+
+    /*
+        Ngăn double click.
+    */
+
+    if (
+        mole.dataset.hit === "yes"
+    ) {
+
+        return;
+
+    }
+
+
+    mole.dataset.hit =
+        "yes";
+
+
+    clearTimeout(
+        moleTimer
+    );
+
+
+    animateHammer();
+
+
+    mole.classList.add(
+        "whacked"
+    );
+
+
+    const type =
+        mole.dataset.type;
+
+
+    /*
+        BOMB
+    */
+
+    if (type === "bomb") {
+
+        lives--;
+
+        combo = 0;
+
+        misses++;
+
+
+        feedback(
+            "💥 炸弹！· Trúng bom rồi!",
+            false
+        );
+
+
+        screenFlash(false);
+
+        playBombSound();
+
+        speakChinese(
+            "哎呀！"
+        );
+
+    }
+
+
+    /*
+        FREEZE
+    */
+
+    else if (
+        type === "freeze"
+    ) {
+
+        score +=
+            fever ? 200 : 100;
+
+
+        feedback(
+            "🧊 冰冻！· Chuột chậm lại 3 giây!",
+            true
+        );
+
+
+        activateFreeze();
+
+        playFreezeSound();
+
+    }
+
+
+    /*
+        CORRECT
+    */
+
+    else if (
+        type === "correct"
+        ||
+        type === "goldCorrect"
+    ) {
+
+        hits++;
+
+        combo++;
+
+        maxCombo =
+            Math.max(
+                maxCombo,
+                combo
+            );
+
+
+        let points =
+            type === "goldCorrect"
+            ? 300
+            : 100;
+
+
+        points +=
+            Math.min(
+                combo * 15,
+                120
+            );
+
+
+        if (fever) {
+
+            points *= 2;
+
+        }
+
+
+        score +=
+            points;
+
+
+        floatingScore(
+            "+" + points,
+            event
+        );
+
+
+        let praise =
+            "答对了！";
+
+
+        if (combo >= 8) {
+
+            praise =
+                "你太厉害了！";
+
+        }
+
+        else if (
+            combo >= 5
+        ) {
+
+            praise =
+                "太棒了！";
+
+        }
+
+        else if (
+            combo >= 3
+        ) {
+
+            praise =
+                "非常好！";
+
+        }
+
+
+        feedback(
+            "🎯 " +
+            praise +
+            (
+                type === "goldCorrect"
+                ? " 🪙 JACKPOT!"
+                : ""
+            ),
+            true
+        );
+
+
+        screenFlash(true);
+
+        playCorrectSound();
+
+        speakChinese(
+            praise
+        );
+
+
+        if (
+            combo >= 3
+        ) {
+
+            showCombo(
+                combo
+            );
+
+        }
+
+
+        if (
+            combo >= 5
+            &&
+            !fever
+        ) {
+
+            activateFever();
+
+        }
+
+
+        chooseNewTarget();
+
+    }
+
+
+    /*
+        WRONG
+    */
+
+    else {
+
+        lives--;
+
+        misses++;
+
+        combo = 0;
+
+
+        feedback(
+            "🙈 不对！· Sai rồi, tìm tiếp!",
+            false
+        );
+
+
+        floatingScore(
+            "-❤️",
+            event
+        );
+
+
+        screenFlash(false);
+
+        playWrongSound();
+
+        speakChinese(
+            "答错了！"
+        );
+
+    }
+
+
+    updateStats();
+
+
+    if (
+        lives <= 0
+    ) {
+
+        finishLevel();
+
+        return;
+    }
+
+
+    setTimeout(() => {
+
+        holes.forEach(
+            hole =>
+                hole
+                .classList
+                .remove("up")
+        );
+
+
+        spawnMole();
+
+    }, 420);
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+function feedback(
+    text,
+    good
+) {
+
+    const element =
+        document
+        .getElementById(
+            "feedback"
+        );
+
+
+    element.textContent =
+        text;
+
+
+    element.className =
+        good
+        ? "feedback good"
+        : "feedback bad";
+}
+
+
+/* =========================================================
+   HAMMER
+========================================================= */
+
+function animateHammer() {
+
+    const hammer =
+        document
+        .getElementById(
+            "hammer"
+        );
+
+
+    hammer.classList.remove(
+        "hit"
+    );
+
+
+    void hammer.offsetWidth;
+
+
+    hammer.classList.add(
+        "hit"
+    );
+}
+
+
+/* =========================================================
+   FLOAT SCORE
+========================================================= */
+
+function floatingScore(
+    text,
+    event
+) {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+
+    element.className =
+        "float-score";
+
+
+    element.textContent =
+        text;
+
+
+    element.style.left =
+        event.clientX + "px";
+
+
+    element.style.top =
+        event.clientY + "px";
+
+
+    document.body.appendChild(
+        element
+    );
+
+
+    setTimeout(
+        () => element.remove(),
+        800
+    );
+}
+
+
+/* =========================================================
+   COMBO
+========================================================= */
+
+function showCombo(number) {
+
+    const popup =
+        document
+        .getElementById(
+            "comboPopup"
+        );
+
+
+    if (number >= 8) {
+
+        popup.textContent =
+            `🚀 MEGA COMBO x${number}!`;
+
+    }
+
+    else if (
+        number >= 5
+    ) {
+
+        popup.textContent =
+            `🔥 FEVER COMBO x${number}!`;
+
+    }
+
+    else {
+
+        popup.textContent =
+            `⚡ COMBO x${number}!`;
+
+    }
+
+
+    popup.classList.remove(
+        "show"
+    );
+
+
+    void popup.offsetWidth;
+
+
+    popup.classList.add(
+        "show"
+    );
+}
+
+
+/* =========================================================
+   FEVER
+==============================
+=========================== */
+
+function activateFever() {
+
+    fever = true;
+
+
+    document.body
+        .classList
+        .add("fever");
+
+
+    document
+        .getElementById(
+            "feverBanner"
+        )
+        .classList
+        .remove("hidden");
+
+
+    playFeverSound();
+
+
+    clearTimeout(
+        feverTimer
+    );
+
+
+    feverTimer =
+        setTimeout(() => {
+
+            fever = false;
+
+
+            document.body
+                .classList
+                .remove("fever");
+
+
+            document
+                .getElementById(
+                    "feverBanner"
+                )
+                .classList
+                .add("hidden");
+
+        }, 6000);
+
+}
+
+
+/* =========================================================
+   FREEZE
+========================================================= */
+
+function activateFreeze() {
+
+    frozen = true;
+
+
+    setTimeout(() => {
+
+        frozen = false;
+
+    }, 3000);
+
+}
+
+
+/* =========================================================
+   FLASH
+========================================================= */
+
+function screenFlash(good) {
+
+    const flash =
+        document
+        .getElementById(
+            "flash"
+        );
+
+
+    flash.className =
+        good
+        ? "flash good"
+        : "flash bad";
+
+
+    setTimeout(() => {
+
+        flash.className =
+            "flash";
+
+    }, 320);
+
+}
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock() {
+
+    document
+        .getElementById(
+            "timeText"
+        )
+        .textContent =
+            Math.ceil(
+                timeLeft
+            );
+
+
+    document
+        .getElementById(
+            "timer"
+        )
+        .style.width =
+            Math.max(
+                0,
+                (
+                    timeLeft
+                    /
+                    levelDuration
+                )
+                *
+                100
+            )
+            +
+            "%";
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+function updateStats() {
+
+    document
+        .getElementById(
+            "score"
+        )
+        .textContent =
+            score;
+
+
+    document
+        .getElementById(
+            "combo"
+        )
+        .textContent =
+            combo;
+
+
+    document
+        .getElementById(
+            "lives"
+        )
+        .textContent =
+            Math.max(
+                lives,
+                0
+            );
+}
+
+
+/* =========================================================
+   FINISH LEVEL
+========================================================= */
+
+function finishLevel() {
+
+    if (!gameRunning) {
+        return;
+    }
+
+
+    gameRunning =
+        false;
+
+
+    clearInterval(
+        clockTimer
+    );
+
+
+    clearTimeout(
+        moleTimer
+    );
+
+
+    hideAllMoles();
+
+
+    /*
+        Level 1 -> 2
+        Level 2 -> Boss
+        Boss -> Result
+    */
+
+    if (
+        currentLevel < 3
+        &&
+        lives > 0
+    ) {
+
+        playLevelSound();
+
+        speakChinese(
+            "太棒了！下一关！"
+        );
+
+
+        setTimeout(() => {
+
+            prepareLevel(
+                currentLevel + 1
+            );
+
+        }, 650);
+
+
+        return;
+    }
+
+
+    showFinalResult();
+
+}
+
+
+/* =========================================================
+   FINAL RESULT
+========================================================= */
+
+function showFinalResult() {
+
+    document
+        .getElementById(
+            "stats"
+        )
+        .classList
+        .add("hidden");
+
+
+    document.body
+        .classList
+        .remove("fever");
+
+
+    document
+        .getElementById(
+            "feverBanner"
+        )
+        .classList
+        .add("hidden");
+
+
+    fever = false;
+
+
+    const total =
+        hits + misses;
+
+
+    const accuracy =
+        total === 0
+        ? 0
+        : Math.round(
+            hits
+            /
+            total
+            *
+            100
+        );
+
+
+    let stars =
+        "⭐";
+
+
+    let title =
+        "继续加油！";
+
+
+    let emoji =
+        "🐼💪";
+
+
+    let message =
+        "Chơi lại thêm một vòng nha. Lần sau thử giữ combo lâu hơn!";
+
+
+    if (
+        accuracy >= 90
+        &&
+        hits >= 15
+    ) {
+
+        stars =
+            "⭐⭐⭐";
+
+        title =
+            "太厉害了！";
+
+        emoji =
+            "🐼🏆";
+
+        message =
+            "PANDA MASTER! Phản xạ chữ Hán và pinyin của bạn nhanh ghê.";
+
+    }
+
+    else if (
+        accuracy >= 70
+    ) {
+
+        stars =
+            "⭐⭐";
+
+        title =
+            "太棒了！";
+
+        emoji =
+            "🐼🌟";
+
+        message =
+            "Rất ổn! Chơi lại sẽ xáo toàn bộ mục tiêu và vị trí chuột.";
+
+    }
+
+
+    document
+        .getElementById(
+            "resultEmoji"
+        )
+        .textContent =
+            emoji;
+
+
+    document
+        .getElementById(
+            "resultTitle"
+        )
+        .textContent =
+            title;
+
+
+    document
+        .getElementById(
+            "resultStars"
+        )
+        .textContent =
+            stars;
+
+
+    document
+        .getElementById(
+            "resultScore"
+        )
+        .textContent =
+            score;
+
+
+    document
+        .getElementById(
+            "resultAccuracy"
+        )
+        .textContent =
+            accuracy + "%";
+
+
+    document
+        .getElementById(
+            "resultCombo"
+        )
+        .textContent =
+            "x" + maxCombo;
+
+
+    document
+        .getElementById(
+            "resultMessage"
+        )
+        .textContent =
+            message;
+
+
+    showScreen(
+        "resultScreen"
+    );
+
+
+    playWinSound();
+
+    speakChinese(
+        accuracy >= 70
+        ? "你太棒了！"
+        : "继续加油！"
+    );
+}
+
+
+/* =========================================================
+   RESTART
+========================================================= */
+
+function restartGame() {
+
+    score = 0;
+
+    lives = 5;
+
+    combo = 0;
+
+    maxCombo = 0;
+
+    hits = 0;
+
+    misses = 0;
+
+    fever = false;
+
+    frozen = false;
+
+
+    document.body
+        .classList
+        .remove("fever");
+
+
+    document
+        .getElementById(
+            "feverBanner"
+        )
+        .classList
+        .add("hidden");
+
+
+    prepareLevel(1);
+}
+
+
+/* =========================================================
+   MOLE RESET
+========================================================= */
+
+function hideAllMoles() {
+
+    holes.forEach(
+        hole =>
+            hole
+            .classList
+            .remove("up")
+    );
+}
+
+
+function resetMole(mole) {
+
+    mole.className =
+        "mole";
+
+
+    mole.dataset.type =
+        "";
+
+
+    mole.dataset.answer =
+        "";
+
+
+    mole.dataset.hit =
+        "no";
+
+
+    mole.onclick =
+        null;
+}
+
+
+/* =========================================================
+   RANDOM
+========================================================= */
+
+function randomItem(array) {
+
+    return array[
+        Math.floor(
+            Math.random()
+            *
+            array.length
+        )
+    ];
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+let audioContext = null;
+
+
+function getAudio() {
+
+    if (!audioContext) {
+
+        audioContext =
+            new (
+                window.AudioContext
+                ||
+                window.webkitAudioContext
+            )();
+
+    }
+
+
+    if (
+        audioContext.state
+        ===
+        "suspended"
+    ) {
+
+        audioContext.resume();
+
+    }
+
+
+    return audioContext;
+}
+
+
+function tone(
+    frequency,
+    duration,
+    type = "sine",
+    volume = .05,
+    delay = 0
+) {
+
+    if (!soundOn) {
+        return;
+    }
+
+
+    const ctx =
+        getAudio();
+
+
+    const oscillator =
+        ctx.createOscillator();
+
+
+    const gain =
+        ctx.createGain();
+
+
+    oscillator.type =
+        type;
+
+
+    oscillator.frequency.value =
+        frequency;
+
+
+    oscillator.connect(
+        gain
+    );
+
+
+    gain.connect(
+        ctx.destination
+    );
+
+
+    const start =
+        ctx.currentTime
+        +
+        delay;
+
+
+    gain.gain.setValueAtTime(
+        volume,
+        start
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        start + duration
+    );
+
+
+    oscillator.start(
+        start
+    );
+
+
+    oscillator.stop(
+        start + duration
+    );
+}
+
+
+/* CORRECT */
+
+function playCorrectSound() {
+
+    tone(
+        650,
+        .11,
+        "sine",
+        .055,
+        0
+    );
+
+    tone(
+        850,
+        .12,
+        "sine",
+        .055,
+        .08
+    );
+
+    tone(
+        1050,
+        .16,
+        "sine",
+        .045,
+        .16
+    );
+}
+
+
+/* WRONG */
+
+function playWrongSound() {
+
+    tone(
+        230,
+        .14,
+        "sawtooth",
+        .04,
+        0
+    );
+
+    tone(
+        160,
+        .20,
+        "sawtooth",
+        .035,
+        .10
+    );
+}
+
+
+/* BOMB */
+
+function playBombSound() {
+
+    tone(
+        90,
+        .3,
+        "sawtooth",
+        .07,
+        0
+    );
+
+    tone(
+        60,
+        .4,
+        "square",
+        .035,
+        .05
+    );
+}
+
+
+/* FREEZE */
+
+function playFreezeSound() {
+
+    tone(
+        1200,
+        .10,
+        "sine",
+        .04,
+        0
+    );
+
+    tone(
+        1500,
+        .10,
+        "sine",
+        .04,
+        .08
+    );
+
+    tone(
+        1800,
+        .15,
+        "sine",
+        .035,
+        .16
+    );
+}
+
+
+/* FEVER */
+
+function playFeverSound() {
+
+    [
+        523,
+        659,
+        784,
+        1046
+    ]
+    .forEach(
+        (note, index) => {
+
+            tone(
+                note,
+                .15,
+                "square",
+                .035,
+                index * .08
+            );
+
+        }
+    );
+}
+
+
+/* LEVEL */
+
+function playLevelSound() {
+
+    [
+        523,
+        659,
+        784
+    ]
+    .forEach(
+        (note, index) => {
+
+            tone(
+                note,
+                .17,
+                "sine",
+                .05,
+                index * .1
+            );
+
+        }
+    );
+}
+
+
+/* WIN */
+
+function playWinSound() {
+
+    [
+        523,
+        659,
+        784,
+        1046,
+        1318
+    ]
+    .forEach(
+        (note, index) => {
+
+            tone(
+                note,
+                .2,
+                "sine",
+                .045,
+                index * .11
+            );
+
+        }
+    );
+}
+
+
+/* =========================================================
+   CHINESE SPEECH
+========================================================= */
+
+function speakChinese(text) {
+
+    if (
+        !soundOn
+        ||
+        !(
+            "speechSynthesis"
+            in window
+        )
+    ) {
+
+        return;
+    }
+
+
+    speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            text
+        );
+
+
+    speech.lang =
+        "zh-CN";
+
+
+    speech.rate =
+        1.08;
+
+
+    speech.pitch =
+        1.15;
+
+
+    const voices =
+        speechSynthesis
+        .getVoices();
+
+
+    const chinese =
+        voices.find(
+            voice =>
+                voice.lang
+                .toLowerCase()
+                .startsWith("zh")
+        );
+
+
+    if (chinese) {
+
+        speech.voice =
+            chinese;
+
+    }
+
+
+    speechSynthesis.speak(
+        speech
+    );
+}
+
+
+/* =========================================================
+   SOUND TOGGLE
+========================================================= */
+
+function toggleSound() {
+
+    soundOn =
+        !soundOn;
+
+
+    document
+        .getElementById(
+            "soundButton"
+        )
+        .textContent =
+            soundOn
+            ? "🔊"
+            : "🔇";
+
+
+    if (
+        !soundOn
+        &&
+        "speechSynthesis"
+        in window
+    ) {
+
+        speechSynthesis.cancel();
+
+    }
+}
+
+</script>
+
+</body>
+</html>

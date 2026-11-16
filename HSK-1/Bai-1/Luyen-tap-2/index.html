@@ -1,0 +1,2468 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>你好！Chinese Review Arcade</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+  min-height: 100vh;
+  color: #202020;
+  padding: 26px 14px;
+  display: flex;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 12% 10%, #fff0b7, transparent 28%),
+    radial-gradient(circle at 88% 90%, #dff5ff, transparent 30%),
+    #fffdf7;
+}
+
+.app {
+  width: 100%;
+  max-width: 920px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: white;
+  border: 2px solid #222;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 900;
+  box-shadow: 3px 3px 0 #222;
+}
+
+.card {
+  background: rgba(255,255,255,.96);
+  border: 3px solid #222;
+  border-radius: 26px;
+  padding: 32px;
+  box-shadow: 8px 8px 0 #222;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.bigEmoji {
+  font-size: 72px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.muted {
+  color: #666;
+  line-height: 1.65;
+}
+
+.nameInput {
+  width: min(390px, 100%);
+  padding: 14px 16px;
+  border: 2px solid #222;
+  border-radius: 14px;
+  font-size: 16px;
+  margin: 18px 0;
+  outline: none;
+}
+
+.nameInput:focus {
+  box-shadow: 4px 4px 0 #ffd84d;
+}
+
+.mainBtn,
+.secondaryBtn {
+  border: 2px solid #222;
+  border-radius: 14px;
+  padding: 13px 22px;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #222;
+  transition: .15s;
+}
+
+.mainBtn {
+  background: #ffd84d;
+}
+
+.secondaryBtn {
+  background: #fff;
+}
+
+.mainBtn:hover,
+.secondaryBtn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #222;
+}
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.gameChoice {
+  border: 3px solid #222;
+  border-radius: 20px;
+  padding: 22px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: .15s;
+  box-shadow: 5px 5px 0 #222;
+}
+
+.gameChoice:hover {
+  transform: translateY(-4px);
+}
+
+.gameChoice .icon {
+  font-size: 44px;
+}
+
+.gameChoice h3 {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.gameChoice p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.progressWrap {
+  margin-bottom: 24px;
+}
+
+.progressTop {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.progressBar {
+  height: 13px;
+  border: 2px solid #222;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.progress {
+  height: 100%;
+  background: #ffd84d;
+  width: 0;
+  transition: .3s;
+}
+
+.roundTag {
+  display: inline-block;
+  background: #dff5ff;
+  border: 2px solid #222;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.roundTag.boss {
+  background: #ffe7f0;
+}
+
+.questionNo {
+  color: #999;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+.question {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.45;
+  white-space: pre-line;
+  margin-bottom: 22px;
+}
+
+.question.chinese {
+  font-size: 42px;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.answer {
+  border: 2px solid #222;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .15s;
+  white-space: pre-line;
+}
+
+.answer:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 0 #222;
+}
+
+.answer:disabled {
+  cursor: default;
+}
+
+.answer.correct {
+  background: #c9f4d1;
+  border-color: #178632;
+}
+
+.answer.wrong {
+  background: #ffd5d5;
+  border-color: #d83333;
+}
+
+.letter {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #222;
+  border-radius: 9px;
+  margin-right: 9px;
+}
+
+.feedback {
+  display: none;
+  margin-top: 20px;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-weight: 900;
+}
+
+.feedback.show {
+  display: block;
+  animation: pop .2s ease;
+}
+
+.feedback.good {
+  background: #e9faed;
+  border: 2px solid #55a86a;
+}
+
+.feedback.bad {
+  background: #ffe9e9;
+  border: 2px solid #d96c6c;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.levelBox {
+  margin: 20px auto;
+  max-width: 580px;
+  padding: 22px;
+  border: 3px dashed #222;
+  border-radius: 18px;
+  background: #fff9dd;
+}
+
+.badge {
+  font-size: 54px;
+  margin-bottom: 8px;
+}
+
+.shake {
+  animation: shake .3s;
+}
+
+.combo {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  z-index: 99;
+  background: #ff7043;
+  color: #fff;
+  border: 3px solid #222;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 900;
+  box-shadow: 4px 4px 0 #222;
+}
+
+.combo.show {
+  animation: combo .7s;
+}
+
+.resultScore {
+  font-size: 64px;
+  font-weight: 900;
+  margin: 18px 0 4px;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 22px auto;
+  max-width: 620px;
+}
+
+.summaryBox {
+  border: 2px solid #222;
+  border-radius: 16px;
+  padding: 16px;
+  background: #fff;
+}
+
+.summaryBox strong {
+  font-size: 24px;
+  display: block;
+}
+
+.soundBtn {
+  cursor: pointer;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(.97);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-7px);
+  }
+
+  75% {
+    transform: translateX(7px);
+  }
+}
+
+@keyframes combo {
+  0% {
+    transform: translateX(-50%) scale(0);
+  }
+
+  35% {
+    transform: translateX(-50%) scale(1.2);
+  }
+
+  70% {
+    transform: translateX(-50%) scale(1);
+  }
+
+  100% {
+    transform: translateX(-50%) scale(0);
+  }
+}
+
+@media(max-width: 650px) {
+  .card {
+    padding: 22px 16px;
+    box-shadow: 5px 5px 0 #222;
+  }
+
+  .answers,
+  .gameGrid,
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    font-size: 23px;
+  }
+
+  .question.chinese {
+    font-size: 34px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="topbar">
+
+    <div class="brand">
+      🐼 Chinese Review Arcade
+    </div>
+
+    <div class="stats hidden" id="stats">
+
+      <div class="pill">
+        ⭐ <span id="score">0</span>
+      </div>
+
+      <div class="pill">
+        🔥 <span id="streak">0</span>
+      </div>
+
+      <div class="pill">
+        ❤️ <span id="lives">3</span>
+      </div>
+
+      <div class="pill soundBtn" id="soundBtn" onclick="toggleSound()">
+        🔊
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <section class="card" id="startScreen">
+
+    <div class="center">
+
+      <div class="bigEmoji">
+        🐼🎮
+      </div>
+
+      <h1>
+        复习练习 01 · 你好！
+      </h1>
+
+      <p class="muted">
+        2 trò chơi · mỗi trò 2 lượt.
+        <br>
+        Câu hỏi và đáp án sẽ được xáo mỗi lần chơi.
+        <br>
+        Giữ combo để kiếm thêm điểm và đánh Boss!
+      </p>
+
+      <input
+        id="studentName"
+        class="nameInput"
+        placeholder="Nhập tên học viên..."
+      />
+
+      <br>
+
+      <button class="mainBtn" onclick="openGameMenu()">
+        VÀO KHU TRÒ CHƠI →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="card hidden" id="menuScreen">
+
+    <div class="center">
+
+      <div class="bigEmoji">
+        🕹️
+      </div>
+
+      <h2>
+        Chọn trò chơi
+      </h2>
+
+      <p class="muted">
+        Hoàn thành cả hai game để mở bảng tổng kết.
+      </p>
+
+    </div>
+
+    <div class="gameGrid">
+
+      <div
+        class="gameChoice"
+        id="game1Choice"
+        onclick="startGame(1)">
+
+        <div class="icon">
+          🔤
+        </div>
+
+        <h3>
+          GAME 1 · 汉字猎人
+        </h3>
+
+        <p>
+          Săn pinyin đúng từ chữ Hán.
+          <br>
+          Lượt 2 là 👾 Boss Pinyin.
+        </p>
+
+      </div>
+
+
+      <div
+        class="gameChoice"
+        id="game2Choice"
+        onclick="startGame(2)">
+
+        <div class="icon">
+          💬
+        </div>
+
+        <h3>
+          GAME 2 · 你好大作战
+        </h3>
+
+        <p>
+          Phản xạ với tình huống giao tiếp.
+          <br>
+          Lượt 2 là 👾 Boss Hội thoại.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="center">
+
+      <button class="secondaryBtn" onclick="showFinalResult()">
+        XEM KẾT QUẢ TẠM THỜI
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="card hidden" id="roundIntro">
+
+    <div class="center">
+
+      <div class="badge" id="roundEmoji">
+        ⚡
+      </div>
+
+      <h2 id="roundTitle"></h2>
+
+      <div class="levelBox">
+
+        <p id="roundDesc" class="muted"></p>
+
+      </div>
+
+      <button class="mainBtn" onclick="beginRound()">
+        BẮT ĐẦU LƯỢT →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="card hidden" id="gameScreen">
+
+    <div class="progressWrap">
+
+      <div class="progressTop">
+
+        <span id="questionCounter"></span>
+
+        <span id="playerName"></span>
+
+      </div>
+
+      <div class="progressBar">
+
+        <div class="progress" id="progress"></div>
+
+      </div>
+
+    </div>
+
+    <div class="roundTag" id="roundTag"></div>
+
+    <div class="questionNo" id="questionNo"></div>
+
+    <div class="question" id="questionText"></div>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="actions">
+
+      <button
+        class="mainBtn hidden"
+        id="nextBtn"
+        onclick="nextQuestion()">
+
+        CÂU TIẾP →
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="card hidden" id="roundResult">
+
+    <div class="center">
+
+      <div class="bigEmoji" id="roundResultEmoji">
+        🎉
+      </div>
+
+      <h2 id="roundResultTitle"></h2>
+
+      <p class="muted" id="roundResultText"></p>
+
+      <div class="levelBox">
+        <strong id="roundScoreText"></strong>
+      </div>
+
+      <button
+        class="mainBtn"
+        id="roundContinueBtn"
+        onclick="continueAfterRound()">
+
+        TIẾP TỤC →
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="card hidden" id="finalScreen">
+
+    <div class="center">
+
+      <div class="bigEmoji" id="finalEmoji">
+        🏆🐼
+      </div>
+
+      <h2 id="finalTitle">
+        挑战完成！
+      </h2>
+
+      <p class="muted" id="finalName"></p>
+
+      <div class="resultScore" id="finalPercent">
+        0%
+      </div>
+
+      <p class="muted" id="finalDetail"></p>
+
+      <div class="summary">
+
+        <div class="summaryBox">
+          <span>🔤 Game 1</span>
+          <strong id="g1Summary">0/15</strong>
+        </div>
+
+        <div class="summaryBox">
+          <span>💬 Game 2</span>
+          <strong id="g2Summary">0/15</strong>
+        </div>
+
+      </div>
+
+      <div class="levelBox">
+        <p id="finalMessage"></p>
+      </div>
+
+      <button class="mainBtn" onclick="restartAll()">
+        🔄 CHƠI LẠI TỪ ĐẦU
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<div class="combo" id="comboPopup"></div>
+
+
+<script>
+
+/* ======================================================
+   DỮ LIỆU CÂU HỎI
+====================================================== */
+
+const questions = [
+
+/* GAME 1 - ROUND 1 */
+
+{
+  game: 1,
+  round: 1,
+  q: "你好",
+  chinese: true,
+  a: ["nǐ hǎo","nín hǎo","nǐmen","dàjiā"],
+  c: 0
+},
+
+{
+  game: 1,
+  round: 1,
+  q: "王老师",
+  chinese: true,
+  a: ["Wáng xuésheng","Wáng lǎoshī","Wáng tóngxué","Wáng dàjiā"],
+  c: 1
+},
+
+{
+  game: 1,
+  round: 1,
+  q: "大家",
+  chinese: true,
+  a: ["dàjiā","dàjiǎ","dàjià","dǎjiā"],
+  c: 0
+},
+
+{
+  game: 1,
+  round: 1,
+  q: "好",
+  chinese: true,
+  a: ["hào","hāo","hǎo","háo"],
+  c: 2
+},
+
+{
+  game: 1,
+  round: 1,
+  q: "学生",
+  chinese: true,
+  a: ["xuésheng","xuěsheng","xuéshēng","xuéshěng"],
+  c: 0
+},
+
+{
+  game: 1,
+  round: 1,
+  q: "们",
+  chinese: true,
+  a: ["mén","měn","mēn","men"],
+  c: 3
+},
+
+{
+  game: 1,
+  round: 1,
+  q: "老师",
+  chinese: true,
+  a: ["láoshī","lǎoshī","lǎosī","lǎoshǐ"],
+  c: 1
+},
+
+{
+  game: 1,
+  round: 1,
+  q: "您",
+  chinese: true,
+  a: ["nǐ","nín","nǐn","níng"],
+  c: 1
+},
+
+
+/* GAME 1 - ROUND 2 */
+
+{
+  game: 1,
+  round: 2,
+  q: "你们",
+  chinese: true,
+  a: ["nǐmen","nínmen","nǐmén","nǐmēn"],
+  c: 0
+},
+
+{
+  game: 1,
+  round: 2,
+  q: "谢谢",
+  chinese: true,
+  a: ["xiěxie","xièxiè","xièxie","xìexie"],
+  c: 2
+},
+
+{
+  game: 1,
+  round: 2,
+  q: "不客气",
+  chinese: true,
+  a: ["bù kèqi","bú kèqi","bú kěqi","bǔ kèqi"],
+  c: 1
+},
+
+{
+  game: 1,
+  round: 2,
+  q: "同学",
+  chinese: true,
+  a: ["tóngxué","tǒngxué","tóngxuě","tōngxué"],
+  c: 0
+},
+
+{
+  game: 1,
+  round: 2,
+  q: "再见",
+  chinese: true,
+  a: ["zǎijiàn","zàijiān","zàijiàn","zāijiàn"],
+  c: 2
+},
+
+{
+  game: 1,
+  round: 2,
+  q: "“nín” là chữ Hán nào?",
+  a: ["你","您","们","好"],
+  c: 1
+},
+
+{
+  game: 1,
+  round: 2,
+  q: "“tóngxué” là chữ Hán nào?",
+  a: ["学生","老师","同学","大家"],
+  c: 2
+},
+
+
+/* GAME 2 - ROUND 1 */
+
+{
+  game: 2,
+  round: 1,
+  q: "Buổi sáng gặp một người bạn, bạn nói:",
+  a: ["谢谢！","你好！","再见！","不客气！"],
+  c: 1
+},
+
+{
+  game: 2,
+  round: 1,
+  q: "Cả lớp cùng chào cô Vương:",
+  a: ["王老师，您好！","王老师，谢谢！","王老师，再见！","王老师，不客气！"],
+  c: 0
+},
+
+{
+  game: 2,
+  round: 1,
+  q: "Cô Vương bước vào lớp và chào tất cả mọi người:",
+  a: ["同学，再见！","大家好！","谢谢大家！","不客气！"],
+  c: 1
+},
+
+{
+  game: 2,
+  round: 1,
+  q:
+`老师：同学们，你们好！
+
+学生们：________`,
+  a: ["老师，您好！","谢谢！","不客气！","再见！"],
+  c: 0
+},
+
+{
+  game: 2,
+  round: 1,
+  q:
+`同学：谢谢！
+
+你：________`,
+  a: ["你好！","大家好！","不客气！","再见！"],
+  c: 2
+},
+
+{
+  game: 2,
+  round: 1,
+  q: "Tan học, bạn chào cô giáo:",
+  a: ["老师，再见！","老师，谢谢！","老师，你好！","老师，不客气！"],
+  c: 0
+},
+
+{
+  game: 2,
+  round: 1,
+  q: "“Các bạn” trong tiếng Trung là:",
+  a: ["大家","学生","你们","同学"],
+  c: 2
+},
+
+{
+  game: 2,
+  round: 1,
+  q: "Muốn gọi chung “các học sinh”, từ nào phù hợp nhất?",
+  a: ["学生们","老师们","你们老师","大家们"],
+  c: 0
+},
+
+
+/* GAME 2 - ROUND 2 */
+
+{
+  game: 2,
+  round: 2,
+  q: "Chọn câu phù hợp khi nói trực tiếp với cô Vương:",
+  a: ["王老师，你好！","王老师，您好！","王老师，不客气！","王老师，谢谢大家！"],
+  c: 1
+},
+
+{
+  game: 2,
+  round: 2,
+  q: "“同学” có nghĩa là:",
+  a: ["giáo viên","mọi người","bạn học","học sinh"],
+  c: 2
+},
+
+{
+  game: 2,
+  round: 2,
+  q:
+`Điền từ thích hợp:
+
+同学___，你们好！`,
+  a: ["好","们","您","大家"],
+  c: 1
+},
+
+{
+  game: 2,
+  round: 2,
+  q:
+`Điền từ thích hợp:
+
+王老师，___好！`,
+  a: ["您","们","大家","学生"],
+  c: 0
+},
+
+{
+  game: 2,
+  round: 2,
+  q:
+`Điền từ thích hợp:
+
+___好！我是王老师。`,
+  a: ["谢谢","不客气","大家","再见"],
+  c: 2
+},
+
+{
+  game: 2,
+  round: 2,
+  q: "Chọn đoạn hội thoại tự nhiên nhất:",
+  a: [
+`— 谢谢！
+— 不客气！`,
+
+`— 谢谢！
+— 再见！`,
+
+`— 你好！
+— 不客气！`,
+
+`— 再见！
+— 谢谢！`
+  ],
+  c: 0
+},
+
+{
+  game: 2,
+  round: 2,
+  q:
+`Sắp đến giờ ra về. Cô Vương nói:
+
+同学们，再见！
+
+Học sinh nên đáp:`,
+  a: ["王老师，您好！","王老师，再见！","王老师，不客气！","王老师，谢谢大家！"],
+  c: 1
+}
+
+];
+
+
+/* ======================================================
+   BIẾN GAME
+====================================================== */
+
+const letters = ["A", "B", "C", "D"];
+
+let player = "Học viên";
+
+let currentGame = 1;
+let currentRound = 1;
+
+let roundQuestions = [];
+let idx = 0;
+
+let score = 0;
+let streak = 0;
+let lives = 3;
+
+let soundOn = true;
+
+let totalCorrect = 0;
+
+let gameCorrect = {
+  1: 0,
+  2: 0
+};
+
+let completed = {
+  1: false,
+  2: false
+};
+
+let roundCorrect = 0;
+
+
+/* ======================================================
+   CHUYỂN MÀN HÌNH
+====================================================== */
+
+function showOnly(id) {
+
+  const screens = [
+    "startScreen",
+    "menuScreen",
+    "roundIntro",
+    "gameScreen",
+    "roundResult",
+    "finalScreen"
+  ];
+
+  screens.forEach(screen => {
+    document
+      .getElementById(screen)
+      .classList.add("hidden");
+  });
+
+  document
+    .getElementById(id)
+    .classList.remove("hidden");
+}
+
+
+/* ======================================================
+   MENU
+====================================================== */
+
+function openGameMenu() {
+
+  player =
+    document
+      .getElementById("studentName")
+      .value
+      .trim()
+      || "Học viên";
+
+  showOnly("menuScreen");
+
+  updateMenu();
+}
+
+
+function updateMenu() {
+
+  document
+    .getElementById("game1Choice")
+    .style.opacity =
+      completed[1] ? ".55" : "1";
+
+  document
+    .getElementById("game2Choice")
+    .style.opacity =
+      completed[2] ? ".55" : "1";
+}
+
+
+/* ======================================================
+   BẮT ĐẦU GAME
+====================================================== */
+
+function startGame(gameNumber) {
+
+  currentGame = gameNumber;
+
+  currentRound = 1;
+
+  lives = 3;
+  streak = 0;
+
+  showRoundIntro();
+}
+
+
+/* ======================================================
+   INTRO ROUND
+====================================================== */
+
+function showRoundIntro() {
+
+  const isBoss =
+    currentRound === 2;
+
+
+  document
+    .getElementById("roundEmoji")
+    .textContent =
+      isBoss ? "👾" : "⚡";
+
+
+  if (currentGame === 1) {
+
+    document
+      .getElementById("roundTitle")
+      .textContent =
+        isBoss
+        ? "GAME 1 · LƯỢT 2 · BOSS PINYIN"
+        : "GAME 1 · LƯỢT 1 · SĂN PINYIN";
+
+  }
+
+  else {
+
+    document
+      .getElementById("roundTitle")
+      .textContent =
+        isBoss
+        ? "GAME 2 · LƯỢT 2 · BOSS HỘI THOẠI"
+        : "GAME 2 · LƯỢT 1 · PHẢN XẠ GIAO TIẾP";
+
+  }
+
+
+  document
+    .getElementById("roundDesc")
+    .textContent =
+      isBoss
+      ? "👾 BOSS XUẤT HIỆN! Câu hỏi sẽ được xáo, đáp án cũng được xáo. Giữ combo để ăn điểm thưởng."
+      : "⚡ Khởi động! Câu hỏi và đáp án sẽ thay đổi thứ tự mỗi lần chơi.";
+
+
+  showOnly("roundIntro");
+}
+
+
+/* ======================================================
+   BẮT ĐẦU ROUND
+
+   XÁO CẢ CÂU HỎI + ĐÁP ÁN
+====================================================== */
+
+function beginRound() {
+
+  roundQuestions =
+    questions
+      .filter(
+        question =>
+          question.game === currentGame &&
+          question.round === currentRound
+      )
+      .map(
+        question =>
+          shuffleAnswers(question)
+      );
+
+
+  /*
+    Xáo thứ tự câu hỏi
+  */
+
+  roundQuestions =
+    shuffleArray(
+      roundQuestions
+    );
+
+
+  idx = 0;
+
+  roundCorrect = 0;
+
+
+  document
+    .getElementById("stats")
+    .classList.remove("hidden");
+
+
+  document
+    .getElementById("playerName")
+    .textContent =
+      "👤 " + player;
+
+
+  updateStats();
+
+  showOnly("gameScreen");
+
+  showQuestion();
+}
+
+
+/* ======================================================
+   HIỆN CÂU HỎI
+====================================================== */
+
+function showQuestion() {
+
+  const q =
+    roundQuestions[idx];
+
+
+  const gameTitle =
+    currentGame === 1
+    ? "🔤 汉字猎人"
+    : "💬 你好大作战";
+
+
+  const roundTag =
+    document.getElementById("roundTag");
+
+
+  roundTag.textContent =
+    `${gameTitle} · Lượt ${currentRound}`
+    +
+    (
+      currentRound === 2
+      ? " · 👾 BOSS"
+      : ""
+    );
+
+
+  roundTag
+    .classList
+    .toggle(
+      "boss",
+      currentRound === 2
+    );
+
+
+  document
+    .getElementById("questionNo")
+    .textContent =
+      `CÂU ${String(idx + 1).padStart(2, "0")}`;
+
+
+  const questionText =
+    document
+      .getElementById("questionText");
+
+
+  questionText.textContent =
+    q.q;
+
+
+  questionText
+    .classList
+    .toggle(
+      "chinese",
+      !!q.chinese
+    );
+
+
+  document
+    .getElementById("questionCounter")
+    .textContent =
+      `${idx + 1} / ${roundQuestions.length}`;
+
+
+  document
+    .getElementById("progress")
+    .style.width =
+      `${(idx / roundQuestions.length) * 100}%`;
+
+
+  const answers =
+    document
+      .getElementById("answers");
+
+
+  answers.innerHTML =
+    "";
+
+
+  q.a.forEach((answer, index) => {
+
+    const button =
+      document.createElement("button");
+
+
+    button.className =
+      "answer";
+
+
+    button.innerHTML =
+      `<span class="letter">${letters[index]}</span>${answer}`;
+
+
+    button.onclick =
+      () =>
+        selectAnswer(
+          index,
+          button
+        );
+
+
+    answers.appendChild(
+      button
+    );
+
+  });
+
+
+  const feedback =
+    document
+      .getElementById("feedback");
+
+
+  feedback.className =
+    "feedback";
+
+
+  feedback.textContent =
+    "";
+
+
+  document
+    .getElementById("nextBtn")
+    .classList.add("hidden");
+}
+
+
+/* ======================================================
+   CHỌN ĐÁP ÁN
+====================================================== */
+
+function selectAnswer(
+  choice,
+  clickedButton
+) {
+
+  const q =
+    roundQuestions[idx];
+
+
+  const buttons =
+    [
+      ...document
+        .querySelectorAll(".answer")
+    ];
+
+
+  buttons.forEach(
+    button => {
+      button.disabled = true;
+    }
+  );
+
+
+  const feedback =
+    document
+      .getElementById("feedback");
+
+
+  /* =========================
+     ĐÚNG
+  ========================= */
+
+  if (choice === q.c) {
+
+    clickedButton
+      .classList
+      .add("correct");
+
+
+    totalCorrect++;
+
+    gameCorrect[currentGame]++;
+
+    roundCorrect++;
+
+    streak++;
+
+
+    const comboBonus =
+      Math.min(
+        Math.max(
+          streak - 1,
+          0
+        ) * 15,
+        90
+      );
+
+
+    const bossBonus =
+      currentRound === 2
+      ? 30
+      : 0;
+
+
+    const gained =
+      100
+      +
+      comboBonus
+      +
+      bossBonus;
+
+
+    score += gained;
+
+
+    let praise;
+
+
+    if (streak >= 7) {
+
+      praise =
+        "你太厉害了！";
+
+    }
+
+    else if (streak >= 5) {
+
+      praise =
+        "太棒了！";
+
+    }
+
+    else if (streak >= 3) {
+
+      praise =
+        "非常好！";
+
+    }
+
+    else {
+
+      praise =
+        "答对了！";
+
+    }
+
+
+    feedback.innerHTML =
+      `🎉 <strong>${praise}</strong> +${gained} điểm`;
+
+
+    feedback.className =
+      "feedback show good";
+
+
+    playCorrectSound();
+
+    speakChinese(praise);
+
+
+    if (streak >= 3) {
+
+      showCombo(streak);
+
+    }
+
+  }
+
+
+  /* =========================
+     SAI
+  ========================= */
+
+  else {
+
+    clickedButton
+      .classList
+      .add("wrong");
+
+
+    buttons[q.c]
+      .classList
+      .add("correct");
+
+
+    streak = 0;
+
+    lives--;
+
+
+    let tease;
+
+
+    if (lives <= 0) {
+
+      tease =
+        "哎呀，危险啦！";
+
+    }
+
+    else {
+
+      tease =
+        "哎呀，答错了！";
+
+    }
+
+
+    feedback.innerHTML =
+      `😵 <strong>${tease}</strong>
+      Đáp án đúng: ${letters[q.c]}. ${q.a[q.c]}`;
+
+
+    feedback.className =
+      "feedback show bad";
+
+
+    playWrongSound();
+
+    speakChinese(tease);
+
+
+    document
+      .getElementById("gameScreen")
+      .classList.add("shake");
+
+
+    setTimeout(() => {
+
+      document
+        .getElementById("gameScreen")
+        .classList.remove("shake");
+
+    }, 300);
+
+  }
+
+
+  updateStats();
+
+
+  const nextButton =
+    document
+      .getElementById("nextBtn");
+
+
+  nextButton
+    .classList
+    .remove("hidden");
+
+
+  if (
+    idx ===
+    roundQuestions.length - 1
+  ) {
+
+    nextButton.textContent =
+      "KẾT THÚC LƯỢT →";
+
+  }
+
+  else {
+
+    nextButton.textContent =
+      "CÂU TIẾP →";
+
+  }
+}
+
+
+/* ======================================================
+   NEXT
+====================================================== */
+
+function nextQuestion() {
+
+  idx++;
+
+
+  if (
+    idx >=
+    roundQuestions.length
+  ) {
+
+    finishRound();
+
+    return;
+
+  }
+
+
+  showQuestion();
+}
+
+
+/* ======================================================
+   KẾT THÚC ROUND
+====================================================== */
+
+function finishRound() {
+
+  document
+    .getElementById("stats")
+    .classList.add("hidden");
+
+
+  const total =
+    roundQuestions.length;
+
+
+  const percentage =
+    Math.round(
+      roundCorrect
+      / total
+      * 100
+    );
+
+
+  document
+    .getElementById("roundResultEmoji")
+    .textContent =
+      percentage >= 80
+      ? "🎉🐼"
+      : "💪🐼";
+
+
+  document
+    .getElementById("roundResultTitle")
+    .textContent =
+      currentRound === 1
+      ? "Lượt 1 hoàn thành!"
+      : "BOSS ĐÃ BỊ HẠ!";
+
+
+  document
+    .getElementById("roundResultText")
+    .textContent =
+      percentage >= 80
+      ? "Quá ổn! Giữ phong độ này nha."
+      : "Không sao, sang lượt tiếp theo mình gỡ điểm.";
+
+
+  document
+    .getElementById("roundScoreText")
+    .textContent =
+      `${roundCorrect}/${total} câu đúng · ${percentage}%`;
+
+
+  document
+    .getElementById("roundContinueBtn")
+    .textContent =
+      currentRound === 1
+      ? "MỞ LƯỢT 2 👾"
+      : "VỀ KHU TRÒ CHƠI";
+
+
+  playLevelSound();
+
+
+  if (currentRound === 1) {
+
+    speakChinese(
+      "第一关完成！"
+    );
+
+  }
+
+  else {
+
+    speakChinese(
+      "太棒了，挑战完成！"
+    );
+
+  }
+
+
+  showOnly("roundResult");
+}
+
+
+/* ======================================================
+   TIẾP TỤC SAU ROUND
+====================================================== */
+
+function continueAfterRound() {
+
+  if (currentRound === 1) {
+
+    currentRound = 2;
+
+    showRoundIntro();
+
+  }
+
+  else {
+
+    completed[currentGame] =
+      true;
+
+
+    showOnly("menuScreen");
+
+
+    updateMenu();
+
+
+    if (
+      completed[1]
+      &&
+      completed[2]
+    ) {
+
+      setTimeout(
+        showFinalResult,
+        350
+      );
+
+    }
+
+  }
+}
+
+
+/* ======================================================
+   STATS
+====================================================== */
+
+function updateStats() {
+
+  document
+    .getElementById("score")
+    .textContent =
+      score;
+
+
+  document
+    .getElementById("streak")
+    .textContent =
+      streak;
+
+
+  document
+    .getElementById("lives")
+    .textContent =
+      Math.max(
+        lives,
+        0
+      );
+}
+
+
+/* ======================================================
+   COMBO
+====================================================== */
+
+function showCombo(number) {
+
+  const popup =
+    document
+      .getElementById("comboPopup");
+
+
+  if (number >= 7) {
+
+    popup.textContent =
+      `🚀 MEGA COMBO x${number}!`;
+
+  }
+
+  else if (number >= 5) {
+
+    popup.textContent =
+      `⚡ SUPER COMBO x${number}!`;
+
+  }
+
+  else {
+
+    popup.textContent =
+      `🔥 COMBO x${number}!`;
+
+  }
+
+
+  popup
+    .classList
+    .remove("show");
+
+
+  void popup.offsetWidth;
+
+
+  popup
+    .classList
+    .add("show");
+}
+
+
+/* ======================================================
+   FINAL
+====================================================== */
+
+function showFinalResult() {
+
+  document
+    .getElementById("stats")
+    .classList.add("hidden");
+
+
+  const percentage =
+    Math.round(
+      totalCorrect
+      / questions.length
+      * 100
+    );
+
+
+  let emoji =
+    "📚🐼";
+
+  let title =
+    "继续加油！";
+
+  let message =
+    "Chơi lại thêm một vòng để quen phản xạ nhé!";
+
+
+  if (percentage >= 90) {
+
+    emoji =
+      "🏆🐼";
+
+    title =
+      "太棒了！";
+
+    message =
+      "Xuất sắc! Pinyin và phản xạ chào hỏi của bạn rất chắc.";
+
+  }
+
+  else if (percentage >= 75) {
+
+    emoji =
+      "🌟🐼";
+
+    title =
+      "很好！";
+
+    message =
+      "Làm rất tốt! Chỉ còn vài điểm nhỏ cần ôn lại.";
+
+  }
+
+  else if (percentage >= 60) {
+
+    emoji =
+      "💪🐼";
+
+    title =
+      "不错！";
+
+    message =
+      "Khá ổn! Xem lại thanh điệu và cách dùng 您 / 你们 / 大家.";
+
+  }
+
+
+  document
+    .getElementById("finalEmoji")
+    .textContent =
+      emoji;
+
+
+  document
+    .getElementById("finalTitle")
+    .textContent =
+      title;
+
+
+  document
+    .getElementById("finalName")
+    .textContent =
+      `${player}, tổng kết của bạn:`;
+
+
+  document
+    .getElementById("finalPercent")
+    .textContent =
+      percentage + "%";
+
+
+  document
+    .getElementById("finalDetail")
+    .textContent =
+      `${totalCorrect}/${questions.length} câu đúng · ⭐ ${score} điểm`;
+
+
+  document
+    .getElementById("g1Summary")
+    .textContent =
+      `${gameCorrect[1]}/15`;
+
+
+  document
+    .getElementById("g2Summary")
+    .textContent =
+      `${gameCorrect[2]}/15`;
+
+
+  document
+    .getElementById("finalMessage")
+    .textContent =
+      message;
+
+
+  showOnly("finalScreen");
+
+
+  if (totalCorrect > 0) {
+
+    playWinSound();
+
+
+    if (percentage >= 75) {
+
+      speakChinese(
+        "你太棒了！"
+      );
+
+    }
+
+    else {
+
+      speakChinese(
+        "继续加油！"
+      );
+
+    }
+
+  }
+}
+
+
+/* ======================================================
+   RESTART
+====================================================== */
+
+function restartAll() {
+
+  score = 0;
+
+  streak = 0;
+
+  lives = 3;
+
+  totalCorrect = 0;
+
+
+  gameCorrect = {
+    1: 0,
+    2: 0
+  };
+
+
+  completed = {
+    1: false,
+    2: false
+  };
+
+
+  document
+    .getElementById("studentName")
+    .value =
+      player;
+
+
+  showOnly("startScreen");
+}
+
+
+/* ======================================================
+   SOUND TOGGLE
+====================================================== */
+
+function toggleSound() {
+
+  soundOn =
+    !soundOn;
+
+
+  document
+    .getElementById("soundBtn")
+    .textContent =
+      soundOn
+      ? "🔊"
+      : "🔇";
+
+
+  if (
+    !soundOn
+    &&
+    "speechSynthesis" in window
+  ) {
+
+    speechSynthesis.cancel();
+
+  }
+}
+
+
+/* ======================================================
+   AUDIO ENGINE
+====================================================== */
+
+let audioCtx;
+
+
+function getAudioContext() {
+
+  if (!audioCtx) {
+
+    audioCtx =
+      new (
+        window.AudioContext
+        ||
+        window.webkitAudioContext
+      )();
+
+  }
+
+
+  return audioCtx;
+}
+
+
+function tone(
+  frequency,
+  duration,
+  type = "sine",
+  volume = .08,
+  delay = 0
+) {
+
+  if (!soundOn) {
+    return;
+  }
+
+
+  const context =
+    getAudioContext();
+
+
+  const oscillator =
+    context.createOscillator();
+
+
+  const gain =
+    context.createGain();
+
+
+  oscillator.type =
+    type;
+
+
+  oscillator.frequency.value =
+    frequency;
+
+
+  gain.gain.value =
+    volume;
+
+
+  oscillator.connect(
+    gain
+  );
+
+
+  gain.connect(
+    context.destination
+  );
+
+
+  const start =
+    context.currentTime
+    + delay;
+
+
+  gain.gain.setValueAtTime(
+    volume,
+    start
+  );
+
+
+  gain.gain.exponentialRampToValueAtTime(
+    .001,
+    start + duration
+  );
+
+
+  oscillator.start(
+    start
+  );
+
+
+  oscillator.stop(
+    start + duration
+  );
+}
+
+
+/* ======================================================
+   CORRECT SOUND
+====================================================== */
+
+function playCorrectSound() {
+
+  tone(
+    660,
+    .12,
+    "sine",
+    .07,
+    0
+  );
+
+
+  tone(
+    880,
+    .16,
+    "sine",
+    .07,
+    .10
+  );
+}
+
+
+/* ======================================================
+   WRONG SOUND
+====================================================== */
+
+function playWrongSound() {
+
+  tone(
+    220,
+    .16,
+    "sawtooth",
+    .055,
+    0
+  );
+
+
+  tone(
+    160,
+    .22,
+    "sawtooth",
+    .045,
+    .12
+  );
+}
+
+
+/* ======================================================
+   LEVEL SOUND
+====================================================== */
+
+function playLevelSound() {
+
+  tone(
+    523,
+    .12,
+    "sine",
+    .06,
+    0
+  );
+
+
+  tone(
+    659,
+    .12,
+    "sine",
+    .06,
+    .10
+  );
+
+
+  tone(
+    784,
+    .20,
+    "sine",
+    .07,
+    .20
+  );
+}
+
+
+/* ======================================================
+   WIN SOUND
+====================================================== */
+
+function playWinSound() {
+
+  const notes = [
+    523,
+    659,
+    784,
+    1046
+  ];
+
+
+  notes.forEach(
+    (frequency, index) => {
+
+      tone(
+        frequency,
+        .18,
+        "sine",
+        .06,
+        index * .11
+      );
+
+    }
+  );
+}
+
+
+/* ======================================================
+   GIỌNG TRUNG
+====================================================== */
+
+function speakChinese(text) {
+
+  if (!soundOn) {
+    return;
+  }
+
+
+  if (
+    !(
+      "speechSynthesis"
+      in window
+    )
+  ) {
+
+    return;
+  }
+
+
+  speechSynthesis.cancel();
+
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+
+  utterance.lang =
+    "zh-CN";
+
+
+  utterance.rate =
+    1;
+
+
+  utterance.pitch =
+    1.15;
+
+
+  const voices =
+    speechSynthesis
+      .getVoices();
+
+
+  const chineseVoice =
+    voices.find(
+      voice =>
+        voice.lang
+          .toLowerCase()
+          .startsWith("zh")
+    );
+
+
+  if (chineseVoice) {
+
+    utterance.voice =
+      chineseVoice;
+
+  }
+
+
+  speechSynthesis.speak(
+    utterance
+  );
+}
+
+
+/* ======================================================
+   XÁO MẢNG
+====================================================== */
+
+function shuffleArray(array) {
+
+  const newArray =
+    [...array];
+
+
+  for (
+    let i =
+      newArray.length - 1;
+
+    i > 0;
+
+    i--
+  ) {
+
+    const j =
+      Math.floor(
+        Math.random()
+        *
+        (i + 1)
+      );
+
+
+    [
+      newArray[i],
+      newArray[j]
+    ]
+    =
+    [
+      newArray[j],
+      newArray[i]
+    ];
+
+  }
+
+
+  return newArray;
+}
+
+
+/* ======================================================
+   XÁO ĐÁP ÁN
+
+   VẪN NHỚ ĐÁP ÁN ĐÚNG
+====================================================== */
+
+function shuffleAnswers(question) {
+
+  const answerObjects =
+    question.a.map(
+      (answer, index) => {
+
+        return {
+
+          text:
+            answer,
+
+          isCorrect:
+            index === question.c
+
+        };
+
+      }
+    );
+
+
+  const shuffled =
+    shuffleArray(
+      answerObjects
+    );
+
+
+  const newCorrectIndex =
+    shuffled.findIndex(
+      answer =>
+        answer.isCorrect
+    );
+
+
+  return {
+
+    ...question,
+
+    a:
+      shuffled.map(
+        answer =>
+          answer.text
+      ),
+
+    c:
+      newCorrectIndex
+
+  };
+}
+
+</script>
+
+</body>
+</html>
