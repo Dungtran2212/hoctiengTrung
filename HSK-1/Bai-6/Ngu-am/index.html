@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSK 1 · Bài 6 · Ngữ âm</title>
+
+
+<style>
+
+/* =========================================================
+   CÀI ĐẶT CHUNG
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+body{
+
+    font-family:
+        "Segoe UI",
+        "Microsoft YaHei",
+        "PingFang SC",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #fff0f2,
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at top right,
+            #eaf8f5,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffafa,
+            #f7fbfa
+        );
+
+    color:#365f5b;
+
+    min-height:100vh;
+}
+
+
+.page{
+
+    width:min(1180px,94%);
+
+    margin:auto;
+
+    padding:30px 0 70px;
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+
+    background:rgba(255,255,255,.95);
+
+    border:1px solid #e1ece9;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(65,98,93,.09);
+
+    margin-bottom:25px;
+}
+
+
+.back{
+
+    color:#64928a;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    font-size:14px;
+}
+
+
+.hero-label{
+
+    color:#d86f60;
+
+    font-weight:900;
+
+    margin-top:18px;
+
+    font-size:14px;
+}
+
+
+.hero h1{
+
+    font-size:
+        clamp(34px,5vw,55px);
+
+    margin-top:5px;
+
+    color:#3b6661;
+}
+
+
+.hero p{
+
+    margin-top:12px;
+
+    line-height:1.7;
+
+    color:#7a8e8a;
+}
+
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+
+    background:rgba(255,255,255,.96);
+
+    border:1px solid #e0ece9;
+
+    border-radius:25px;
+
+    padding:28px;
+
+    margin-bottom:24px;
+
+    box-shadow:
+        0 8px 28px
+        rgba(60,95,90,.06);
+}
+
+
+.section-tag{
+
+    color:#d96f5c;
+
+    font-weight:900;
+
+    margin-bottom:5px;
+}
+
+
+.section h2{
+
+    font-size:27px;
+
+    margin-bottom:5px;
+}
+
+
+.sub{
+
+    color:#9b7b73;
+
+    font-size:14px;
+
+    margin-bottom:18px;
+}
+
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.note{
+
+    background:#fff8f4;
+
+    border-left:
+        4px solid #e69b87;
+
+    border-radius:12px;
+
+    padding:16px 18px;
+
+    line-height:1.8;
+
+    color:#69625e;
+
+    margin-bottom:22px;
+}
+
+
+.note strong{
+
+    color:#c96c5e;
+}
+
+
+
+/* =========================================================
+   EXERCISE TITLE
+========================================================= */
+
+.exercise{
+
+    border-top:
+        1px dashed #d8e6e3;
+
+    padding-top:24px;
+
+    margin-top:24px;
+}
+
+
+.exercise-title{
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:flex-start;
+
+    font-weight:800;
+
+    margin-bottom:18px;
+}
+
+
+.red-dot{
+
+    width:11px;
+
+    height:11px;
+
+    border-radius:3px;
+
+    background:#df4e42;
+
+    flex:none;
+
+    margin-top:6px;
+}
+
+
+.vi{
+
+    display:block;
+
+    color:#8c9d99;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    margin-top:3px;
+}
+
+
+
+/* =========================================================
+   儿化 TABLE
+========================================================= */
+
+.erhua-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:14px;
+}
+
+
+.erhua-card{
+
+    border:1px solid #d9e9e5;
+
+    background:#f7fbfa;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:center;
+}
+
+
+.erhua-main{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-bottom:15px;
+}
+
+
+.erhua-side{
+
+    min-width:90px;
+}
+
+
+.erhua-hanzi{
+
+    font-size:30px;
+
+    font-weight:900;
+
+    color:#3f6964;
+}
+
+
+.erhua-pinyin{
+
+    margin-top:4px;
+
+    color:#7c908c;
+
+    font-size:14px;
+}
+
+
+.erhua-arrow{
+
+    color:#dc7969;
+
+    font-size:27px;
+
+    font-weight:900;
+}
+
+
+.erhua-result .erhua-hanzi{
+
+    color:#c96859;
+}
+
+
+.audio-pair{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:8px;
+}
+
+
+.audio-btn{
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:9px 6px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    font-size:12px;
+
+    background:#eaf6f3;
+
+    color:#497a73;
+
+    transition:.18s;
+}
+
+
+.audio-btn:hover{
+
+    background:#dcefeb;
+
+    transform:translateY(-1px);
+}
+
+
+
+/* =========================================================
+   WORD CARDS
+========================================================= */
+
+.word-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:14px;
+}
+
+
+.word-card{
+
+    border:1px solid #eed5cb;
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    text-align:center;
+
+    transition:.18s;
+}
+
+
+.word-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(60,95,90,.10);
+}
+
+
+.word-icon{
+
+    height:115px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:49px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff6f2,
+            #eef8f5
+        );
+}
+
+
+.word-body{
+
+    padding:13px 8px 16px;
+}
+
+
+.pinyin{
+
+    color:#6d8581;
+
+    font-size:14px;
+}
+
+
+.hanzi{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    margin:4px 0;
+}
+
+
+.meaning{
+
+    color:#aa8074;
+
+    font-size:12px;
+}
+
+
+.listen{
+
+    margin-top:8px;
+
+    color:#57968c;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+
+/* =========================================================
+   SPELLING RULE
+========================================================= */
+
+.rule-box{
+
+    margin-top:18px;
+
+    border:1px solid #eadfd9;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    background:#fffaf8;
+
+    line-height:1.9;
+
+    color:#657a76;
+}
+
+
+.rule-example{
+
+    margin-top:13px;
+
+    padding:13px;
+
+    border-radius:12px;
+
+    background:white;
+
+    font-weight:800;
+
+    color:#47716b;
+
+    text-align:center;
+
+    font-size:17px;
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    text-align:center;
+
+    color:#94a4a1;
+
+    font-size:13px;
+
+    padding:20px;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px){
+
+    .erhua-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .word-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:520px){
+
+    .hero,
+    .section{
+
+        padding:20px;
+
+        border-radius:20px;
+    }
+
+
+    .erhua-grid,
+    .word-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="page">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="hero">
+
+    <a
+        class="back"
+        href="../../index.html">
+
+        ← 🏠 Về trang chủ
+
+    </a>
+
+
+    <div class="hero-label">
+
+        第六课 · 语音
+
+    </div>
+
+
+    <h1>
+
+        Ngữ âm · Bài 6
+
+    </h1>
+
+
+    <p>
+
+        Luyện <b>儿化</b> và dấu phân cách âm tiết
+        <b>隔音符号</b>.
+
+        Bấm từng nút để nghe đúng đoạn
+        trong file <b>语音6.mp3</b>.
+
+    </p>
+
+</header>
+
+
+
+<!-- =========================================================
+     1. 儿化
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="section-tag">
+
+        ❶ 儿化
+
+    </div>
+
+
+    <h2>
+
+        Âm cuốn lưỡi “儿”
+
+    </h2>
+
+
+    <div class="sub">
+
+        Retroflex Final
+
+    </div>
+
+
+
+    <div class="note">
+
+        Trong tiếng Trung, khi thêm
+
+        <strong>“儿” (ér)</strong>
+
+        vào cuối một số từ,
+        từ có thể mang sắc thái nhỏ bé,
+        thân mật hoặc yêu thích.
+
+        <br><br>
+
+        Khi 儿 hóa,
+        âm <strong>r</strong>
+        được gắn vào cuối âm tiết trước.
+
+        Ví dụ:
+
+        <strong>
+            这 → 这儿 zhèr
+        </strong>，
+
+        <strong>
+            哪 → 哪儿 nǎr
+        </strong>.
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BẢNG 原词 → 儿化
+    ====================================================== -->
+
+    <div class="exercise">
+
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+
+            <div>
+
+                先跟读，再大声朗读。
+
+                <span class="vi">
+
+                    Nghe từ gốc và dạng 儿化,
+                    sau đó đọc to.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="erhua-grid">
+
+
+            <!-- 这 -->
+
+            <div class="erhua-card">
+
+                <div class="erhua-main">
+
+                    <div class="erhua-side">
+
+                        <div class="erhua-hanzi">
+                            这
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            zhè
+                        </div>
+
+                    </div>
+
+
+                    <div class="erhua-arrow">
+                        →
+                    </div>
+
+
+                    <div class="erhua-side erhua-result">
+
+                        <div class="erhua-hanzi">
+                            这儿
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            zhèr
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audio-pair">
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('这')">
+
+                        🔊 这
+
+                    </button>
+
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('这儿')">
+
+                        🔊 这儿
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 哪 -->
+
+            <div class="erhua-card">
+
+                <div class="erhua-main">
+
+                    <div class="erhua-side">
+
+                        <div class="erhua-hanzi">
+                            哪
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            nǎ
+                        </div>
+
+                    </div>
+
+
+                    <div class="erhua-arrow">
+                        →
+                    </div>
+
+
+                    <div class="erhua-side erhua-result">
+
+                        <div class="erhua-hanzi">
+                            哪儿
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            nǎr
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audio-pair">
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('哪')">
+
+                        🔊 哪
+
+                    </button>
+
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('哪儿')">
+
+                        🔊 哪儿
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 画 -->
+
+            <div class="erhua-card">
+
+                <div class="erhua-main">
+
+                    <div class="erhua-side">
+
+                        <div class="erhua-hanzi">
+                            画
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            huà
+                        </div>
+
+                    </div>
+
+
+                    <div class="erhua-arrow">
+                        →
+                    </div>
+
+
+                    <div class="erhua-side erhua-result">
+
+                        <div class="erhua-hanzi">
+                            画儿
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            huàr
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audio-pair">
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('画')">
+
+                        🔊 画
+
+                    </button>
+
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('画儿')">
+
+                        🔊 画儿
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 盖 -->
+
+            <div class="erhua-card">
+
+                <div class="erhua-main">
+
+                    <div class="erhua-side">
+
+                        <div class="erhua-hanzi">
+                            盖
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            gài
+                        </div>
+
+                    </div>
+
+
+                    <div class="erhua-arrow">
+                        →
+                    </div>
+
+
+                    <div class="erhua-side erhua-result">
+
+                        <div class="erhua-hanzi">
+                            盖儿
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            gàir
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audio-pair">
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('盖')">
+
+                        🔊 盖
+
+                    </button>
+
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('盖儿')">
+
+                        🔊 盖儿
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 个 -->
+
+            <div class="erhua-card">
+
+                <div class="erhua-main">
+
+                    <div class="erhua-side">
+
+                        <div class="erhua-hanzi">
+                            个
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            gè
+                        </div>
+
+                    </div>
+
+
+                    <div class="erhua-arrow">
+                        →
+                    </div>
+
+
+                    <div class="erhua-side erhua-result">
+
+                        <div class="erhua-hanzi">
+                            个儿
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            gèr
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audio-pair">
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('个')">
+
+                        🔊 个
+
+                    </button>
+
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('个儿')">
+
+                        🔊 个儿
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 眼 -->
+
+            <div class="erhua-card">
+
+                <div class="erhua-main">
+
+                    <div class="erhua-side">
+
+                        <div class="erhua-hanzi">
+                            眼
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            yǎn
+                        </div>
+
+                    </div>
+
+
+                    <div class="erhua-arrow">
+                        →
+                    </div>
+
+
+                    <div class="erhua-side erhua-result">
+
+                        <div class="erhua-hanzi">
+                            眼儿
+                        </div>
+
+                        <div class="erhua-pinyin">
+                            yǎnr
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audio-pair">
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('眼')">
+
+                        🔊 眼
+
+                    </button>
+
+
+                    <button
+                        class="audio-btn"
+                        onclick="playSound('眼儿')">
+
+                        🔊 眼儿
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HÌNH ẢNH
+    ====================================================== -->
+
+    <div class="exercise">
+
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+
+            <div>
+
+                看图片，先跟读，再大声朗读。注意儿化发音。
+
+                <span class="vi">
+
+                    Nhìn hình, nghe và đọc theo.
+                    Chú ý cách phát âm 儿化.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="word-grid">
+
+
+            <!-- 面条儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('面条儿')">
+
+                <div class="word-icon">
+                    🍜
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        miàntiáor
+                    </div>
+
+                    <div class="hanzi">
+                        面条儿
+                    </div>
+
+                    <div class="meaning">
+                        mì / mì sợi
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 好玩儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('好玩儿')">
+
+                <div class="word-icon">
+                    🧩
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        hǎowánr
+                    </div>
+
+                    <div class="hanzi">
+                        好玩儿
+                    </div>
+
+                    <div class="meaning">
+                        vui / thú vị
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 一点儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('一点儿')">
+
+                <div class="word-icon">
+                    🤏
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        yìdiǎnr
+                    </div>
+
+                    <div class="hanzi">
+                        一点儿
+                    </div>
+
+                    <div class="meaning">
+                        một chút
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 饭馆儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('饭馆儿')">
+
+                <div class="word-icon">
+                    🍽️
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        fànguǎnr
+                    </div>
+
+                    <div class="hanzi">
+                        饭馆儿
+                    </div>
+
+                    <div class="meaning">
+                        nhà hàng
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 那儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('那儿')">
+
+                <div class="word-icon">
+                    👉
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        nàr
+                    </div>
+
+                    <div class="hanzi">
+                        那儿
+                    </div>
+
+                    <div class="meaning">
+                        ở đó
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 这儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('这儿_pic')">
+
+                <div class="word-icon">
+                    👇
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        zhèr
+                    </div>
+
+                    <div class="hanzi">
+                        这儿
+                    </div>
+
+                    <div class="meaning">
+                        ở đây
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 玩儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('玩儿')">
+
+                <div class="word-icon">
+                    🛝
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        wánr
+                    </div>
+
+                    <div class="hanzi">
+                        玩儿
+                    </div>
+
+                    <div class="meaning">
+                        chơi
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 歌儿 -->
+
+            <div
+                class="word-card"
+                onclick="playSound('歌儿')">
+
+                <div class="word-icon">
+                    🎵
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        gēr
+                    </div>
+
+                    <div class="hanzi">
+                        歌儿
+                    </div>
+
+                    <div class="meaning">
+                        bài hát
+                    </div>
+
+                    <div class="listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     2. 隔音符号
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="section-tag">
+
+        ❷ 拼写规则——隔音符号
+
+    </div>
+
+
+    <h2>
+
+        Quy tắc viết — Dấu phân cách âm tiết
+
+    </h2>
+
+
+    <div class="sub">
+
+        Spelling Rule — The Syllable-Dividing Mark
+
+    </div>
+
+
+
+    <div class="note">
+
+        Khi một âm tiết bắt đầu bằng
+
+        <strong>a、o hoặc e</strong>
+
+        đứng sau một âm tiết khác,
+        để tránh nhầm ranh giới âm tiết,
+        ta dùng dấu phân cách
+
+        <strong>'</strong>.
+
+    </div>
+
+
+
+    <div class="rule-box">
+
+        Ví dụ:
+
+        <div class="rule-example">
+
+            shí'èr · 十二
+            &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+
+            Xī'ān · 西安
+            &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+
+            Tiān'ānmén · 天安门
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<footer>
+
+    HSK 1 · 第六课 · 语音
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     AUDIO
+========================================================= -->
+
+<audio
+    id="lessonAudio"
+    src="语音6.mp3"
+    preload="auto">
+</audio>
+
+
+
+<script>
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+const audio =
+    document.getElementById(
+        "lessonAudio"
+    );
+
+
+let stopTimer = null;
+
+
+
+/* =========================================================
+   AUDIO MAP
+
+   File 语音6.mp3
+   Phần đọc bắt đầu sau 00:55.
+
+   Tui đã tách theo các khoảng có tiếng thật trong audio.
+========================================================= */
+
+const soundAudio = {
+
+
+    /* =====================================================
+       原词 → 儿化
+    ====================================================== */
+
+    "这": {
+
+        start:56.05,
+        end:56.88
+
+    },
+
+
+    "这儿": {
+
+        start:59.02,
+        end:59.86
+
+    },
+
+
+    "哪": {
+
+        start:61.98,
+        end:63.10
+
+    },
+
+
+    "哪儿": {
+
+        start:64.98,
+        end:66.18
+
+    },
+
+
+    "画": {
+
+        start:68.03,
+        end:68.83
+
+    },
+
+
+    "画儿": {
+
+        start:70.82,
+        end:71.70
+
+    },
+
+
+    "盖": {
+
+        start:73.65,
+        end:74.48
+
+    },
+
+
+    "盖儿": {
+
+        start:76.25,
+        end:77.15
+
+    },
+
+
+    "个": {
+
+        start:79.02,
+        end:79.90
+
+    },
+
+
+    "个儿": {
+
+        start:81.78,
+        end:82.72
+
+    },
+
+
+    "眼": {
+
+        start:84.67,
+        end:85.85
+
+    },
+
+
+    "眼儿": {
+
+        start:87.80,
+        end:88.98
+
+    },
+
+
+
+    /* =====================================================
+       HÌNH ẢNH
+       Bắt đầu khoảng 01:41
+    ====================================================== */
+
+    "面条儿": {
+
+        start:100.87,
+        end:102.45
+
+    },
+
+
+    "好玩儿": {
+
+        start:104.54,
+        end:106.15
+
+    },
+
+
+    "一点儿": {
+
+        start:108.03,
+        end:109.72
+
+    },
+
+
+    "饭馆儿": {
+
+        start:111.72,
+        end:113.42
+
+    },
+
+
+    "那儿": {
+
+        start:115.26,
+        end:116.25
+
+    },
+
+
+    "这儿_pic": {
+
+        start:118.29,
+        end:119.28
+
+    },
+
+
+    "玩儿": {
+
+        start:121.23,
+        end:122.50
+
+    },
+
+
+    "歌儿": {
+
+        start:124.39,
+        end:125.40
+
+    }
+
+};
+
+
+
+/* =========================================================
+   PHÁT AUDIO
+========================================================= */
+
+function playSound(key){
+
+    const cut =
+        soundAudio[key];
+
+
+    if(!cut){
+
+        console.warn(
+            "Không tìm thấy audio:",
+            key
+        );
+
+        return;
+
+    }
+
+
+    clearTimeout(
+        stopTimer
+    );
+
+
+    audio.pause();
+
+
+    /*
+       Mốc ở map đã chừa đầu nhẹ.
+       Không kéo lùi thêm quá nhiều để tránh dính từ trước.
+    */
+
+    const safeStart =
+        Math.max(
+            0,
+            cut.start - 0.10
+        );
+
+
+    function startPlaying(){
+
+
+        function reallyPlay(){
+
+
+            audio.play()
+
+            .then(() => {
+
+
+                const duration =
+                    (
+                        cut.end
+                        -
+                        safeStart
+                    )
+                    *
+                    1000;
+
+
+                stopTimer =
+                    setTimeout(
+                        () => {
+
+                            audio.pause();
+
+                        },
+                        duration
+                    );
+
+
+            })
+
+            .catch(error => {
+
+
+                console.error(
+                    error
+                );
+
+
+                alert(
+                    "Không phát được file 语音6.mp3."
+                );
+
+
+            });
+
+        }
+
+
+        audio.currentTime =
+            safeStart;
+
+
+        if(
+            audio.seeking
+        ){
+
+            audio.addEventListener(
+                "seeked",
+                reallyPlay,
+                {
+                    once:true
+                }
+            );
+
+        }
+
+        else{
+
+            reallyPlay();
+
+        }
+
+    }
+
+
+    if(
+        audio.readyState >= 1
+    ){
+
+        startPlaying();
+
+    }
+
+    else{
+
+        audio.addEventListener(
+            "loadedmetadata",
+            startPlaying,
+            {
+                once:true
+            }
+        );
+
+
+        audio.load();
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

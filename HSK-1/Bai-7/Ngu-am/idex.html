@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSK 1 · Bài 7 · Ngữ âm</title>
+
+<style>
+
+/* =========================================================
+   CÀI ĐẶT CHUNG
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:
+        "Segoe UI",
+        "Microsoft YaHei",
+        "PingFang SC",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(circle at top left,#fff0f2,transparent 28%),
+        radial-gradient(circle at top right,#eaf8f5,transparent 30%),
+        linear-gradient(135deg,#fffafa,#f7fbfa);
+
+    color:#365f5b;
+
+    min-height:100vh;
+}
+
+.page{
+    width:min(1180px,94%);
+    margin:auto;
+    padding:30px 0 70px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+    background:rgba(255,255,255,.95);
+    border:1px solid #e1ece9;
+    border-radius:30px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(65,98,93,.09);
+    margin-bottom:25px;
+}
+
+.back{
+    color:#64928a;
+    text-decoration:none;
+    font-weight:700;
+    font-size:14px;
+}
+
+.hero-label{
+    color:#d86f60;
+    font-weight:900;
+    margin-top:18px;
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:clamp(34px,5vw,55px);
+    margin-top:5px;
+    color:#3b6661;
+}
+
+.hero p{
+    margin-top:12px;
+    line-height:1.7;
+    color:#7a8e8a;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    background:rgba(255,255,255,.96);
+    border:1px solid #e0ece9;
+    border-radius:25px;
+    padding:28px;
+    margin-bottom:24px;
+    box-shadow:0 8px 28px rgba(60,95,90,.06);
+}
+
+.section-tag{
+    color:#d96f5c;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.section h2{
+    font-size:27px;
+    margin-bottom:5px;
+}
+
+.sub{
+    color:#9b7b73;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.note{
+    background:#fff8f4;
+    border-left:4px solid #e69b87;
+    border-radius:12px;
+    padding:16px 18px;
+    line-height:1.8;
+    color:#69625e;
+    margin-bottom:22px;
+}
+
+.note strong{
+    color:#c96c5e;
+}
+
+
+/* =========================================================
+   EXERCISE
+========================================================= */
+
+.exercise{
+    border-top:1px dashed #d8e6e3;
+    padding-top:24px;
+    margin-top:24px;
+}
+
+.exercise-title{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.red-dot{
+    width:11px;
+    height:11px;
+    border-radius:3px;
+    background:#df4e42;
+    flex:none;
+    margin-top:6px;
+}
+
+.vi{
+    display:block;
+    color:#8c9d99;
+    font-size:13px;
+    font-weight:500;
+    margin-top:3px;
+}
+
+
+/* =========================================================
+   PAIR GROUP
+========================================================= */
+
+.group-title{
+    margin:22px 0 12px;
+    color:#c96c5e;
+    font-weight:900;
+    font-size:17px;
+}
+
+.pair-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+.pair-card{
+    border:1px solid #d9e9e5;
+    background:#f7fbfa;
+    border-radius:18px;
+    padding:16px;
+}
+
+.pair-heading{
+    text-align:center;
+    color:#6c8580;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.pair-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.sound-btn{
+    border:1px solid #d6e7e3;
+    background:white;
+    border-radius:12px;
+    padding:13px 8px;
+    cursor:pointer;
+    color:#3f6964;
+    font-size:20px;
+    font-weight:900;
+    transition:.18s;
+}
+
+.sound-btn:hover{
+    background:#eaf6f3;
+    border-color:#bcd9d3;
+    transform:translateY(-2px);
+}
+
+.sound-btn span{
+    display:block;
+    margin-top:5px;
+    color:#57968c;
+    font-size:11px;
+    font-weight:800;
+}
+
+
+/* =========================================================
+   BÀI 2
+========================================================= */
+
+.nasal-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:14px;
+}
+
+.nasal-card{
+    border:1px solid #d9e9e5;
+    background:#f7fbfa;
+    border-radius:18px;
+    padding:15px;
+}
+
+.nasal-label{
+    text-align:center;
+    color:#8b9c98;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.nasal-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    text-align:center;
+    color:#94a4a1;
+    font-size:13px;
+    padding:20px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .pair-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .nasal-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px){
+
+    .hero,
+    .section{
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .pair-grid,
+    .nasal-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="hero">
+
+    <a
+        class="back"
+        href="../../index.html">
+
+        ← 🏠 Về trang chủ
+
+    </a>
+
+    <div class="hero-label">
+        第七课 · 语音
+    </div>
+
+    <h1>
+        Ngữ âm · Bài 7
+    </h1>
+
+    <p>
+        Luyện phân biệt
+        <b>thanh mẫu bật hơi / không bật hơi</b>
+        và
+        <b>vận mẫu mũi trước / mũi sau</b>.
+        Bấm từng âm để nghe đoạn tương ứng trong
+        <b>语音7.mp3</b>.
+    </p>
+
+</header>
+
+
+
+<!-- =========================================================
+     1. 送气 / 不送气
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-tag">
+        ❶ 送气声母和不送气声母辨析
+    </div>
+
+    <h2>
+        Phân biệt thanh mẫu bật hơi và không bật hơi
+    </h2>
+
+    <div class="sub">
+        Distinction Between Aspirated and Unaspirated Initials
+    </div>
+
+    <div class="note">
+
+        Trong tiếng Trung,
+        thanh mẫu bật hơi và không bật hơi
+        thường tạo thành từng cặp.
+
+        <br><br>
+
+        Có 6 nhóm chính:
+
+        <strong>
+            b / p · d / t · g / k · j / q · zh / ch · z / c
+        </strong>.
+
+    </div>
+
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+
+                听录音，分辨送气声母和不送气声母，并大声朗读。
+
+                <span class="vi">
+                    Nghe, phân biệt âm bật hơi và không bật hơi,
+                    sau đó đọc to.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="pair-grid">
+
+
+            <!-- g / k -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    g / k
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('gu')">
+                        gǔ
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('ku')">
+                        kǔ
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- z / c -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    z / c
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('zeng')">
+                        zēng
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('ceng')">
+                        cēng
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- b / p -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    b / p
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('bai')">
+                        bái
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('pai')">
+                        pái
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- d / t -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    d / t
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('dian')">
+                        diān
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('tian')">
+                        tiān
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- zh / ch -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    zh / ch
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('zhun')">
+                        zhǔn
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('chun')">
+                        chǔn
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- b / p -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    b / p
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('ben')">
+                        bēn
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('pen')">
+                        pēn
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- d / t -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    d / t
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('dong')">
+                        dòng
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('tong')">
+                        tòng
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- zh / ch -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    zh / ch
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('zhi')">
+                        zhí 
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('chi')">
+                        chí
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- j / q -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    j / q
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('ju')">
+                        jǔ
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('qu')">
+                        qǔ
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- j / q -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    j / q
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('jiu')">
+                        jiǔ
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('qiu')">
+                        qiǔ
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- z / c -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    z / c
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('zi')">
+                        zì
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('ci')">
+                        cì
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- g / k -->
+
+            <div class="pair-card">
+
+                <div class="pair-heading">
+                    g / k
+                </div>
+
+                <div class="pair-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('gua')">
+                        guā
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('kua')">
+                        kuā
+                        <span>🔊 Nghe</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     2. 前鼻音 / 后鼻音
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-tag">
+        ❷ 前鼻音韵母和后鼻音韵母辨析
+    </div>
+
+    <h2>
+        Phân biệt vận mẫu mũi trước và mũi sau
+    </h2>
+
+    <div class="sub">
+        Distinction Between Front Nasal and Back Nasal Finals
+    </div>
+
+
+    <div class="note">
+
+        Vận mẫu mũi trước là những vận mẫu
+        kết thúc bằng
+
+        <strong>-n</strong>.
+
+        <br><br>
+
+        Vận mẫu mũi sau là những vận mẫu
+        kết thúc bằng
+
+        <strong>-ng</strong>.
+
+    </div>
+
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+
+                听录音，分辨前鼻音韵母和后鼻音韵母，并大声朗读。
+
+                <span class="vi">
+                    Nghe và phân biệt âm mũi trước
+                    với âm mũi sau.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="nasal-grid">
+
+
+            <!-- 1 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('pen2')">
+                        pén
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('peng')">
+                        péng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('ran')">
+                        rǎn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('rang')">
+                        rǎng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('nian')">
+                        nián
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('niang')">
+                        niáng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('jian')">
+                        jiàn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('jiang')">
+                        jiàng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('gan')">
+                        gǎn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('gang')">
+                        gǎng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('men')">
+                        mén
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('meng')">
+                        méng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('sen')">
+                        sēn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('seng')">
+                        sēng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 8 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('zan')">
+                        zàn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('zang')">
+                        zàng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 9 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('shen')">
+                        shěn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('sheng')">
+                        shěng 
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 10 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('huan')">
+                        huán
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('huang')">
+                        huáng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 11 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('fan')">
+                        fàn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('fang')">
+                        fàng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 12 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('chen')">
+                        chēn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('cheng')">
+                        chēng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 13 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('lin')">
+                        lín
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('ling')">
+                        líng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 14 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('xian')">
+                        xiǎn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('xiang')">
+                        xiǎng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 15 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('bin')">
+                        bìn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('bing')">
+                        bìng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 16 -->
+
+            <div class="nasal-card">
+
+                <div class="nasal-label">
+                    -n / -ng
+                </div>
+
+                <div class="nasal-row">
+
+                    <button class="sound-btn"
+                        onclick="playSound('qin')">
+                        qīn
+                        <span>🔊</span>
+                    </button>
+
+                    <button class="sound-btn"
+                        onclick="playSound('qing')">
+                        qīng
+                        <span>🔊</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    HSK 1 · 第七课 · 语音
+
+</footer>
+
+
+</div>
+
+
+
+<audio
+    id="lessonAudio"
+    src="语音7.mp3"
+    preload="auto">
+</audio>
+
+
+<script>
+
+const audio =
+    document.getElementById("lessonAudio");
+
+let stopTimer = null;
+
+
+/* =========================================================
+   AUDIO MAP
+
+   BÀI 1:
+   file có phần hướng dẫn trước,
+   các âm thật bắt đầu khoảng 01:08.
+
+   24 âm khớp với 24 cụm âm trong audio.
+========================================================= */
+
+const soundAudio = {
+
+
+    /* =====================================================
+       BÀI 1
+       送气 / 不送气
+
+       Thứ tự đúng theo bảng:
+       gǔ kǔ zēng cēng bái pái
+       diān tiān zhǔn chǔn bēn pēn
+       dòng tòng zhì chì jǔ qǔ
+       jiǔ qiǔ zǐ cǐ guā kuā
+    ====================================================== */
+
+    "gu":{
+        start:68.25,
+        end:69.20
+    },
+
+    "ku":{
+        start:70.40,
+        end:71.65
+    },
+
+    "zeng":{
+        start:74.80,
+        end:75.72
+    },
+
+    "ceng":{
+        start:76.95,
+        end:78.05
+    },
+
+    "bai":{
+        start:81.05,
+        end:82.02
+    },
+
+    "pai":{
+        start:83.18,
+        end:84.28
+    },
+
+
+    "dian":{
+        start:87.14,
+        end:88.12
+    },
+
+    "tian":{
+        start:89.42,
+        end:90.58
+    },
+
+    "zhun":{
+        start:93.58,
+        end:94.78
+    },
+
+    "chun":{
+        start:96.08,
+        end:97.42
+    },
+
+    "ben":{
+        start:100.65,
+        end:101.62
+    },
+
+    "pen":{
+        start:103.00,
+        end:104.20
+    },
+
+
+    "dong":{
+        start:107.12,
+        end:108.10
+    },
+
+    "tong":{
+        start:109.50,
+        end:110.62
+    },
+
+    "zhi":{
+        start:113.45,
+        end:114.42
+    },
+
+    "chi":{
+        start:116.25,
+        end:117.38
+    },
+
+    "ju":{
+        start:120.68,
+        end:121.92
+    },
+
+    "qu":{
+        start:123.38,
+        end:124.72
+    },
+
+
+    "jiu":{
+        start:127.60,
+        end:128.75
+    },
+
+    "qiu":{
+        start:130.20,
+        end:131.52
+    },
+
+    "zi":{
+        start:134.55,
+        end:135.50
+    },
+
+    "ci":{
+        start:137.40,
+        end:138.48
+    },
+
+    "gua":{
+        start:141.34,
+        end:142.28
+    },
+
+    "kua":{
+        start:143.75,
+        end:144.82
+    },
+
+
+
+    /* =====================================================
+       BÀI 2
+       前鼻音 / 后鼻音
+
+       32 âm thật bắt đầu khoảng 02:47.
+    ====================================================== */
+
+    "pen2":{
+        start:167.05,
+        end:168.38
+    },
+
+    "peng":{
+        start:169.35,
+        end:170.72
+    },
+
+    "ran":{
+        start:173.75,
+        end:175.25
+    },
+
+    "rang":{
+        start:176.55,
+        end:178.08
+    },
+
+    "nian":{
+        start:181.00,
+        end:182.42
+    },
+
+    "niang":{
+        start:183.30,
+        end:184.78
+    },
+
+    "jian":{
+        start:188.00,
+        end:189.12
+    },
+
+    "jiang":{
+        start:190.45,
+        end:191.70
+    },
+
+
+    "gan":{
+        start:194.48,
+        end:196.06
+    },
+
+    "gang":{
+        start:197.18,
+        end:198.78
+    },
+
+    "men":{
+        start:201.32,
+        end:202.72
+    },
+
+    "meng":{
+        start:203.48,
+        end:205.02
+    },
+
+    "sen":{
+        start:207.42,
+        end:208.78
+    },
+
+    "seng":{
+        start:210.00,
+        end:211.45
+    },
+
+    "zan":{
+        start:214.00,
+        end:215.18
+    },
+
+    "zang":{
+        start:216.50,
+        end:217.72
+    },
+
+
+    "shen":{
+        start:220.38,
+        end:221.88
+    },
+
+    "sheng":{
+        start:222.85,
+        end:224.32
+    },
+
+    "huan":{
+        start:227.05,
+        end:228.38
+    },
+
+    "huang":{
+        start:229.30,
+        end:230.72
+    },
+
+    "fan":{
+        start:233.28,
+        end:234.52
+    },
+
+    "fang":{
+        start:235.50,
+        end:236.92
+    },
+
+    "chen":{
+        start:239.50,
+        end:240.95
+    },
+
+    "cheng":{
+        start:241.60,
+        end:243.22
+    },
+
+
+    "lin":{
+        start:246.00,
+        end:247.30
+    },
+
+    "ling":{
+        start:248.02,
+        end:249.48
+    },
+
+    "xian":{
+        start:252.00,
+        end:253.68
+    },
+
+    "xiang":{
+        start:254.25,
+        end:255.92
+    },
+
+    "bin":{
+        start:258.08,
+        end:259.90
+    },
+
+    "bing":{
+        start:260.52,
+        end:262.18
+    },
+
+    "qin":{
+        start:264.45,
+        end:266.22
+    },
+
+    "qing":{
+        start:266.48,
+        end:268.61
+    }
+
+};
+
+
+/* =========================================================
+   PHÁT AUDIO
+========================================================= */
+
+function playSound(key){
+
+    const cut =
+        soundAudio[key];
+
+    if(!cut){
+
+        console.warn(
+            "Không tìm thấy audio:",
+            key
+        );
+
+        return;
+    }
+
+
+    clearTimeout(stopTimer);
+
+    audio.pause();
+
+
+    /*
+       Mốc trên đã chừa khoảng đầu nhỏ.
+       Chỉ lùi thêm 0.08 giây để tránh GitHub
+       nuốt phụ âm mà không dính từ trước.
+    */
+
+    const safeStart =
+        Math.max(
+            0,
+            cut.start - 0.08
+        );
+
+
+    function startPlaying(){
+
+
+        function reallyPlay(){
+
+            audio.play()
+
+            .then(() => {
+
+                const duration =
+                    (
+                        cut.end
+                        -
+                        safeStart
+                    )
+                    *
+                    1000;
+
+                stopTimer =
+                    setTimeout(
+                        () => {
+
+                            audio.pause();
+
+                        },
+                        duration
+                    );
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                alert(
+                    "Không phát được file 语音7.mp3."
+                );
+
+            });
+        }
+
+
+        audio.currentTime =
+            safeStart;
+
+
+        if(audio.seeking){
+
+            audio.addEventListener(
+                "seeked",
+                reallyPlay,
+                {
+                    once:true
+                }
+            );
+
+        }
+
+        else{
+
+            reallyPlay();
+
+        }
+
+    }
+
+
+    if(audio.readyState >= 1){
+
+        startPlaying();
+
+    }
+
+    else{
+
+        audio.addEventListener(
+            "loadedmetadata",
+            startPlaying,
+            {
+                once:true
+            }
+        );
+
+        audio.load();
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
