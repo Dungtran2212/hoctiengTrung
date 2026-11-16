@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSK 1 · Bài 3 · Ngữ âm</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    background:
+        radial-gradient(circle at top left,#fff0f2,transparent 28%),
+        radial-gradient(circle at top right,#eaf8f5,transparent 30%),
+        linear-gradient(135deg,#fffafa,#f7fbfa);
+    color:#365f5b;
+    min-height:100vh;
+}
+
+.page{
+    width:min(1180px,94%);
+    margin:auto;
+    padding:30px 0 70px;
+}
+
+.hero{
+    background:rgba(255,255,255,.95);
+    border:1px solid #e1ece9;
+    border-radius:30px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(65,98,93,.09);
+    margin-bottom:25px;
+}
+
+.back{
+    color:#64928a;
+    text-decoration:none;
+    font-weight:700;
+    font-size:14px;
+}
+
+.hero-label{
+    color:#d86f60;
+    font-weight:900;
+    margin-top:18px;
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:clamp(34px,5vw,55px);
+    margin-top:5px;
+    color:#3b6661;
+}
+
+.hero p{
+    margin-top:12px;
+    line-height:1.7;
+    color:#7a8e8a;
+}
+
+.section{
+    background:rgba(255,255,255,.96);
+    border:1px solid #e0ece9;
+    border-radius:25px;
+    padding:28px;
+    margin-bottom:24px;
+    box-shadow:0 8px 28px rgba(60,95,90,.06);
+}
+
+.section-tag{
+    color:#d96f5c;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.section h2{
+    font-size:27px;
+    margin-bottom:5px;
+}
+
+.sub{
+    color:#9b7b73;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.note{
+    background:#fff8f4;
+    border-left:4px solid #e69b87;
+    border-radius:12px;
+    padding:15px 17px;
+    line-height:1.7;
+    color:#69625e;
+    margin-bottom:22px;
+}
+
+.exercise{
+    border-top:1px dashed #d8e6e3;
+    padding-top:24px;
+    margin-top:24px;
+}
+
+.exercise-title{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.red-dot{
+    width:11px;
+    height:11px;
+    border-radius:3px;
+    background:#df4e42;
+    flex:none;
+    margin-top:6px;
+}
+
+.vi{
+    display:block;
+    color:#8c9d99;
+    font-size:13px;
+    font-weight:500;
+    margin-top:3px;
+}
+
+.group-title{
+    margin:22px 0 12px;
+    color:#d17363;
+    font-weight:900;
+}
+
+.sound-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:11px;
+}
+
+.initial-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.sound-card{
+    border:1px solid #d9e9e5;
+    background:#f8fcfb;
+    border-radius:16px;
+    padding:13px;
+    text-align:center;
+}
+
+.sound-main{
+    font-size:25px;
+    font-weight:900;
+    color:#3f6964;
+    margin-bottom:10px;
+}
+
+.sound-note{
+    display:block;
+    font-size:11px;
+    font-weight:600;
+    color:#90a19e;
+    margin-top:2px;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.actions button{
+    border:none;
+    border-radius:10px;
+    padding:8px 6px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:800;
+}
+
+.listen-btn{
+    background:#eaf6f3;
+    color:#497a73;
+}
+
+.repeat-btn{
+    background:#fff0f3;
+    color:#b56576;
+}
+
+.actions button:hover{
+    transform:translateY(-1px);
+}
+
+.rule{
+    background:#fff9f7;
+    border:1px solid #f0ded8;
+    border-radius:18px;
+    padding:19px;
+    margin:20px 0;
+}
+
+.rule h3{
+    color:#c8695c;
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.rule p{
+    color:#697f7b;
+    line-height:1.7;
+}
+
+.rule-example{
+    background:white;
+    border-radius:12px;
+    padding:11px;
+    margin-top:11px;
+    font-weight:800;
+    color:#47716b;
+    line-height:1.8;
+}
+
+.word-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:14px;
+}
+
+.word-card{
+    border:1px solid #eed5cb;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    text-align:center;
+}
+
+.word-icon{
+    height:95px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    background:linear-gradient(135deg,#fff6f2,#eef8f5);
+}
+
+.word-body{
+    padding:11px 8px 14px;
+}
+
+.pinyin{
+    color:#6d8581;
+    font-size:14px;
+}
+
+.hanzi{
+    font-size:27px;
+    font-weight:800;
+    margin:3px 0;
+}
+
+.meaning{
+    font-size:12px;
+    color:#aa8074;
+    min-height:18px;
+}
+
+.word-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin-top:10px;
+}
+
+.word-actions button{
+    border:none;
+    border-radius:10px;
+    padding:8px 5px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:800;
+}
+
+.recording{
+    outline:2px solid #df7182;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    50%{opacity:.65}
+}
+
+.status{
+    position:fixed;
+    left:50%;
+    bottom:22px;
+    transform:translateX(-50%);
+    background:#365f5b;
+    color:white;
+    border-radius:999px;
+    padding:10px 17px;
+    font-size:13px;
+    font-weight:700;
+    display:none;
+    z-index:99;
+    box-shadow:0 8px 24px rgba(0,0,0,.16);
+}
+
+footer{
+    text-align:center;
+    color:#94a4a1;
+    font-size:13px;
+    padding:20px;
+}
+
+@media(max-width:800px){
+    .sound-grid,.word-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px){
+    .page{
+        width:94%;
+    }
+
+    .hero,
+    .section{
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .sound-grid,
+    .word-grid,
+    .initial-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .actions,
+    .word-actions{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="hero">
+
+    <a class="back" href="../../index.html">
+        ← 🏠 Về trang chủ
+    </a>
+
+    <div class="hero-label">
+        第三课 · 语音
+    </div>
+
+    <h1>Ngữ âm · Bài 3</h1>
+
+</header>
+
+
+<!-- =====================================================
+     1. 声母和韵母（3）
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-tag">
+        ❶ 声母和韵母（3）
+    </div>
+
+    <h2>Thanh mẫu và vận mẫu</h2>
+
+    <div class="sub">
+        Initials and Finals (3)
+    </div>
+
+    <div class="note">
+        Các thanh mẫu
+        <b>zh、ch、sh、r、z、c、s</b>
+        chủ yếu kết hợp với các vận mẫu trong bảng dưới.
+        Chúng không kết hợp với
+        <b>i [i]、ü</b>
+        hoặc các vận mẫu bắt đầu bằng
+        <b>i [i] / ü</b>.
+    </div>
+
+
+    <!-- CHẤM ĐỎ 1 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                先跟读声母和韵母，再大声朗读。
+
+                <span class="vi">
+                    Nghe mẫu từng âm, sau đó bấm “Đọc lại” để tự luyện.
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="group-title">
+            声母 · Thanh mẫu
+        </div>
+
+        <div class="sound-grid initial-grid">
+
+            <div class="sound-card">
+
+                <div class="sound-main">
+                    zh
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('zh')">
+                        🔊 Nghe mẫu
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+                        🎙️ Đọc lại
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="sound-card">
+
+                <div class="sound-main">
+                    ch
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('ch')">
+                        🔊 Nghe mẫu
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+                        🎙️ Đọc lại
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="sound-card">
+
+                <div class="sound-main">
+                    sh
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('sh')">
+                        🔊 Nghe mẫu
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+                        🎙️ Đọc lại
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="sound-card">
+
+                <div class="sound-main">
+                    r
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('r')">
+                        🔊 Nghe mẫu
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+                        🎙️ Đọc lại
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="sound-card">
+
+                <div class="sound-main">
+                    z
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('z')">
+                        🔊 Nghe mẫu
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+                        🎙️ Đọc lại
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="sound-card">
+
+                <div class="sound-main">
+                    c
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('c')">
+                        🔊 Nghe mẫu
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+                        🎙️ Đọc lại
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="sound-card">
+
+                <div class="sound-main">
+                    s
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('s')">
+                        🔊 Nghe mẫu
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+                        🎙️ Đọc lại
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="group-title">
+            韵母 · Vận mẫu
+        </div>
+
+        <div
+            class="sound-grid"
+            id="finalGrid">
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 2 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                先跟读音节，再大声朗读。
+
+                <span class="vi">
+                    Luyện 4 thanh điệu của từng âm tiết.
+                </span>
+            </div>
+
+        </div>
+
+        <div
+            class="sound-grid"
+            id="toneGrid">
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 3 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                看图片，先跟读音节，再大声朗读。
+
+                <span class="vi">
+                    Nghe và đọc lại từng từ theo hình minh họa.
+                </span>
+            </div>
+
+        </div>
+
+        <div
+            class="word-grid"
+            id="wordGrid1">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     2. 拼写规则
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-tag">
+        ❷ 拼写规则
+    </div>
+
+    <h2>Quy tắc viết âm tiết</h2>
+
+    <div class="sub">
+        Spelling Rules
+    </div>
+
+
+    <!-- RULE 1 -->
+
+    <div class="rule">
+
+        <h3>
+            （1）“u + vận mẫu” khi đứng độc lập
+        </h3>
+
+        <p>
+            Khi
+            <b>ua、uo、uai、uei、uan、uen、uang、ueng</b>
+            đứng độc lập thành âm tiết,
+            chữ <b>u</b> được đổi thành <b>w</b>.
+        </p>
+
+        <div class="rule-example">
+            ua → wa　　
+            uo → wo　　
+            uai → wai　　
+            uei → wei
+            <br>
+
+            uan → wan　　
+            uen → wen　　
+            uang → wang　　
+            ueng → weng
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 1 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                先跟读音节，再大声朗读。
+
+                <span class="vi">
+                    Nghe mẫu và luyện bốn thanh điệu.
+                </span>
+            </div>
+
+        </div>
+
+        <div
+            class="sound-grid"
+            id="spellingToneGrid">
+        </div>
+
+    </div>
+
+
+    <!-- RULE 2 -->
+
+    <div class="rule">
+
+        <h3>
+            （2）“uei、uen” trong âm tiết
+        </h3>
+
+        <p>
+            Khi <b>uei、uen</b>
+            kết hợp với thanh mẫu,
+            chúng được viết rút gọn thành
+            <b>ui、un</b>.
+        </p>
+
+        <div class="rule-example">
+            Ví dụ trong giáo trình:
+            shuǐ、chūn、suì、cūn
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 2 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                看图片，先跟读音节，再大声朗读。
+
+                <span class="vi">
+                    Nghe và đọc lại các từ có ui / un.
+                </span>
+            </div>
+
+        </div>
+
+        <div
+            class="word-grid"
+            id="wordGrid2">
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    HSK 1 · 第三课 · 语音
+</footer>
+
+</div>
+
+
+<audio
+    id="lessonAudio"
+    src="语音3.mp3"
+    preload="metadata">
+</audio>
+
+<div
+    class="status"
+    id="status">
+</div>
+
+
+<script>
+
+const audio =
+    document.getElementById("lessonAudio");
+
+const statusBox =
+    document.getElementById("status");
+
+let stopTimer = null;
+
+
+/* =========================================================
+   AUDIO TỪNG ÂM
+========================================================= */
+
+const soundAudio = {
+
+
+    /* =====================================
+       声母 · THANH MẪU
+    ===================================== */
+
+    "zh": {
+        start:62.74,
+        end:63.89
+    },
+
+    "ch": {
+        start:65.12,
+        end:66.39
+    },
+
+    "sh": {
+        start:67.47,
+        end:68.69
+    },
+
+    "r": {
+        start:69.70,
+        end:70.87
+    },
+
+    "z": {
+        start:72.00,
+        end:72.96
+    },
+
+    "c": {
+        start:74.20,
+        end:75.28
+    },
+
+    "s": {
+        start:76.43,
+        end:77.59
+    },
+
+
+    /* =====================================
+       韵母 · VẬN MẪU
+    ===================================== */
+
+    "a": {
+        start:81.43,
+        end:82.27
+    },
+
+    "e": {
+        start:83.66,
+        end:84.65
+    },
+
+    "i": {
+        start:85.86,
+        end:89.49
+    },
+
+    "u": {
+        start:91.12,
+        end:92.04
+    },
+
+    "ai": {
+        start:93.08,
+        end:94.15
+    },
+
+    "ao": {
+        start:95.08,
+        end:96.23
+    },
+
+    "ou": {
+        start:97.21,
+        end:98.38
+    },
+
+    "an": {
+        start:99.38,
+        end:100.48
+    },
+
+    "en": {
+        start:101.71,
+        end:102.61
+    },
+
+    "ang": {
+        start:103.91,
+        end:104.96
+    },
+
+    "eng": {
+        start:105.98,
+        end:107.82
+    },
+
+    "ong": {
+        start:108.88,
+        end:110.28
+    },
+
+    "ua": {
+        start:110.98,
+        end:113.38
+    },
+
+    "uo": {
+        start:113.52,
+        end:114.51
+    },
+
+    "uai": {
+        start:115.80,
+        end:117.93
+    },
+
+    "uei": {
+        start:118.27,
+        end:119.32
+    },
+
+    "uan": {
+        start:121.12,
+        end:122.22
+    },
+
+    "uen": {
+        start:123.45,
+        end:124.58
+    },
+
+    "uang": {
+        start:125.53,
+        end:127.02
+    },
+
+    "ueng": {
+        start:128.07,
+        end:129.45
+    },
+
+
+    /* =====================================
+       4 THANH ĐIỆU
+    ===================================== */
+
+    "zhā": {
+        start:136.20,
+        end:137.42
+    },
+
+    "zhá": {
+        start:138.34,
+        end:139.77
+    },
+
+    "zhǎ": {
+        start:140.60,
+        end:142.28
+    },
+
+    "zhà": {
+        start:143.00,
+        end:144.14
+    },
+
+
+    "shē": {
+        start:147.05,
+        end:148.42
+    },
+
+    "shé": {
+        start:150.00,
+        end:151.41
+    },
+
+    "shě": {
+        start:152.60,
+        end:154.29
+    },
+
+    "shè": {
+        start:155.30,
+        end:156.66
+    },
+
+
+    "chuāng": {
+        start:159.67,
+        end:161.20
+    },
+
+    "chuáng": {
+        start:162.28,
+        end:164.06
+    },
+
+    "chuǎng": {
+        start:165.12,
+        end:167.01
+    },
+
+    "chuàng": {
+        start:168.11,
+        end:169.56
+    },
+
+
+    "zuō": {
+        start:172.09,
+        end:173.59
+    },
+
+    "zuó": {
+        start:174.69,
+        end:176.22
+    },
+
+    "zuǒ": {
+        start:177.33,
+        end:179.15
+    },
+
+    "zuò": {
+        start:180.07,
+        end:181.52
+    },
+
+
+    /* =====================================
+       HÌNH MINH HỌA BÀI 1
+    ===================================== */
+
+    "rén": {
+        start:191.62,
+        end:192.91
+    },
+
+    "zuò_word": {
+        start:194.50,
+        end:195.84
+    },
+
+    "cài": {
+        start:197.36,
+        end:198.63
+    },
+
+    "shū": {
+        start:200.20,
+        end:201.57
+    },
+
+    "shǒujī": {
+        start:203.00,
+        end:204.76
+    },
+
+    "yīshēng": {
+        start:206.29,
+        end:207.92
+    },
+
+    "zhuōzi": {
+        start:209.15,
+        end:210.70
+    },
+
+    "chūzūchē": {
+        start:212.22,
+        end:214.27
+    },
+
+
+    /* =====================================
+       拼写规则 · WA / WEI
+    ===================================== */
+
+    "wā": {
+        start:226.06,
+        end:227.24
+    },
+
+    "wá": {
+        start:228.02,
+        end:229.43
+    },
+
+    "wǎ": {
+        start:230.30,
+        end:231.89
+    },
+
+    "wà": {
+        start:233.11,
+        end:234.31
+    },
+
+
+    "wēi": {
+        start:236.80,
+        end:238.20
+    },
+
+    "wéi": {
+        start:239.04,
+        end:240.58
+    },
+
+    "wěi": {
+        start:241.46,
+        end:243.25
+    },
+
+    "wèi": {
+        start:244.16,
+        end:245.58
+    },
+
+
+    /* =====================================
+       HÌNH MINH HỌA BÀI 2
+    ===================================== */
+
+    "chūn": {
+        start:255.27,
+        end:256.88
+    },
+
+    "cūn": {
+        start:258.50,
+        end:260.26
+    },
+
+    "shuì": {
+        start:262.00,
+        end:263.47
+    },
+
+    "zuǐ": {
+        start:265.10,
+        end:266.87
+    }
+
+};
+
+
+/* =========================================================
+   DANH SÁCH VẬN MẪU
+========================================================= */
+
+const finals = [
+
+    ["a",""],
+
+    ["e",""],
+
+    [
+        "i",
+        "âm i đặc biệt sau z/c/s, zh/ch/sh/r"
+    ],
+
+    ["u",""],
+
+    ["ai",""],
+
+    ["ao",""],
+
+    ["ou",""],
+
+    ["an",""],
+
+    ["en",""],
+
+    ["ang",""],
+
+    ["eng",""],
+
+    ["ong",""],
+
+    ["ua",""],
+
+    ["uo",""],
+
+    ["uai",""],
+
+    ["uei",""],
+
+    ["uan",""],
+
+    ["uen",""],
+
+    ["uang",""],
+
+    ["ueng",""]
+
+];
+
+
+/* =========================================================
+   THANH ĐIỆU
+========================================================= */
+
+const tones = [
+
+    "zhā",
+    "zhá",
+    "zhǎ",
+    "zhà",
+
+    "shē",
+    "shé",
+    "shě",
+    "shè",
+
+    "chuāng",
+    "chuáng",
+    "chuǎng",
+    "chuàng",
+
+    "zuō",
+    "zuó",
+    "zuǒ",
+    "zuò"
+
+];
+
+
+/* =========================================================
+   WA / WEI
+========================================================= */
+
+const spellingTones = [
+
+    "wā",
+    "wá",
+    "wǎ",
+    "wà",
+
+    "wēi",
+    "wéi",
+    "wěi",
+    "wèi"
+
+];
+
+
+/* =========================================================
+   TỪ HÌNH MINH HỌA BÀI 1
+========================================================= */
+
+const words1 = [
+
+    [
+        "rén",
+        "人",
+        "người",
+        "👥",
+        "rén"
+    ],
+
+    [
+        "zuò",
+        "坐",
+        "ngồi",
+        "🪑",
+        "zuò_word"
+    ],
+
+    [
+        "cài",
+        "菜",
+        "rau / món ăn",
+        "🥬",
+        "cài"
+    ],
+
+    [
+        "shū",
+        "书",
+        "sách",
+        "📚",
+        "shū"
+    ],
+
+    [
+        "shǒujī",
+        "手机",
+        "điện thoại",
+        "📱",
+        "shǒujī"
+    ],
+
+    [
+        "yīshēng",
+        "医生",
+        "bác sĩ",
+        "🩺",
+        "yīshēng"
+    ],
+
+    [
+        "zhuōzi",
+        "桌子",
+        "cái bàn",
+        "🪵",
+        "zhuōzi"
+    ],
+
+    [
+        "chūzūchē",
+        "出租车",
+        "taxi",
+        "🚕",
+        "chūzūchē"
+    ]
+
+];
+
+
+/* =========================================================
+   TỪ HÌNH MINH HỌA BÀI 2
+========================================================= */
+
+const words2 = [
+
+    [
+        "chūn",
+        "春",
+        "mùa xuân",
+        "🌱",
+        "chūn"
+    ],
+
+    [
+        "cūn",
+        "村",
+        "làng",
+        "🏡",
+        "cūn"
+    ],
+
+    [
+        "shuì",
+        "睡",
+        "ngủ",
+        "😴",
+        "shuì"
+    ],
+
+    [
+        "zuǐ",
+        "嘴",
+        "miệng",
+        "👄",
+        "zuǐ"
+    ]
+
+];
+
+
+/* =========================================================
+   TẠO THẺ ÂM
+========================================================= */
+
+function soundCard(
+    text,
+    note=""
+){
+
+    return `
+
+        <div class="sound-card">
+
+            <div class="sound-main">
+
+                ${text}
+
+                <span class="sound-note">
+                    ${note}
+                </span>
+
+            </div>
+
+            <div class="actions">
+
+                <button
+                    class="listen-btn"
+                    onclick="playSound('${text}')">
+
+                    🔊 Nghe mẫu
+
+                </button>
+
+                <button
+                    class="repeat-btn"
+                    onclick="recordRepeat(this)">
+
+                    🎙️ Đọc lại
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   HIỂN THỊ CÁC VẬN MẪU
+========================================================= */
+
+document
+.getElementById("finalGrid")
+.innerHTML =
+
+    finals
+
+    .map(
+        ([sound,note]) =>
+        soundCard(
+            sound,
+            note
+        )
+    )
+
+    .join("");
+
+
+/* =========================================================
+   HIỂN THỊ THANH ĐIỆU
+========================================================= */
+
+document
+.getElementById("toneGrid")
+.innerHTML =
+
+    tones
+
+    .map(
+        sound =>
+        soundCard(sound)
+    )
+
+    .join("");
+
+
+/* =========================================================
+   HIỂN THỊ WA / WEI
+========================================================= */
+
+document
+.getElementById("spellingToneGrid")
+.innerHTML =
+
+    spellingTones
+
+    .map(
+        sound =>
+        soundCard(sound)
+    )
+
+    .join("");
+
+
+/* =========================================================
+   TẠO THẺ TỪ
+========================================================= */
+
+function wordCard(
+    [
+        pinyin,
+        hanzi,
+        meaning,
+        icon,
+        key
+    ]
+){
+
+    return `
+
+        <div class="word-card">
+
+            <div class="word-icon">
+                ${icon}
+            </div>
+
+            <div class="word-body">
+
+                <div class="pinyin">
+                    ${pinyin}
+                </div>
+
+                <div class="hanzi">
+                    ${hanzi}
+                </div>
+
+                <div class="meaning">
+                    ${meaning}
+                </div>
+
+                <div class="word-actions">
+
+                    <button
+                        class="listen-btn"
+                        onclick="playSound('${key}')">
+
+                        🔊 Nghe mẫu
+
+                    </button>
+
+                    <button
+                        class="repeat-btn"
+                        onclick="recordRepeat(this)">
+
+                        🎙️ Đọc lại
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   HIỂN THỊ TỪ BÀI 1
+========================================================= */
+
+document
+.getElementById("wordGrid1")
+.innerHTML =
+
+    words1
+
+    .map(wordCard)
+
+    .join("");
+
+
+/* =========================================================
+   HIỂN THỊ TỪ BÀI 2
+========================================================= */
+
+document
+.getElementById("wordGrid2")
+.innerHTML =
+
+    words2
+
+    .map(wordCard)
+
+    .join("");
+
+
+/* =========================================================
+   THÔNG BÁO
+========================================================= */
+
+function showStatus(
+    text,
+    ms=1700
+){
+
+    statusBox.textContent =
+        text;
+
+    statusBox.style.display =
+        "block";
+
+    clearTimeout(
+        showStatus.timer
+    );
+
+    showStatus.timer =
+        setTimeout(
+            () => {
+
+                statusBox.style.display =
+                    "none";
+
+            },
+            ms
+        );
+
+}
+
+
+/* =========================================================
+   PHÁT TỪNG ÂM
+========================================================= */
+
+function playSound(sound){
+
+    const cut =
+        soundAudio[sound];
+
+
+    if(!cut){
+
+        console.warn(
+            "Không có audio:",
+            sound
+        );
+
+        return;
+
+    }
+
+
+    clearTimeout(
+        stopTimer
+    );
+
+
+    audio.pause();
+
+
+    function startPlaying(){
+
+        audio.currentTime =
+            cut.start;
+
+
+        audio
+        .play()
+
+        .then(() => {
+
+            const duration =
+                (
+                    cut.end
+                    -
+                    cut.start
+                )
+                * 1000;
+
+
+            stopTimer =
+                setTimeout(
+                    () => {
+
+                        audio.pause();
+
+                    },
+                    duration
+                );
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                error
+            );
+
+
+            alert(
+                "Không phát được 语音3.mp3. Hãy kiểm tra file audio có nằm cùng thư mục với index.html không."
+            );
+
+        });
+
+    }
+
+
+    if(
+        audio.readyState >= 1
+    ){
+
+        startPlaying();
+
+    }
+
+    else{
+
+        audio
+        .addEventListener(
+            "loadedmetadata",
+            startPlaying,
+            {
+                once:true
+            }
+        );
+
+
+        audio.load();
+
+    }
+
+}
+
+
+/* =========================================================
+   GHI ÂM GIỌNG NGƯỜI HỌC
+========================================================= */
+
+let activeRecorder = null;
+
+let activeStream = null;
+
+let recordTimer = null;
+
+
+/* =========================================================
+   NÚT ĐỌC LẠI
+========================================================= */
+
+async function recordRepeat(button){
+
+
+    if(
+        activeRecorder
+        &&
+        activeRecorder.state === "recording"
+    ){
+
+        activeRecorder.stop();
+
+        return;
+
+    }
+
+
+    if(
+        !navigator.mediaDevices
+        ||
+        !navigator.mediaDevices.getUserMedia
+        ||
+        typeof MediaRecorder === "undefined"
+    ){
+
+        alert(
+            "Trình duyệt này chưa hỗ trợ ghi âm. Hãy thử Chrome hoặc Edge."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+
+        activeStream =
+            await navigator
+            .mediaDevices
+            .getUserMedia(
+                {
+                    audio:true
+                }
+            );
+
+
+        const chunks = [];
+
+
+        activeRecorder =
+            new MediaRecorder(
+                activeStream
+            );
+
+
+        activeRecorder
+        .ondataavailable =
+            event => {
+
+                if(
+                    event.data.size > 0
+                ){
+
+                    chunks.push(
+                        event.data
+                    );
+
+                }
+
+            };
+
+
+        activeRecorder
+        .onstop =
+            () => {
+
+
+                clearTimeout(
+                    recordTimer
+                );
+
+
+                button
+                .classList
+                .remove(
+                    "recording"
+                );
+
+
+                button.textContent =
+                    "🎙️ Đọc lại";
+
+
+                const blob =
+                    new Blob(
+                        chunks,
+                        {
+                            type:
+                            activeRecorder.mimeType
+                        }
+                    );
+
+
+                const url =
+                    URL
+                    .createObjectURL(
+                        blob
+                    );
+
+
+                const playback =
+                    new Audio(
+                        url
+                    );
+
+
+                showStatus(
+                    "▶️ Đang phát lại giọng của bạn",
+                    2200
+                );
+
+
+                playback.play();
+
+
+                playback
+                .onended =
+                    () => {
+
+                        URL
+                        .revokeObjectURL(
+                            url
+                        );
+
+                    };
+
+
+                if(
+                    activeStream
+                ){
+
+                    activeStream
+                    .getTracks()
+                    .forEach(
+                        track =>
+                        track.stop()
+                    );
+
+                }
+
+
+                activeRecorder =
+                    null;
+
+
+                activeStream =
+                    null;
+
+            };
+
+
+        activeRecorder
+        .start();
+
+
+        button
+        .classList
+        .add(
+            "recording"
+        );
+
+
+        button.textContent =
+            "⏹ Dừng";
+
+
+        showStatus(
+            "🎙️ Đang ghi âm... đọc âm này ngay nhé",
+            2500
+        );
+
+
+        recordTimer =
+            setTimeout(
+                () => {
+
+                    if(
+                        activeRecorder
+                        &&
+                        activeRecorder.state === "recording"
+                    ){
+
+                        activeRecorder.stop();
+
+                    }
+
+                },
+                3000
+            );
+
+
+    }
+
+    catch(error){
+
+
+        console.error(
+            error
+        );
+
+
+        alert(
+            "Không mở được micro. Hãy cho phép quyền microphone rồi thử lại."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2570 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSK 1 · Bài 3 · 听读练</title>
+
+
+<style>
+
+/* =========================================================
+   CÀI ĐẶT CHUNG
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+
+    font-family:
+        "Segoe UI",
+        "Microsoft YaHei",
+        "PingFang SC",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #edf8fd,
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at top right,
+            #fff3ee,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #edf8fc,
+            #f8fcfd
+        );
+
+    color:#315f78;
+
+    min-height:100vh;
+}
+
+
+.page{
+
+    width:min(1220px,96%);
+
+    margin:auto;
+
+    padding:25px 0 70px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+
+    background:white;
+
+    border-radius:38px;
+
+    padding:34px 38px;
+
+    margin-bottom:28px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(77,138,166,.10);
+}
+
+
+.back{
+
+    display:inline-block;
+
+    margin-bottom:18px;
+
+    text-decoration:none;
+
+    color:#56889e;
+
+    font-size:14px;
+
+    font-weight:800;
+}
+
+
+.hero-label{
+
+    color:#ff806d;
+
+    font-weight:900;
+
+    font-size:14px;
+
+    margin-bottom:6px;
+}
+
+
+.hero h1{
+
+    color:#315f78;
+
+    font-size:
+        clamp(34px,5vw,52px);
+
+    margin-bottom:7px;
+}
+
+
+.hero p{
+
+    color:#7d9bad;
+
+    font-size:16px;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.exercise-section{
+
+    background:white;
+
+    border-radius:38px;
+
+    padding:32px;
+
+    margin-bottom:30px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(77,138,166,.09);
+}
+
+
+/* =========================================================
+   TIÊU ĐỀ
+========================================================= */
+
+.exercise-title{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    margin-bottom:24px;
+}
+
+
+.exercise-number{
+
+    width:46px;
+
+    height:46px;
+
+    flex:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff756c,
+            #ff9b77
+        );
+
+    color:white;
+
+    font-size:21px;
+
+    font-weight:900;
+}
+
+
+.exercise-title h2{
+
+    color:#315f78;
+
+    font-size:22px;
+
+    line-height:1.5;
+
+    margin-bottom:5px;
+}
+
+
+.exercise-title p{
+
+    color:#7e9aaa;
+
+    font-size:15px;
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+.audio-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+    padding:18px 22px;
+
+    margin-bottom:26px;
+
+    border:
+        2px dashed #99d4ed;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #eefaff,
+            #fff7f1
+        );
+}
+
+
+.audio-icon{
+
+    font-size:22px;
+}
+
+
+.play-btn{
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:14px 22px;
+
+    background:#67b9df;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.18s;
+}
+
+
+.play-btn:hover{
+
+    background:#55add5;
+
+    transform:translateY(-1px);
+}
+
+
+.play-btn.playing{
+
+    background:#ff8d76;
+}
+
+
+.audio-note{
+
+    color:#7898a9;
+
+    font-size:14px;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.grid-4{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:18px;
+}
+
+
+.grid-5{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,minmax(0,1fr));
+
+    gap:18px;
+}
+
+
+/* =========================================================
+   CARD CÂU HỎI
+========================================================= */
+
+.test-item{
+
+    min-height:100px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#fbfdfe;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    color:#315f78;
+}
+
+
+/* =========================================================
+   INPUT NẰM NGAY TRONG CÂU
+========================================================= */
+
+.inline-input{
+
+    width:80px;
+
+    border:none;
+
+    border-bottom:
+        2px solid #8ba6b5;
+
+    background:transparent;
+
+    outline:none;
+
+    text-align:center;
+
+    color:#315f78;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    padding:2px 4px;
+
+    margin-right:4px;
+}
+
+
+.inline-input.final-input{
+
+    width:100px;
+
+    margin-left:8px;
+
+    margin-right:0;
+}
+
+
+.inline-input.correct{
+
+    border-color:#65ae87;
+
+    color:#43815e;
+}
+
+
+.inline-input.wrong{
+
+    border-color:#df7c85;
+
+    color:#be5964;
+}
+
+
+/* =========================================================
+   BÀI 3 - CHỌN THANH
+========================================================= */
+
+.tone-card{
+
+    min-height:135px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fbfdfe;
+
+    border-radius:18px;
+
+    padding:15px;
+}
+
+
+.tone-word{
+
+    font-size:22px;
+
+    color:#315f78;
+
+    font-weight:900;
+
+    margin-bottom:16px;
+}
+
+
+.tone-options{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    width:100%;
+
+    gap:6px;
+}
+
+
+.tone-option{
+
+    min-height:38px;
+
+    border:
+        1px solid #d4e5ec;
+
+    border-radius:10px;
+
+    background:white;
+
+    color:#51788b;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    font-weight:900;
+
+    transition:.15s;
+}
+
+
+.tone-option:hover{
+
+    background:#eef8fc;
+}
+
+
+.tone-option.selected{
+
+    background:#dff3fb;
+
+    border-color:#82c3df;
+
+    color:#27627d;
+}
+
+
+.tone-card.correct{
+
+    outline:
+        2px solid #78b997;
+}
+
+
+.tone-card.wrong{
+
+    outline:
+        2px solid #df8990;
+}
+
+
+/* =========================================================
+   BÀI 4
+========================================================= */
+
+.picture-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:18px;
+
+    margin-bottom:30px;
+}
+
+
+.picture-card{
+
+    background:#fbfdfe;
+
+    border:
+        1px solid #dceaf0;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+
+.picture-card img{
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    object-fit:cover;
+
+    display:block;
+
+    background:#eef5f7;
+}
+
+
+.picture-body{
+
+    padding:14px;
+}
+
+
+.picture-title{
+
+    text-align:center;
+
+    color:#51788b;
+
+    font-size:17px;
+
+    font-weight:900;
+
+    margin-bottom:11px;
+}
+
+
+.picture-options{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:6px;
+}
+
+
+.picture-option{
+
+    min-height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:
+        1px solid #d5e5eb;
+
+    border-radius:10px;
+
+    background:white;
+
+    cursor:pointer;
+
+    color:#4e788b;
+
+    font-weight:900;
+}
+
+
+.picture-option.selected{
+
+    background:#dff3fb;
+
+    border-color:#82c3df;
+}
+
+
+.picture-card.correct{
+
+    outline:
+        2px solid #75b894;
+}
+
+
+.picture-card.wrong{
+
+    outline:
+        2px solid #df858c;
+}
+
+
+/* =========================================================
+   HỘI THOẠI
+========================================================= */
+
+.dialogue-list{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:16px;
+}
+
+
+.dialogue-card{
+
+    background:#fffdfc;
+
+    border:
+        1px solid #e6edef;
+
+    border-radius:18px;
+
+    padding:18px;
+}
+
+
+.dialogue-number{
+
+    width:31px;
+
+    height:31px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:12px;
+
+    border-radius:50%;
+
+    background:#f16e58;
+
+    color:white;
+
+    font-weight:900;
+}
+
+
+.chinese{
+
+    color:#385e70;
+
+    font-size:19px;
+
+    line-height:1.8;
+}
+
+
+.pinyin{
+
+    color:#8b9da6;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+.divider{
+
+    border:none;
+
+    border-top:
+        1px dashed #ddd;
+
+    margin:10px 0;
+}
+
+
+/* =========================================================
+   NỘP BÀI
+========================================================= */
+
+.submit-section{
+
+    background:white;
+
+    border-radius:38px;
+
+    padding:34px;
+
+    text-align:center;
+
+    box-shadow:
+        0 10px 35px
+        rgba(77,138,166,.09);
+}
+
+
+.submit-section h2{
+
+    color:#315f78;
+
+    margin-bottom:8px;
+}
+
+
+.submit-section p{
+
+    color:#819ca9;
+
+    margin-bottom:22px;
+}
+
+
+.submit-btn{
+
+    border:none;
+
+    border-radius:16px;
+
+    padding:15px 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #58b58d,
+            #67c6a2
+        );
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:900;
+}
+
+
+.submit-btn:hover{
+
+    transform:translateY(-1px);
+}
+
+
+.score-box{
+
+    display:none;
+
+    max-width:650px;
+
+    margin:25px auto 0;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    background:#f2faf7;
+
+    color:#416f60;
+
+    line-height:1.8;
+}
+
+
+.score-big{
+
+    font-size:28px;
+
+    font-weight:900;
+
+    margin-bottom:7px;
+}
+
+
+.mail-btn{
+
+    display:none;
+
+    margin:18px auto 0;
+
+    border:none;
+
+    border-radius:13px;
+
+    padding:12px 20px;
+
+    background:#eaf4fa;
+
+    color:#3f7188;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#89a2ae;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .grid-5,
+    .grid-4,
+    .picture-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    .hero,
+    .exercise-section,
+    .submit-section{
+
+        border-radius:24px;
+
+        padding:20px;
+    }
+
+
+    .grid-5,
+    .grid-4,
+    .picture-grid,
+    .dialogue-list{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="hero">
+
+    <a
+        class="back"
+        href="../../index.html">
+
+        ← 🏠 Về trang chủ
+
+    </a>
+
+
+    <div class="hero-label">
+
+        第三课 · 听读练
+
+    </div>
+
+
+    <h1>
+
+        二、听读练
+
+    </h1>
+
+
+    <p>
+
+        Listen, Read, and Practice
+
+    </p>
+
+</header>
+
+
+
+<!-- =========================================================
+     BÀI 1
+========================================================= -->
+
+<section class="exercise-section">
+
+    <div class="exercise-title">
+
+        <div class="exercise-number">
+            1
+        </div>
+
+        <div>
+
+            <h2>
+                听录音，写出听到的声母并大声朗读。
+            </h2>
+
+            <p>
+                Listen, write down the initials you hear,
+                then read aloud.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="audio-box">
+
+        <span class="audio-icon">
+            🎧
+        </span>
+
+        <button
+            class="play-btn"
+            onclick="playSection(5,70,this)">
+
+            ▶ Nghe Bài 1
+
+        </button>
+
+        <span class="audio-note">
+            Nghe và điền 12 thanh mẫu.
+        </span>
+
+    </div>
+
+
+    <div
+        class="grid-4"
+        id="exercise1">
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     BÀI 2
+========================================================= -->
+
+<section class="exercise-section">
+
+    <div class="exercise-title">
+
+        <div class="exercise-number">
+            2
+        </div>
+
+        <div>
+
+            <h2>
+                听录音，写出听到的韵母并大声朗读。
+            </h2>
+
+            <p>
+                Listen, write down the finals you hear,
+                then read aloud.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="audio-box">
+
+        <span class="audio-icon">
+            🎧
+        </span>
+
+        <button
+            class="play-btn"
+            onclick="playSection(71,144,this)">
+
+            ▶ Nghe Bài 2
+
+        </button>
+
+        <span class="audio-note">
+            Nghe và điền 15 vận mẫu.
+        </span>
+
+    </div>
+
+
+    <div
+        class="grid-5"
+        id="exercise2">
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     BÀI 3
+========================================================= -->
+
+<section class="exercise-section">
+
+    <div class="exercise-title">
+
+        <div class="exercise-number">
+            3
+        </div>
+
+        <div>
+
+            <h2>
+                听录音，写出听到的声调并大声朗读。
+            </h2>
+
+            <p>
+                Listen, mark the tones you hear,
+                then read aloud.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="audio-box">
+
+        <span class="audio-icon">
+            🎧
+        </span>
+
+        <button
+            class="play-btn"
+            onclick="playSection(145,232,this)">
+
+            ▶ Nghe Bài 3
+
+        </button>
+
+        <span class="audio-note">
+            Nghe và chọn thanh 1, 2, 3 hoặc 4.
+        </span>
+
+    </div>
+
+
+    <div
+        class="grid-5"
+        id="exercise3">
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     BÀI 4
+========================================================= -->
+
+<section class="exercise-section">
+
+    <div class="exercise-title">
+
+        <div class="exercise-number">
+            4
+        </div>
+
+        <div>
+
+            <h2>
+                看图片，选择正确的对话。
+            </h2>
+
+            <p>
+                Look at the pictures and choose
+                the correct dialogue.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="audio-box">
+
+        <span class="audio-icon">
+            🎧
+        </span>
+
+        <button
+            class="play-btn"
+            onclick="playSection(232.65,281.9,this)">
+
+            ▶ Nghe Bài 4
+
+        </button>
+
+        <span class="audio-note">
+            Nghe hội thoại rồi chọn số phù hợp cho từng hình.
+        </span>
+
+    </div>
+
+
+
+    <div class="picture-grid">
+
+
+        <div
+            class="picture-card"
+            id="pic1">
+
+            <img
+                src="scene1.png"
+                alt="Hình 1">
+
+            <div class="picture-body">
+
+                <div class="picture-title">
+                    Hình 1
+                </div>
+
+                <div
+                    class="picture-options"
+                    data-name="pic1">
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic1',1)">
+                        ①
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic1',2)">
+                        ②
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic1',3)">
+                        ③
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic1',4)">
+                        ④
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="picture-card"
+            id="pic2">
+
+            <img
+                src="scene2.png"
+                alt="Hình 2">
+
+            <div class="picture-body">
+
+                <div class="picture-title">
+                    Hình 2
+                </div>
+
+                <div class="picture-options">
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic2',1)">
+                        ①
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic2',2)">
+                        ②
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic2',3)">
+                        ③
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic2',4)">
+                        ④
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="picture-card"
+            id="pic3">
+
+            <img
+                src="scene3.png"
+                alt="Hình 3">
+
+            <div class="picture-body">
+
+                <div class="picture-title">
+                    Hình 3
+                </div>
+
+                <div class="picture-options">
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic3',1)">
+                        ①
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic3',2)">
+                        ②
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic3',3)">
+                        ③
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic3',4)">
+                        ④
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="picture-card"
+            id="pic4">
+
+            <img
+                src="scene4.png"
+                alt="Hình 4">
+
+            <div class="picture-body">
+
+                <div class="picture-title">
+                    Hình 4
+                </div>
+
+                <div class="picture-options">
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic4',1)">
+                        ①
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic4',2)">
+                        ②
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic4',3)">
+                        ③
+                    </div>
+
+                    <div
+                        class="picture-option"
+                        onclick="choosePicture(this,'pic4',4)">
+                        ④
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HỘI THOẠI
+    ====================================================== -->
+
+    <div class="dialogue-list">
+
+
+        <div class="dialogue-card">
+
+            <div class="dialogue-number">
+                1
+            </div>
+
+            <div class="chinese">
+                A：我是法国人。
+            </div>
+
+            <div class="pinyin">
+                Wǒ shì Fǎguó rén.
+            </div>
+
+            <hr class="divider">
+
+            <div class="chinese">
+                B：我也是法国人。
+            </div>
+
+            <div class="pinyin">
+                Wǒ yě shì Fǎguó rén.
+            </div>
+
+        </div>
+
+
+
+        <div class="dialogue-card">
+
+            <div class="dialogue-number">
+                2
+            </div>
+
+            <div class="chinese">
+                A：这是我女朋友。
+            </div>
+
+            <div class="pinyin">
+                Zhè shì wǒ nǚpéngyou.
+            </div>
+
+            <hr class="divider">
+
+            <div class="chinese">
+                B：你好，很高兴认识你。
+            </div>
+
+            <div class="pinyin">
+                Nǐ hǎo，hěn gāoxìng rènshi nǐ.
+            </div>
+
+        </div>
+
+
+
+        <div class="dialogue-card">
+
+            <div class="dialogue-number">
+                3
+            </div>
+
+            <div class="chinese">
+                A：王老师是你的中文老师吗？
+            </div>
+
+            <div class="pinyin">
+                Wáng lǎoshī shì nǐ de Zhōngwén lǎoshī ma?
+            </div>
+
+            <hr class="divider">
+
+            <div class="chinese">
+                B：是的。
+            </div>
+
+            <div class="pinyin">
+                Shì de.
+            </div>
+
+        </div>
+
+
+
+        <div class="dialogue-card">
+
+            <div class="dialogue-number">
+                4
+            </div>
+
+            <div class="chinese">
+                A：喂，你工作忙吗？
+            </div>
+
+            <div class="pinyin">
+                Wèi，nǐ gōngzuò máng ma?
+            </div>
+
+            <hr class="divider">
+
+            <div class="chinese">
+                B：我工作不忙。
+            </div>
+
+            <div class="pinyin">
+                Wǒ gōngzuò bù máng.
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     NỘP BÀI
+========================================================= -->
+
+<section class="submit-section">
+
+    <h2>
+        📩 Hoàn thành bài kiểm tra
+    </h2>
+
+    <p>
+        Làm xong cả 4 bài rồi bấm Nộp bài.
+    </p>
+
+
+    <button
+        class="submit-btn"
+        onclick="submitTest()">
+
+        ✓ Nộp bài & Chấm điểm
+
+    </button>
+
+
+    <div
+        class="score-box"
+        id="scoreBox">
+
+        <div
+            class="score-big"
+            id="scoreBig">
+        </div>
+
+        <div
+            id="scoreDetail">
+        </div>
+
+    </div>
+
+
+    <button
+        class="mail-btn"
+        id="mailButton"
+        onclick="sendEmail()">
+
+        ✉ Gửi kết quả qua email
+
+    </button>
+
+</section>
+
+
+
+<footer>
+
+    HSK 1 · 第三课 · 听读练
+
+</footer>
+
+
+</div>
+
+
+
+<audio
+    id="lessonAudio"
+    src="听读练3.mp3"
+    preload="metadata">
+</audio>
+
+
+
+<script>
+
+/* =========================================================
+   EMAIL CỦA GIÁO VIÊN
+   >>> THAY EMAIL Ở ĐÂY <<<
+========================================================= */
+
+const TEACHER_EMAIL =
+    "dungtran92qc@gmail.com";
+
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+const audio =
+    document.getElementById(
+        "lessonAudio"
+    );
+
+
+let stopTimer = null;
+
+let currentButton = null;
+
+
+
+function playSection(
+    start,
+    end,
+    button
+){
+
+    clearTimeout(
+        stopTimer
+    );
+
+
+    audio.pause();
+
+
+    if(
+        currentButton
+        &&
+        currentButton !== button
+    ){
+
+        currentButton.classList.remove(
+            "playing"
+        );
+
+
+        if(
+            currentButton.dataset.text
+        ){
+
+            currentButton.textContent =
+                currentButton.dataset.text;
+
+        }
+
+    }
+
+
+    if(
+        !button.dataset.text
+    ){
+
+        button.dataset.text =
+            button.textContent.trim();
+
+    }
+
+
+    currentButton =
+        button;
+
+
+    button.classList.add(
+        "playing"
+    );
+
+
+    button.textContent =
+        "⏸ Đang phát...";
+
+
+    function begin(){
+
+        audio.currentTime =
+            start;
+
+
+        audio.play()
+
+        .then(() => {
+
+
+            stopTimer =
+                setTimeout(
+                    () => {
+
+
+                        audio.pause();
+
+
+                        button.classList.remove(
+                            "playing"
+                        );
+
+
+                        button.textContent =
+                            button.dataset.text;
+
+
+                    },
+                    (
+                        end
+                        -
+                        start
+                    )
+                    *
+                    1000
+                );
+
+
+        })
+
+        .catch(error => {
+
+
+            console.error(
+                error
+            );
+
+
+            alert(
+                "Không phát được file 听读练3.mp3."
+            );
+
+
+        });
+
+    }
+
+
+    if(
+        audio.readyState >= 1
+    ){
+
+        begin();
+
+    }
+
+    else{
+
+        audio.addEventListener(
+            "loadedmetadata",
+            begin,
+            {
+                once:true
+            }
+        );
+
+
+        audio.load();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   BÀI 1
+========================================================= */
+
+const exercise1 = [
+
+    ["ān","s"],
+    ["ī","ch"],
+    ["ǒu","z"],
+    ["èng","zh"],
+
+    ["ì","z"],
+    ["àng","ch"],
+    ["én","r"],
+    ["uì","s"],
+
+    ["ài","c"],
+    ["uǐ","sh"],
+    ["ì","r"],
+    ["ōng","zh"]
+
+];
+
+
+
+function renderExercise1(){
+
+    document.getElementById(
+        "exercise1"
+    ).innerHTML =
+
+    exercise1
+
+    .map(
+        (item,index) => `
+
+        <div class="test-item">
+
+            <input
+                class="inline-input"
+                id="e1-${index}"
+                autocomplete="off">
+
+            <span>
+                ${item[0]}
+            </span>
+
+        </div>
+
+        `
+    )
+
+    .join("");
+
+}
+
+
+
+/* =========================================================
+   BÀI 2
+========================================================= */
+
+const exercise2 = [
+
+    ["z","u"],
+    ["zh","i"],
+    ["c","ai"],
+    ["z","i"],
+    ["ch","ao"],
+
+    ["r","en"],
+    ["sh","ang"],
+    ["z","en"],
+    ["r","i"],
+    ["s","an"],
+
+    ["ch","uan"],
+    ["r","e"],
+    ["zh","uo"],
+    ["c","ong"],
+    ["sh","ei"]
+
+];
+
+
+
+function renderExercise2(){
+
+    document.getElementById(
+        "exercise2"
+    ).innerHTML =
+
+    exercise2
+
+    .map(
+        (item,index) => `
+
+        <div class="test-item">
+
+            <span>
+                ${item[0]}
+            </span>
+
+            <input
+                class="inline-input final-input"
+                id="e2-${index}"
+                autocomplete="off">
+
+        </div>
+
+        `
+    )
+
+    .join("");
+
+}
+
+
+
+/* =========================================================
+   BÀI 3
+========================================================= */
+
+const exercise3 = [
+
+    ["che",1],
+    ["ren",2],
+    ["chang",4],
+    ["zao",3],
+    ["shou",3],
+
+    ["zhen",1],
+    ["sui",4],
+    ["sheng",1],
+    ["ri",4],
+    ["zhong",1],
+
+    ["shui",3],
+    ["zuo",4],
+    ["chuang",2],
+    ["shu",1],
+    ["si",4]
+
+];
+
+
+const toneChoices = {};
+
+
+
+function renderExercise3(){
+
+    document.getElementById(
+        "exercise3"
+    ).innerHTML =
+
+    exercise3
+
+    .map(
+        (item,index) => `
+
+        <div
+            class="tone-card"
+            id="toneCard-${index}">
+
+            <div class="tone-word">
+                ${item[0]}
+            </div>
+
+            <div class="tone-options">
+
+                ${[1,2,3,4]
+
+                .map(
+                    tone => `
+
+                    <div
+                        class="tone-option"
+                        onclick="
+                            chooseTone(
+                                ${index},
+                                ${tone},
+                                this
+                            )
+                        ">
+
+                        ${tone}
+
+                    </div>
+
+                    `
+                )
+
+                .join("")}
+
+            </div>
+
+        </div>
+
+        `
+    )
+
+    .join("");
+
+}
+
+
+
+function chooseTone(
+    index,
+    tone,
+    element
+){
+
+    toneChoices[index] =
+        tone;
+
+
+    const card =
+        document.getElementById(
+            `toneCard-${index}`
+        );
+
+
+    card
+    .querySelectorAll(
+        ".tone-option"
+    )
+    .forEach(
+        option => {
+
+            option.classList.remove(
+                "selected"
+            );
+
+        }
+    );
+
+
+    element.classList.add(
+        "selected"
+    );
+
+}
+
+
+
+/* =========================================================
+   BÀI 4
+========================================================= */
+
+const pictureChoices = {};
+
+
+const pictureAnswers = {
+
+    pic1:3,
+    pic2:4,
+    pic3:1,
+    pic4:2
+
+};
+
+
+
+function choosePicture(
+    element,
+    id,
+    number
+){
+
+    pictureChoices[id] =
+        number;
+
+
+    const card =
+        document.getElementById(
+            id
+        );
+
+
+    card
+    .querySelectorAll(
+        ".picture-option"
+    )
+    .forEach(
+        option => {
+
+            option.classList.remove(
+                "selected"
+            );
+
+        }
+    );
+
+
+    element.classList.add(
+        "selected"
+    );
+
+}
+
+
+
+/* =========================================================
+   NORMALIZE
+========================================================= */
+
+function normalize(text){
+
+    return text
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g,"");
+
+}
+
+
+
+/* =========================================================
+   KIỂM TRA ĐÃ LÀM HẾT CHƯA
+========================================================= */
+
+function isComplete(){
+
+    for(
+        let i = 0;
+        i < exercise1.length;
+        i++
+    ){
+
+        const input =
+            document.getElementById(
+                `e1-${i}`
+            );
+
+
+        if(
+            !input.value.trim()
+        ){
+
+            return false;
+
+        }
+
+    }
+
+
+    for(
+        let i = 0;
+        i < exercise2.length;
+        i++
+    ){
+
+        const input =
+            document.getElementById(
+                `e2-${i}`
+            );
+
+
+        if(
+            !input.value.trim()
+        ){
+
+            return false;
+
+        }
+
+    }
+
+
+    for(
+        let i = 0;
+        i < exercise3.length;
+        i++
+    ){
+
+        if(
+            toneChoices[i] === undefined
+        ){
+
+            return false;
+
+        }
+
+    }
+
+
+    for(
+        const id
+        of
+        Object.keys(
+            pictureAnswers
+        )
+    ){
+
+        if(
+            pictureChoices[id]
+            ===
+            undefined
+        ){
+
+            return false;
+
+        }
+
+    }
+
+
+    return true;
+
+}
+
+
+
+/* =========================================================
+   NỘP BÀI
+========================================================= */
+
+let finalResult = null;
+
+
+
+function submitTest(){
+
+    if(
+        !isComplete()
+    ){
+
+        alert(
+            "Bạn chưa làm hết bài. Hãy hoàn thành cả 4 phần rồi mới nộp nhé."
+        );
+
+        return;
+
+    }
+
+
+    let score1 = 0;
+
+    let score2 = 0;
+
+    let score3 = 0;
+
+    let score4 = 0;
+
+
+
+    /* ================= BÀI 1 ================= */
+
+    exercise1
+    .forEach(
+        (item,index) => {
+
+
+            const input =
+                document.getElementById(
+                    `e1-${index}`
+                );
+
+
+            input.classList.remove(
+                "correct",
+                "wrong"
+            );
+
+
+            if(
+                normalize(input.value)
+                ===
+                normalize(item[1])
+            ){
+
+                score1++;
+
+
+                input.classList.add(
+                    "correct"
+                );
+
+            }
+
+            else{
+
+                input.classList.add(
+                    "wrong"
+                );
+
+            }
+
+
+        }
+    );
+
+
+
+    /* ================= BÀI 2 ================= */
+
+    exercise2
+    .forEach(
+        (item,index) => {
+
+
+            const input =
+                document.getElementById(
+                    `e2-${index}`
+                );
+
+
+            input.classList.remove(
+                "correct",
+                "wrong"
+            );
+
+
+            if(
+                normalize(input.value)
+                ===
+                normalize(item[1])
+            ){
+
+                score2++;
+
+
+                input.classList.add(
+                    "correct"
+                );
+
+            }
+
+            else{
+
+                input.classList.add(
+                    "wrong"
+                );
+
+            }
+
+
+        }
+    );
+
+
+
+    /* ================= BÀI 3 ================= */
+
+    exercise3
+    .forEach(
+        (item,index) => {
+
+
+            const card =
+                document.getElementById(
+                    `toneCard-${index}`
+                );
+
+
+            card.classList.remove(
+                "correct",
+                "wrong"
+            );
+
+
+            if(
+                toneChoices[index]
+                ===
+                item[1]
+            ){
+
+                score3++;
+
+
+                card.classList.add(
+                    "correct"
+                );
+
+            }
+
+            else{
+
+                card.classList.add(
+                    "wrong"
+                );
+
+            }
+
+
+        }
+    );
+
+
+
+    /* ================= BÀI 4 ================= */
+
+    Object.keys(
+        pictureAnswers
+    )
+    .forEach(
+        id => {
+
+
+            const card =
+                document.getElementById(
+                    id
+                );
+
+
+            card.classList.remove(
+                "correct",
+                "wrong"
+            );
+
+
+            if(
+                pictureChoices[id]
+                ===
+                pictureAnswers[id]
+            ){
+
+                score4++;
+
+
+                card.classList.add(
+                    "correct"
+                );
+
+            }
+
+            else{
+
+                card.classList.add(
+                    "wrong"
+                );
+
+            }
+
+
+        }
+    );
+
+
+
+    const totalCorrect =
+        score1
+        +
+        score2
+        +
+        score3
+        +
+        score4;
+
+
+    const totalQuestions =
+        12
+        +
+        15
+        +
+        15
+        +
+        4;
+
+
+    const percent =
+        Math.round(
+            totalCorrect
+            /
+            totalQuestions
+            *
+            100
+        );
+
+
+    finalResult = {
+
+        score1,
+        score2,
+        score3,
+        score4,
+
+        totalCorrect,
+        totalQuestions,
+        percent
+
+    };
+
+
+
+    const scoreBox =
+        document.getElementById(
+            "scoreBox"
+        );
+
+
+    scoreBox.style.display =
+        "block";
+
+
+    document.getElementById(
+        "scoreBig"
+    ).textContent =
+        `${totalCorrect}/${totalQuestions} · ${percent}%`;
+
+
+    document.getElementById(
+        "scoreDetail"
+    ).innerHTML = `
+
+        Bài 1:
+        <b>${score1}/12</b>
+        <br>
+
+        Bài 2:
+        <b>${score2}/15</b>
+        <br>
+
+        Bài 3:
+        <b>${score3}/15</b>
+        <br>
+
+        Bài 4:
+        <b>${score4}/4</b>
+
+    `;
+
+
+    document.getElementById(
+        "mailButton"
+    ).style.display =
+        "block";
+
+
+    scoreBox.scrollIntoView(
+        {
+            behavior:"smooth",
+            block:"center"
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   GỬI KẾT QUẢ QUA EMAIL
+========================================================= */
+
+function sendEmail(){
+
+    if(
+        !finalResult
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        TEACHER_EMAIL
+        ===
+        "DIEN_EMAIL_CUA_CO_VAO_DAY"
+    ){
+
+        alert(
+            "Bạn chưa điền email giáo viên trong code."
+        );
+
+        return;
+
+    }
+
+
+    const subject =
+        "Kết quả HSK 1 - Bài 3 - 听读练";
+
+
+    const body =
+
+`KẾT QUẢ BÀI KIỂM TRA HSK 1 - BÀI 3
+
+Bài 1: ${finalResult.score1}/12
+Bài 2: ${finalResult.score2}/15
+Bài 3: ${finalResult.score3}/15
+Bài 4: ${finalResult.score4}/4
+
+Tổng: ${finalResult.totalCorrect}/${finalResult.totalQuestions}
+Điểm: ${finalResult.percent}%`;
+
+
+    window.location.href =
+
+        "mailto:"
+        +
+        TEACHER_EMAIL
+        +
+        "?subject="
+        +
+        encodeURIComponent(
+            subject
+        )
+        +
+        "&body="
+        +
+        encodeURIComponent(
+            body
+        );
+
+}
+
+
+
+/* =========================================================
+   KHỞI TẠO
+========================================================= */
+
+renderExercise1();
+
+renderExercise2();
+
+renderExercise3();
+
+</script>
+
+
+</body>
+
+</html>

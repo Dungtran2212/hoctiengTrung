@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>汉语闯关 · Cầu vượt thử thách</title>
+<style>
+:root{--ink:#f6f5ff;--muted:#d3e4ee;--gold:#ffdc82;--blue:#183955;--card:#10263ddd}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Inter,"Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);background:#091c30}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #fff;outline-offset:3px}#viewport{position:fixed;inset:0;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 30%,#316985,#07182b)}#stage{position:absolute;width:1600px;height:900px;transform-origin:center center;overflow:hidden;border-radius:25px;background:linear-gradient(#132b57 0%,#306c9a 53%,#77bba6 54%,#224e50 100%);box-shadow:0 35px 110px #0009}.stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#fff8 1.5px,transparent 2px),radial-gradient(#fff9 1px,transparent 2px);background-size:137px 113px,211px 149px;background-position:20px 15px,80px 70px;opacity:.6}.moon{position:absolute;right:150px;top:98px;width:165px;height:165px;border-radius:50%;background:#fff1bb;box-shadow:0 0 75px #ffe6a966}.hill{position:absolute;bottom:250px;width:750px;height:350px;border-radius:50% 50% 0 0;background:#215a66}.hill.left{left:-260px}.hill.right{right:-290px;background:#1a5362}.header{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:26px 45px 0}.brand{font-weight:1000;font-size:34px;letter-spacing:.5px;text-shadow:0 4px 0 #08192a}.brand small{display:block;font-size:18px;color:#ffdd8d;letter-spacing:2px;margin-top:3px}.hud{display:flex;align-items:center;gap:13px}.pill{border:2px solid #ffffff40;border-radius:20px;background:#0c2847db;padding:13px 19px;font-weight:800;font-size:22px;white-space:nowrap}.iconbtn{background:#fff3;border:2px solid #fff5;color:white;border-radius:16px;padding:12px 16px;font-size:22px}.land{position:absolute;left:48px;right:48px;top:125px;height:335px;overflow:hidden;border:3px solid #ffffff3b;border-radius:27px;background:linear-gradient(#8dc6df17,#09283d5c)}.cliff{position:absolute;bottom:0;height:115px;width:260px;background:linear-gradient(#578866,#315c57);border-top:13px solid #a8d49d}.cliff.start{left:0;clip-path:polygon(0 0,100% 0,85% 100%,0 100%)}.cliff.end{right:0;clip-path:polygon(15% 0,100% 0,100% 100%,0 100%)}.abyss{position:absolute;left:240px;right:240px;bottom:0;height:100px;background:repeating-linear-gradient(110deg,#102e4b,#102e4b 25px,#16445b 35px,#102e4b 52px);box-shadow:inset 0 12px 30px #0008}.bridge{position:absolute;left:237px;right:237px;bottom:108px;height:30px;display:grid;grid-template-columns:repeat(22,1fr);gap:4px;align-items:end}.plank{height:26px;border-radius:5px;background:#173b50aa;border:2px dashed #86a3a37a;transition:.3s}.plank.done{background:linear-gradient(#ffe3a1,#c78e50);border:2px solid #71482d;box-shadow:0 4px 0 #71482d,0 0 17px #ffdb7888;animation:appear .35s ease-out}@keyframes appear{from{transform:translateY(-25px) scale(.6);opacity:.2}to{transform:none;opacity:1}}.hero{position:absolute;bottom:135px;left:196px;font-size:67px;filter:drop-shadow(0 8px 4px #10202f);transition:left .5s ease;z-index:2}.castle{position:absolute;right:33px;bottom:113px;font-size:103px;filter:drop-shadow(0 7px 6px #0008)}.sign{position:absolute;left:50%;top:26px;transform:translateX(-50%);background:#0b2847d9;border:2px solid #fff4;border-radius:22px;padding:12px 24px;font-weight:800;font-size:24px;white-space:nowrap}.question{position:absolute;z-index:4;top:480px;left:48px;right:48px;bottom:35px;border:2px solid #ffffff40;background:linear-gradient(140deg,#122b47f5,#10213af5);border-radius:28px;padding:26px 32px;box-shadow:0 14px 45px #061427a8;display:flex;flex-direction:column}.qhead{display:flex;justify-content:space-between;align-items:center;color:#bfe5f1;font-size:21px;font-weight:800}.prompt{display:flex;align-items:center;justify-content:center;gap:22px;height:108px;text-align:center}.hanzi{font-size:65px;font-weight:900;color:#fff1bb;line-height:1.15}.meaning{font-size:40px;font-weight:850;color:#fff1bb}.listenbtn{border:2px solid #fff8;background:#326fa3;color:#fff;padding:12px 25px;border-radius:18px;font-size:25px;font-weight:800}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:auto}.choice{min-height:90px;border:2px solid #a4d1e570;background:#ffffff13;border-radius:18px;color:white;font-weight:850;font-size:27px;padding:12px 8px;transition:.15s;overflow-wrap:anywhere}.choice:hover:not(:disabled){background:#ffffff2c;transform:translateY(-3px)}.choice:disabled{cursor:default}.choice.correct{background:#2d8a67;border-color:#b9ffcc}.choice.wrong{background:#9a3753;border-color:#ffb5bf}.feedback{height:39px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#ffde91}.overlay{position:absolute;inset:0;z-index:10;display:grid;place-items:center;background:#07182ddc;backdrop-filter:blur(9px)}.panel{width:890px;max-height:810px;overflow:hidden;text-align:center;background:linear-gradient(150deg,#21446b,#112741);border:2px solid #ffffff5e;border-radius:35px;padding:50px 55px;box-shadow:0 25px 100px #0009}.panel h1{font-size:58px;margin:0 0 12px;color:#ffdf96}.panel p{font-size:26px;line-height:1.6;color:#d9edf8;margin:10px 0 24px}.panel .big{font-size:100px;margin-bottom:14px}.actions{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}.primary,.secondary{border:0;border-radius:18px;padding:20px 30px;font-size:25px;font-weight:900}.primary{background:linear-gradient(#ffe7a4,#efb85f);color:#342519}.secondary{background:#ffffff22;color:white;border:2px solid #ffffff6c}.small{font-size:19px!important;color:#c0d6e7!important}.hidden{display:none!important}.summary{font-size:31px;font-weight:900;color:#ffe5a6;margin:22px 0}#confetti{position:absolute;inset:0;pointer-events:none;z-index:12}.spark{position:absolute;font-size:35px;animation:drop 2s linear forwards}@keyframes drop{from{transform:translateY(-50px) rotate(0)}to{transform:translateY(950px) rotate(550deg);opacity:0}}
+
+:root{--ink:#183349;--muted:#537183;--gold:#e9a738;--blue:#d8f2fa;--card:#ffffff}
+html,body{background:#dff7ff;color:var(--ink)}
+#viewport{background:radial-gradient(circle at 50% 20%,#fff9df,#d5f3ff 65%,#b8e5e4)}
+#stage{background:linear-gradient(#a5e6ff 0%,#e2f8ff 51%,#a6dcaa 52%,#70bd88 100%);box-shadow:0 25px 90px #397b9b55}
+.stars{opacity:.15}.moon{background:#fff4b8;box-shadow:0 0 80px #fff1a7}.hill{background:#8dccad}.hill.right{background:#79c6a3}
+.brand{text-shadow:none;color:#174461}.brand small{color:#456d7e}
+.pill{background:#ffffffeb;color:#1b4b61;border:2px solid #9ed9e5;box-shadow:0 5px 0 #b3e1e5}
+.iconbtn{background:#fff;color:#215a70;border:2px solid #a1d8e3}
+.land{border:3px solid #ffffffb8;background:linear-gradient(#ffffff42,#c8f6ff52)}
+.cliff{background:linear-gradient(#87c995,#4caa84);border-top-color:#dcf4a7}
+.abyss{background:repeating-linear-gradient(110deg,#3987b4,#3987b4 25px,#4ca2c5 35px,#3987b4 52px);box-shadow:inset 0 12px 30px #275b7a44}
+.plank{background:#ffffff77;border-color:#71b4c0}
+.sign{background:#ffffffed;color:#276079;border:2px solid #a9dce8}
+.question{background:#fffdf7f7;border:3px solid #b5e0e5;box-shadow:0 14px 40px #347e9d32}
+.qhead{color:#326b7c}.hanzi,.meaning{color:#173b58}.listenbtn{background:#dff4ff;color:#225e87;border:2px solid #92c9df}
+.choice{background:#f2faff;border:2px solid #bddbe5;color:#173b58;box-shadow:0 5px 0 #d2e9ee}
+.choice:hover:not(:disabled){background:#e0f7ff}
+.choice.correct{background:#c6f5d8;border-color:#4eae7d;color:#19573d}
+.choice.wrong{background:#ffe0e0;border-color:#dd7b80;color:#83343d}
+.feedback{color:#386b79;font-size:20px;line-height:1.3;text-align:center}
+.overlay{background:#3b769470;backdrop-filter:blur(7px)}
+.panel{background:linear-gradient(150deg,#ffffff,#fff8e8);border:3px solid #b7dfe7;box-shadow:0 24px 85px #245b7550}
+.panel h1{color:#1b5975}.panel p{color:#496779}.panel .small{color:#6c8391!important}
+.primary{background:linear-gradient(#ffe6a0,#ffc968);color:#473516}
+.secondary{background:#eaf7ff;color:#275b72;border:2px solid #b6dfe8}
+.timerpill{background:#fff2be;border-color:#edc868;color:#79511e;min-width:112px;text-align:center}
+.timerpill.urgent{background:#ffe0dc;color:#b42f36;border-color:#f39a9c;animation:pulse .55s infinite alternate}
+@keyframes pulse{to{transform:scale(1.08)}}
+.bridge{grid-template-columns:repeat(30,1fr);gap:3px}
+.plank{height:24px}
+.hanzi{font-size:60px}
+</style>
+</head>
+<body>
+<div id="viewport"><main id="stage">
+<div class="stars"></div><div class="moon"></div><div class="hill left"></div><div class="hill right"></div>
+<header class="header"><div class="brand">🌉 汉语闯关 · CẦU VƯỢT THỬ THÁCH<small>第三课 · 我是中国人。</small></div><div class="hud"><div class="pill" id="progress">🌉 0 / 30</div><div class="pill timerpill" id="timer">⏳ 10s</div><div class="pill" id="hearts">❤️❤️❤️</div><div class="pill" id="score">⭐ 0</div><div class="pill" id="combo">🔥 0</div><button class="iconbtn" id="sound" title="Bật/tắt âm thanh">🔊</button><button class="iconbtn" id="home" title="Về trang chủ">⌂</button></div></header>
+<section class="land"><div class="sign" id="zone">🏞️ CHẶNG 1 · 看汉字，选拼音</div><div class="cliff start"></div><div class="cliff end"></div><div class="abyss"></div><div class="bridge" id="bridge"></div><div class="hero" id="hero">🐼</div><div class="castle">🏯</div></section>
+<section class="question" id="question"><div class="qhead"><span id="qnumber">CÂU 1 / 22</span><span id="instruction">Chọn pinyin đúng</span></div><div class="prompt" id="prompt"></div><div class="choices" id="choices"></div><div class="feedback" id="feedback">Chọn đáp án để xây cầu!</div></section>
+<div class="overlay" id="start"><div class="panel"><div class="big">🐼🌉🏯</div><h1>勇闯汉语桥</h1><p><b>CẦU VƯỢT THỬ THÁCH</b><br>30 nhịp cầu · 4 chặng · 1 lâu đài chiến thắng<br>Ôn 22 từ vựng, sau đó vượt 8 thử thách câu tiếng Trung để về đích!</p><p class="small">⏳ Mỗi câu có 10 giây suy nghĩ. ❤️ Có 3 mạng. Sai hoặc hết giờ mất 1 mạng, đúng được 100 điểm. Chuỗi đúng liên tiếp nhận điểm thưởng. Mỗi lượt câu hỏi và đáp án đều được xáo trộn.</p><div class="actions"><button class="primary" id="startBtn">🚀 开始 · BẮT ĐẦU</button><button class="secondary" id="startHome">⌂ Trang chủ</button></div></div></div>
+<div class="overlay hidden" id="end"><div class="panel"><div class="big" id="endIcon">🏆</div><h1 id="endTitle">恭喜你！</h1><p id="endText"></p><div class="summary" id="endScore"></div><div class="actions"><button class="primary" id="again">🔄 Chơi lại</button><button class="secondary" id="endHome">⌂ Trang chủ</button></div></div></div>
+<div id="confetti"></div>
+</main></div>
+<script>
+'use strict';
+const HOME='../../index.html';
+const WORDS=[
+['人','rén','người, con người'],['的','de','của (sở hữu)'],['中国','Zhōngguó','Trung Quốc'],['法国','Fǎguó','nước Pháp'],['中文','Zhōngwén','tiếng Trung'],['这','zhè','đây, này'],['谁','shéi / shuí','ai'],['女朋友','nǚpéngyou','bạn gái'],['哪','nǎ','nào, ở đâu'],['国','guó','quốc gia'],['她','tā','cô ấy'],['泰国','Tàiguó','Thái Lan'],['喂','wèi','alo'],['姐姐','jiějie','chị gái'],['工作','gōngzuò','công việc'],['还','hái','vẫn, còn'],['忙','máng','bận'],['吗','ma','trợ từ nghi vấn'],['对','duì','đúng, phải'],['太','tài','quá, lắm'],['我们','wǒmen','chúng tôi, chúng mình'],['想','xiǎng','nhớ, muốn, nghĩ']
+];
+const $=id=>document.getElementById(id);
+const SENTENCES=[
+{q:'我是中国人。',py:'Wǒ shì Zhōngguó rén.',vi:'Tôi là người Trung Quốc.'},
+{q:'她是法国人。',py:'Tā shì Fǎguó rén.',vi:'Cô ấy là người Pháp.'},
+{q:'这是我的姐姐。',py:'Zhè shì wǒ de jiějie.',vi:'Đây là chị gái của tôi.'},
+{q:'你是哪国人？',py:'Nǐ shì nǎ guó rén?',vi:'Bạn là người nước nào?'},
+{q:'你会说中文吗？',py:'Nǐ huì shuō Zhōngwén ma?',vi:'Bạn biết nói tiếng Trung không?'},
+{q:'她是我的女朋友。',py:'Tā shì wǒ de nǚpéngyou.',vi:'Cô ấy là bạn gái của tôi.'},
+{q:'你工作忙吗？',py:'Nǐ gōngzuò máng ma?',vi:'Công việc của bạn có bận không?'},
+{q:'我也想认识她。',py:'Wǒ yě xiǎng rènshi tā.',vi:'Tôi cũng muốn làm quen với cô ấy.'}
+];
+const TOTAL=WORDS.length+SENTENCES.length;
+let deck=[],index=0,lives=3,score=0,combo=0,soundOn=true,locked=false,audioCtx=null,voice=null,timerId=null,timeLeft=10;
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);$('stage').style.transform=`scale(${s})`;}
+addEventListener('resize',fit);fit();
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function sound(f=500,d=.13,type='sine'){if(!soundOn)return;try{audioCtx ||=new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(f,audioCtx.currentTime);g.gain.setValueAtTime(.12,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+d);}catch(e){}}
+function ding(){sound(660,.12);setTimeout(()=>sound(880,.2),100)}
+function buzz(){sound(180,.25,'sawtooth')}
+function getVoice(){if(!('speechSynthesis'in window))return null;const voices=speechSynthesis.getVoices();return voices.find(v=>v.lang.toLowerCase().startsWith('zh-cn'))||voices.find(v=>v.lang.toLowerCase().startsWith('zh'))||null;}
+function speak(text){if(!soundOn||!('speechSynthesis'in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=.72;u.pitch=1;u.volume=1;u.voice=getVoice();speechSynthesis.speak(u)}catch(e){}}
+function buildDeck(){
+const arr=shuffle(WORDS.map((w,i)=>({w,i}))).map((item,n)=>({...item,mode:n<8?0:n<15?1:2}));
+const sentences=shuffle(SENTENCES).map(w=>({w,mode:3}));
+return [...arr,...sentences];
+}
+function optionsFor(q){if(q.mode===3)return shuffle([q.w.vi,...shuffle(SENTENCES.filter(x=>x!==q.w)).slice(0,3).map(x=>x.vi)]);const [han,pinyin,meaning]=q.w;const col=q.mode===0?1:q.mode===1?2:0;const target=q.w[col];const distractors=shuffle(WORDS.filter(w=>w!==q.w&&w[col]!==target)).slice(0,3).map(w=>w[col]);return shuffle([target,...distractors]);}
+function updateHUD(){$('progress').textContent=`🌉 ${index} / ${TOTAL}`;$('hearts').textContent='❤️'.repeat(lives)+'🖤'.repeat(3-lives);$('score').textContent=`⭐ ${score}`;$('combo').textContent=`🔥 ${combo}`;$('hero').style.left=(196+(index/TOTAL)*1065)+'px';}
+function initBridge(){$('bridge').replaceChildren();for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='plank';d.id='plank'+i;$('bridge').appendChild(d)}}
+function stopTimer(){if(timerId!==null){clearInterval(timerId);timerId=null;}}
+function setTimer(){stopTimer();timeLeft=10;$('timer').textContent='⏳ 10s';$('timer').classList.remove('urgent');timerId=setInterval(()=>{
+ if(locked){stopTimer();return;}
+ timeLeft--; $('timer').textContent=`⏳ ${timeLeft}s`;
+ $('timer').classList.toggle('urgent',timeLeft<=3);
+ if(timeLeft<=0)answer(null,null,currentCorrect,currentWord,true);
+},1000);}
+let currentCorrect='',currentWord=null;
+function render(){
+ stopTimer();locked=false;updateHUD();
+ if(index>=TOTAL){finish(true);return;}
+ const q=deck[index],w=q.w;
+ $('zone').textContent=['🏞️ CHẶNG 1 · 看汉字，选拼音','🌻 CHẶNG 2 · 看汉字，选意思','🌈 CHẶNG 3 · 听声音，选汉字','🏯 CHẶNG 4 · 读句子，选意思'][q.mode];
+ $('qnumber').textContent=`CÂU ${index+1} / ${TOTAL}`;
+ $('instruction').textContent=['Chọn phiên âm đúng','Chọn nghĩa tiếng Việt','Nghe và chọn chữ Hán','Đọc câu và chọn nghĩa'][q.mode];
+ $('feedback').textContent='✨ Bạn có 10 giây để trả lời!';
+ $('prompt').replaceChildren();
+ if(q.mode===2){
+   const b=document.createElement('button');b.className='listenbtn';b.textContent='🔊 听一听 · NGHE TỪ';b.onclick=()=>speak(w[0]);$('prompt').appendChild(b);
+ }else{
+   const d=document.createElement('div');d.className='hanzi';d.textContent=q.mode===3?w.q:w[0];$('prompt').appendChild(d);
+   const b=document.createElement('button');b.className='listenbtn';b.textContent='🔊';b.title='Nghe phát âm';b.onclick=()=>speak(q.mode===3?w.q:w[0]);$('prompt').appendChild(b);
+ }
+ // Từ vựng có đủ Hán tự, pinyin và nghĩa trong phần phản hồi.
+ const opts=optionsFor(q);
+ const correct=q.mode===3?w.vi:q.mode===0?w[1]:q.mode===1?w[2]:w[0];
+ currentCorrect=correct;currentWord=w;
+ $('choices').replaceChildren();
+ opts.forEach((o,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+i)+'. '+o;b.onclick=()=>answer(b,o,correct,w,false);$('choices').appendChild(b)});
+ setTimer();
+}
+function answer(button,value,correct,w,timeout=false){
+ if(locked)return;locked=true;stopTimer();
+ const good=!timeout&&value===correct;
+ document.querySelectorAll('.choice').forEach(b=>{b.disabled=true;if(b.textContent.slice(3)===correct)b.classList.add('correct')});
+ const detail=Array.isArray(w)?`${w[0]} · ${w[1]} · ${w[2]}`:`${w.q} · ${w.py} · ${w.vi}`;
+ if(good){
+   combo++;const bonus=100+Math.min(combo-1,5)*20;score+=bonus;ding();
+   $('feedback').textContent=`✅ 太棒了！ +${bonus} ⭐  |  ${detail}`;
+   $('plank'+index).classList.add('done');
+ }else{
+   lives--;combo=0;buzz();if(button)button.classList.add('wrong');
+   $('feedback').textContent=`${timeout?'⏰ Hết giờ!':'❌ Chưa đúng!'}  ${detail}`;
+ }
+ updateHUD();
+ setTimeout(()=>{if(lives<=0){finish(false);return;}index++;render();},good?1250:2100);
+}
+function startGame(){stopTimer();try{audioCtx ||=new (window.AudioContext||window.webkitAudioContext)();audioCtx.resume()}catch(e){}deck=buildDeck();index=0;lives=3;score=0;combo=0;locked=false;initBridge();$('start').classList.add('hidden');$('end').classList.add('hidden');$('confetti').replaceChildren();render();}
+function finish(win){stopTimer();locked=true;try{speechSynthesis.cancel()}catch(e){}$('end').classList.remove('hidden');$('endIcon').textContent=win?'🏆🏯🎉':'💔🌉';$('endTitle').textContent=win?'恭喜通关！ · VỀ ĐÍCH!':'再试一次！ · THỬ LẠI!';$('endText').textContent=win?'Bạn đã vượt qua cả 30 nhịp cầu. Xuất sắc!':'Bạn đã hết 3 trái tim. Luyện thêm một lượt nhé!';$('endScore').textContent=`⭐ ${score} điểm · 🌉 ${index+(win?0:0)} / ${TOTAL} nhịp`;if(win){ding();for(let i=0;i<65;i++){const d=document.createElement('span');d.className='spark';d.textContent=['✨','🎉','⭐','💛'][i%4];d.style.left=(Math.random()*100)+'%';d.style.top=(-Math.random()*400)+'px';d.style.animationDelay=(Math.random()*1.5)+'s';$('confetti').appendChild(d)}}}
+function goHome(){location.href=HOME}
+$('startBtn').onclick=startGame;$('again').onclick=startGame;$('home').onclick=goHome;$('startHome').onclick=goHome;$('endHome').onclick=goHome;$('sound').onclick=()=>{soundOn=!soundOn;$('sound').textContent=soundOn?'🔊':'🔇';if(!soundOn)try{speechSynthesis.cancel()}catch(e){}};
+if('speechSynthesis'in window)speechSynthesis.onvoiceschanged=getVoice;
+initBridge();updateHUD();
+</script>
+</body></html>

@@ -1,0 +1,6718 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>HSK 1 - Bài 3 | 我是中国人。</title>
+
+<style>
+
+/* =========================================================
+   MÀU CHUNG
+========================================================= */
+
+:root {
+
+    --blue-1: #eaf7ff;
+    --blue-2: #ccecff;
+    --blue-3: #8bc9ed;
+
+    --pink-1: #fff1f6;
+    --pink-2: #ffdce9;
+    --pink-3: #ed9ebd;
+
+    --purple-1: #f4efff;
+    --purple-2: #e6dbff;
+    --purple-3: #8366bc;
+
+    --green-1: #e4f8ef;
+
+    --yellow-1: #fff5d7;
+
+    --white: #ffffff;
+
+    --text: #29384d;
+
+    --muted: #7e8b9a;
+
+    --shadow:
+        0 16px 42px
+        rgba(65, 88, 110, 0.11);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        "Noto Sans SC",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 0% 8%,
+            rgba(204,236,255,.8)
+            0 170px,
+            transparent 171px
+        ),
+
+        radial-gradient(
+            circle at 100% 3%,
+            rgba(255,220,233,.8)
+            0 210px,
+            transparent 211px
+        ),
+
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f7fcff,
+            #fff9fb
+        );
+
+}
+
+
+button,
+input,
+select {
+
+    font-family: inherit;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    width: min(1180px, 94%);
+
+    margin: auto;
+
+    padding: 30px 0 80px;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 250px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 46px 40px 36px;
+
+    border-radius: 34px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #dff3ff,
+            #ffe6ef,
+            #ffffff
+        );
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.hero::after {
+
+    content: "☁";
+
+    position: absolute;
+
+    right: 10px;
+
+    bottom: -45px;
+
+    font-size: 150px;
+
+    color:
+        rgba(255,255,255,.6);
+
+}
+
+
+.hero-left {
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+
+.lesson-tag {
+
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,.8);
+
+    color: var(--purple-3);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+}
+
+
+.hero h1 {
+
+    margin: 15px 0 6px;
+
+    font-size:
+        clamp(35px, 5vw, 58px);
+
+}
+
+
+.hero p {
+
+    margin: 0;
+
+    color: #62768d;
+
+}
+
+
+.hero-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 160px;
+
+    height: 160px;
+
+    flex: 0 0 160px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.75);
+
+    font-size: 75px;
+
+}
+
+
+/* =========================================================
+   TRANG CHỦ
+========================================================= */
+
+.home-btn {
+
+    position: absolute;
+
+    top: 17px;
+
+    left: 20px;
+
+    z-index: 20;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.85);
+
+    background:
+        rgba(255,255,255,.78);
+
+    backdrop-filter:
+        blur(10px);
+
+    color: #59677c;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 850;
+
+    box-shadow:
+        0 5px 16px
+        rgba(90,110,130,.1);
+
+    transition: .2s;
+
+}
+
+
+.home-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    background: white;
+
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin: 24px 0 36px;
+
+}
+
+
+.nav-button {
+
+    border: 0;
+
+    padding: 12px 18px;
+
+    border-radius: 17px;
+
+    background: white;
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-weight: 850;
+
+    box-shadow:
+        0 6px 20px
+        rgba(70,90,110,.08);
+
+    transition: .2s;
+
+}
+
+
+.nav-button:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.nav-button.active {
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #83c5ec,
+            #ce99c5
+        );
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+    display: none;
+}
+
+
+.section.active {
+
+    display: block;
+
+    animation:
+        sectionFade .3s ease;
+
+}
+
+
+@keyframes sectionFade {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(7px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.section-header {
+
+    margin-bottom: 22px;
+
+}
+
+
+.section-header h2 {
+
+    margin: 0 0 7px;
+
+    font-size: 29px;
+
+}
+
+
+.section-header p {
+
+    margin: 0;
+
+    color: var(--muted);
+
+    line-height: 1.65;
+
+}
+
+
+/* =========================================================
+   TỪ VỰNG
+========================================================= */
+
+.vocabulary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(200px,1fr)
+        );
+
+    gap: 18px;
+
+}
+
+
+.flashcard {
+
+    height: 325px;
+
+    perspective: 1100px;
+
+}
+
+
+.flashcard-inner {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    transform-style:
+        preserve-3d;
+
+    transition:
+        transform .65s;
+
+}
+
+
+.flashcard.flipped
+.flashcard-inner {
+
+    transform:
+        rotateY(180deg);
+
+}
+
+
+.card-front,
+.card-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    backface-visibility:
+        hidden;
+
+    border-radius: 26px;
+
+    border:
+        5px solid
+        rgba(255,255,255,.92);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.card-front {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+            160deg,
+            #ffffff,
+            var(--blue-2)
+        );
+
+}
+
+
+.flashcard:nth-child(3n+2)
+.card-front {
+
+    background:
+
+        linear-gradient(
+            160deg,
+            #fff,
+            var(--pink-2)
+        );
+
+}
+
+
+.flashcard:nth-child(3n)
+.card-front {
+
+    background:
+
+        linear-gradient(
+            160deg,
+            #fff,
+            var(--purple-2)
+        );
+
+}
+
+
+.card-number {
+
+    position: absolute;
+
+    top: 14px;
+
+    left: 15px;
+
+    width: 36px;
+
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.8);
+
+    color: #ed91b2;
+
+    font-weight: 900;
+
+}
+
+
+.card-image {
+
+    font-size: 41px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.card-hanzi {
+
+    font-size: 51px;
+
+    font-weight: 950;
+
+    line-height: 1.15;
+
+}
+
+
+.card-pinyin {
+
+    margin-top: 8px;
+
+    color: var(--purple-3);
+
+    font-size: 20px;
+
+    font-weight: 850;
+
+}
+
+
+.flip-hint {
+
+    position: absolute;
+
+    bottom: 14px;
+
+    color: #84909b;
+
+    font-size: 11px;
+
+}
+
+
+.speaker-button {
+
+    width: 43px;
+
+    height: 43px;
+
+    margin-top: 12px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.85);
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 6px 16px
+        rgba(60,80,100,.12);
+
+}
+
+
+.speaker-button:hover {
+
+    transform:
+        scale(1.1);
+
+}
+
+
+.speaker-button.playing {
+
+    background:
+        var(--yellow-1);
+
+}
+
+
+.card-back {
+
+    transform:
+        rotateY(180deg);
+
+    padding: 22px;
+
+    background: white;
+
+    overflow-y: auto;
+
+}
+
+
+.back-title {
+
+    font-size: 37px;
+
+    font-weight: 950;
+
+}
+
+
+.back-pinyin-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 4px 0 12px;
+
+}
+
+
+.back-pinyin {
+
+    color: var(--purple-3);
+
+    font-size: 18px;
+
+    font-weight: 850;
+
+}
+
+
+.small-speaker {
+
+    width: 35px;
+
+    height: 35px;
+
+    margin: 0;
+
+    font-size: 14px;
+
+}
+
+
+.word-type {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: var(--green-1);
+
+    color: #437565;
+
+    font-size: 11px;
+
+    font-weight: 850;
+
+}
+
+
+.meaning {
+
+    margin-top: 14px;
+
+    line-height: 1.55;
+
+}
+
+
+.example {
+
+    margin-top: 14px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+
+    background: var(--yellow-1);
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+}
+
+
+/* =========================================================
+   GAME
+========================================================= */
+
+.game-area {
+
+    padding: 28px;
+
+    border-radius: 29px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #eaf8ff,
+            #fff5f9,
+            white
+        );
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.game-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.game-info {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+.info-chip {
+
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    background: white;
+
+    font-weight: 800;
+
+    font-size: 13px;
+
+}
+
+
+.game-description {
+
+    margin-bottom: 22px;
+
+    color: #63758a;
+
+    line-height: 1.7;
+
+}
+
+
+.game-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 16px;
+
+}
+
+
+.game-card {
+
+    position: relative;
+
+    min-height: 175px;
+
+    border: 0;
+
+    border-radius: 23px;
+
+    background:
+
+        linear-gradient(
+            150deg,
+            #fff,
+            #fffaf4
+        );
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 24px
+        rgba(65,85,105,.11);
+
+    transition: .2s;
+
+}
+
+
+.game-card:hover {
+
+    transform:
+        translateY(-5px);
+
+}
+
+
+.game-card.solved {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #dff7ea,
+            white
+        );
+
+}
+
+
+.game-card.solved::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 15px;
+
+    color: #46a879;
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+}
+
+
+.game-number {
+
+    position: absolute;
+
+    top: 15px;
+
+    left: 16px;
+
+    color: #e75e89;
+
+    font-weight: 900;
+
+}
+
+
+.game-icon {
+
+    margin-top: 35px;
+
+    font-size: 36px;
+
+}
+
+
+.game-name {
+
+    margin-top: 8px;
+
+    font-weight: 900;
+
+}
+
+
+.action-button {
+
+    border: 0;
+
+    padding: 10px 17px;
+
+    border-radius: 14px;
+
+    color: white;
+
+    font-weight: 850;
+
+    cursor: pointer;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #84c6ec,
+            #cb98c3
+        );
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(42,56,72,.4);
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+.overlay.show {
+    display: flex;
+}
+
+
+.modal {
+
+    position: relative;
+
+    width: min(650px,100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 28px;
+
+    border-radius: 29px;
+
+    background: white;
+
+    box-shadow:
+        0 30px 90px
+        rgba(25,38,53,.25);
+
+}
+
+
+.close-button {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 15px;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #f1f3f5;
+
+    cursor: pointer;
+
+    font-size: 21px;
+
+}
+
+
+.challenge-label {
+
+    color: var(--purple-3);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+}
+
+
+.challenge-question {
+
+    margin: 22px 45px 20px 0;
+
+    font-size: 22px;
+
+    font-weight: 850;
+
+    line-height: 1.5;
+
+}
+
+
+.options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 10px;
+
+}
+
+
+.option {
+
+    padding: 13px;
+
+    border:
+        2px solid #e7edf3;
+
+    border-radius: 14px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-weight: 750;
+
+}
+
+
+.option.correct {
+
+    background: #e1f7eb;
+
+    border-color: #62b788;
+
+}
+
+
+.option.wrong {
+
+    background: #ffe7ed;
+
+    border-color: #dc879f;
+
+}
+
+
+.feedback {
+
+    margin-top: 17px;
+
+    min-height: 25px;
+
+    font-weight: 800;
+
+}
+
+
+.feedback.good {
+    color: #388b64;
+}
+
+
+.feedback.bad {
+    color: #c85f79;
+}
+
+
+.sentence-zone {
+
+    min-height: 72px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    margin-bottom: 14px;
+
+    border:
+        2px dashed #afc8dc;
+
+    border-radius: 16px;
+
+    background: #f7fcff;
+
+}
+
+
+.sentence-pieces {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+.sentence-piece {
+
+    padding: 10px 14px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background: var(--yellow-1);
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+}
+
+
+.sentence-piece.disabled {
+
+    opacity: .25;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   BÀI KHÓA
+========================================================= */
+
+.reading-list {
+
+    display: grid;
+
+    gap: 20px;
+
+}
+
+
+.reading-card {
+
+    padding: 24px;
+
+    border-radius: 27px;
+
+    background: white;
+
+    box-shadow: var(--shadow);
+
+    border:
+        3px solid #d7f1ff;
+
+}
+
+
+.reading-card:nth-child(2) {
+    border-color: #ffe0eb;
+}
+
+
+.reading-card:nth-child(3) {
+    border-color: #e7dcff;
+}
+
+
+.reading-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 19px;
+
+}
+
+
+.reading-title {
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+}
+
+
+audio {
+
+    width: min(420px,100%);
+
+}
+
+
+.dialogue {
+
+    display: grid;
+
+    gap: 8px;
+
+}
+
+
+.dialogue-line {
+
+    display: grid;
+
+    grid-template-columns:
+        110px 1fr;
+
+    gap: 13px;
+
+    padding: 13px 15px;
+
+    border-radius: 16px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #f9fcff,
+            #fffafd
+        );
+
+}
+
+
+.speaker-name {
+
+    color: var(--purple-3);
+
+    font-weight: 900;
+
+}
+
+
+.chinese-line {
+
+    font-size: 21px;
+
+    line-height: 1.8;
+
+}
+
+
+.word-token {
+
+    cursor: pointer;
+
+    padding: 2px 3px;
+
+    border-radius: 7px;
+
+}
+
+
+.word-token:hover {
+
+    background: var(--yellow-1);
+
+}
+
+
+/* =========================================================
+   TỪ ĐIỂN POPUP
+========================================================= */
+
+.dictionary-modal {
+
+    width: min(430px,100%);
+
+}
+
+
+.dictionary-icon {
+
+    font-size: 36px;
+
+}
+
+
+.dictionary-hanzi {
+
+    margin-top: 7px;
+
+    font-size: 51px;
+
+    font-weight: 950;
+
+}
+
+
+.dictionary-reading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 4px 0 12px;
+
+}
+
+
+.dictionary-pinyin {
+
+    color: var(--purple-3);
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+}
+
+
+.dictionary-meaning {
+
+    margin-top: 15px;
+
+    font-size: 19px;
+
+    font-weight: 750;
+
+}
+
+
+.dictionary-example {
+
+    margin-top: 17px;
+
+    padding: 13px;
+
+    border-radius: 15px;
+
+    background: var(--yellow-1);
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   NGỮ PHÁP
+========================================================= */
+
+.grammar-grid {
+
+    display: grid;
+
+    gap: 21px;
+
+}
+
+
+.grammar-card {
+
+    position: relative;
+
+    padding: 26px;
+
+    border-radius: 27px;
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.grammar-blue {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #eefaff,
+            white
+        );
+
+    border:
+        3px solid #d7f1ff;
+
+}
+
+
+.grammar-pink {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #fff3f7,
+            white
+        );
+
+    border:
+        3px solid #ffe0eb;
+
+}
+
+
+.grammar-purple {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #f5f1ff,
+            white
+        );
+
+    border:
+        3px solid #e7dcff;
+
+}
+
+
+.grammar-number {
+
+    width: 39px;
+
+    height: 39px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 12px;
+
+    background: #ec98b6;
+
+    color: white;
+
+    font-weight: 900;
+
+}
+
+
+.grammar-hanzi {
+
+    font-size: 25px;
+
+    font-weight: 950;
+
+}
+
+
+.grammar-vietnamese {
+
+    margin-top: 3px;
+
+    color: var(--purple-3);
+
+    font-weight: 800;
+
+}
+
+
+.grammar-rule {
+
+    margin-top: 17px;
+
+    line-height: 1.75;
+
+    color: #56677b;
+
+}
+
+
+.formula {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin: 20px 0;
+
+    padding: 18px;
+
+    border-radius: 19px;
+
+    background:
+        rgba(255,255,255,.84);
+
+}
+
+
+.formula span {
+
+    padding: 9px 14px;
+
+    border-radius: 12px;
+
+    background: #edf7fd;
+
+    font-weight: 850;
+
+}
+
+
+.formula-important {
+
+    color: #b3567c !important;
+
+    background:
+        #ffe4ed !important;
+
+    font-size: 21px;
+
+}
+
+
+.grammar-note {
+
+    margin-top: 15px;
+
+    padding: 13px 15px;
+
+    border-radius: 14px;
+
+    background: #fff6dc;
+
+    line-height: 1.65;
+
+}
+
+
+.grammar-example {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 9px;
+
+    padding: 12px 14px;
+
+    border-radius: 14px;
+
+    background: white;
+
+}
+
+
+.grammar-example b {
+
+    display: block;
+
+    font-size: 18px;
+
+}
+
+
+.grammar-example span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #7b8898;
+
+    font-size: 13px;
+
+}
+
+
+.mini-audio {
+
+    flex: 0 0 39px;
+
+    width: 39px;
+
+    height: 39px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #eef8ff;
+
+    cursor: pointer;
+
+}
+
+
+.relation-box {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 9px;
+
+    margin-top: 15px;
+
+}
+
+
+.relation-box div {
+
+    padding: 12px;
+
+    border-radius: 13px;
+
+    background: white;
+
+    text-align: center;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================================
+   LUYỆN TẬP
+========================================================= */
+
+.practice-card {
+
+    margin-bottom: 21px;
+
+    padding: 26px;
+
+    border-radius: 27px;
+
+    background: white;
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.practice-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 19px;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+}
+
+
+.practice-title span {
+
+    width: 39px;
+
+    height: 39px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #ec98b6;
+
+    color: white;
+
+    font-size: 13px;
+
+}
+
+
+.word-bank {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+
+    padding: 13px;
+
+    border-radius: 16px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #eef9ff,
+            #fff2f7
+        );
+
+}
+
+
+.word-bank span {
+
+    padding: 8px 16px;
+
+    border-radius: 12px;
+
+    background: white;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+}
+
+
+.fill-question {
+
+    margin: 9px 0;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    background: #fafcff;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+}
+
+
+.fill-question select {
+
+    min-width: 100px;
+
+    padding: 6px;
+
+    border:
+        2px solid #d9e6ef;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+
+}
+
+
+.practice-feedback {
+
+    margin-top: 14px;
+
+    min-height: 23px;
+
+    font-weight: 850;
+
+}
+
+
+.scene-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 15px;
+
+    margin-bottom: 17px;
+
+}
+
+
+.scene-card {
+
+    padding: 19px;
+
+    border-radius: 21px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #fff8fa,
+            #f2fbff
+        );
+
+}
+
+
+.scene-emoji {
+
+    text-align: center;
+
+    margin-bottom: 11px;
+
+    font-size: 52px;
+
+}
+
+
+.scene-hint {
+
+    color: #758397;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+}
+
+
+.scene-sentence {
+
+    margin-top: 14px;
+
+    line-height: 2.7;
+
+    font-size: 17px;
+
+}
+
+
+.scene-sentence input {
+
+    width: 92px;
+
+    padding: 6px;
+
+    border: 0;
+
+    border-bottom:
+        2px solid #bc9cbb;
+
+    outline: none;
+
+    background: transparent;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px) {
+
+    .hero {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .hero-icon {
+
+        width: 110px;
+
+        height: 110px;
+
+        flex-basis: 110px;
+
+        font-size: 55px;
+
+    }
+
+
+    .game-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .dialogue-line {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .scene-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .relation-box {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:520px) {
+
+    .vocabulary-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap: 10px;
+
+    }
+
+
+    .flashcard {
+
+        height: 295px;
+
+    }
+
+
+    .card-hanzi {
+
+        font-size: 38px;
+
+    }
+
+
+    .card-pinyin {
+
+        font-size: 15px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SHEET 6 - LUYỆN VIẾT
+========================================================= */
+.writing-panel{
+  padding:26px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#eefaff,#fff9ef,#f2fff5);
+  box-shadow:var(--shadow);
+}
+.writing-toolbar{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:22px;
+}
+.writing-toolbar label{font-weight:900;}
+.writing-select{
+  min-width:180px;
+  padding:10px 14px;
+  border:2px solid #dce9f2;
+  border-radius:14px;
+  background:white;
+  color:var(--text);
+  font-weight:850;
+  font-size:16px;
+}
+.writing-word-info{
+  color:#728196;
+  font-size:14px;
+  font-weight:700;
+}
+.character-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 20px;
+}
+.character-tab{
+  width:46px;
+  height:46px;
+  border:2px solid #dce9f2;
+  border-radius:13px;
+  background:white;
+  cursor:pointer;
+  color:var(--text);
+  font-size:24px;
+  font-weight:900;
+}
+.character-tab.active{
+  color:white;
+  border-color:transparent;
+  background:linear-gradient(135deg,#61c3dc,#6bc482);
+}
+.writing-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.writing-card{
+  padding:22px;
+  border-radius:24px;
+  background:rgba(255,255,255,.92);
+}
+.writing-card-title{
+  margin-bottom:16px;
+  font-size:19px;
+  font-weight:950;
+}
+.hanzi-paper{
+  position:relative;
+  width:min(100%,460px);
+  aspect-ratio:1/1;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:3px solid #d9e7ef;
+  border-radius:20px;
+  background-color:#fff;
+  background-image:
+    linear-gradient(to right,transparent calc(50% - .5px),#f1cece 50%,transparent calc(50% + .5px)),
+    linear-gradient(to bottom,transparent calc(50% - .5px),#f1cece 50%,transparent calc(50% + .5px)),
+    linear-gradient(45deg,transparent calc(50% - .5px),#f3dada 50%,transparent calc(50% + .5px)),
+    linear-gradient(-45deg,transparent calc(50% - .5px),#f3dada 50%,transparent calc(50% + .5px));
+}
+.writer-target{
+  width:360px;
+  height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.writing-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+.write-btn{
+  border:0;
+  padding:11px 18px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:900;
+  font-size:15px;
+  box-shadow:0 7px 18px rgba(70,90,110,.09);
+}
+.write-btn.primary{
+  color:white;
+  background:linear-gradient(135deg,#59bfd8,#69c483);
+}
+.write-btn.secondary{
+  color:#596a80;
+  background:white;
+}
+.writing-status{
+  min-height:24px;
+  margin-top:12px;
+  text-align:center;
+  color:#5c7c70;
+  font-weight:800;
+}
+@media(max-width:800px){
+  .writing-grid{grid-template-columns:1fr;}
+}
+@media(max-width:520px){
+  .writing-panel{padding:16px;}
+  .writing-card{padding:14px;}
+  .writer-target{width:270px;height:270px;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- ======================================================
+       HEADER
+  ======================================================= -->
+
+  <header class="hero">
+
+    <a
+      href="../../index.html"
+      class="home-btn"
+      title="Quay về trang chủ"
+    >
+      <span>🏠</span>
+      <span>Trang chủ</span>
+    </a>
+
+    <div class="hero-left">
+
+      <span class="lesson-tag">
+        HSK 1 · 第三课
+      </span>
+
+      <h1>
+        我是中国人。
+      </h1>
+
+      <p>
+        Bài 3 · Tôi là người Trung Quốc
+      </p>
+
+    </div>
+
+
+    <div class="hero-icon">
+      🧩
+    </div>
+
+  </header>
+
+
+
+  <!-- ======================================================
+       NAVIGATION
+  ======================================================= -->
+
+  <nav class="nav">
+
+    <button
+      class="nav-button active"
+      data-section="vocabularySection"
+    >
+      🌷 1. Từ vựng
+    </button>
+
+
+    <button
+      class="nav-button"
+      data-section="gameSection"
+    >
+      🧩 2. Mảnh ghép
+    </button>
+
+
+    <button
+      class="nav-button"
+      data-section="readingSection"
+    >
+      🎧 3. Bài khóa
+    </button>
+
+
+    <button
+      class="nav-button"
+      data-section="grammarSection"
+    >
+      📘 4. Ngữ pháp
+    </button>
+
+
+    <button
+      class="nav-button"
+      data-section="practiceSection"
+    >
+      🎯 5. Luyện tập
+    </button>
+
+
+    <button
+      class="nav-button"
+      data-section="writingSection"
+    >
+      ✍️ 6. Luyện viết
+    </button>
+
+  </nav>
+
+
+
+  <!-- ======================================================
+       PHẦN 1 - TỪ VỰNG
+  ======================================================= -->
+
+  <section
+    class="section active"
+    id="vocabularySection"
+  >
+
+    <div class="section-header">
+
+      <h2>
+        🌱 Khám phá từ mới
+      </h2>
+
+      <p>
+        Nhìn Hán tự và Pinyin, bấm 🔊 để nghe phát âm.
+        Bấm vào thẻ để lật xem loại từ, nghĩa và ví dụ.
+      </p>
+
+    </div>
+
+
+    <div
+      class="vocabulary-grid"
+      id="vocabularyGrid"
+    >
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       PHẦN 2 - MẢNH GHÉP
+  ======================================================= -->
+
+  <section
+    class="section"
+    id="gameSection"
+  >
+
+    <div class="section-header">
+
+      <h2>
+        🧩 Trò chơi mảnh ghép trí tuệ
+      </h2>
+
+      <p>
+        Mỗi mảnh là một thử thách khác nhau:
+        suy luận nghĩa, tìm quy luật, ráp câu và hoàn thiện cấu trúc.
+      </p>
+
+    </div>
+
+
+    <div class="game-area">
+
+      <div class="game-top">
+
+        <div class="game-info">
+
+          <div
+            class="info-chip"
+            id="scoreText"
+          >
+            ⭐ 0 điểm
+          </div>
+
+
+          <div
+            class="info-chip"
+            id="pieceText"
+          >
+            🧩 0 / 8 mảnh
+          </div>
+
+        </div>
+
+
+        <button
+          class="action-button"
+          onclick="resetGame()"
+        >
+          ↻ Chơi lại
+        </button>
+
+      </div>
+
+
+      <div class="game-description">
+        Chọn một ô bí mật. Khi trả lời đúng,
+        mảnh ghép sẽ được mở khóa.
+        Hoàn thành cả 8 mảnh để chiến thắng.
+      </div>
+
+
+      <div
+        class="game-grid"
+        id="gameGrid"
+      >
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       PHẦN 3 - BÀI KHÓA
+  ======================================================= -->
+
+  <section
+    class="section"
+    id="readingSection"
+  >
+
+    <div class="section-header">
+
+      <h2>
+        📖 Bài khóa tương tác
+      </h2>
+
+      <p>
+        Nghe audio giáo trình rồi đọc theo.
+        Nếu không biết từ nào, bấm trực tiếp vào từ đó để xem nghĩa,
+        cách đọc và nghe phát âm.
+      </p>
+
+    </div>
+
+
+    <div
+      class="reading-list"
+      id="readingList"
+    >
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       PHẦN 4 - NGỮ PHÁP
+  ======================================================= -->
+
+  <section
+    class="section"
+    id="grammarSection"
+  >
+
+    <div class="section-header">
+
+      <h2>
+        📘 Ngữ pháp Bài 3
+      </h2>
+
+      <p>
+        Ba điểm ngữ pháp chính:
+        câu chữ 是, trợ từ kết cấu 的 và câu hỏi Yes/No với 吗.
+      </p>
+
+    </div>
+
+
+    <div class="grammar-grid">
+
+
+      <!-- =============================================
+           NGỮ PHÁP 1
+      ============================================== -->
+
+      <article class="grammar-card grammar-blue">
+
+        <div class="grammar-number">
+          1
+        </div>
+
+
+        <div class="grammar-hanzi">
+          “是”字句
+        </div>
+
+        <div class="grammar-vietnamese">
+          Câu chữ “是”
+        </div>
+
+
+        <div class="grammar-rule">
+
+          <strong>是 (shì)</strong>
+          được dùng để biểu thị một người hoặc sự vật
+          <strong>là / thuộc về</strong>
+          một người hoặc sự vật khác.
+
+          <br><br>
+
+          Dạng phủ định của
+          <strong>是</strong>
+          là
+          <strong>不是</strong>.
+
+        </div>
+
+
+        <div class="formula">
+
+          <span>
+            Chủ ngữ
+          </span>
+
+          <b>＋</b>
+
+          <span class="formula-important">
+            是
+          </span>
+
+          <b>＋</b>
+
+          <span>
+            Danh từ
+          </span>
+
+        </div>
+
+
+        <div class="grammar-note">
+          💡 Ví dụ:
+          我是中国人。 / 我不是法国人。
+        </div>
+
+
+        <div class="grammar-examples">
+
+          <div class="grammar-example">
+
+            <div>
+              <b>
+                我是法国人。
+              </b>
+
+              <span>
+                Wǒ shì Fǎguó rén.
+                — Tôi là người Pháp.
+              </span>
+            </div>
+
+            <button
+              class="mini-audio"
+              onclick="speakChinese('我是法国人。')"
+            >
+              🔊
+            </button>
+
+          </div>
+
+
+          <div class="grammar-example">
+
+            <div>
+              <b>
+                她是中文老师。
+              </b>
+
+              <span>
+                Tā shì Zhōngwén lǎoshī.
+                — Cô ấy là giáo viên tiếng Trung.
+              </span>
+            </div>
+
+            <button
+              class="mini-audio"
+              onclick="speakChinese('她是中文老师。')"
+            >
+              🔊
+            </button>
+
+          </div>
+
+
+          <div class="grammar-example">
+
+            <div>
+              <b>
+                我老师不是法国人。
+              </b>
+
+              <span>
+                Wǒ lǎoshī bú shì Fǎguó rén.
+                — Giáo viên của tôi không phải người Pháp.
+              </span>
+            </div>
+
+            <button
+              class="mini-audio"
+              onclick="speakChinese('我老师不是法国人。')"
+            >
+              🔊
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =============================================
+           NGỮ PHÁP 2
+      ============================================== -->
+
+      <article class="grammar-card grammar-pink">
+
+        <div class="grammar-number">
+          2
+        </div>
+
+
+        <div class="grammar-hanzi">
+          结构助词 “的”
+        </div>
+
+        <div class="grammar-vietnamese">
+          Trợ từ kết cấu “的”
+        </div>
+
+
+        <div class="grammar-rule">
+
+          <strong>的 (de)</strong>
+          đứng giữa định ngữ và danh từ trung tâm,
+          dùng để biểu thị quan hệ bổ nghĩa hoặc sở hữu.
+
+        </div>
+
+
+        <div class="formula">
+
+          <span>
+            Người sở hữu
+          </span>
+
+          <b>＋</b>
+
+          <span class="formula-important">
+            的
+          </span>
+
+          <b>＋</b>
+
+          <span>
+            Danh từ
+          </span>
+
+        </div>
+
+
+        <div class="grammar-examples">
+
+          <div class="grammar-example">
+
+            <div>
+
+              <b>
+                白家月的中文老师
+              </b>
+
+              <span>
+                giáo viên tiếng Trung của Bạch Gia Nguyệt
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="grammar-example">
+
+            <div>
+
+              <b>
+                你的名字
+              </b>
+
+              <span>
+                tên của bạn
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="grammar-note">
+
+          💡 Khi đại từ đứng trước danh từ chỉ
+          <strong>người thân hoặc người gần gũi</strong>,
+          <strong>的</strong> thường có thể được lược bỏ.
+
+        </div>
+
+
+        <div class="relation-box">
+
+          <div>
+            我老师
+          </div>
+
+          <div>
+            我学生
+          </div>
+
+          <div>
+            你同学
+          </div>
+
+          <div>
+            我妈妈
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =============================================
+           NGỮ PHÁP 3
+      ============================================== -->
+
+      <article class="grammar-card grammar-purple">
+
+        <div class="grammar-number">
+          3
+        </div>
+
+
+        <div class="grammar-hanzi">
+          用“吗”的是非问句
+        </div>
+
+        <div class="grammar-vietnamese">
+          Câu hỏi Yes / No với “吗”
+        </div>
+
+
+        <div class="grammar-rule">
+
+          <strong>吗 (ma)</strong>
+          là trợ từ ngữ khí,
+          thường được đặt ở cuối câu trần thuật
+          để tạo thành câu hỏi Có / Không.
+
+        </div>
+
+
+        <div class="formula">
+
+          <span>
+            Câu trần thuật
+          </span>
+
+          <b>＋</b>
+
+          <span class="formula-important">
+            吗？
+          </span>
+
+        </div>
+
+
+        <div class="grammar-examples">
+
+          <div class="grammar-example">
+
+            <div>
+
+              <b>
+                你工作忙吗？
+              </b>
+
+              <span>
+                Công việc của bạn bận không?
+              </span>
+
+            </div>
+
+            <button
+              class="mini-audio"
+              onclick="speakChinese('你工作忙吗？')"
+            >
+              🔊
+            </button>
+
+          </div>
+
+
+          <div class="grammar-example">
+
+            <div>
+
+              <b>
+                你是他的中文老师吗？
+              </b>
+
+              <span>
+                Bạn là giáo viên tiếng Trung của anh ấy phải không?
+              </span>
+
+            </div>
+
+            <button
+              class="mini-audio"
+              onclick="speakChinese('你是他的中文老师吗？')"
+            >
+              🔊
+            </button>
+
+          </div>
+
+
+          <div class="grammar-example">
+
+            <div>
+
+              <b>
+                你有姐姐吗？
+              </b>
+
+              <span>
+                Bạn có chị gái không?
+              </span>
+
+            </div>
+
+            <button
+              class="mini-audio"
+              onclick="speakChinese('你有姐姐吗？')"
+            >
+              🔊
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       PHẦN 5 - LUYỆN TẬP
+  ======================================================= -->
+
+  <section
+    class="section"
+    id="practiceSection"
+  >
+
+    <div class="section-header">
+
+      <h2>
+        🎯 Luyện tập tổng hợp
+      </h2>
+
+      <p>
+        Vận dụng từ vựng và ngữ pháp vừa học.
+        Làm bài rồi bấm Kiểm tra để xem kết quả.
+      </p>
+
+    </div>
+
+
+
+    <!-- ============================================
+         BÀI 1 - ĐIỀN TỪ
+    ============================================= -->
+
+    <div class="practice-card">
+
+      <div class="practice-title">
+
+        <span>
+          01
+        </span>
+
+        Chọn từ thích hợp điền vào chỗ trống
+
+      </div>
+
+
+      <div class="word-bank">
+
+        <span>
+          哪
+        </span>
+
+        <span>
+          吗
+        </span>
+
+        <span>
+          谁
+        </span>
+
+        <span>
+          中国人
+        </span>
+
+        <span>
+          想
+        </span>
+
+      </div>
+
+
+      <div
+        id="fillQuestions"
+      >
+      </div>
+
+
+      <button
+        class="action-button"
+        onclick="checkFillExercise()"
+      >
+        ✓ Kiểm tra
+      </button>
+
+
+      <div
+        class="practice-feedback"
+        id="fillFeedback"
+      >
+      </div>
+
+    </div>
+
+
+
+    <!-- ============================================
+         BÀI 2 - MÔ TẢ
+    ============================================= -->
+
+    <div class="practice-card">
+
+      <div class="practice-title">
+
+        <span>
+          02
+        </span>
+
+        Hoàn thành câu dựa vào ngữ cảnh
+
+      </div>
+
+
+      <div class="scene-grid">
+
+
+        <div class="scene-card">
+
+          <div class="scene-emoji">
+            👨‍🎓 🇹🇭 💗
+          </div>
+
+
+          <div class="scene-hint">
+
+            Trần Thiên Trung là người Thái Lan.
+            Bạn gái của anh ấy cũng là người Thái Lan.
+
+          </div>
+
+
+          <div class="scene-sentence">
+
+            他
+
+            <input
+              id="scene1a"
+              placeholder="..."
+            >
+
+            陈天中，是泰国人，
+
+            <br>
+
+            他
+
+            <input
+              id="scene1b"
+              placeholder="..."
+            >
+
+            也
+
+            <input
+              id="scene1c"
+              placeholder="..."
+            >
+
+            泰国人。
+
+          </div>
+
+        </div>
+
+
+
+        <div class="scene-card">
+
+          <div class="scene-emoji">
+            👩‍🏫 💼 📚
+          </div>
+
+
+          <div class="scene-hint">
+
+            Vương Nhất Phi là giáo viên tiếng Trung của tôi.
+            Công việc của cô ấy rất bận.
+
+          </div>
+
+
+          <div class="scene-sentence">
+
+            王一飞是
+
+            <input
+              id="scene2a"
+              placeholder="..."
+            >
+
+            中文老师，
+
+            <br>
+
+            她
+
+            <input
+              id="scene2b"
+              placeholder="..."
+            >
+
+            很
+
+            <input
+              id="scene2c"
+              placeholder="..."
+            >
+
+            。
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="action-button"
+        onclick="checkSceneExercise()"
+      >
+        ✓ Kiểm tra
+      </button>
+
+
+      <div
+        class="practice-feedback"
+        id="sceneFeedback"
+      >
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       PHẦN 6 - LUYỆN VIẾT
+  ======================================================= -->
+  <section class="section" id="writingSection">
+
+    <div class="section-header">
+      <h2>✍️ Luyện viết từ vựng Bài 3</h2>
+      <p>
+        Chọn từ ở Sheet 1. Nếu từ có nhiều chữ, chọn từng chữ bên dưới.
+        “Xem viết” chỉ chạy thứ tự nét; nút “Nghe” mới phát âm.
+      </p>
+    </div>
+
+    <div class="writing-panel">
+
+      <div class="writing-toolbar">
+        <label for="writingWordSelect">Chữ đang luyện:</label>
+        <select id="writingWordSelect" class="writing-select"></select>
+        <span class="writing-word-info" id="writingWordInfo"></span>
+      </div>
+
+      <div class="character-tabs" id="writingCharacterTabs"></div>
+
+      <div class="writing-grid">
+
+        <div class="writing-card">
+          <div class="writing-card-title">👀 Xem mẫu</div>
+
+          <div class="hanzi-paper">
+            <div id="demoWriter" class="writer-target"></div>
+          </div>
+
+          <div class="writing-actions">
+            <button class="write-btn primary" id="animateWritingBtn">
+              ▶ Xem viết
+            </button>
+
+            <button class="write-btn secondary" id="listenWritingBtn">
+              🔊 Nghe
+            </button>
+          </div>
+        </div>
+
+        <div class="writing-card">
+          <div class="writing-card-title">✍️ Bạn viết</div>
+
+          <div class="hanzi-paper">
+            <div id="quizWriter" class="writer-target"></div>
+          </div>
+
+          <div class="writing-actions">
+            <button class="write-btn primary" id="restartWritingBtn">
+              ↻ Viết lại
+            </button>
+          </div>
+
+          <div class="writing-status" id="writingStatus">
+            Viết theo đúng thứ tự nét nhé ✨
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+
+
+<!-- ======================================================
+     GAME MODAL
+======================================================= -->
+
+<div
+  class="overlay"
+  id="gameOverlay"
+>
+
+  <div class="modal">
+
+    <button
+      class="close-button"
+      onclick="closeGameModal()"
+    >
+      ×
+    </button>
+
+
+    <div
+      class="challenge-label"
+      id="challengeLabel"
+    >
+    </div>
+
+
+    <div
+      class="challenge-question"
+      id="challengeQuestion"
+    >
+    </div>
+
+
+    <div
+      id="challengeContent"
+    >
+    </div>
+
+
+    <div
+      class="feedback"
+      id="challengeFeedback"
+    >
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- ======================================================
+     DICTIONARY MODAL
+======================================================= -->
+
+<div
+  class="overlay"
+  id="dictionaryOverlay"
+>
+
+  <div class="modal dictionary-modal">
+
+    <button
+      class="close-button"
+      onclick="closeDictionary()"
+    >
+      ×
+    </button>
+
+
+    <div
+      class="dictionary-icon"
+      id="dictionaryIcon"
+    >
+    </div>
+
+
+    <div
+      class="dictionary-hanzi"
+      id="dictionaryHanzi"
+    >
+    </div>
+
+
+    <div class="dictionary-reading">
+
+      <div
+        class="dictionary-pinyin"
+        id="dictionaryPinyin"
+      >
+      </div>
+
+
+      <button
+        class="speaker-button small-speaker"
+        id="dictionarySpeaker"
+      >
+        🔊
+      </button>
+
+    </div>
+
+
+    <span
+      class="word-type"
+      id="dictionaryType"
+    >
+    </span>
+
+
+    <div
+      class="dictionary-meaning"
+      id="dictionaryMeaning"
+    >
+    </div>
+
+
+    <div
+      class="dictionary-example"
+      id="dictionaryExample"
+    >
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7/dist/hanzi-writer.min.js"></script>
+
+<script>
+
+/* =========================================================
+   1. DỮ LIỆU TỪ VỰNG
+========================================================= */
+
+const vocabulary = [
+
+  {
+    hanzi: "人",
+    pinyin: "rén",
+    type: "Danh từ",
+    meaning: "người, con người",
+    example: "我是中国人。 — Tôi là người Trung Quốc.",
+    emoji: "👤"
+  },
+
+  {
+    hanzi: "的",
+    pinyin: "de",
+    type: "Trợ từ",
+    meaning: "của; trợ từ biểu thị quan hệ sở hữu",
+    example: "我的老师 — giáo viên của tôi",
+    emoji: "🔗"
+  },
+
+  {
+    hanzi: "中国",
+    pinyin: "Zhōngguó",
+    type: "Danh từ riêng",
+    meaning: "Trung Quốc",
+    example: "我是中国人。 — Tôi là người Trung Quốc.",
+    emoji: "🇨🇳"
+  },
+
+  {
+    hanzi: "法国",
+    pinyin: "Fǎguó",
+    type: "Danh từ riêng",
+    meaning: "Pháp, nước Pháp",
+    example: "我是法国人。 — Tôi là người Pháp.",
+    emoji: "🇫🇷"
+  },
+
+  {
+    hanzi: "中文",
+    pinyin: "Zhōngwén",
+    type: "Danh từ",
+    meaning: "tiếng Trung",
+    example: "我的中文老师也是中国人。",
+    emoji: "📕"
+  },
+
+  {
+    hanzi: "这",
+    pinyin: "zhè",
+    type: "Đại từ chỉ thị",
+    meaning: "đây, này",
+    example: "这是谁？ — Đây là ai?",
+    emoji: "👉"
+  },
+
+  {
+    hanzi: "谁",
+    pinyin: "shéi / shuí",
+    type: "Đại từ nghi vấn",
+    meaning: "ai",
+    example: "这是谁？ — Đây là ai?",
+    emoji: "❓"
+  },
+
+  {
+    hanzi: "女朋友",
+    pinyin: "nǚpéngyou",
+    type: "Danh từ",
+    meaning: "bạn gái",
+    example: "这是我女朋友。 — Đây là bạn gái tôi.",
+    emoji: "💗"
+  },
+
+  {
+    hanzi: "哪",
+    pinyin: "nǎ",
+    type: "Đại từ nghi vấn",
+    meaning: "nào",
+    example: "你是哪国人？ — Bạn là người nước nào?",
+    emoji: "🔎"
+  },
+
+  {
+    hanzi: "国",
+    pinyin: "guó",
+    type: "Danh từ",
+    meaning: "quốc gia, đất nước",
+    example: "哪国人？ — Người nước nào?",
+    emoji: "🌏"
+  },
+
+  {
+    hanzi: "她",
+    pinyin: "tā",
+    type: "Đại từ",
+    meaning: "cô ấy, chị ấy",
+    example: "她也是泰国人。",
+    emoji: "👩"
+  },
+
+  {
+    hanzi: "泰国",
+    pinyin: "Tàiguó",
+    type: "Danh từ riêng",
+    meaning: "Thái Lan",
+    example: "她也是泰国人。",
+    emoji: "🇹🇭"
+  },
+
+  {
+    hanzi: "喂",
+    pinyin: "wèi",
+    type: "Thán từ",
+    meaning: "alô; ê, này",
+    example: "喂，一飞！ — Alô, Nhất Phi!",
+    emoji: "☎️"
+  },
+
+  {
+    hanzi: "姐姐",
+    pinyin: "jiějie",
+    type: "Danh từ",
+    meaning: "chị gái",
+    example: "姐姐！ — Chị!",
+    emoji: "👭"
+  },
+
+  {
+    hanzi: "工作",
+    pinyin: "gōngzuò",
+    type: "Động từ / Danh từ",
+    meaning: "làm việc; công việc",
+    example: "你工作还忙吗？",
+    emoji: "💼"
+  },
+
+  {
+    hanzi: "还",
+    pinyin: "hái",
+    type: "Phó từ",
+    meaning: "vẫn, còn",
+    example: "对，还很忙。 — Đúng, vẫn rất bận.",
+    emoji: "🔁"
+  },
+
+  {
+    hanzi: "忙",
+    pinyin: "máng",
+    type: "Tính từ",
+    meaning: "bận",
+    example: "我不太忙。 — Tôi không bận lắm.",
+    emoji: "📚"
+  },
+
+  {
+    hanzi: "吗",
+    pinyin: "ma",
+    type: "Trợ từ nghi vấn",
+    meaning: "đặt ở cuối câu để tạo câu hỏi",
+    example: "你也很忙吗？ — Bạn cũng rất bận à?",
+    emoji: "❔"
+  },
+
+  {
+    hanzi: "对",
+    pinyin: "duì",
+    type: "Tính từ",
+    meaning: "đúng, phải",
+    example: "对，还很忙。 — Đúng, vẫn rất bận.",
+    emoji: "✅"
+  },
+
+  {
+    hanzi: "太",
+    pinyin: "tài",
+    type: "Phó từ",
+    meaning: "quá, rất, lắm",
+    example: "我不太忙。 — Tôi không bận lắm.",
+    emoji: "✨"
+  },
+
+  {
+    hanzi: "我们",
+    pinyin: "wǒmen",
+    type: "Đại từ",
+    meaning: "chúng tôi, chúng ta",
+    example: "我们很想你。 — Chúng tôi rất nhớ bạn.",
+    emoji: "👥"
+  },
+
+  {
+    hanzi: "想",
+    pinyin: "xiǎng",
+    type: "Động từ",
+    meaning: "nghĩ; nhớ; muốn",
+    example: "我们很想你。 — Chúng tôi rất nhớ bạn.",
+    emoji: "💭"
+  }
+
+];
+
+
+/* =========================================================
+   2. TỪ BỔ SUNG CHO BÀI KHÓA
+========================================================= */
+
+const extraWords = [
+
+  {
+    hanzi: "我",
+    pinyin: "wǒ",
+    type: "Đại từ",
+    meaning: "tôi",
+    example: "我是中国人。",
+    emoji: "🙋"
+  },
+
+  {
+    hanzi: "是",
+    pinyin: "shì",
+    type: "Động từ",
+    meaning: "là",
+    example: "我是中国人。",
+    emoji: "🔗"
+  },
+
+  {
+    hanzi: "老师",
+    pinyin: "lǎoshī",
+    type: "Danh từ",
+    meaning: "giáo viên",
+    example: "我的中文老师。",
+    emoji: "👩‍🏫"
+  },
+
+  {
+    hanzi: "也",
+    pinyin: "yě",
+    type: "Phó từ",
+    meaning: "cũng",
+    example: "我也是中国人。",
+    emoji: "➕"
+  },
+
+  {
+    hanzi: "你",
+    pinyin: "nǐ",
+    type: "Đại từ",
+    meaning: "bạn",
+    example: "你也很忙吗？",
+    emoji: "🧑"
+  },
+
+  {
+    hanzi: "不",
+    pinyin: "bù",
+    type: "Phó từ",
+    meaning: "không",
+    example: "我不太忙。",
+    emoji: "🚫"
+  },
+
+  {
+    hanzi: "很",
+    pinyin: "hěn",
+    type: "Phó từ",
+    meaning: "rất",
+    example: "还很忙。",
+    emoji: "⬆️"
+  },
+
+  {
+    hanzi: "你们",
+    pinyin: "nǐmen",
+    type: "Đại từ",
+    meaning: "các bạn",
+    example: "我也想你们。",
+    emoji: "👫"
+  }
+
+];
+
+
+const allWords = [
+  ...vocabulary,
+  ...extraWords
+];
+
+
+const dictionary = {};
+
+
+allWords.forEach(word => {
+
+  dictionary[word.hanzi] = word;
+
+});
+
+
+/* =========================================================
+   3. AUDIO TỪ VỰNG
+   ĐÚNG THEO MAPPING BẠN CHỈ
+
+   03-2:
+   人 的 中国 法国 中文
+
+   03-4:
+   这 谁 女朋友 哪 国 她 泰国
+
+   03-6:
+   喂 姐姐 工作 还 忙 吗 对 太 我们 想
+========================================================= */
+
+const wordAudio = {
+
+  /* =========================
+     FILE 03-2
+  ========================= */
+
+  "人": {
+    file: "./03-2.mp3",
+    start: 0.20,
+    end: 2.30
+  },
+
+  "的": {
+    file: "./03-2.mp3",
+    start: 2.65,
+    end: 3.85
+  },
+
+  "中国": {
+    file: "./03-2.mp3",
+    start: 5.08,
+    end: 7.65
+  },
+
+  "法国": {
+    file: "./03-2.mp3",
+    start: 8.00,
+    end: 10.48
+  },
+
+  "中文": {
+    file: "./03-2.mp3",
+    start: 10.80,
+    end: 13.38
+  },
+
+
+  /* =========================
+     FILE 03-4
+  ========================= */
+
+  "这": {
+    file: "./03-4.mp3",
+    start: 0.12,
+    end: 2.12
+  },
+
+  "谁": {
+    file: "./03-4.mp3",
+    start: 2.56,
+    end: 7.50
+  },
+
+  "女朋友": {
+    file: "./03-4.mp3",
+    start: 8.08,
+    end: 10.68
+  },
+
+  "哪": {
+    file: "./03-4.mp3",
+    start: 11.04,
+    end: 13.34
+  },
+
+  "国": {
+    file: "./03-4.mp3",
+    start: 13.55,
+    end: 15.62
+  },
+
+  "她": {
+    file: "./03-4.mp3",
+    start: 15.78,
+    end: 17.75
+  },
+
+  "泰国": {
+    file: "./03-4.mp3",
+    start: 18.00,
+    end: 20.50
+  },
+
+
+  /* =========================
+     FILE 03-6
+  ========================= */
+
+  "喂": {
+    file: "./03-6.mp3",
+    start: 0.40,
+    end: 2.50
+  },
+
+  "姐姐": {
+    file: "./03-6.mp3",
+    start: 3.50,
+    end: 5.75
+  },
+
+  "工作": {
+    file: "./03-6.mp3",
+    start: 6.78,
+    end: 9.35
+  },
+
+  "还": {
+    file: "./03-6.mp3",
+    start: 10.14,
+    end: 12.10
+  },
+
+  "忙": {
+    file: "./03-6.mp3",
+    start: 12.45,
+    end: 14.40
+  },
+
+  "吗": {
+    file: "./03-6.mp3",
+    start: 14.90,
+    end: 16.22
+  },
+
+  "对": {
+    file: "./03-6.mp3",
+    start: 16.88,
+    end: 18.72
+  },
+
+  "太": {
+    file: "./03-6.mp3",
+    start: 19.00,
+    end: 20.92
+  },
+
+  "我们": {
+    file: "./03-6.mp3",
+    start: 21.28,
+    end: 23.32
+  },
+
+  "想": {
+    file: "./03-6.mp3",
+    start: 23.50,
+    end: 25.70
+  }
+
+};
+
+
+/* =========================================================
+   4. BỘ PHÁT AUDIO TỪ
+========================================================= */
+
+const wordPlayer = new Audio();
+
+let wordStopTimer = null;
+
+let activeSpeaker = null;
+
+
+function stopWordAudio() {
+
+  clearInterval(wordStopTimer);
+
+  wordPlayer.pause();
+
+
+  if (activeSpeaker) {
+
+    activeSpeaker.classList.remove(
+      "playing"
+    );
+
+  }
+
+
+  activeSpeaker = null;
+
+}
+
+
+function playWordAudio(
+  hanzi,
+  event,
+  button
+) {
+
+  if (event) {
+    event.stopPropagation();
+  }
+
+
+  stopWordAudio();
+
+
+  const data = wordAudio[hanzi];
+
+
+  /*
+    Các từ cũ không nằm trong track từ vựng
+    sẽ dùng giọng Mandarin của trình duyệt.
+  */
+
+  if (!data) {
+
+    speakChinese(hanzi);
+
+    return;
+
+  }
+
+
+  activeSpeaker = button || null;
+
+
+  if (activeSpeaker) {
+
+    activeSpeaker.classList.add(
+      "playing"
+    );
+
+  }
+
+
+  const targetFile = data.file;
+
+
+  const currentSrc = decodeURIComponent(
+    wordPlayer.src || ""
+  );
+
+
+  const targetName = targetFile.replace(
+    "./",
+    ""
+  );
+
+
+  function startSegment() {
+
+    try {
+
+      wordPlayer.currentTime =
+        data.start;
+
+    } catch (error) {
+
+      console.log(
+        "Không đặt được thời gian audio:",
+        error
+      );
+
+    }
+
+
+    wordPlayer
+      .play()
+      .catch(error => {
+
+        console.error(
+          "Không phát được audio:",
+          error
+        );
+
+        alert(
+          "Không phát được file audio. Hãy kiểm tra MP3 có nằm cùng thư mục với index.html và chạy bằng Live Server."
+        );
+
+      });
+
+
+    wordStopTimer =
+      setInterval(() => {
+
+        if (
+          wordPlayer.currentTime >=
+          data.end
+        ) {
+
+          stopWordAudio();
+
+        }
+
+      }, 20);
+
+  }
+
+
+  /*
+    Nếu đang dùng file khác
+    thì load file mới.
+  */
+
+  if (
+    !currentSrc.endsWith(
+      targetName
+    )
+  ) {
+
+    wordPlayer.src = targetFile;
+
+    wordPlayer.load();
+
+
+    wordPlayer.addEventListener(
+      "loadedmetadata",
+      startSegment,
+      {
+        once: true
+      }
+    );
+
+  }
+
+  else {
+
+    if (
+      wordPlayer.readyState >= 1
+    ) {
+
+      startSegment();
+
+    }
+
+    else {
+
+      wordPlayer.addEventListener(
+        "loadedmetadata",
+        startSegment,
+        {
+          once: true
+        }
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   5. TTS CHO TỪ / CÂU KHÔNG CÓ FILE RIÊNG
+========================================================= */
+
+function speakChinese(text) {
+
+  if (
+    !(
+      "speechSynthesis"
+      in window
+    )
+  ) {
+
+    alert(
+      "Trình duyệt không hỗ trợ đọc giọng nói."
+    );
+
+    return;
+
+  }
+
+
+  window.speechSynthesis.cancel();
+
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+
+  utterance.lang = "zh-CN";
+
+  utterance.rate = 0.78;
+
+  utterance.pitch = 1;
+
+
+  window.speechSynthesis.speak(
+    utterance
+  );
+
+}
+
+
+/* =========================================================
+   6. RENDER FLASHCARD
+========================================================= */
+
+const vocabularyGrid =
+  document.getElementById(
+    "vocabularyGrid"
+  );
+
+
+vocabulary.forEach(
+  (word, index) => {
+
+    const card =
+      document.createElement(
+        "div"
+      );
+
+
+    card.className =
+      "flashcard";
+
+
+    card.innerHTML = `
+
+      <div class="flashcard-inner">
+
+        <!-- =========================
+             MẶT TRƯỚC
+        ========================== -->
+
+        <div class="card-front">
+
+          <div class="card-number">
+            ${index + 1}
+          </div>
+
+
+          <div class="card-image">
+            ${word.emoji}
+          </div>
+
+
+          <div class="card-hanzi">
+            ${word.hanzi}
+          </div>
+
+
+          <div class="card-pinyin">
+            ${word.pinyin}
+          </div>
+
+
+          <button
+            class="speaker-button front-audio"
+            title="Nghe phát âm"
+          >
+            🔊
+          </button>
+
+
+          <div class="flip-hint">
+            ↻ Bấm vào thẻ để xem nghĩa
+          </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             MẶT SAU
+        ========================== -->
+
+        <div class="card-back">
+
+          <div class="back-title">
+            ${word.hanzi}
+          </div>
+
+
+          <div class="back-pinyin-row">
+
+            <div class="back-pinyin">
+              ${word.pinyin}
+            </div>
+
+
+            <button
+              class="
+                speaker-button
+                small-speaker
+                back-audio
+              "
+              title="Nghe phát âm"
+            >
+              🔊
+            </button>
+
+          </div>
+
+
+          <span class="word-type">
+            ${word.type}
+          </span>
+
+
+          <div class="meaning">
+
+            <strong>
+              Nghĩa:
+            </strong>
+
+            ${word.meaning}
+
+          </div>
+
+
+          <div class="example">
+
+            <strong>
+              Ví dụ:
+            </strong>
+
+            <br>
+
+            ${word.example}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    /*
+      Bấm mặt trước để lật
+    */
+
+    const front =
+      card.querySelector(
+        ".card-front"
+      );
+
+
+    front.addEventListener(
+      "click",
+      () => {
+
+        card.classList.toggle(
+          "flipped"
+        );
+
+      }
+    );
+
+
+    /*
+      Bấm mặt sau để quay lại,
+      trừ khi đang bấm nút audio
+    */
+
+    const back =
+      card.querySelector(
+        ".card-back"
+      );
+
+
+    back.addEventListener(
+      "click",
+      event => {
+
+        if (
+          !event.target.closest(
+            "button"
+          )
+        ) {
+
+          card.classList.toggle(
+            "flipped"
+          );
+
+        }
+
+      }
+    );
+
+
+    /*
+      AUDIO MẶT TRƯỚC
+    */
+
+    const frontAudio =
+      card.querySelector(
+        ".front-audio"
+      );
+
+
+    frontAudio.addEventListener(
+      "click",
+      event => {
+
+        playWordAudio(
+          word.hanzi,
+          event,
+          frontAudio
+        );
+
+      }
+    );
+
+
+    /*
+      AUDIO MẶT SAU
+    */
+
+    const backAudio =
+      card.querySelector(
+        ".back-audio"
+      );
+
+
+    backAudio.addEventListener(
+      "click",
+      event => {
+
+        playWordAudio(
+          word.hanzi,
+          event,
+          backAudio
+        );
+
+      }
+    );
+
+
+    vocabularyGrid.appendChild(
+      card
+    );
+
+  }
+);
+
+
+/* =========================================================
+   7. ĐIỀU HƯỚNG 5 PHẦN
+========================================================= */
+
+const navButtons =
+  document.querySelectorAll(
+    ".nav-button"
+  );
+
+
+const sections =
+  document.querySelectorAll(
+    ".section"
+  );
+
+
+navButtons.forEach(button => {
+  button.addEventListener("click", () => {
+
+    stopWordAudio();
+
+    navButtons.forEach(item => {
+      item.classList.remove("active");
+    });
+
+    sections.forEach(section => {
+      section.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const target = document.getElementById(
+      button.dataset.section
+    );
+
+    if (target) {
+      target.classList.add("active");
+    }
+
+  });
+});
+
+const gameChallenges = [
+
+  /* =====================================================
+     A. 30 MẢNH GHÉP CƠ BẢN
+  ===================================================== */
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 1",
+    question: "Chữ nào có nghĩa là “người”?",
+    options: ["人 rén", "国 guó", "她 tā", "忙 máng"],
+    answer: "人 rén",
+    explanation: "人 (rén) = người, con người."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 2",
+    question: "Từ nào dùng để biểu thị sở hữu, tương đương “của” trong tiếng Việt?",
+    options: ["的 de", "吗 ma", "哪 nǎ", "对 duì"],
+    answer: "的 de",
+    explanation: "的 (de) có thể dùng để biểu thị quan hệ sở hữu."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 3",
+    question: "“Trung Quốc” trong tiếng Trung nói thế nào?",
+    options: ["法国 Fǎguó", "中国 Zhōngguó", "泰国 Tàiguó", "中文 Zhōngwén"],
+    answer: "中国 Zhōngguó",
+    explanation: "中国 (Zhōngguó) = Trung Quốc."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 4",
+    question: "“Nước Pháp” trong tiếng Trung là gì?",
+    options: ["法国 Fǎguó", "中国 Zhōngguó", "泰国 Tàiguó", "国 guó"],
+    answer: "法国 Fǎguó",
+    explanation: "法国 (Fǎguó) = nước Pháp."
+  },
+
+  {
+    type: "sentence",
+    icon: "🧩",
+    name: "Mảnh 5",
+    question: "Muốn nói “người Việt Nam”, hãy ghép 2 từ sau.",
+    pieces: ["人", "越南"],
+    answer: ["越南", "人"]
+  },
+
+  {
+    type: "sentence",
+    icon: "🧩",
+    name: "Mảnh 6",
+    question: "Muốn nói “người Trung Quốc”, hãy ghép 2 từ sau.",
+    pieces: ["人", "中国"],
+    answer: ["中国", "人"]
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 7",
+    question: "中文 có nghĩa là gì?",
+    options: ["Tiếng Trung", "Trung Quốc", "Người Trung Quốc", "Giáo viên"],
+    answer: "Tiếng Trung",
+    explanation: "中文 (Zhōngwén) = tiếng Trung."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 8",
+    question: "Điền từ còn thiếu: 我___名字 → “Tên của tôi”",
+    options: ["的", "是", "吗", "哪"],
+    answer: "的",
+    explanation: "我的名字 = tên của tôi."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 9",
+    question: "Điền từ còn thiếu: 我___老师 → “Giáo viên của tôi”",
+    options: ["的", "吗", "谁", "太"],
+    answer: "的",
+    explanation: "我的老师 = giáo viên của tôi."
+  },
+
+  {
+    type: "sentence",
+    icon: "🧩",
+    name: "Mảnh 10",
+    question: "Sắp xếp thành cụm từ đúng.",
+    pieces: ["老师", "中文"],
+    answer: ["中文", "老师"]
+  },
+
+  {
+    type: "sentence",
+    icon: "🧩",
+    name: "Mảnh 11",
+    question: "Sắp xếp thành câu: “Giáo viên tiếng Trung của bạn rất tốt.”",
+    pieces: ["很好", "你的", "中文老师"],
+    answer: ["你的", "中文老师", "很好"]
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 12",
+    question: "Điền từ thích hợp: 我不是中国人，我是_____。",
+    options: ["越南人", "中文", "法国", "工作"],
+    answer: "越南人",
+    explanation: "我是越南人。= Tôi là người Việt Nam."
+  },
+
+  {
+    type: "sentence",
+    icon: "🧩",
+    name: "Mảnh 13",
+    question: "Sắp xếp thành câu “Đây là cái gì?”",
+    pieces: ["什么", "是", "这"],
+    answer: ["这", "是", "什么"]
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 14",
+    question: "Trả lời câu 这是什么？ nếu vật đó là một quyển sách.",
+    options: ["这是书。", "她是书。", "我是书。", "书是什么？"],
+    answer: "这是书。",
+    explanation: "这是书。= Đây là sách."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 15",
+    question: "Muốn hỏi “Cô ấy là ai?”, dùng từ để hỏi nào?",
+    options: ["谁", "哪", "吗", "的"],
+    answer: "谁",
+    explanation: "她是谁？= Cô ấy là ai?"
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 16",
+    question: "Trả lời: 她是谁？ → “Cô ấy là giáo viên.”",
+    options: ["她是老师。", "这是老师。", "我是老师。", "她是谁？"],
+    answer: "她是老师。",
+    explanation: "她是老师。= Cô ấy là giáo viên."
+  },
+
+  {
+    type: "sentence",
+    icon: "🧩",
+    name: "Mảnh 17",
+    question: "Sắp xếp thành câu đúng.",
+    pieces: ["是", "她", "女朋友", "我的"],
+    answer: ["她", "是", "我的", "女朋友"]
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 18",
+    question: "Trong câu 你是哪国人？, từ nào mang nghĩa “nào”?",
+    options: ["哪 nǎ", "谁 shéi", "吗 ma", "国 guó"],
+    answer: "哪 nǎ",
+    explanation: "哪 (nǎ) = nào."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 19",
+    question: "Nếu là người Việt Nam, trả lời 你是哪国人？ thế nào?",
+    options: ["我是越南人。", "我是中文。", "我是工作。", "我是越南。"],
+    answer: "我是越南人。",
+    explanation: "我是越南人。= Tôi là người Việt Nam."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 20",
+    question: "“Công việc” trong tiếng Trung là từ nào?",
+    options: ["工作 gōngzuò", "忙 máng", "想 xiǎng", "姐姐 jiějie"],
+    answer: "工作 gōngzuò",
+    explanation: "工作 (gōngzuò) = công việc / làm việc."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 21",
+    question: "Hoàn thành câu hỏi: 他的_____是什么？",
+    options: ["工作", "姐姐", "中文", "女朋友"],
+    answer: "工作",
+    explanation: "他的工作是什么？= Công việc của anh ấy là gì?"
+  },
+
+  {
+    type: "sentence",
+    icon: "🧩",
+    name: "Mảnh 22",
+    question: "Ghép thành câu hoàn chỉnh: 他 / 不 / 工作 / 他 / 是 / 学生",
+    pieces: ["他不工作，", "他是学生。"],
+    answer: ["他不工作，", "他是学生。"]
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 23",
+    question: "Khi bắt đầu một cuộc gọi điện thoại, người Trung Quốc thường nói từ nào trong danh sách đã học?",
+    options: ["喂 wèi", "对 duì", "想 xiǎng", "还 hái"],
+    answer: "喂 wèi",
+    explanation: "喂 (wèi) thường dùng khi bắt đầu cuộc gọi điện thoại."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 24",
+    question: "“Chị gái” trong tiếng Trung là gì?",
+    options: ["姐姐 jiějie", "女朋友 nǚpéngyou", "她 tā", "我们 wǒmen"],
+    answer: "姐姐 jiějie",
+    explanation: "姐姐 (jiějie) = chị gái."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 25",
+    question: "Điền từ để biến câu thành câu hỏi Yes/No: 你忙___？",
+    options: ["吗", "的", "哪", "谁"],
+    answer: "吗",
+    explanation: "你忙吗？= Bạn có bận không?"
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 26",
+    question: "Từ nào có nghĩa là “bận”?",
+    options: ["忙 máng", "想 xiǎng", "对 duì", "还 hái"],
+    answer: "忙 máng",
+    explanation: "忙 (máng) = bận."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 27",
+    question: "Từ nào có nghĩa “đúng / phải”?",
+    options: ["对 duì", "太 tài", "吗 ma", "哪 nǎ"],
+    answer: "对 duì",
+    explanation: "对 (duì) = đúng, phải."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 28",
+    question: "Trong cấu trúc 太忙了, 太 mang ý nghĩa gì?",
+    options: ["quá / rất", "không", "vẫn", "cũng"],
+    answer: "quá / rất",
+    explanation: "太 (tài) trong 太忙了 mang nghĩa “quá / rất”."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 29",
+    question: "“Chúng tôi / chúng mình” nói thế nào?",
+    options: ["我们 wǒmen", "你们 nǐmen", "她 tā", "我 wǒ"],
+    answer: "我们 wǒmen",
+    explanation: "我们 (wǒmen) = chúng tôi / chúng ta."
+  },
+
+  {
+    type: "choice",
+    icon: "🧩",
+    name: "Mảnh 30",
+    question: "Từ nào trong bài có thể mang nghĩa “nhớ”?",
+    options: ["想 xiǎng", "忙 máng", "工作 gōngzuò", "对 duì"],
+    answer: "想 xiǎng",
+    explanation: "Trong 我们很想你, 想 mang nghĩa “nhớ”."
+  },
+
+
+  /* =====================================================
+     B. MẢNH GHÉP NÂNG CAO
+  ===================================================== */
+
+  {
+    type: "choice",
+    icon: "🔥",
+    name: "Nâng cao 1",
+    question: "我不是中国人，_____。",
+    options: [
+      "我是越南人。",
+      "我是中文。",
+      "我是越南。"
+    ],
+    answer: "我是越南人。",
+    explanation: "Đáp án A: 我是越南人。"
+  },
+
+  {
+    type: "choice",
+    icon: "🔥",
+    name: "Nâng cao 2",
+    question: "她是谁？",
+    options: [
+      "她是老师。",
+      "她是哪国？",
+      "这是老师。"
+    ],
+    answer: "她是老师。",
+    explanation: "Đáp án A: 她是老师。"
+  },
+
+  {
+    type: "choice",
+    icon: "🔥",
+    name: "Nâng cao 3",
+    question: "你是哪国人？",
+    options: [
+      "我是中文。",
+      "我是越南人。",
+      "我是工作。"
+    ],
+    answer: "我是越南人。",
+    explanation: "Đáp án B: 我是越南人。"
+  },
+
+  {
+    type: "choice",
+    icon: "🔥",
+    name: "Nâng cao 4",
+    question: "这是什么？",
+    options: [
+      "她是书。",
+      "这是书。",
+      "我是书。"
+    ],
+    answer: "这是书。",
+    explanation: "Đáp án B: 这是书。"
+  },
+
+  {
+    type: "choice",
+    icon: "🔥",
+    name: "Nâng cao 5",
+    question: "她是_____女朋友。",
+    options: [
+      "我",
+      "我的",
+      "我们是"
+    ],
+    answer: "我的",
+    explanation: "Đáp án B: 我的 → 她是我的女朋友。"
+  },
+
+  {
+    type: "choice",
+    icon: "🔥",
+    name: "Nâng cao 6",
+    question: "_____工作是什么？",
+    options: [
+      "他的",
+      "他是",
+      "他"
+    ],
+    answer: "他的",
+    explanation: "Đáp án A: 他的 → 他的工作是什么？"
+  }
+
+];
+
+let gameScore = 0;
+
+let solvedPieces = [];
+
+let currentChallengeIndex = null;
+
+let sentenceSelected = [];
+
+
+/* =========================================================
+   9. RENDER GAME
+========================================================= */
+
+function renderGame() {
+
+  const gameGrid =
+    document.getElementById(
+      "gameGrid"
+    );
+
+  gameGrid.innerHTML = "";
+
+
+  gameChallenges.forEach(
+    (challenge, index) => {
+
+      const card =
+        document.createElement(
+          "button"
+        );
+
+
+      card.className =
+        "game-card";
+
+
+      if (
+        solvedPieces.includes(index)
+      ) {
+
+        card.classList.add(
+          "solved"
+        );
+
+      }
+
+
+      card.innerHTML = `
+
+        <div class="game-number">
+          ${String(index + 1).padStart(2, "0")}
+        </div>
+
+        <div class="game-icon">
+          ${challenge.icon}
+        </div>
+
+        <div class="game-name">
+          ${
+            solvedPieces.includes(index)
+              ? "Đã giải ✓"
+              : challenge.name
+          }
+        </div>
+
+      `;
+
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          openGameChallenge(index);
+
+        }
+      );
+
+
+      gameGrid.appendChild(
+        card
+      );
+
+    }
+  );
+
+
+  updateGameInfo();
+
+}
+
+
+/* =========================================================
+   10. MỞ THỬ THÁCH GAME
+========================================================= */
+
+function openGameChallenge(index) {
+
+  currentChallengeIndex = index;
+
+  sentenceSelected = [];
+
+
+  const challenge =
+    gameChallenges[index];
+
+
+  const overlay =
+    document.getElementById(
+      "gameOverlay"
+    );
+
+
+  const label =
+    document.getElementById(
+      "challengeLabel"
+    );
+
+
+  const question =
+    document.getElementById(
+      "challengeQuestion"
+    );
+
+
+  const content =
+    document.getElementById(
+      "challengeContent"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "challengeFeedback"
+    );
+
+
+  label.textContent =
+    `MẢNH ${index + 1} / ${gameChallenges.length}`;
+
+
+  question.textContent =
+    challenge.question;
+
+
+  feedback.textContent = "";
+
+  feedback.className =
+    "feedback";
+
+
+  content.innerHTML = "";
+
+
+  if (
+    challenge.type ===
+    "choice"
+  ) {
+
+    renderChoiceChallenge(
+      challenge,
+      content
+    );
+
+  }
+
+
+  if (
+    challenge.type ===
+    "sentence"
+  ) {
+
+    renderSentenceChallenge(
+      challenge,
+      content
+    );
+
+  }
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   11. GAME CHỌN ĐÁP ÁN
+========================================================= */
+
+function renderChoiceChallenge(
+  challenge,
+  container
+) {
+
+  const optionsBox =
+    document.createElement(
+      "div"
+    );
+
+
+  optionsBox.className =
+    "options";
+
+
+  challenge.options.forEach(
+    optionText => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+        "option";
+
+
+      button.textContent =
+        optionText;
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          checkChoiceAnswer(
+            challenge,
+            optionText,
+            button,
+            optionsBox
+          );
+
+        }
+      );
+
+
+      optionsBox.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  container.appendChild(
+    optionsBox
+  );
+
+}
+
+
+/* =========================================================
+   12. KIỂM TRA ĐÁP ÁN GAME
+========================================================= */
+
+function checkChoiceAnswer(
+  challenge,
+  selected,
+  button,
+  optionsBox
+) {
+
+  const feedback =
+    document.getElementById(
+      "challengeFeedback"
+    );
+
+
+  const allButtons =
+    optionsBox.querySelectorAll(
+      ".option"
+    );
+
+
+  if (
+    selected ===
+    challenge.answer
+  ) {
+
+    button.classList.add(
+      "correct"
+    );
+
+
+    feedback.textContent =
+      "🎉 Chính xác! " +
+      challenge.explanation;
+
+
+    feedback.className =
+      "feedback good";
+
+
+    allButtons.forEach(
+      item => {
+
+        item.disabled = true;
+
+      }
+    );
+
+
+    solveCurrentPiece();
+
+  }
+
+  else {
+
+    button.classList.add(
+      "wrong"
+    );
+
+
+    feedback.textContent =
+      "Chưa đúng, thử lại nhé 😄";
+
+
+    feedback.className =
+      "feedback bad";
+
+
+    setTimeout(
+      () => {
+
+        button.classList.remove(
+          "wrong"
+        );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   13. GAME RÁP CÂU
+========================================================= */
+
+function renderSentenceChallenge(
+  challenge,
+  container
+) {
+
+  const zone =
+    document.createElement(
+      "div"
+    );
+
+
+  zone.className =
+    "sentence-zone";
+
+  zone.id =
+    "sentenceZone";
+
+
+  const piecesBox =
+    document.createElement(
+      "div"
+    );
+
+
+  piecesBox.className =
+    "sentence-pieces";
+
+
+  challenge.pieces.forEach(
+    (piece, index) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+        "sentence-piece";
+
+
+      button.textContent =
+        piece;
+
+
+      button.dataset.index =
+        index;
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          if (
+            button.classList.contains(
+              "disabled"
+            )
+          ) {
+
+            return;
+
+          }
+
+
+          sentenceSelected.push(
+            {
+              text: piece,
+              index: index
+            }
+          );
+
+
+          button.classList.add(
+            "disabled"
+          );
+
+
+          updateSentenceZone(
+            zone,
+            piecesBox,
+            challenge
+          );
+
+        }
+      );
+
+
+      piecesBox.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  container.appendChild(
+    zone
+  );
+
+
+  container.appendChild(
+    piecesBox
+  );
+
+
+  const buttonRow =
+    document.createElement(
+      "div"
+    );
+
+
+  buttonRow.style.marginTop =
+    "15px";
+
+
+  const resetButton =
+    document.createElement(
+      "button"
+    );
+
+
+  resetButton.className =
+    "action-button";
+
+
+  resetButton.textContent =
+    "↻ Làm lại câu";
+
+
+  resetButton.addEventListener(
+    "click",
+    () => {
+
+      sentenceSelected = [];
+
+      zone.innerHTML = "";
+
+
+      piecesBox
+        .querySelectorAll(
+          ".sentence-piece"
+        )
+        .forEach(
+          item => {
+
+            item.classList.remove(
+              "disabled"
+            );
+
+          }
+        );
+
+
+      const feedback =
+        document.getElementById(
+          "challengeFeedback"
+        );
+
+
+      feedback.textContent = "";
+
+      feedback.className =
+        "feedback";
+
+    }
+  );
+
+
+  buttonRow.appendChild(
+    resetButton
+  );
+
+
+  container.appendChild(
+    buttonRow
+  );
+
+}
+
+
+/* =========================================================
+   14. CẬP NHẬT CÂU ĐÃ CHỌN
+========================================================= */
+
+function updateSentenceZone(
+  zone,
+  piecesBox,
+  challenge
+) {
+
+  zone.innerHTML = "";
+
+
+  sentenceSelected.forEach(
+    selected => {
+
+      const piece =
+        document.createElement(
+          "button"
+        );
+
+
+      piece.className =
+        "sentence-piece";
+
+
+      piece.textContent =
+        selected.text;
+
+
+      piece.addEventListener(
+        "click",
+        () => {
+
+          sentenceSelected =
+            sentenceSelected.filter(
+              item =>
+                item.index !==
+                selected.index
+            );
+
+
+          const originalButton =
+            piecesBox.querySelector(
+              `[data-index="${selected.index}"]`
+            );
+
+
+          if (originalButton) {
+
+            originalButton.classList.remove(
+              "disabled"
+            );
+
+          }
+
+
+          updateSentenceZone(
+            zone,
+            piecesBox,
+            challenge
+          );
+
+        }
+      );
+
+
+      zone.appendChild(
+        piece
+      );
+
+    }
+  );
+
+
+  if (
+    sentenceSelected.length ===
+    challenge.answer.length
+  ) {
+
+    checkSentenceAnswer(
+      challenge,
+      piecesBox
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   15. KIỂM TRA RÁP CÂU
+========================================================= */
+
+function checkSentenceAnswer(
+  challenge,
+  piecesBox
+) {
+
+  const feedback =
+    document.getElementById(
+      "challengeFeedback"
+    );
+
+
+  const userAnswer =
+    sentenceSelected.map(
+      item => item.text
+    );
+
+
+  const isCorrect =
+    JSON.stringify(userAnswer) ===
+    JSON.stringify(
+      challenge.answer
+    );
+
+
+  if (isCorrect) {
+
+    feedback.textContent =
+      "🎉 Ráp câu chính xác!";
+
+
+    feedback.className =
+      "feedback good";
+
+
+    piecesBox
+      .querySelectorAll(
+        ".sentence-piece"
+      )
+      .forEach(
+        button => {
+
+          button.disabled = true;
+
+        }
+      );
+
+
+    solveCurrentPiece();
+
+  }
+
+  else {
+
+    feedback.textContent =
+      "Thứ tự chưa đúng. Bấm vào các mảnh phía trên để trả lại rồi thử lại nhé.";
+
+
+    feedback.className =
+      "feedback bad";
+
+  }
+
+}
+
+
+/* =========================================================
+   16. HOÀN THÀNH MẢNH
+========================================================= */
+
+function solveCurrentPiece() {
+
+  if (
+    currentChallengeIndex ===
+    null
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    solvedPieces.includes(
+      currentChallengeIndex
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  solvedPieces.push(
+    currentChallengeIndex
+  );
+
+
+  gameScore += 10;
+
+
+  updateGameInfo();
+
+  renderGame();
+
+
+  if (
+    solvedPieces.length ===
+    gameChallenges.length
+  ) {
+
+    setTimeout(
+      () => {
+
+        alert(
+          "🎉 Xuất sắc! Bạn đã hoàn thành đủ 36 mảnh ghép!"
+        );
+
+      },
+      300
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   17. THÔNG TIN GAME
+========================================================= */
+
+function updateGameInfo() {
+
+  const scoreText =
+    document.getElementById(
+      "scoreText"
+    );
+
+
+  const pieceText =
+    document.getElementById(
+      "pieceText"
+    );
+
+
+  if (scoreText) {
+
+    scoreText.textContent =
+      `⭐ ${gameScore} điểm`;
+
+  }
+
+
+  if (pieceText) {
+
+    pieceText.textContent =
+      `🧩 ${solvedPieces.length} / ${gameChallenges.length} mảnh`;
+
+  }
+
+}
+
+
+/* =========================================================
+   18. RESET GAME
+========================================================= */
+
+function resetGame() {
+
+  gameScore = 0;
+
+  solvedPieces = [];
+
+  currentChallengeIndex =
+    null;
+
+  sentenceSelected = [];
+
+
+  closeGameModal();
+
+  renderGame();
+
+}
+
+
+/* =========================================================
+   19. ĐÓNG GAME MODAL
+========================================================= */
+
+function closeGameModal() {
+
+  const overlay =
+    document.getElementById(
+      "gameOverlay"
+    );
+
+
+  overlay.classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   20. DỮ LIỆU BÀI KHÓA
+========================================================= */
+
+const readingLessons = [
+
+  {
+    title: "Bài khóa 1",
+    audio: "./03-1.mp3",
+
+    lines: [
+
+      {
+        speaker: "李文",
+        text: "我是中国人。"
+      },
+
+      {
+        speaker: "白家月",
+        text: "我是法国人。我的中文老师也是中国人。"
+      }
+
+    ]
+  },
+
+
+  {
+    title: "Bài khóa 2",
+    audio: "./03-3.mp3",
+
+    lines: [
+
+      {
+        speaker: "安妮",
+        text: "这是谁？"
+      },
+
+      {
+        speaker: "陈天中",
+        text: "这是我女朋友。"
+      },
+
+      {
+        speaker: "安妮",
+        text: "你女朋友是哪国人？"
+      },
+
+      {
+        speaker: "陈天中",
+        text: "她也是泰国人。"
+      }
+
+    ]
+  },
+
+
+  {
+    title: "Bài khóa 3",
+    audio: "./03-5.mp3",
+
+    lines: [
+
+      {
+        speaker: "王一雪",
+        text: "喂，一飞！"
+      },
+
+      {
+        speaker: "王一飞",
+        text: "姐姐！"
+      },
+
+      {
+        speaker: "王一雪",
+        text: "你工作还忙吗？"
+      },
+
+      {
+        speaker: "王一飞",
+        text: "对，还很忙。你也很忙吗？"
+      },
+
+      {
+        speaker: "王一雪",
+        text: "我不太忙。我们很想你。"
+      },
+
+      {
+        speaker: "王一飞",
+        text: "我也想你们。"
+      }
+
+    ]
+  }
+
+];
+
+
+/* =========================================================
+   21. TÁCH CÂU THÀNH TỪ CÓ THỂ CLICK
+========================================================= */
+
+function tokenizeChinese(text) {
+
+  const knownWords =
+    Object.keys(dictionary)
+      .sort(
+        (a, b) =>
+          b.length - a.length
+      );
+
+
+  let result = [];
+
+  let position = 0;
+
+
+  while (
+    position <
+    text.length
+  ) {
+
+    let matched = null;
+
+
+    for (
+      const word of knownWords
+    ) {
+
+      if (
+        text.startsWith(
+          word,
+          position
+        )
+      ) {
+
+        matched = word;
+
+        break;
+
+      }
+
+    }
+
+
+    if (matched) {
+
+      result.push(
+        {
+          text: matched,
+          clickable: true
+        }
+      );
+
+
+      position +=
+        matched.length;
+
+    }
+
+    else {
+
+      result.push(
+        {
+          text:
+            text[position],
+          clickable: false
+        }
+      );
+
+
+      position++;
+
+    }
+
+  }
+
+
+  return result;
+
+}
+
+
+/* =========================================================
+   22. RENDER BÀI KHÓA
+========================================================= */
+
+function renderReading() {
+
+  const readingList =
+    document.getElementById(
+      "readingList"
+    );
+
+
+  readingList.innerHTML = "";
+
+
+  readingLessons.forEach(
+    lesson => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "reading-card";
+
+
+      const top =
+        document.createElement(
+          "div"
+        );
+
+
+      top.className =
+        "reading-top";
+
+
+      const title =
+        document.createElement(
+          "div"
+        );
+
+
+      title.className =
+        "reading-title";
+
+
+      title.textContent =
+        `🎧 ${lesson.title}`;
+
+
+      const audio =
+        document.createElement(
+          "audio"
+        );
+
+
+      audio.controls = true;
+
+      audio.preload =
+        "metadata";
+
+      audio.src =
+        lesson.audio;
+
+
+      top.appendChild(
+        title
+      );
+
+
+      top.appendChild(
+        audio
+      );
+
+
+      card.appendChild(
+        top
+      );
+
+
+      const dialogue =
+        document.createElement(
+          "div"
+        );
+
+
+      dialogue.className =
+        "dialogue";
+
+
+      lesson.lines.forEach(
+        line => {
+
+          const row =
+            document.createElement(
+              "div"
+            );
+
+
+          row.className =
+            "dialogue-line";
+
+
+          const speaker =
+            document.createElement(
+              "div"
+            );
+
+
+          speaker.className =
+            "speaker-name";
+
+
+          speaker.textContent =
+            line.speaker;
+
+
+          const sentence =
+            document.createElement(
+              "div"
+            );
+
+
+          sentence.className =
+            "chinese-line";
+
+
+          const tokens =
+            tokenizeChinese(
+              line.text
+            );
+
+
+          tokens.forEach(
+            token => {
+
+              if (
+                token.clickable
+              ) {
+
+                const span =
+                  document.createElement(
+                    "span"
+                  );
+
+
+                span.className =
+                  "word-token";
+
+
+                span.textContent =
+                  token.text;
+
+
+                span.addEventListener(
+                  "click",
+                  () => {
+
+                    openDictionary(
+                      token.text
+                    );
+
+                  }
+                );
+
+
+                sentence.appendChild(
+                  span
+                );
+
+              }
+
+              else {
+
+                sentence.appendChild(
+                  document.createTextNode(
+                    token.text
+                  )
+                );
+
+              }
+
+            }
+          );
+
+
+          row.appendChild(
+            speaker
+          );
+
+
+          row.appendChild(
+            sentence
+          );
+
+
+          dialogue.appendChild(
+            row
+          );
+
+        }
+      );
+
+
+      card.appendChild(
+        dialogue
+      );
+
+
+      readingList.appendChild(
+        card
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   23. MỞ POPUP TỪ ĐIỂN
+========================================================= */
+
+function openDictionary(
+  hanzi
+) {
+
+  const word =
+    dictionary[hanzi];
+
+
+  if (!word) {
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "dictionaryIcon"
+  ).textContent =
+    word.emoji || "📖";
+
+
+  document.getElementById(
+    "dictionaryHanzi"
+  ).textContent =
+    word.hanzi;
+
+
+  document.getElementById(
+    "dictionaryPinyin"
+  ).textContent =
+    word.pinyin;
+
+
+  document.getElementById(
+    "dictionaryType"
+  ).textContent =
+    word.type;
+
+
+  document.getElementById(
+    "dictionaryMeaning"
+  ).textContent =
+    word.meaning;
+
+
+  document.getElementById(
+    "dictionaryExample"
+  ).textContent =
+    word.example;
+
+
+  const speakerButton =
+    document.getElementById(
+      "dictionarySpeaker"
+    );
+
+
+  speakerButton.onclick =
+    event => {
+
+      if (
+        wordAudio[word.hanzi]
+      ) {
+
+        playWordAudio(
+          word.hanzi,
+          event,
+          speakerButton
+        );
+
+      }
+
+      else {
+
+        event.stopPropagation();
+
+        speakChinese(
+          word.hanzi
+        );
+
+      }
+
+    };
+
+
+  document.getElementById(
+    "dictionaryOverlay"
+  ).classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   24. ĐÓNG POPUP TỪ ĐIỂN
+========================================================= */
+
+function closeDictionary() {
+
+  stopWordAudio();
+
+
+  document.getElementById(
+    "dictionaryOverlay"
+  ).classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   25. ĐÓNG POPUP KHI CLICK RA NGOÀI
+========================================================= */
+
+document.getElementById(
+  "gameOverlay"
+).addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target.id ===
+      "gameOverlay"
+    ) {
+
+      closeGameModal();
+
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "dictionaryOverlay"
+).addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target.id ===
+      "dictionaryOverlay"
+    ) {
+
+      closeDictionary();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   26. PHÍM ESC ĐÓNG POPUP
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key ===
+      "Escape"
+    ) {
+
+      closeGameModal();
+
+      closeDictionary();
+
+    }
+
+  }
+);
+
+/* =========================================================
+   27. BÀI LUYỆN TẬP 1 - ĐIỀN TỪ
+========================================================= */
+
+const fillExerciseData = [
+
+  {
+    html: `你工作忙
+      <select id="fill1">
+        <option value="">...</option>
+        <option value="哪">哪</option>
+        <option value="吗">吗</option>
+        <option value="谁">谁</option>
+        <option value="中国人">中国人</option>
+        <option value="想">想</option>
+      </select>
+      ？`,
+    answer: "吗"
+  },
+
+  {
+    html: `我很
+      <select id="fill2">
+        <option value="">...</option>
+        <option value="哪">哪</option>
+        <option value="吗">吗</option>
+        <option value="谁">谁</option>
+        <option value="中国人">中国人</option>
+        <option value="想">想</option>
+      </select>
+      你们。`,
+    answer: "想"
+  },
+
+  {
+    html: `
+      白家月：你是
+      <select id="fill3a">
+        <option value="">...</option>
+        <option value="哪">哪</option>
+        <option value="吗">吗</option>
+        <option value="谁">谁</option>
+        <option value="中国人">中国人</option>
+        <option value="想">想</option>
+      </select>
+      国人？
+      <br>
+      李文：我是
+      <select id="fill3b">
+        <option value="">...</option>
+        <option value="哪">哪</option>
+        <option value="吗">吗</option>
+        <option value="谁">谁</option>
+        <option value="中国人">中国人</option>
+        <option value="想">想</option>
+      </select>
+      。
+    `,
+    answer: [
+      "哪",
+      "中国人"
+    ]
+  },
+
+  {
+    html: `
+      白家月：她是
+      <select id="fill4">
+        <option value="">...</option>
+        <option value="哪">哪</option>
+        <option value="吗">吗</option>
+        <option value="谁">谁</option>
+        <option value="中国人">中国人</option>
+        <option value="想">想</option>
+      </select>
+      ？
+      <br>
+      安妮：她是陈天中的女朋友。
+    `,
+    answer: "谁"
+  }
+
+];
+
+
+/* =========================================================
+   28. RENDER BÀI LUYỆN TẬP 1
+========================================================= */
+
+function renderFillExercise() {
+
+  const box =
+    document.getElementById(
+      "fillQuestions"
+    );
+
+
+  box.innerHTML = "";
+
+
+  fillExerciseData.forEach(
+    (item, index) => {
+
+      const question =
+        document.createElement(
+          "div"
+        );
+
+
+      question.className =
+        "fill-question";
+
+
+      question.innerHTML =
+        `<strong>${index + 1}.</strong> ${item.html}`;
+
+
+      box.appendChild(
+        question
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   29. KIỂM TRA BÀI LUYỆN TẬP 1
+========================================================= */
+
+function checkFillExercise() {
+
+  const fill1 =
+    document.getElementById(
+      "fill1"
+    ).value;
+
+
+  const fill2 =
+    document.getElementById(
+      "fill2"
+    ).value;
+
+
+  const fill3a =
+    document.getElementById(
+      "fill3a"
+    ).value;
+
+
+  const fill3b =
+    document.getElementById(
+      "fill3b"
+    ).value;
+
+
+  const fill4 =
+    document.getElementById(
+      "fill4"
+    ).value;
+
+
+  let correct = 0;
+
+
+  if (
+    fill1 === "吗"
+  ) {
+    correct++;
+  }
+
+
+  if (
+    fill2 === "想"
+  ) {
+    correct++;
+  }
+
+
+  if (
+    fill3a === "哪" &&
+    fill3b === "中国人"
+  ) {
+    correct++;
+  }
+
+
+  if (
+    fill4 === "谁"
+  ) {
+    correct++;
+  }
+
+
+  const feedback =
+    document.getElementById(
+      "fillFeedback"
+    );
+
+
+  if (
+    correct === 4
+  ) {
+
+    feedback.textContent =
+      "🎉 Chính xác! Bạn làm đúng 4/4 câu.";
+
+    feedback.style.color =
+      "#388b64";
+
+  }
+
+  else {
+
+    feedback.textContent =
+      `Bạn đúng ${correct}/4 câu. Kiểm tra lại những câu còn sai nhé.`;
+
+    feedback.style.color =
+      "#c85f79";
+
+  }
+
+}
+
+
+/* =========================================================
+   30. KIỂM TRA BÀI LUYỆN TẬP 2
+========================================================= */
+
+function checkSceneExercise() {
+
+  const scene1a =
+    document.getElementById(
+      "scene1a"
+    ).value.trim();
+
+
+  const scene1b =
+    document.getElementById(
+      "scene1b"
+    ).value.trim();
+
+
+  const scene1c =
+    document.getElementById(
+      "scene1c"
+    ).value.trim();
+
+
+  const scene2a =
+    document.getElementById(
+      "scene2a"
+    ).value.trim();
+
+
+  const scene2b =
+    document.getElementById(
+      "scene2b"
+    ).value.trim();
+
+
+  const scene2c =
+    document.getElementById(
+      "scene2c"
+    ).value.trim();
+
+
+  let correct = 0;
+
+
+  /*
+    Câu 1:
+    他叫陈天中，是泰国人，
+    他女朋友也是泰国人。
+  */
+
+  if (
+    scene1a === "叫"
+  ) {
+    correct++;
+  }
+
+
+  if (
+    scene1b === "女朋友"
+  ) {
+    correct++;
+  }
+
+
+  if (
+    scene1c === "是"
+  ) {
+    correct++;
+  }
+
+
+  /*
+    Câu 2:
+    王一飞是我的中文老师，
+    她工作很忙。
+  */
+
+  if (
+    scene2a === "我的"
+  ) {
+    correct++;
+  }
+
+
+  if (
+    scene2b === "工作"
+  ) {
+    correct++;
+  }
+
+
+  if (
+    scene2c === "忙"
+  ) {
+    correct++;
+  }
+
+
+  const feedback =
+    document.getElementById(
+      "sceneFeedback"
+    );
+
+
+  if (
+    correct === 6
+  ) {
+
+    feedback.textContent =
+      "🎉 Rất tốt! Bạn hoàn thành đúng cả 6 chỗ trống.";
+
+    feedback.style.color =
+      "#388b64";
+
+  }
+
+  else {
+
+    feedback.textContent =
+      `Bạn đúng ${correct}/6 chỗ trống. Xem lại cấu trúc câu và thử lại nhé.`;
+
+    feedback.style.color =
+      "#c85f79";
+
+  }
+
+}
+
+
+/* =========================================================
+   31. KHỞI ĐỘNG TRANG
+========================================================= */
+
+renderGame();
+
+renderReading();
+
+renderFillExercise();
+
+
+/* =========================================================
+   32. DỪNG AUDIO KHI CHUYỂN TAB
+========================================================= */
+
+document.querySelectorAll(
+  ".nav-button"
+).forEach(
+  button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(
+            "audio"
+          )
+          .forEach(
+            audio => {
+
+              audio.pause();
+
+            }
+          );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   33. XỬ LÝ KHI RỜI TRANG
+========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    stopWordAudio();
+
+    if (
+      "speechSynthesis"
+      in window
+    ) {
+
+      window
+        .speechSynthesis
+        .cancel();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   34. SHEET 6 - LUYỆN VIẾT
+========================================================= */
+
+let demoWriterInstance = null;
+let quizWriterInstance = null;
+let currentWritingWord = "";
+let currentWritingChar = "";
+
+function getWritingSize() {
+  return window.innerWidth <= 520 ? 270 : 360;
+}
+
+function buildWritingWordSelect() {
+  const select = document.getElementById("writingWordSelect");
+  if (!select) return;
+
+  select.innerHTML = "";
+
+  vocabulary.forEach((word, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = `${word.hanzi} · ${word.pinyin}`;
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", () => {
+    loadWritingWord(Number(select.value));
+  });
+
+  loadWritingWord(0);
+}
+
+function loadWritingWord(index) {
+  const word = vocabulary[index];
+  if (!word) return;
+
+  currentWritingWord = word.hanzi;
+
+  const info = document.getElementById("writingWordInfo");
+  if (info) {
+    info.textContent = `${word.pinyin} · ${word.meaning}`;
+  }
+
+  const tabs = document.getElementById("writingCharacterTabs");
+  tabs.innerHTML = "";
+
+  const chars = Array.from(word.hanzi);
+
+  chars.forEach((char, charIndex) => {
+    const button = document.createElement("button");
+    button.className = "character-tab" + (charIndex === 0 ? " active" : "");
+    button.textContent = char;
+
+    button.addEventListener("click", () => {
+      tabs.querySelectorAll(".character-tab").forEach(item => {
+        item.classList.remove("active");
+      });
+      button.classList.add("active");
+      loadWritingCharacter(char);
+    });
+
+    tabs.appendChild(button);
+  });
+
+  loadWritingCharacter(chars[0]);
+}
+
+function loadWritingCharacter(char) {
+  currentWritingChar = char;
+
+  const demoTarget = document.getElementById("demoWriter");
+  const quizTarget = document.getElementById("quizWriter");
+  const status = document.getElementById("writingStatus");
+
+  demoTarget.innerHTML = "";
+  quizTarget.innerHTML = "";
+
+  if (status) {
+    status.textContent = "Viết theo đúng thứ tự nét nhé ✨";
+  }
+
+  if (typeof HanziWriter === "undefined") {
+    if (status) {
+      status.textContent = "Chưa tải được Hanzi Writer. Hãy kiểm tra kết nối Internet.";
+    }
+    return;
+  }
+
+  const size = getWritingSize();
+
+  demoWriterInstance = HanziWriter.create("demoWriter", char, {
+    width: size,
+    height: size,
+    padding: 28,
+    showOutline: true,
+    showCharacter: true,
+    strokeAnimationSpeed: 1,
+    delayBetweenStrokes: 300
+  });
+
+  quizWriterInstance = HanziWriter.create("quizWriter", char, {
+    width: size,
+    height: size,
+    padding: 28,
+    showOutline: true,
+    showCharacter: false,
+    showHintAfterMisses: 2,
+    highlightOnComplete: true
+  });
+
+  startWritingQuiz();
+}
+
+function startWritingQuiz() {
+  if (!quizWriterInstance) return;
+
+  const status = document.getElementById("writingStatus");
+  if (status) {
+    status.textContent = "Viết theo đúng thứ tự nét nhé ✨";
+  }
+
+  quizWriterInstance.quiz({
+    onMistake: () => {
+      if (status) {
+        status.textContent = "Chưa đúng nét này, thử lại nha ✍️";
+      }
+    },
+    onCorrectStroke: () => {
+      if (status) {
+        status.textContent = "Đúng rồi, tiếp tục nét kế tiếp 🌱";
+      }
+    },
+    onComplete: () => {
+      if (status) {
+        status.textContent = "🎉 Hoàn thành chữ " + currentWritingChar + "!";
+      }
+    }
+  });
+}
+
+document.getElementById("animateWritingBtn")?.addEventListener("click", () => {
+  if (!demoWriterInstance) return;
+
+  // Chỉ chạy hoạt ảnh thứ tự nét. KHÔNG phát âm ở nút này.
+  demoWriterInstance.hideCharacter({
+    onComplete: () => {
+      demoWriterInstance.animateCharacter();
+    }
+  });
+});
+
+document.getElementById("listenWritingBtn")?.addEventListener("click", () => {
+  // Âm thanh được tách riêng hoàn toàn khỏi nút Xem viết.
+  speakChinese(currentWritingChar || currentWritingWord);
+});
+
+document.getElementById("restartWritingBtn")?.addEventListener("click", () => {
+  loadWritingCharacter(currentWritingChar);
+});
+
+buildWritingWordSelect();
+
+</script>
+
+</body>
+
+</html>

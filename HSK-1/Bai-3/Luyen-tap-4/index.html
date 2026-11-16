@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三课 · 朗读与句子挑战</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Arial","Microsoft YaHei",sans-serif;
+  min-height:100vh;
+  color:#4d4a65;
+  background:
+    radial-gradient(circle at 10% 15%,rgba(255,255,255,.8) 0 55px,transparent 56px),
+    radial-gradient(circle at 90% 25%,rgba(255,255,255,.65) 0 70px,transparent 71px),
+    linear-gradient(135deg,#fff0f6,#eef6ff 50%,#f1fff5);
+  padding:22px;
+}
+
+button{
+  font-family:inherit;
+}
+
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed!important;
+}
+
+.home-btn{
+  position:fixed;
+  top:18px;
+  left:18px;
+  z-index:50;
+  border:none;
+  border-radius:999px;
+  padding:11px 18px;
+  background:#fff;
+  box-shadow:0 5px 18px rgba(78,72,120,.14);
+  color:#655e8d;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.container{
+  width:min(100%,980px);
+  margin:40px auto;
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:24px;
+}
+
+.hero .tag{
+  display:inline-block;
+  background:#fff;
+  color:#8b73b7;
+  padding:8px 15px;
+  border-radius:999px;
+  font-weight:800;
+  box-shadow:0 5px 16px rgba(87,78,130,.1);
+  margin-bottom:12px;
+}
+
+.hero h1{
+  font-size:clamp(27px,5vw,44px);
+  color:#5c567d;
+  margin-bottom:8px;
+}
+
+.hero p{
+  line-height:1.6;
+  color:#77718e;
+}
+
+.card{
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 14px 40px rgba(78,69,120,.12);
+  backdrop-filter:blur(8px);
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* LOGIN */
+
+.login-card{
+  max-width:620px;
+  margin:auto;
+  text-align:center;
+}
+
+.login-icon{
+  font-size:65px;
+  margin-bottom:10px;
+}
+
+.login-card h2{
+  color:#625b84;
+  margin-bottom:10px;
+}
+
+.login-card p{
+  line-height:1.6;
+  color:#7d7890;
+  margin-bottom:20px;
+}
+
+.name-input{
+  width:100%;
+  padding:16px 18px;
+  border:2px solid #e9e3f6;
+  border-radius:18px;
+  font-size:17px;
+  outline:none;
+  text-align:center;
+  transition:.2s;
+}
+
+.name-input:focus{
+  border-color:#b9a8e8;
+  box-shadow:0 0 0 4px rgba(185,168,232,.13);
+}
+
+.main-btn{
+  border:none;
+  padding:14px 24px;
+  border-radius:18px;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#a98be3,#7d9de9);
+  box-shadow:0 7px 18px rgba(112,101,190,.2);
+  transition:.2s;
+}
+
+.main-btn:hover{
+  transform:translateY(-2px);
+}
+
+.start-btn{
+  width:100%;
+  margin-top:15px;
+}
+
+/* TOP USER */
+
+.userbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  background:rgba(255,255,255,.82);
+  padding:12px 18px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(80,70,120,.08);
+}
+
+.user-name{
+  font-weight:900;
+  color:#655c88;
+}
+
+.user-score{
+  font-weight:800;
+  color:#8b79bd;
+}
+
+/* TABS */
+
+.tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.tab-btn{
+  border:none;
+  border-radius:17px;
+  padding:14px 10px;
+  background:#fff;
+  color:#817a99;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 5px 16px rgba(80,70,120,.08);
+}
+
+.tab-btn.active{
+  color:white;
+  background:linear-gradient(135deg,#b394e6,#85a5ec);
+}
+
+/* SHEET 1 */
+
+.sheet-title{
+  text-align:center;
+  margin-bottom:8px;
+  color:#625c83;
+}
+
+.sheet-desc{
+  text-align:center;
+  color:#8a849b;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+.progress-wrap{
+  height:12px;
+  background:#eeeaf6;
+  border-radius:999px;
+  overflow:hidden;
+  margin-bottom:24px;
+}
+
+.progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#e8a4c7,#9da9ef);
+  transition:.35s;
+}
+
+.read-card{
+  text-align:center;
+}
+
+.counter{
+  display:inline-block;
+  background:#f2edff;
+  color:#7667a6;
+  padding:7px 14px;
+  border-radius:999px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+.chinese-line{
+  font-size:clamp(28px,6vw,43px);
+  line-height:1.8;
+  color:#423d60;
+  font-weight:800;
+  margin:10px 0;
+}
+
+.word{
+  display:inline-block;
+  cursor:pointer;
+  padding:0 3px;
+  border-radius:8px;
+  transition:.15s;
+}
+
+.word:hover{
+  background:#fff0b9;
+  transform:translateY(-2px);
+}
+
+.pinyin{
+  color:#8a75bd;
+  font-size:19px;
+  line-height:1.6;
+  margin:5px 0 10px;
+}
+
+.meaning{
+  color:#777287;
+  font-size:16px;
+  margin-bottom:20px;
+}
+
+.action-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin:18px 0;
+}
+
+.soft-btn{
+  border:none;
+  border-radius:16px;
+  padding:12px 17px;
+  background:#f3effb;
+  color:#675e8b;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.listen-btn{
+  background:#e8f2ff;
+  color:#5275a7;
+}
+
+.record-btn{
+  background:#ffe9ef;
+  color:#a85e76;
+}
+
+.record-btn.recording{
+  animation:pulse 1s infinite;
+  background:#ffceda;
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.05)}
+}
+
+.record-box{
+  margin:20px auto;
+  padding:18px;
+  max-width:600px;
+  border-radius:20px;
+  background:#fff9fc;
+  border:2px dashed #efd7e2;
+}
+
+.record-box h3{
+  margin-bottom:7px;
+  color:#796887;
+}
+
+.record-time{
+  font-weight:900;
+  color:#c46d89;
+  margin:8px 0;
+}
+
+.nav-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:25px;
+}
+
+.nav-btn{
+  flex:1;
+  border:none;
+  border-radius:17px;
+  padding:13px;
+  background:#f0edf7;
+  color:#68617e;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.nav-btn.next{
+  color:white;
+  background:linear-gradient(135deg,#a990e2,#829fe8);
+}
+
+/* WORD POPUP */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(55,50,76,.25);
+  z-index:100;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.word-popup{
+  width:min(100%,430px);
+  background:white;
+  border-radius:28px;
+  padding:26px;
+  box-shadow:0 20px 60px rgba(50,42,80,.22);
+  position:relative;
+  animation:pop .2s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.92);opacity:0}
+}
+
+.close-popup{
+  position:absolute;
+  right:15px;
+  top:13px;
+  width:35px;
+  height:35px;
+  border:none;
+  border-radius:50%;
+  background:#f2eef7;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.popup-hanzi{
+  font-size:38px;
+  font-weight:900;
+  color:#5c557d;
+  margin-bottom:5px;
+}
+
+.popup-pinyin{
+  color:#9178c5;
+  font-size:20px;
+  font-weight:800;
+}
+
+.popup-type{
+  display:inline-block;
+  background:#f1edff;
+  color:#7666a3;
+  border-radius:999px;
+  padding:6px 11px;
+  font-size:13px;
+  margin:10px 0;
+}
+
+.popup-meaning{
+  line-height:1.7;
+  margin:8px 0 15px;
+}
+
+/* SHEET 2 */
+
+.round-box{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.round-badge{
+  display:inline-block;
+  padding:7px 14px;
+  border-radius:999px;
+  background:#fff0f5;
+  color:#ad6881;
+  font-weight:900;
+}
+
+.timer{
+  font-size:34px;
+  font-weight:900;
+  color:#75669d;
+  margin:12px 0;
+}
+
+.timer.danger{
+  color:#d75f70;
+  animation:pulse .7s infinite;
+}
+
+.game-question{
+  background:#f9f7ff;
+  padding:20px;
+  border-radius:22px;
+  text-align:center;
+  margin:18px 0;
+}
+
+.game-question small{
+  color:#8a8499;
+}
+
+.game-question h3{
+  margin-top:7px;
+  color:#5d5777;
+}
+
+.answer-zone,
+.word-bank{
+  min-height:75px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+  border-radius:20px;
+}
+
+.answer-zone{
+  border:2px dashed #c9bee7;
+  background:#fcfbff;
+  margin-bottom:14px;
+}
+
+.word-bank{
+  background:#f4f0fb;
+}
+
+.tile{
+  border:none;
+  padding:11px 16px;
+  border-radius:14px;
+  background:white;
+  color:#4f496b;
+  font-size:19px;
+  font-weight:800;
+  box-shadow:0 4px 10px rgba(72,61,105,.12);
+  cursor:pointer;
+}
+
+.tile:hover{
+  transform:translateY(-2px);
+}
+
+.feedback{
+  min-height:30px;
+  text-align:center;
+  font-weight:900;
+  margin:15px 0;
+}
+
+.feedback.good{color:#4eaa76}
+.feedback.bad{color:#d86473}
+
+.game-controls{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.check-btn{
+  background:linear-gradient(135deg,#83cba5,#63b795);
+}
+
+.next-question{
+  background:linear-gradient(135deg,#e0a0bd,#a891df);
+}
+
+/* ROUND COMPLETE */
+
+.round-complete{
+  text-align:center;
+}
+
+.big-emoji{
+  font-size:65px;
+}
+
+.round-complete h2{
+  color:#61597f;
+  margin:8px 0;
+}
+
+.round-complete p{
+  color:#7d768e;
+  line-height:1.7;
+}
+
+/* RANK */
+
+.rank-list{
+  max-width:680px;
+  margin:20px auto 0;
+}
+
+.rank-row{
+  display:grid;
+  grid-template-columns:55px 1fr auto auto;
+  gap:10px;
+  align-items:center;
+  background:#faf8ff;
+  padding:13px 16px;
+  border-radius:17px;
+  margin:9px 0;
+}
+
+.rank-row.me{
+  background:#fff1f6;
+  border:2px solid #f1bfd0;
+}
+
+.medal{
+  font-size:25px;
+  text-align:center;
+}
+
+.rank-name{
+  font-weight:900;
+}
+
+.rank-score,
+.rank-time{
+  font-size:14px;
+  color:#7d758e;
+}
+
+/* VOCAB HISTORY */
+
+.lookup-box{
+  margin-top:25px;
+  background:#f9f7ff;
+  border-radius:20px;
+  padding:18px;
+}
+
+.lookup-box h3{
+  margin-bottom:12px;
+}
+
+.lookup-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.lookup-tag{
+  border:none;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff;
+  color:#71658f;
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(70,60,100,.08);
+}
+
+@media(max-width:650px){
+  body{padding:15px}
+  .container{margin-top:55px}
+  .card{padding:20px 15px}
+  .tabs{grid-template-columns:1fr}
+  .userbar{flex-direction:column}
+  .rank-row{
+    grid-template-columns:45px 1fr auto;
+  }
+  .rank-time{
+    grid-column:2/4;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<button class="home-btn" onclick="goHome()">🏠 Trang chủ</button>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="tag">第三课 · 我是中国人</div>
+    <h1>🌷 朗读 & 句子挑战</h1>
+    <p>Nghe · đọc · tra từ · ghi âm · xếp câu · leo bảng xếp hạng</p>
+  </header>
+
+  <!-- LOGIN -->
+  <section id="loginScreen" class="card login-card">
+    <div class="login-icon">🌸</div>
+    <h2>Chào mừng đến lớp học!</h2>
+    <p>
+      Điền <b>họ và tên</b> trước khi bắt đầu.<br>
+      Thành tích Sheet 2 của bạn sẽ được đưa lên bảng xếp hạng.
+    </p>
+
+    <input
+      id="studentName"
+      class="name-input"
+      type="text"
+      maxlength="40"
+      placeholder="Ví dụ: Trần Minh Anh"
+    >
+
+    <button class="main-btn start-btn" onclick="startLesson()">
+      Bắt đầu học ✨
+    </button>
+  </section>
+
+  <!-- APP -->
+  <main id="app" class="hidden">
+
+    <div class="userbar">
+      <div>👤 Học viên: <span id="displayName" class="user-name"></span></div>
+      <div class="user-score">⭐ Điểm game: <span id="topScore">0</span></div>
+    </div>
+
+    <div class="tabs">
+      <button id="tab1" class="tab-btn active" onclick="showSheet(1)">
+        📖 Sheet 1 · Luyện đọc
+      </button>
+
+      <button id="tab2" class="tab-btn" onclick="showSheet(2)">
+        🧩 Sheet 2 · Xếp câu
+      </button>
+
+      <button id="tab3" class="tab-btn" onclick="showSheet(3)">
+        🏆 Bảng xếp hạng
+      </button>
+    </div>
+
+    <!-- SHEET 1 -->
+    <section id="sheet1" class="card">
+      <h2 class="sheet-title">📖 一句一句读</h2>
+      <p class="sheet-desc">
+        Nghe câu mẫu → đọc theo → bấm vào từ chưa biết để tra →
+        ghi âm giọng của mình và nghe lại.
+      </p>
+
+      <div class="progress-wrap">
+        <div id="readingProgress" class="progress"></div>
+      </div>
+
+      <div class="read-card">
+        <div id="sentenceCounter" class="counter"></div>
+
+        <div id="chineseSentence" class="chinese-line"></div>
+
+        <div id="pinyinSentence" class="pinyin"></div>
+
+        <div id="meaningSentence" class="meaning"></div>
+
+        <div class="action-row">
+          <button class="soft-btn listen-btn" onclick="speakCurrentSentence()">
+            🔊 Nghe câu mẫu
+          </button>
+
+          <button id="pinyinToggle" class="soft-btn" onclick="togglePinyin()">
+            👁 Ẩn Pinyin
+          </button>
+        </div>
+
+        <div class="record-box">
+          <h3>🎙️ Đến lượt bạn</h3>
+          <p>Đọc lại câu phía trên và ghi âm giọng của mình.</p>
+
+          <div id="recordTime" class="record-time">00:00</div>
+
+          <div class="action-row">
+            <button id="recordButton" class="soft-btn record-btn" onclick="toggleRecording()">
+              🎙️ Bắt đầu ghi âm
+            </button>
+
+            <button id="playRecordingButton" class="soft-btn" onclick="playRecording()" disabled>
+              ▶️ Nghe giọng của tôi
+            </button>
+
+            <button id="deleteRecordingButton" class="soft-btn" onclick="deleteRecording()" disabled>
+              🔄 Ghi lại
+            </button>
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button class="nav-btn" onclick="previousSentence()">← Câu trước</button>
+          <button class="nav-btn next" onclick="nextSentence()">Câu tiếp theo →</button>
+        </div>
+      </div>
+
+      <div class="lookup-box">
+        <h3>📒 我的生词 · Những từ bạn đã tra</h3>
+        <div id="lookupTags" class="lookup-tags">
+          <span style="color:#999">Chưa có từ nào.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHEET 2 -->
+    <section id="sheet2" class="card hidden">
+
+      <div id="gameArea">
+
+        <h2 class="sheet-title">🧩 句子拼拼乐</h2>
+        <p class="sheet-desc">
+          Bấm các thẻ theo đúng thứ tự để tạo thành câu hoàn chỉnh.
+          Mỗi câu có <b>60 giây</b>.
+        </p>
+
+        <div class="round-box">
+          <div id="roundBadge" class="round-badge"></div>
+          <div id="timer" class="timer">01:00</div>
+        </div>
+
+        <div class="progress-wrap">
+          <div id="gameProgress" class="progress"></div>
+        </div>
+
+        <div class="game-question">
+          <small>Sắp xếp thành câu đúng</small>
+          <h3 id="questionHint"></h3>
+        </div>
+
+        <div id="answerZone" class="answer-zone">
+          <span style="color:#aaa">Câu của bạn sẽ xuất hiện ở đây...</span>
+        </div>
+
+        <div id="wordBank" class="word-bank"></div>
+
+        <div id="feedback" class="feedback"></div>
+
+        <div class="game-controls">
+          <button class="soft-btn" onclick="resetCurrentAnswer()">↺ Làm lại câu</button>
+
+          <button id="checkButton" class="main-btn check-btn" onclick="checkAnswer()">
+            ✓ Kiểm tra
+          </button>
+
+          <button id="nextGameButton" class="main-btn next-question hidden" onclick="nextGameQuestion()">
+            Câu tiếp theo →
+          </button>
+        </div>
+
+      </div>
+
+      <div id="roundComplete" class="round-complete hidden">
+        <div class="big-emoji">🎉</div>
+        <h2 id="roundCompleteTitle"></h2>
+        <p id="roundCompleteText"></p>
+
+        <br>
+
+        <button id="continueRoundButton" class="main-btn" onclick="continueRound()">
+          Tiếp tục thử thách →
+        </button>
+      </div>
+
+      <div id="gameFinished" class="round-complete hidden">
+        <div class="big-emoji">🏆</div>
+        <h2>太棒了！Hoàn thành thử thách!</h2>
+        <p id="finalResult"></p>
+
+        <br>
+
+        <button class="main-btn" onclick="showSheet(3)">
+          🏆 Xem bảng xếp hạng
+        </button>
+
+        <button class="soft-btn" style="margin-left:8px" onclick="restartGame()">
+          🔄 Chơi lại
+        </button>
+      </div>
+
+    </section>
+
+    <!-- RANK -->
+    <section id="sheet3" class="card hidden">
+      <h2 class="sheet-title">🏆 Bảng xếp hạng</h2>
+      <p class="sheet-desc">
+        Ưu tiên người trả lời đúng nhiều hơn. Nếu bằng điểm,
+        người hoàn thành nhanh hơn sẽ xếp trên.
+      </p>
+
+      <div id="rankList" class="rank-list"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- WORD POPUP -->
+<div id="wordOverlay" class="overlay hidden" onclick="overlayClose(event)">
+  <div class="word-popup">
+    <button class="close-popup" onclick="closeWordPopup()">×</button>
+
+    <div id="popupHanzi" class="popup-hanzi"></div>
+    <div id="popupPinyin" class="popup-pinyin"></div>
+    <div id="popupType" class="popup-type"></div>
+    <div id="popupMeaning" class="popup-meaning"></div>
+
+    <button class="soft-btn listen-btn" onclick="speakPopupWord()">
+      🔊 Nghe cách đọc
+    </button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   TRANG CHỦ
+   Nếu trang này nằm trong thư mục con của bài học,
+   history.back() sẽ đưa về trang trước.
+========================================================= */
+
+function goHome(){
+  history.back();
+}
+
+/* =========================================================
+   TỪ ĐIỂN BÀI 1 - 2 - 3
+========================================================= */
+
+const dictionary = {
+  "大家": {pinyin:"dàjiā", meaning:"mọi người", type:"Đại từ · 代词"},
+  "好": {pinyin:"hǎo", meaning:"tốt; khỏe; chào", type:"Tính từ · 形容词"},
+  "你好": {pinyin:"nǐ hǎo", meaning:"xin chào", type:"Cụm chào hỏi"},
+  "我": {pinyin:"wǒ", meaning:"tôi, mình", type:"Đại từ · 代词"},
+  "叫": {pinyin:"jiào", meaning:"gọi; tên là", type:"Động từ · 动词"},
+  "李文": {pinyin:"Lǐ Wén", meaning:"Lý Văn", type:"Tên riêng · 专有名词"},
+  "是": {pinyin:"shì", meaning:"là", type:"Động từ · 动词"},
+  "中国": {pinyin:"Zhōngguó", meaning:"Trung Quốc", type:"Tên riêng · 专有名词"},
+  "人": {pinyin:"rén", meaning:"người", type:"Danh từ · 名词"},
+  "学生": {pinyin:"xuésheng", meaning:"học sinh", type:"Danh từ · 名词"},
+  "王老师": {pinyin:"Wáng lǎoshī", meaning:"cô/thầy Vương", type:"Danh xưng"},
+  "老师": {pinyin:"lǎoshī", meaning:"giáo viên", type:"Danh từ · 名词"},
+  "的": {pinyin:"de", meaning:"của; trợ từ chỉ quan hệ sở hữu", type:"Trợ từ · 助词"},
+  "中文": {pinyin:"Zhōngwén", meaning:"tiếng Trung", type:"Danh từ · 名词"},
+  "她": {pinyin:"tā", meaning:"cô ấy, chị ấy", type:"Đại từ · 代词"},
+  "白家月": {pinyin:"Bái Jiāyuè", meaning:"Bạch Gia Nguyệt", type:"Tên riêng · 专有名词"},
+  "法国": {pinyin:"Fǎguó", meaning:"nước Pháp", type:"Tên riêng · 专有名词"},
+  "陈天中": {pinyin:"Chén Tiānzhōng", meaning:"Trần Thiên Trung", type:"Tên riêng · 专有名词"},
+  "同学": {pinyin:"tóngxué", meaning:"bạn học", type:"Danh từ · 名词"},
+  "这": {pinyin:"zhè", meaning:"đây, này", type:"Đại từ · 代词"},
+  "女朋友": {pinyin:"nǚpéngyou", meaning:"bạn gái", type:"Danh từ · 名词"},
+  "也": {pinyin:"yě", meaning:"cũng", type:"Phó từ · 副词"},
+  "泰国": {pinyin:"Tàiguó", meaning:"Thái Lan", type:"Tên riêng · 专有名词"},
+  "请问": {pinyin:"qǐngwèn", meaning:"xin hỏi, cho hỏi", type:"Động từ/cụm lịch sự"},
+  "你": {pinyin:"nǐ", meaning:"bạn, cậu", type:"Đại từ · 代词"},
+  "哪": {pinyin:"nǎ", meaning:"nào; dùng để hỏi", type:"Đại từ nghi vấn"},
+  "国": {pinyin:"guó", meaning:"quốc gia, đất nước", type:"Danh từ · 名词"},
+  "谁": {pinyin:"shéi / shuí", meaning:"ai", type:"Đại từ nghi vấn"},
+  "你们": {pinyin:"nǐmen", meaning:"các bạn", type:"Đại từ · 代词"},
+  "吗": {pinyin:"ma", meaning:"trợ từ đặt cuối câu hỏi yes/no", type:"Trợ từ · 助词"},
+  "姐姐": {pinyin:"jiějie", meaning:"chị gái", type:"Danh từ · 名词"},
+  "工作": {pinyin:"gōngzuò", meaning:"làm việc; công việc", type:"Động từ / Danh từ"},
+  "忙": {pinyin:"máng", meaning:"bận", type:"Tính từ · 形容词"},
+  "对": {pinyin:"duì", meaning:"đúng, phải", type:"Tính từ / từ đáp"},
+  "还": {pinyin:"hái", meaning:"vẫn, còn", type:"Phó từ · 副词"},
+  "很": {pinyin:"hěn", meaning:"rất", type:"Phó từ · 副词"},
+  "不": {pinyin:"bù", meaning:"không", type:"Phó từ · 副词"},
+  "太": {pinyin:"tài", meaning:"quá, rất", type:"Phó từ · 副词"},
+  "我们": {pinyin:"wǒmen", meaning:"chúng tôi, chúng mình", type:"Đại từ · 代词"},
+  "想": {pinyin:"xiǎng", meaning:"nhớ; muốn", type:"Động từ · 动词"},
+  "高兴": {pinyin:"gāoxìng", meaning:"vui, vui vẻ", type:"Tính từ · 形容词"},
+  "认识": {pinyin:"rènshi", meaning:"quen biết, làm quen", type:"Động từ · 动词"},
+  "谢谢": {pinyin:"xièxie", meaning:"cảm ơn", type:"Động từ / lời cảm ơn"},
+  "再见": {pinyin:"zàijiàn", meaning:"tạm biệt", type:"Cụm chào tạm biệt"}
+};
+
+/* =========================================================
+   SHEET 1 - 20 CÂU
+========================================================= */
+
+const readingSentences = [
+  {
+    words:["大家","好"],
+    text:"大家好！",
+    pinyin:"Dàjiā hǎo!",
+    meaning:"Chào mọi người!"
+  },
+  {
+    words:["你好","我","叫","李文"],
+    text:"你好，我叫李文。",
+    pinyin:"Nǐ hǎo, wǒ jiào Lǐ Wén.",
+    meaning:"Xin chào, tôi tên là Lý Văn."
+  },
+  {
+    words:["我","是","中国","人"],
+    text:"我是中国人。",
+    pinyin:"Wǒ shì Zhōngguó rén.",
+    meaning:"Tôi là người Trung Quốc."
+  },
+  {
+    words:["我","是","学生"],
+    text:"我是学生。",
+    pinyin:"Wǒ shì xuésheng.",
+    meaning:"Tôi là học sinh."
+  },
+  {
+    words:["王老师","是","我","的","中文","老师"],
+    text:"王老师是我的中文老师。",
+    pinyin:"Wáng lǎoshī shì wǒ de Zhōngwén lǎoshī.",
+    meaning:"Cô Vương là giáo viên tiếng Trung của tôi."
+  },
+  {
+    words:["她","是","中国","人"],
+    text:"她是中国人。",
+    pinyin:"Tā shì Zhōngguó rén.",
+    meaning:"Cô ấy là người Trung Quốc."
+  },
+  {
+    words:["白家月","是","法国","人"],
+    text:"白家月是法国人。",
+    pinyin:"Bái Jiāyuè shì Fǎguó rén.",
+    meaning:"Bạch Gia Nguyệt là người Pháp."
+  },
+  {
+    words:["陈天中","是","她","的","同学"],
+    text:"陈天中是她的同学。",
+    pinyin:"Chén Tiānzhōng shì tā de tóngxué.",
+    meaning:"Trần Thiên Trung là bạn học của cô ấy."
+  },
+  {
+    words:["这","是","陈天中","的","女朋友"],
+    text:"这是陈天中的女朋友。",
+    pinyin:"Zhè shì Chén Tiānzhōng de nǚpéngyou.",
+    meaning:"Đây là bạn gái của Trần Thiên Trung."
+  },
+  {
+    words:["她","也","是","泰国","人"],
+    text:"她也是泰国人。",
+    pinyin:"Tā yě shì Tàiguó rén.",
+    meaning:"Cô ấy cũng là người Thái Lan."
+  },
+  {
+    words:["请问","你","是","哪","国","人"],
+    text:"请问，你是哪国人？",
+    pinyin:"Qǐngwèn, nǐ shì nǎ guó rén?",
+    meaning:"Xin hỏi, bạn là người nước nào?"
+  },
+  {
+    words:["请问","她","是","谁"],
+    text:"请问，她是谁？",
+    pinyin:"Qǐngwèn, tā shì shéi?",
+    meaning:"Xin hỏi, cô ấy là ai?"
+  },
+  {
+    words:["你们","是","学生","吗"],
+    text:"你们是学生吗？",
+    pinyin:"Nǐmen shì xuésheng ma?",
+    meaning:"Các bạn là học sinh phải không?"
+  },
+  {
+    words:["你","姐姐","工作","忙","吗"],
+    text:"你姐姐工作忙吗？",
+    pinyin:"Nǐ jiějie gōngzuò máng ma?",
+    meaning:"Chị gái bạn làm việc có bận không?"
+  },
+  {
+    words:["对","她","工作","还","很","忙"],
+    text:"对，她工作还很忙。",
+    pinyin:"Duì, tā gōngzuò hái hěn máng.",
+    meaning:"Đúng, cô ấy vẫn rất bận."
+  },
+  {
+    words:["我","不","太","忙"],
+    text:"我不太忙。",
+    pinyin:"Wǒ bú tài máng.",
+    meaning:"Tôi không quá bận."
+  },
+  {
+    words:["我们","很","想","你"],
+    text:"我们很想你。",
+    pinyin:"Wǒmen hěn xiǎng nǐ.",
+    meaning:"Chúng tôi rất nhớ bạn."
+  },
+  {
+    words:["我","也","很","想","你们"],
+    text:"我也很想你们。",
+    pinyin:"Wǒ yě hěn xiǎng nǐmen.",
+    meaning:"Tôi cũng rất nhớ các bạn."
+  },
+  {
+    words:["很","高兴","认识","你"],
+    text:"很高兴认识你。",
+    pinyin:"Hěn gāoxìng rènshi nǐ.",
+    meaning:"Rất vui được làm quen với bạn."
+  },
+  {
+    words:["谢谢","老师","老师","再见"],
+    text:"谢谢老师，老师再见！",
+    pinyin:"Xièxie lǎoshī, lǎoshī zàijiàn!",
+    meaning:"Cảm ơn thầy/cô, tạm biệt thầy/cô!"
+  }
+];
+
+let readingIndex = 0;
+let pinyinVisible = true;
+let lookupHistory = new Set();
+let currentPopupWord = "";
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+let playerName = "";
+
+function startLesson(){
+  const input = document.getElementById("studentName");
+  const name = input.value.trim();
+
+  if(!name){
+    input.focus();
+    input.style.borderColor = "#e58da5";
+    return;
+  }
+
+  playerName = name;
+
+  document.getElementById("displayName").textContent = playerName;
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+
+  renderReading();
+  renderRanking();
+}
+
+/* =========================================================
+   TAB
+========================================================= */
+
+function showSheet(number){
+
+  [1,2,3].forEach(n=>{
+    document.getElementById("sheet"+n).classList.add("hidden");
+    document.getElementById("tab"+n).classList.remove("active");
+  });
+
+  document.getElementById("sheet"+number).classList.remove("hidden");
+  document.getElementById("tab"+number).classList.add("active");
+
+  if(number === 2 && !gameStarted){
+    startGame();
+  }
+
+  if(number === 3){
+    renderRanking();
+  }
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =========================================================
+   RENDER READING
+========================================================= */
+
+function renderReading(){
+
+  const item = readingSentences[readingIndex];
+
+  document.getElementById("sentenceCounter").textContent =
+    `Câu ${readingIndex + 1} / ${readingSentences.length}`;
+
+  const chinese = document.getElementById("chineseSentence");
+  chinese.innerHTML = "";
+
+  item.words.forEach(word=>{
+    const span = document.createElement("span");
+    span.className = "word";
+    span.textContent = word;
+    span.onclick = ()=>openWordPopup(word);
+    chinese.appendChild(span);
+  });
+
+  document.getElementById("pinyinSentence").textContent = item.pinyin;
+  document.getElementById("meaningSentence").textContent = item.meaning;
+
+  document.getElementById("pinyinSentence").style.display =
+    pinyinVisible ? "block" : "none";
+
+  const percent = ((readingIndex + 1) / readingSentences.length) * 100;
+  document.getElementById("readingProgress").style.width = percent + "%";
+
+  deleteRecording();
+}
+
+function nextSentence(){
+  if(readingIndex < readingSentences.length - 1){
+    readingIndex++;
+    renderReading();
+  }else{
+    showReadingComplete();
+  }
+}
+
+function previousSentence(){
+  if(readingIndex > 0){
+    readingIndex--;
+    renderReading();
+  }
+}
+
+function togglePinyin(){
+  pinyinVisible = !pinyinVisible;
+
+  document.getElementById("pinyinSentence").style.display =
+    pinyinVisible ? "block" : "none";
+
+  document.getElementById("pinyinToggle").textContent =
+    pinyinVisible ? "👁 Ẩn Pinyin" : "👁 Hiện Pinyin";
+}
+
+function showReadingComplete(){
+  const chinese = document.getElementById("chineseSentence");
+
+  chinese.innerHTML = "🎉 朗读完成！";
+
+  document.getElementById("pinyinSentence").textContent =
+    "Bạn đã hoàn thành 20 câu luyện đọc.";
+
+  document.getElementById("meaningSentence").textContent =
+    `Bạn đã tra ${lookupHistory.size} từ trong quá trình học.`;
+
+  document.getElementById("readingProgress").style.width = "100%";
+}
+
+/* =========================================================
+   SPEECH SYNTHESIS
+========================================================= */
+
+function speakChinese(text){
+
+  if(!("speechSynthesis" in window)){
+    alert("Trình duyệt này chưa hỗ trợ đọc văn bản.");
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "zh-CN";
+  utterance.rate = 0.82;
+  utterance.pitch = 1;
+
+  const voices = speechSynthesis.getVoices();
+
+  const chineseVoice = voices.find(v =>
+    v.lang && v.lang.toLowerCase().startsWith("zh")
+  );
+
+  if(chineseVoice){
+    utterance.voice = chineseVoice;
+  }
+
+  speechSynthesis.speak(utterance);
+}
+
+function speakCurrentSentence(){
+  speakChinese(readingSentences[readingIndex].text);
+}
+
+function speakPopupWord(){
+  if(currentPopupWord){
+    speakChinese(currentPopupWord);
+  }
+}
+
+/* =========================================================
+   WORD POPUP
+========================================================= */
+
+function openWordPopup(word){
+
+  const info = dictionary[word];
+
+  if(!info){
+    return;
+  }
+
+  currentPopupWord = word;
+  lookupHistory.add(word);
+
+  document.getElementById("popupHanzi").textContent = word;
+  document.getElementById("popupPinyin").textContent = info.pinyin;
+  document.getElementById("popupType").textContent = info.type;
+  document.getElementById("popupMeaning").textContent = info.meaning;
+
+  document.getElementById("wordOverlay").classList.remove("hidden");
+
+  renderLookupHistory();
+}
+
+function closeWordPopup(){
+  document.getElementById("wordOverlay").classList.add("hidden");
+}
+
+function overlayClose(event){
+  if(event.target.id === "wordOverlay"){
+    closeWordPopup();
+  }
+}
+
+function renderLookupHistory(){
+
+  const box = document.getElementById("lookupTags");
+
+  if(lookupHistory.size === 0){
+    box.innerHTML = '<span style="color:#999">Chưa có từ nào.</span>';
+    return;
+  }
+
+  box.innerHTML = "";
+
+  lookupHistory.forEach(word=>{
+    const btn = document.createElement("button");
+    btn.className = "lookup-tag";
+    btn.textContent = word;
+    btn.onclick = ()=>openWordPopup(word);
+    box.appendChild(btn);
+  });
+}
+
+/* =========================================================
+   RECORDING
+========================================================= */
+
+let mediaRecorder = null;
+let audioChunks = [];
+let recordingURL = null;
+let recordingTimer = null;
+let recordingSeconds = 0;
+let isRecording = false;
+
+async function toggleRecording(){
+
+  if(isRecording){
+    stopRecording();
+    return;
+  }
+
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    alert("Trình duyệt này chưa hỗ trợ ghi âm.");
+    return;
+  }
+
+  try{
+
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+
+    audioChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+
+    mediaRecorder.ondataavailable = event=>{
+      if(event.data.size > 0){
+        audioChunks.push(event.data);
+      }
+    };
+
+    mediaRecorder.onstop = ()=>{
+
+      const blob = new Blob(audioChunks,{type:"audio/webm"});
+
+      if(recordingURL){
+        URL.revokeObjectURL(recordingURL);
+      }
+
+      recordingURL = URL.createObjectURL(blob);
+
+      document.getElementById("playRecordingButton").disabled = false;
+      document.getElementById("deleteRecordingButton").disabled = false;
+
+      stream.getTracks().forEach(track=>track.stop());
+    };
+
+    mediaRecorder.start();
+
+    isRecording = true;
+    recordingSeconds = 0;
+
+    document.getElementById("recordButton").textContent = "⏹ Dừng ghi âm";
+    document.getElementById("recordButton").classList.add("recording");
+
+    updateRecordTime();
+
+    recordingTimer = setInterval(()=>{
+      recordingSeconds++;
+      updateRecordTime();
+    },1000);
+
+  }catch(error){
+    alert("Không mở được micro. Hãy cho phép trình duyệt sử dụng microphone.");
+  }
+}
+
+function stopRecording(){
+
+  if(mediaRecorder && mediaRecorder.state !== "inactive"){
+    mediaRecorder.stop();
+  }
+
+  isRecording = false;
+
+  clearInterval(recordingTimer);
+
+  document.getElementById("recordButton").textContent = "🎙️ Bắt đầu ghi âm";
+  document.getElementById("recordButton").classList.remove("recording");
+}
+
+function updateRecordTime(){
+
+  const min = String(Math.floor(recordingSeconds / 60)).padStart(2,"0");
+  const sec = String(recordingSeconds % 60).padStart(2,"0");
+
+  document.getElementById("recordTime").textContent = `${min}:${sec}`;
+}
+
+function playRecording(){
+
+  if(!recordingURL) return;
+
+  const player = new Audio(recordingURL);
+  player.play();
+}
+
+function deleteRecording(){
+
+  if(isRecording){
+    stopRecording();
+  }
+
+  if(recordingURL){
+    URL.revokeObjectURL(recordingURL);
+  }
+
+  recordingURL = null;
+  audioChunks = [];
+  recordingSeconds = 0;
+
+  const time = document.getElementById("recordTime");
+  if(time) time.textContent = "00:00";
+
+  const playBtn = document.getElementById("playRecordingButton");
+  const deleteBtn = document.getElementById("deleteRecordingButton");
+
+  if(playBtn) playBtn.disabled = true;
+  if(deleteBtn) deleteBtn.disabled = true;
+}
+
+/* =========================================================
+   SHEET 2 - GAME
+   16 câu / 4 lượt / mỗi lượt 4 câu
+========================================================= */
+
+const gameQuestions = [
+  {words:["我","是","中国人"], answer:"我是中国人", hint:"Tôi là người Trung Quốc."},
+  {words:["我","叫","李文"], answer:"我叫李文", hint:"Tôi tên là Lý Văn."},
+  {words:["我","是","学生"], answer:"我是学生", hint:"Tôi là học sinh."},
+  {words:["大家","好"], answer:"大家好", hint:"Chào mọi người!"},
+
+  {words:["她","是","法国人"], answer:"她是法国人", hint:"Cô ấy là người Pháp."},
+  {words:["她","是","谁"], answer:"她是谁", hint:"Cô ấy là ai?"},
+  {words:["你","是","哪国人"], answer:"你是哪国人", hint:"Bạn là người nước nào?"},
+  {words:["她","是","我的","同学"], answer:"她是我的同学", hint:"Cô ấy là bạn học của tôi."},
+
+  {words:["这","是","我的","女朋友"], answer:"这是我的女朋友", hint:"Đây là bạn gái của tôi."},
+  {words:["她","也","是","泰国人"], answer:"她也是泰国人", hint:"Cô ấy cũng là người Thái Lan."},
+  {words:["你们","是","学生","吗"], answer:"你们是学生吗", hint:"Các bạn là học sinh phải không?"},
+  {words:["你","姐姐","工作","忙","吗"], answer:"你姐姐工作忙吗", hint:"Chị gái bạn làm việc có bận không?"},
+
+  {words:["她","工作","还","很忙"], answer:"她工作还很忙", hint:"Cô ấy vẫn rất bận."},
+  {words:["我","不","太忙"], answer:"我不太忙", hint:"Tôi không quá bận."},
+  {words:["我们","很","想","你"], answer:"我们很想你", hint:"Chúng tôi rất nhớ bạn."},
+  {words:["我","也","很","想","你们"], answer:"我也很想你们", hint:"Tôi cũng rất nhớ các bạn."}
+];
+
+const QUESTIONS_PER_ROUND = 4;
+const TOTAL_ROUNDS = 4;
+
+let gameStarted = false;
+let gameIndex = 0;
+let selectedWords = [];
+let timerInterval = null;
+let secondsLeft = 60;
+
+let correctAnswers = 0;
+let totalGameSeconds = 0;
+let questionStartTime = 0;
+let questionFinished = false;
+let currentRoundWaiting = false;
+
+function startGame(){
+
+  gameStarted = true;
+  gameIndex = 0;
+  correctAnswers = 0;
+  totalGameSeconds = 0;
+  currentRoundWaiting = false;
+
+  document.getElementById("gameArea").classList.remove("hidden");
+  document.getElementById("roundComplete").classList.add("hidden");
+  document.getElementById("gameFinished").classList.add("hidden");
+
+  renderGameQuestion();
+}
+
+function shuffle(array){
+  const copy = [...array];
+
+  for(let i = copy.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i],copy[j]] = [copy[j],copy[i]];
+  }
+
+  return copy;
+}
+
+function renderGameQuestion(){
+
+  clearInterval(timerInterval);
+
+  selectedWords = [];
+  questionFinished = false;
+
+  const item = gameQuestions[gameIndex];
+
+  const round = Math.floor(gameIndex / QUESTIONS_PER_ROUND) + 1;
+  const inRound = (gameIndex % QUESTIONS_PER_ROUND) + 1;
+
+  document.getElementById("roundBadge").textContent =
+    `🌷 Lượt ${round} / ${TOTAL_ROUNDS} · Câu ${inRound} / ${QUESTIONS_PER_ROUND}`;
+
+  document.getElementById("questionHint").textContent = item.hint;
+
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("feedback").className = "feedback";
+
+  document.getElementById("checkButton").classList.remove("hidden");
+  document.getElementById("nextGameButton").classList.add("hidden");
+
+  renderAnswerZone();
+
+  const bank = document.getElementById("wordBank");
+  bank.innerHTML = "";
+
+  shuffle(item.words).forEach((word,index)=>{
+
+    const btn = document.createElement("button");
+    btn.className = "tile";
+    btn.textContent = word;
+    btn.dataset.word = word;
+    btn.dataset.id = index + "-" + Math.random();
+
+    btn.onclick = ()=>{
+      if(questionFinished) return;
+
+      selectedWords.push({
+        word:word,
+        id:btn.dataset.id
+      });
+
+      btn.disabled = true;
+      renderAnswerZone();
+    };
+
+    bank.appendChild(btn);
+  });
+
+  const percent = ((gameIndex + 1) / gameQuestions.length) * 100;
+  document.getElementById("gameProgress").style.width = percent + "%";
+
+  startQuestionTimer();
+}
+
+function renderAnswerZone(){
+
+  const zone = document.getElementById("answerZone");
+
+  if(selectedWords.length === 0){
+    zone.innerHTML = '<span style="color:#aaa">Bấm các thẻ bên dưới để xếp câu...</span>';
+    return;
+  }
+
+  zone.innerHTML = "";
+
+  selectedWords.forEach((item,index)=>{
+
+    const btn = document.createElement("button");
+    btn.className = "tile";
+    btn.textContent = item.word;
+
+    btn.onclick = ()=>{
+      if(questionFinished) return;
+
+      const removed = selectedWords.splice(index,1)[0];
+
+      const bankButtons = document.querySelectorAll("#wordBank .tile");
+
+      bankButtons.forEach(b=>{
+        if(b.dataset.id === removed.id){
+          b.disabled = false;
+        }
+      });
+
+      renderAnswerZone();
+    };
+
+    zone.appendChild(btn);
+  });
+}
+
+function resetCurrentAnswer(){
+
+  if(questionFinished) return;
+
+  selectedWords = [];
+
+  document.querySelectorAll("#wordBank .tile").forEach(btn=>{
+    btn.disabled = false;
+  });
+
+  renderAnswerZone();
+
+  document.getElementById("feedback").textContent = "";
+}
+
+function startQuestionTimer(){
+
+  secondsLeft = 60;
+  questionStartTime = Date.now();
+
+  updateTimerDisplay();
+
+  timerInterval = setInterval(()=>{
+
+    secondsLeft--;
+
+    updateTimerDisplay();
+
+    if(secondsLeft <= 0){
+
+      clearInterval(timerInterval);
+
+      if(!questionFinished){
+        questionFinished = true;
+
+        totalGameSeconds += 60;
+
+        const feedback = document.getElementById("feedback");
+        feedback.textContent = "⏰ Hết giờ! Câu này chưa được tính điểm.";
+        feedback.className = "feedback bad";
+
+        document.getElementById("checkButton").classList.add("hidden");
+        document.getElementById("nextGameButton").classList.remove("hidden");
+      }
+    }
+
+  },1000);
+}
+
+function updateTimerDisplay(){
+
+  const timer = document.getElementById("timer");
+
+  const sec = Math.max(0,secondsLeft);
+
+  timer.textContent = `00:${String(sec).padStart(2,"0")}`;
+
+  if(sec <= 10){
+    timer.classList.add("danger");
+  }else{
+    timer.classList.remove("danger");
+  }
+}
+
+function checkAnswer(){
+
+  if(questionFinished) return;
+
+  const item = gameQuestions[gameIndex];
+
+  const answer = selectedWords.map(x=>x.word).join("");
+
+  const feedback = document.getElementById("feedback");
+
+  if(answer === item.answer){
+
+    questionFinished = true;
+
+    clearInterval(timerInterval);
+
+    const usedSeconds =
+      Math.min(60,Math.max(1,Math.round((Date.now() - questionStartTime) / 1000)));
+
+    totalGameSeconds += usedSeconds;
+    correctAnswers++;
+
+    feedback.textContent =
+      `🌟 Chính xác! Bạn hoàn thành câu này trong ${usedSeconds} giây.`;
+
+    feedback.className = "feedback good";
+
+    document.getElementById("checkButton").classList.add("hidden");
+    document.getElementById("nextGameButton").classList.remove("hidden");
+
+    speakChinese(item.answer);
+
+  }else{
+
+    feedback.textContent = "✗ Chưa đúng rồi. Thử đổi thứ tự các từ nhé!";
+    feedback.className = "feedback bad";
+
+    playWrongSound();
+  }
+}
+
+/* âm báo sai bằng Web Audio - không cần file mp3 */
+
+function playWrongSound(){
+
+  try{
+
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(170,ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(105,ctx.currentTime + .28);
+
+    gain.gain.setValueAtTime(.08,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime + .3);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime + .3);
+
+  }catch(e){}
+}
+
+function nextGameQuestion(){
+
+  if(!questionFinished) return;
+
+  const justFinishedIndex = gameIndex;
+
+  gameIndex++;
+
+  const completedRound =
+    (justFinishedIndex + 1) % QUESTIONS_PER_ROUND === 0;
+
+  if(gameIndex >= gameQuestions.length){
+    finishGame();
+    return;
+  }
+
+  if(completedRound){
+    showRoundComplete();
+    return;
+  }
+
+  renderGameQuestion();
+}
+
+function showRoundComplete(){
+
+  clearInterval(timerInterval);
+
+  const completedRound = Math.floor(gameIndex / QUESTIONS_PER_ROUND);
+
+  document.getElementById("gameArea").classList.add("hidden");
+  document.getElementById("roundComplete").classList.remove("hidden");
+
+  document.getElementById("roundCompleteTitle").textContent =
+    `Hoàn thành lượt ${completedRound}!`;
+
+  document.getElementById("roundCompleteText").innerHTML =
+    `Bạn đã đi qua <b>${gameIndex}/${gameQuestions.length}</b> câu.<br>
+     Nghỉ một chút rồi tiếp tục lượt tiếp theo nha 🌷`;
+
+  currentRoundWaiting = true;
+}
+
+function continueRound(){
+
+  currentRoundWaiting = false;
+
+  document.getElementById("roundComplete").classList.add("hidden");
+  document.getElementById("gameArea").classList.remove("hidden");
+
+  renderGameQuestion();
+}
+
+function finishGame(){
+
+  clearInterval(timerInterval);
+
+  document.getElementById("gameArea").classList.add("hidden");
+  document.getElementById("roundComplete").classList.add("hidden");
+  document.getElementById("gameFinished").classList.remove("hidden");
+
+  const score = correctAnswers * 100;
+
+  document.getElementById("topScore").textContent = score;
+
+  document.getElementById("finalResult").innerHTML =
+    `👤 <b>${escapeHTML(playerName)}</b><br><br>
+     ⭐ Đúng: <b>${correctAnswers}/${gameQuestions.length}</b><br>
+     🎯 Điểm: <b>${score}</b><br>
+     ⏱️ Thời gian: <b>${formatSeconds(totalGameSeconds)}</b>`;
+
+  saveRanking({
+    name:playerName,
+    correct:correctAnswers,
+    score:score,
+    time:totalGameSeconds,
+    date:Date.now()
+  });
+}
+
+function restartGame(){
+  startGame();
+}
+
+/* =========================================================
+   RANKING
+========================================================= */
+
+const RANK_KEY = "lesson3_reading_sentence_rank_v1";
+
+function getRanking(){
+
+  try{
+    const data = JSON.parse(localStorage.getItem(RANK_KEY));
+    return Array.isArray(data) ? data : [];
+  }catch(e){
+    return [];
+  }
+}
+
+function saveRanking(result){
+
+  let ranking = getRanking();
+
+  ranking.push(result);
+
+  ranking.sort((a,b)=>{
+    if(b.correct !== a.correct){
+      return b.correct - a.correct;
+    }
+    return a.time - b.time;
+  });
+
+  ranking = ranking.slice(0,30);
+
+  localStorage.setItem(RANK_KEY,JSON.stringify(ranking));
+
+  renderRanking();
+}
+
+function renderRanking(){
+
+  const ranking = getRanking();
+
+  const box = document.getElementById("rankList");
+
+  if(!box) return;
+
+  if(ranking.length === 0){
+
+    box.innerHTML = `
+      <div style="text-align:center;padding:35px;color:#8c8799">
+        🌱 Chưa có thành tích nào.<br><br>
+        Hãy hoàn thành Sheet 2 để trở thành người đầu tiên!
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML = "";
+
+  ranking.forEach((item,index)=>{
+
+    const row = document.createElement("div");
+
+    row.className =
+      "rank-row" + (item.name === playerName ? " me" : "");
+
+    let medal = `${index + 1}`;
+
+    if(index === 0) medal = "🥇";
+    if(index === 1) medal = "🥈";
+    if(index === 2) medal = "🥉";
+
+    row.innerHTML = `
+      <div class="medal">${medal}</div>
+      <div class="rank-name">${escapeHTML(item.name)}</div>
+      <div class="rank-score">⭐ ${item.correct}/${gameQuestions.length}</div>
+      <div class="rank-time">⏱ ${formatSeconds(item.time)}</div>
+    `;
+
+    box.appendChild(row);
+  });
+}
+
+function formatSeconds(total){
+
+  const minutes = Math.floor(total / 60);
+  const seconds = total % 60;
+
+  return `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+}
+
+function escapeHTML(text){
+
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+</script>
+
+</body>
+</html>
