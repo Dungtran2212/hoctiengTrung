@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>第四课：我有两个孩子 · Luyện tập</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --green:#6fa487;
+    --green-dark:#47745e;
+    --green-light:#e8f5ec;
+    --cream:#fffaf1;
+    --yellow:#ffe49b;
+    --pink:#f6c6cf;
+    --blue:#cceaf2;
+    --purple:#ddd0ef;
+    --red:#df706c;
+    --red-light:#fff0ee;
+    --text:#526b60;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 8% 8%,rgba(255,255,255,.8) 0 55px,transparent 56px),
+        radial-gradient(circle at 92% 15%,rgba(255,255,255,.65) 0 70px,transparent 71px),
+        linear-gradient(180deg,#e4f5ff 0%,#f4f8e8 45%,#fff8ed 100%);
+    min-height:100vh;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+.page{
+    width:min(1000px,94%);
+    margin:auto;
+    padding:22px 0 60px;
+}
+
+/* ================================
+   HOME
+================================ */
+
+.home-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    margin-bottom:14px;
+    padding:10px 16px;
+    border:0;
+    border-radius:999px;
+    background:white;
+    color:var(--green-dark);
+    font-weight:900;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:0 6px 17px rgba(65,100,79,.12);
+    transition:.2s;
+}
+
+.home-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:28px 20px;
+    border-radius:30px;
+    background:white;
+    text-align:center;
+    box-shadow:0 14px 35px rgba(65,100,79,.11);
+}
+
+.hero::before{
+    content:"🌼";
+    position:absolute;
+    left:28px;
+    bottom:16px;
+    font-size:52px;
+    opacity:.65;
+}
+
+.hero::after{
+    content:"🌷";
+    position:absolute;
+    right:28px;
+    top:20px;
+    font-size:48px;
+    opacity:.7;
+}
+
+.lesson-badge{
+    display:inline-block;
+    padding:7px 15px;
+    border-radius:999px;
+    background:#fff1c8;
+    color:#937447;
+    font-size:13px;
+    font-weight:900;
+}
+
+.hero h1{
+    margin:12px 0 5px;
+    color:var(--green-dark);
+    font-size:clamp(27px,5vw,42px);
+}
+
+.hero h2{
+    margin:0;
+    color:#789186;
+    font-size:19px;
+}
+
+.hero p{
+    margin:10px auto 0;
+    max-width:620px;
+    color:#94a39b;
+    line-height:1.6;
+}
+
+/* ================================
+   PROGRESS
+================================ */
+
+.progress-wrap{
+    margin:18px 0 22px;
+    padding:15px 18px;
+    border-radius:20px;
+    background:white;
+    box-shadow:0 8px 20px rgba(65,100,79,.08);
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:9px;
+    font-size:13px;
+    font-weight:900;
+    color:#71877c;
+}
+
+.progress-bar{
+    height:12px;
+    overflow:hidden;
+    border-radius:999px;
+    background:#edf2ed;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg,#91c6a4,#f3cf77);
+    transition:.4s;
+}
+
+/* ================================
+   SECTION
+================================ */
+
+.exercise{
+    margin:20px 0;
+    padding:24px;
+    border-radius:27px;
+    background:white;
+    box-shadow:0 12px 28px rgba(65,100,79,.09);
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:8px;
+}
+
+.section-number{
+    width:43px;
+    height:43px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:#dff1e5;
+    color:var(--green-dark);
+    font-size:20px;
+    font-weight:1000;
+}
+
+.section-title h2{
+    margin:0;
+    color:var(--green-dark);
+    font-size:22px;
+}
+
+.instruction{
+    margin:0 0 20px 55px;
+    color:#8a9b92;
+    font-size:14px;
+}
+
+/* ================================
+   QUESTIONS
+================================ */
+
+.question{
+    margin:16px 0;
+    padding:17px;
+    border:2px solid #eef1ec;
+    border-radius:18px;
+    background:#fffefa;
+    transition:.25s;
+}
+
+.question-number{
+    display:inline-flex;
+    width:29px;
+    height:29px;
+    align-items:center;
+    justify-content:center;
+    margin-right:7px;
+    border-radius:50%;
+    background:#edf5ee;
+    color:#597565;
+    font-weight:900;
+}
+
+.question-text{
+    font-size:17px;
+    line-height:1.8;
+    font-weight:700;
+}
+
+/* ================================
+   MULTIPLE CHOICE
+================================ */
+
+.choices{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:13px;
+}
+
+.choice{
+    border:2px solid #e5ebe5;
+    padding:12px 8px;
+    border-radius:14px;
+    background:white;
+    color:#61786c;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.choice:hover{
+    transform:translateY(-2px);
+    border-color:#9fc9ac;
+}
+
+.choice.selected{
+    border-color:#77aa87;
+    background:#edf8f0;
+}
+
+.choice.correct{
+    border-color:#61a676 !important;
+    background:#dff3e5 !important;
+    color:#39704c !important;
+}
+
+.choice.wrong{
+    border-color:#df716c !important;
+    background:#ffe5e2 !important;
+    color:#a64e49 !important;
+}
+
+/* ================================
+   WORD BANK
+================================ */
+
+.word-bank{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:15px 0 23px;
+    padding:17px;
+    border-radius:18px;
+    background:#fff7dc;
+}
+
+.bank-word{
+    padding:10px 18px;
+    border:2px solid #efd791;
+    border-radius:999px;
+    background:white;
+    color:#866d3f;
+    font-size:18px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.bank-word:hover{
+    transform:translateY(-2px);
+}
+
+.bank-word.active{
+    background:#ffe094;
+    border-color:#dcb84d;
+    transform:translateY(-2px);
+}
+
+/* ================================
+   BLANK
+================================ */
+
+.blank{
+    display:inline-flex;
+    min-width:105px;
+    min-height:39px;
+    align-items:center;
+    justify-content:center;
+    margin:0 5px;
+    padding:5px 12px;
+    border:2px dashed #b8cbbb;
+    border-radius:10px;
+    background:#f8fbf8;
+    color:#557064;
+    vertical-align:middle;
+    cursor:pointer;
+    font-weight:900;
+}
+
+.blank.filled{
+    border-style:solid;
+    border-color:#8ab99a;
+    background:#edf7ef;
+}
+
+.blank.correct{
+    border-color:#61a676;
+    background:#dcf3e3;
+}
+
+.blank.wrong{
+    border-color:#df716c;
+    background:#ffe4e1;
+    color:#a64e49;
+}
+
+/* ================================
+   ANSWER FEEDBACK
+================================ */
+
+.answer-feedback{
+    display:none;
+    margin-top:10px;
+    padding:8px 11px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:800;
+}
+
+.answer-feedback.show{
+    display:block;
+}
+
+.answer-feedback.correct-text{
+    color:#43805a;
+    background:#e6f5ea;
+}
+
+.answer-feedback.wrong-text{
+    color:#b15450;
+    background:#fff0ee;
+}
+
+/* ================================
+   SENTENCE ORDER
+================================ */
+
+.scramble{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:13px 0;
+}
+
+.word-card{
+    padding:9px 14px;
+    border:2px solid #c7dbe1;
+    border-radius:12px;
+    background:#eff9fc;
+    color:#547785;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.word-card:hover{
+    transform:translateY(-2px);
+}
+
+.word-card.used{
+    opacity:.3;
+    pointer-events:none;
+}
+
+.sentence-answer{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:7px;
+    min-height:58px;
+    padding:10px;
+    border:2px dashed #c7d3c9;
+    border-radius:14px;
+    background:#fafcf9;
+    cursor:pointer;
+}
+
+.sentence-answer.correct{
+    border-style:solid;
+    border-color:#62a777;
+    background:#e3f4e8;
+}
+
+.sentence-answer.wrong{
+    border-style:solid;
+    border-color:#df716c;
+    background:#fff0ee;
+}
+
+.answer-chip{
+    padding:7px 11px;
+    border-radius:10px;
+    background:#e8f2e9;
+    font-size:17px;
+    font-weight:900;
+}
+
+/* ================================
+   READING
+================================ */
+
+.reading-box{
+    margin:15px 0 23px;
+    padding:20px;
+    border-left:5px solid #e4b86d;
+    border-radius:16px;
+    background:#fff8e9;
+    font-size:19px;
+    line-height:2;
+    color:#685f4e;
+}
+
+.text-answer{
+    width:100%;
+    margin-top:10px;
+    padding:12px 14px;
+    border:2px solid #dfe7df;
+    border-radius:13px;
+    outline:none;
+    color:#526b60;
+    background:white;
+    font-size:17px;
+    transition:.2s;
+}
+
+.text-answer:focus{
+    border-color:#82b392;
+    box-shadow:0 0 0 4px rgba(130,179,146,.12);
+}
+
+.text-answer.correct{
+    border-color:#61a676;
+    background:#e5f5e9;
+}
+
+.text-answer.wrong{
+    border-color:#df716c;
+    background:#fff0ee;
+}
+
+/* ================================
+   SUBMIT
+================================ */
+
+.submit-area{
+    margin-top:27px;
+    text-align:center;
+}
+
+.submit-btn{
+    border:0;
+    padding:16px 38px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#6fa487,#85b99a);
+    color:white;
+    font-size:18px;
+    font-weight:1000;
+    cursor:pointer;
+    box-shadow:0 8px 0 #507c63,0 13px 22px rgba(73,113,89,.18);
+    transition:.15s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-2px);
+}
+
+.submit-btn:active{
+    transform:translateY(5px);
+    box-shadow:0 3px 0 #507c63;
+}
+
+/* ================================
+   RESULT
+================================ */
+
+.result-screen{
+    display:none;
+    margin-top:25px;
+    padding:30px 20px;
+    border-radius:30px;
+    background:white;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(65,100,79,.12);
+}
+
+.result-screen.show{
+    display:block;
+    animation:resultPop .5s ease;
+}
+
+@keyframes resultPop{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.result-emoji{
+    font-size:70px;
+}
+
+.result-screen h2{
+    margin:8px 0;
+    color:var(--green-dark);
+    font-size:30px;
+}
+
+.result-screen p{
+    color:#7e9187;
+    line-height:1.7;
+}
+
+.score-circle{
+    width:125px;
+    height:125px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:20px auto;
+    border:9px solid #dff0e4;
+    border-radius:50%;
+    background:#f8fcf9;
+}
+
+.score-circle strong{
+    color:var(--green-dark);
+    font-size:32px;
+}
+
+.score-circle span{
+    color:#91a097;
+    font-size:12px;
+    font-weight:800;
+}
+
+.result-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.retry-btn,
+.result-home{
+    border:0;
+    padding:13px 22px;
+    border-radius:999px;
+    font-weight:900;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.retry-btn{
+    background:#ffe39a;
+    color:#856d39;
+}
+
+.result-home{
+    background:#dfeee4;
+    color:#4e755f;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:650px){
+
+    .page{
+        width:95%;
+    }
+
+    .exercise{
+        padding:18px 13px;
+    }
+
+    .choices{
+        grid-template-columns:1fr;
+    }
+
+    .instruction{
+        margin-left:0;
+    }
+
+    .hero::before,
+    .hero::after{
+        opacity:.2;
+    }
+
+    .question-text{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <button
+        class="home-btn"
+        onclick="window.location.href='../../index.html'">
+        🏠 Trang chủ
+    </button>
+
+
+    <!-- HEADER -->
+
+    <header class="hero">
+
+        <div class="lesson-badge">
+            HSK 1 · 第四课
+        </div>
+
+        <h1>
+            我有两个孩子
+        </h1>
+
+        <h2>
+            🌷 Phiếu luyện tập tổng hợp
+        </h2>
+
+        <p>
+            Hoàn thành tất cả các phần rồi bấm
+            <b>Nộp bài</b> ở cuối trang để xem kết quả nhé!
+        </p>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-wrap">
+
+        <div class="progress-info">
+
+            <span>🌱 Tiến độ làm bài</span>
+
+            <span id="progressText">
+                0%
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         PHẦN 1
+    ========================================== -->
+
+    <section class="exercise">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                1
+            </div>
+
+            <h2>
+                Chọn đáp án đúng
+            </h2>
+
+        </div>
+
+        <p class="instruction">
+            Chọn một đáp án A, B hoặc C cho mỗi câu.
+        </p>
+
+
+        <div
+            class="question mc-question"
+            data-answer="B">
+
+            <div class="question-text">
+                <span class="question-number">1</span>
+                我家有四___人。
+            </div>
+
+            <div class="choices">
+
+                <button class="choice" data-value="A">
+                    A. 个
+                </button>
+
+                <button class="choice" data-value="B">
+                    B. 口
+                </button>
+
+                <button class="choice" data-value="C">
+                    C. 岁
+                </button>
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question mc-question"
+            data-answer="B">
+
+            <div class="question-text">
+                <span class="question-number">2</span>
+                我有___个哥哥。
+            </div>
+
+            <div class="choices">
+
+                <button class="choice" data-value="A">
+                    A. 二
+                </button>
+
+                <button class="choice" data-value="B">
+                    B. 两
+                </button>
+
+                <button class="choice" data-value="C">
+                    C. 二个
+                </button>
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question mc-question"
+            data-answer="A">
+
+            <div class="question-text">
+                <span class="question-number">3</span>
+                王老师有二十___学生。
+            </div>
+
+            <div class="choices">
+
+                <button class="choice" data-value="A">
+                    A. 个
+                </button>
+
+                <button class="choice" data-value="B">
+                    B. 口
+                </button>
+
+                <button class="choice" data-value="C">
+                    C. 岁
+                </button>
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question mc-question"
+            data-answer="B">
+
+            <div class="question-text">
+                <span class="question-number">4</span>
+                A：我有两个哥哥，你___？
+            </div>
+
+            <div class="choices">
+
+                <button class="choice" data-value="A">
+                    A. 吗
+                </button>
+
+                <button class="choice" data-value="B">
+                    B. 呢
+                </button>
+
+                <button class="choice" data-value="C">
+                    C. 的
+                </button>
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question mc-question"
+            data-answer="A">
+
+            <div class="question-text">
+                <span class="question-number">5</span>
+                A：你有哥哥吗？<br>
+                B：我___哥哥。
+            </div>
+
+            <div class="choices">
+
+                <button class="choice" data-value="A">
+                    A. 没有
+                </button>
+
+                <button class="choice" data-value="B">
+                    B. 不有
+                </button>
+
+                <button class="choice" data-value="C">
+                    C. 没
+                </button>
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PHẦN 2
+    ========================================== -->
+
+    <section class="exercise">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                2
+            </div>
+
+            <h2>
+                Điền từ vào chỗ trống
+            </h2>
+
+        </div>
+
+        <p class="instruction">
+            Chọn một từ trong khung rồi bấm vào chỗ trống.
+            Bấm lại chỗ trống nếu muốn xóa.
+        </p>
+
+
+        <div
+            id="wordBank"
+            class="word-bank">
+
+            <button class="bank-word" data-word="呢">呢</button>
+            <button class="bank-word" data-word="二十">二十</button>
+            <button class="bank-word" data-word="没有">没有</button>
+            <button class="bank-word" data-word="口">口</button>
+            <button class="bank-word" data-word="大">大</button>
+            <button class="bank-word" data-word="个">个</button>
+
+        </div>
+
+
+        <div class="question fill-question">
+
+            <div class="question-text">
+
+                <span class="question-number">1</span>
+
+                王老师有
+
+                <span
+                    class="blank"
+                    data-answer="二十">
+                </span>
+
+                个学生。
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div class="question fill-question">
+
+            <div class="question-text">
+
+                <span class="question-number">2</span>
+
+                杨同乐家有四
+
+                <span
+                    class="blank"
+                    data-answer="口">
+                </span>
+
+                人。
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div class="question fill-question">
+
+            <div class="question-text">
+
+                <span class="question-number">3</span>
+
+                我有两个哥哥，你
+
+                <span
+                    class="blank"
+                    data-answer="呢">
+                </span>
+
+                ？
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div class="question fill-question">
+
+            <div class="question-text">
+
+                <span class="question-number">4</span>
+
+                杨同乐
+
+                <span
+                    class="blank"
+                    data-answer="没有">
+                </span>
+
+                哥哥。
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div class="question fill-question">
+
+            <div class="question-text">
+
+                <span class="question-number">5</span>
+
+                您女儿今年多
+
+                <span
+                    class="blank"
+                    data-answer="大">
+                </span>
+
+                ？
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div class="question fill-question">
+
+            <div class="question-text">
+
+                <span class="question-number">6</span>
+
+                她有两
+
+                <span
+                    class="blank"
+                    data-answer="个">
+                </span>
+
+                孩子。
+
+            </div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PHẦN 3
+    ========================================== -->
+
+    <section class="exercise">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                3
+            </div>
+
+            <h2>
+                Sắp xếp thành câu đúng
+            </h2>
+
+        </div>
+
+        <p class="instruction">
+            Bấm các thẻ theo đúng thứ tự để tạo thành câu.
+            Bấm vào vùng câu trả lời để làm lại câu đó.
+        </p>
+
+
+        <div
+            class="question order-question"
+            data-answer="我有两个哥哥">
+
+            <div class="question-text">
+                <span class="question-number">1</span>
+                Sắp xếp:
+            </div>
+
+            <div class="scramble">
+
+                <button class="word-card">有</button>
+                <button class="word-card">我</button>
+                <button class="word-card">两个</button>
+                <button class="word-card">哥哥</button>
+
+            </div>
+
+            <div class="sentence-answer"></div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question order-question"
+            data-answer="我家有四口人">
+
+            <div class="question-text">
+                <span class="question-number">2</span>
+                Sắp xếp:
+            </div>
+
+            <div class="scramble">
+
+                <button class="word-card">家</button>
+                <button class="word-card">四口人</button>
+                <button class="word-card">有</button>
+                <button class="word-card">我</button>
+
+            </div>
+
+            <div class="sentence-answer"></div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question order-question"
+            data-answer="我没有哥哥">
+
+            <div class="question-text">
+                <span class="question-number">3</span>
+                Sắp xếp:
+            </div>
+
+            <div class="scramble">
+
+                <button class="word-card">哥哥</button>
+                <button class="word-card">我</button>
+                <button class="word-card">没有</button>
+
+            </div>
+
+            <div class="sentence-answer"></div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question order-question"
+            data-answer="她有二十个学生">
+
+            <div class="question-text">
+                <span class="question-number">4</span>
+                Sắp xếp:
+            </div>
+
+            <div class="scramble">
+
+                <button class="word-card">她</button>
+                <button class="word-card">二十个</button>
+                <button class="word-card">有</button>
+                <button class="word-card">学生</button>
+
+            </div>
+
+            <div class="sentence-answer"></div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+
+        <div
+            class="question order-question"
+            data-answer="您女儿今年多大">
+
+            <div class="question-text">
+                <span class="question-number">5</span>
+                Sắp xếp:
+            </div>
+
+            <div class="scramble">
+
+                <button class="word-card">女儿</button>
+                <button class="word-card">多大</button>
+                <button class="word-card">您</button>
+                <button class="word-card">今年</button>
+
+            </div>
+
+            <div class="sentence-answer"></div>
+
+            <div class="answer-feedback"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PHẦN 4
+    ========================================== -->
+
+    <section class="exercise">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                4
+            </div>
+
+            <h2>
+                Đọc đoạn văn và trả lời câu hỏi
+            </h2>
+
+        </div>
+
+        <p class="instruction">
+            Đọc kỹ đoạn văn rồi nhập câu trả lời bằng tiếng Trung.
+        </p>
+
+
+        <div class="reading-box">
+
+            王一雪有两个孩子，一个儿子，一个女儿。
+            她儿子今年五岁，女儿今年十二岁。
+            杨同乐没有哥哥。
+            他家有四口人：爸爸、妈妈、妹妹和他。
+
+        </div>
+
+
+        <div class="question reading-question">
+
+            <div class="question-text">
+
+                <span class="question-number">1</span>
+
+                王一雪有几个孩子？
+
+            </div>
+
+            <input
+                class="text-answer"
+                type="text"
+                placeholder="Nhập câu trả lời bằng tiếng Trung..."
+                data-answers="王一雪有两个孩子|她有两个孩子|有两个孩子|两个">
+
+            <div
+                class="answer-feedback"
+                data-correct="王一雪有两个孩子。">
+            </div>
+
+        </div>
+
+
+        <div class="question reading-question">
+
+            <div class="question-text">
+
+                <span class="question-number">2</span>
+
+                王一雪有几个女儿？
+
+            </div>
+
+            <input
+                class="text-answer"
+                type="text"
+                placeholder="Nhập câu trả lời bằng tiếng Trung..."
+                data-answers="王一雪有一个女儿|她有一个女儿|有一个女儿|一个">
+
+            <div
+                class="answer-feedback"
+                data-correct="王一雪有一个女儿。">
+            </div>
+
+        </div>
+
+
+        <div class="question reading-question">
+
+            <div class="question-text">
+
+                <span class="question-number">3</span>
+
+                王一雪的儿子今年几岁？
+
+            </div>
+
+            <input
+                class="text-answer"
+                type="text"
+                placeholder="Nhập câu trả lời bằng tiếng Trung..."
+                data-answers="王一雪的儿子今年五岁|她儿子今年五岁|儿子今年五岁|五岁">
+
+            <div
+                class="answer-feedback"
+                data-correct="她儿子今年五岁。">
+            </div>
+
+        </div>
+
+
+        <div class="question reading-question">
+
+            <div class="question-text">
+
+                <span class="question-number">4</span>
+
+                王一雪的女儿今年多大？
+
+            </div>
+
+            <input
+                class="text-answer"
+                type="text"
+                placeholder="Nhập câu trả lời bằng tiếng Trung..."
+                data-answers="王一雪的女儿今年十二岁|她女儿今年十二岁|女儿今年十二岁|十二岁">
+
+            <div
+                class="answer-feedback"
+                data-correct="她女儿今年十二岁。">
+            </div>
+
+        </div>
+
+
+        <div class="question reading-question">
+
+            <div class="question-text">
+
+                <span class="question-number">5</span>
+
+                杨同乐有哥哥吗？
+
+            </div>
+
+            <input
+                class="text-answer"
+                type="text"
+                placeholder="Nhập câu trả lời bằng tiếng Trung..."
+                data-answers="杨同乐没有哥哥|他没有哥哥|没有">
+
+            <div
+                class="answer-feedback"
+                data-correct="杨同乐没有哥哥。">
+            </div>
+
+        </div>
+
+
+        <div class="question reading-question">
+
+            <div class="question-text">
+
+                <span class="question-number">6</span>
+
+                杨同乐家有几口人？
+
+            </div>
+
+            <input
+                class="text-answer"
+                type="text"
+                placeholder="Nhập câu trả lời bằng tiếng Trung..."
+                data-answers="杨同乐家有四口人|他家有四口人|有四口人|四口人">
+
+            <div
+                class="answer-feedback"
+                data-correct="杨同乐家有四口人。">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUBMIT -->
+
+    <div
+        id="submitArea"
+        class="submit-area">
+
+        <button
+            class="submit-btn"
+            onclick="submitQuiz()">
+            📮 Nộp bài
+        </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <section
+        id="resultScreen"
+        class="result-screen">
+
+        <div
+            id="resultEmoji"
+            class="result-emoji">
+            🎉
+        </div>
+
+        <h2 id="resultTitle">
+            Hoàn thành bài luyện tập!
+        </h2>
+
+        <p id="resultMessage"></p>
+
+        <div class="score-circle">
+
+            <strong id="scoreDisplay">
+                0/22
+            </strong>
+
+            <span>
+                CÂU ĐÚNG
+            </span>
+
+        </div>
+
+        <p>
+            🌟 太棒了！继续加油！
+        </p>
+
+        <div class="result-buttons">
+
+            <button
+                class="retry-btn"
+                onclick="resetQuiz()">
+                🔄 Làm lại
+            </button>
+
+            <button
+                class="result-home"
+                onclick="window.location.href='../../index.html'">
+                🏠 Trang chủ
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+/* ==================================================
+   BIẾN CHUNG
+================================================== */
+
+let selectedWord = null;
+
+let submitted = false;
+
+
+/* ==================================================
+   TRẮC NGHIỆM
+================================================== */
+
+document
+.querySelectorAll(".mc-question")
+.forEach(question=>{
+
+    const choices =
+        question.querySelectorAll(".choice");
+
+    choices.forEach(choice=>{
+
+        choice.addEventListener(
+            "click",
+            ()=>{
+
+                if(submitted){
+                    return;
+                }
+
+                choices.forEach(item=>{
+                    item.classList.remove("selected");
+                });
+
+                choice.classList.add("selected");
+
+                updateProgress();
+
+            }
+        );
+
+    });
+
+});
+
+
+/* ==================================================
+   NGÂN HÀNG TỪ
+================================================== */
+
+document
+.querySelectorAll(".bank-word")
+.forEach(button=>{
+
+    button.addEventListener(
+        "click",
+        ()=>{
+
+            if(submitted){
+                return;
+            }
+
+            document
+            .querySelectorAll(".bank-word")
+            .forEach(item=>{
+                item.classList.remove("active");
+            });
+
+            selectedWord =
+                button.dataset.word;
+
+            button.classList.add("active");
+
+        }
+    );
+
+});
+
+
+document
+.querySelectorAll(".blank")
+.forEach(blank=>{
+
+    blank.addEventListener(
+        "click",
+        ()=>{
+
+            if(submitted){
+                return;
+            }
+
+
+            /* Nếu đã có từ:
+               bấm vào để xóa */
+
+            if(
+                blank.dataset.value
+                &&
+                !selectedWord
+            ){
+
+                blank.textContent = "";
+
+                blank.dataset.value = "";
+
+                blank.classList.remove("filled");
+
+                updateProgress();
+
+                return;
+            }
+
+
+            /* Điền từ */
+
+            if(selectedWord){
+
+                blank.textContent =
+                    selectedWord;
+
+                blank.dataset.value =
+                    selectedWord;
+
+                blank.classList.add(
+                    "filled"
+                );
+
+
+                selectedWord = null;
+
+
+                document
+                .querySelectorAll(".bank-word")
+                .forEach(item=>{
+                    item.classList.remove("active");
+                });
+
+
+                updateProgress();
+
+            }
+
+        }
+    );
+
+});
+
+
+/* ==================================================
+   SẮP XẾP CÂU
+================================================== */
+
+document
+.querySelectorAll(".order-question")
+.forEach(question=>{
+
+    const cards =
+        question.querySelectorAll(".word-card");
+
+    const answerArea =
+        question.querySelector(".sentence-answer");
+
+
+    cards.forEach(card=>{
+
+        card.addEventListener(
+            "click",
+            ()=>{
+
+                if(
+                    submitted ||
+                    card.classList.contains("used")
+                ){
+                    return;
+                }
+
+
+                card.classList.add("used");
+
+
+                const chip =
+                    document.createElement("span");
+
+                chip.className =
+                    "answer-chip";
+
+                chip.textContent =
+                    card.textContent.trim();
+
+                chip.dataset.source =
+                    card.textContent.trim();
+
+
+                answerArea.appendChild(chip);
+
+                updateProgress();
+
+            }
+        );
+
+    });
+
+
+    /* Bấm vùng đáp án để làm lại */
+
+    answerArea.addEventListener(
+        "click",
+        ()=>{
+
+            if(submitted){
+                return;
+            }
+
+            answerArea.innerHTML = "";
+
+            cards.forEach(card=>{
+                card.classList.remove("used");
+            });
+
+            updateProgress();
+
+        }
+    );
+
+});
+
+
+/* ==================================================
+   TEXT INPUT
+================================================== */
+
+document
+.querySelectorAll(".text-answer")
+.forEach(input=>{
+
+    input.addEventListener(
+        "input",
+        updateProgress
+    );
+
+});
+
+
+/* ==================================================
+   CHUẨN HÓA TEXT
+================================================== */
+
+function normalizeText(text){
+
+    return text
+        .replace(/\s+/g,"")
+        .replace(/[。！？!?，,；;]/g,"")
+        .trim();
+
+}
+
+
+/* ==================================================
+   PROGRESS
+================================================== */
+
+function updateProgress(){
+
+    let completed = 0;
+
+    const total = 22;
+
+
+    /* PHẦN 1 */
+
+    document
+    .querySelectorAll(".mc-question")
+    .forEach(question=>{
+
+        if(
+            question.querySelector(".choice.selected")
+        ){
+            completed++;
+        }
+
+    });
+
+
+    /* PHẦN 2 */
+
+    document
+    .querySelectorAll(".blank")
+    .forEach(blank=>{
+
+        if(blank.dataset.value){
+            completed++;
+        }
+
+    });
+
+
+    /* PHẦN 3 */
+
+    document
+    .querySelectorAll(".order-question")
+    .forEach(question=>{
+
+        const cards =
+            question.querySelectorAll(".word-card");
+
+        const used =
+            question.querySelectorAll(".word-card.used");
+
+        if(
+            cards.length === used.length
+            &&
+            cards.length > 0
+        ){
+            completed++;
+        }
+
+    });
+
+
+    /* PHẦN 4 */
+
+    document
+    .querySelectorAll(".text-answer")
+    .forEach(input=>{
+
+        if(input.value.trim()){
+            completed++;
+        }
+
+    });
+
+
+    const percent =
+        Math.round(
+            completed / total * 100
+        );
+
+
+    document
+    .getElementById("progressFill")
+    .style.width =
+        percent + "%";
+
+
+    document
+    .getElementById("progressText")
+    .textContent =
+        percent + "%";
+
+}
+
+
+/* ==================================================
+   NỘP BÀI
+================================================== */
+
+function submitQuiz(){
+
+    if(submitted){
+        return;
+    }
+
+
+    const total = 22;
+
+    let completed = 0;
+
+
+    /* ĐẾM SỐ CÂU ĐÃ LÀM */
+
+    document
+    .querySelectorAll(".mc-question")
+    .forEach(question=>{
+
+        if(
+            question.querySelector(".choice.selected")
+        ){
+            completed++;
+        }
+
+    });
+
+
+    document
+    .querySelectorAll(".blank")
+    .forEach(blank=>{
+
+        if(blank.dataset.value){
+            completed++;
+        }
+
+    });
+
+
+    document
+    .querySelectorAll(".order-question")
+    .forEach(question=>{
+
+        const cards =
+            question.querySelectorAll(".word-card");
+
+        const used =
+            question.querySelectorAll(".word-card.used");
+
+        if(
+            cards.length === used.length
+            &&
+            cards.length > 0
+        ){
+            completed++;
+        }
+
+    });
+
+
+    document
+    .querySelectorAll(".text-answer")
+    .forEach(input=>{
+
+        if(input.value.trim()){
+            completed++;
+        }
+
+    });
+
+
+    /* CHƯA LÀM HẾT */
+
+    if(completed < total){
+
+        const missing =
+            total - completed;
+
+        const submitArea =
+            document.getElementById("submitArea");
+
+
+        let warning =
+            document.getElementById("submitWarning");
+
+
+        if(!warning){
+
+            warning =
+                document.createElement("div");
+
+            warning.id =
+                "submitWarning";
+
+            warning.style.marginTop =
+                "18px";
+
+            warning.style.padding =
+                "12px";
+
+            warning.style.borderRadius =
+                "14px";
+
+            warning.style.background =
+                "#fff0dd";
+
+            warning.style.color =
+                "#9b6c3f";
+
+            warning.style.fontWeight =
+                "900";
+
+
+            submitArea.appendChild(
+                warning
+            );
+
+        }
+
+
+        warning.textContent =
+            "🌱 Bạn còn " +
+            missing +
+            " câu chưa làm. Hoàn thành hết rồi hãy nộp bài nhé!";
+
+
+        return;
+
+    }
+
+
+    submitted = true;
+
+    let score = 0;
+
+
+    /* =========================
+       CHẤM PHẦN 1
+    ========================= */
+
+    document
+    .querySelectorAll(".mc-question")
+    .forEach(question=>{
+
+        const answer =
+            question.dataset.answer;
+
+        const selected =
+            question.querySelector(".choice.selected");
+
+        const feedback =
+            question.querySelector(".answer-feedback");
+
+
+        question
+        .querySelectorAll(".choice")
+        .forEach(choice=>{
+
+            if(
+                choice.dataset.value === answer
+            ){
+                choice.classList.add("correct");
+            }
+
+        });
+
+
+        if(
+            selected &&
+            selected.dataset.value === answer
+        ){
+
+            score++;
+
+            feedback.textContent =
+                "✓ Chính xác!";
+
+            feedback.className =
+                "answer-feedback show correct-text";
+
+        }else{
+
+            if(selected){
+                selected.classList.add("wrong");
+            }
+
+
+            const correctChoice =
+                question.querySelector(
+                    `.choice[data-value="${answer}"]`
+                );
+
+
+            feedback.textContent =
+                "✗ Đáp án đúng: " +
+                correctChoice.textContent.trim();
+
+
+            feedback.className =
+                "answer-feedback show wrong-text";
+
+        }
+
+    });
+
+
+    /* =========================
+       CHẤM PHẦN 2
+    ========================= */
+
+    document
+    .querySelectorAll(".fill-question")
+    .forEach(question=>{
+
+        const blank =
+            question.querySelector(".blank");
+
+        const feedback =
+            question.querySelector(".answer-feedback");
+
+        const answer =
+            blank.dataset.answer;
+
+        const value =
+            blank.dataset.value || "";
+
+
+        if(value === answer){
+
+            score++;
+
+            blank.classList.add("correct");
+
+            feedback.textContent =
+                "✓ Chính xác!";
+
+            feedback.className =
+                "answer-feedback show correct-text";
+
+        }else{
+
+            blank.classList.add("wrong");
+
+            feedback.textContent =
+                "✗ Đáp án đúng: " +
+                answer;
+
+            feedback.className =
+                "answer-feedback show wrong-text";
+
+        }
+
+    });
+
+
+    /* =========================
+       CHẤM PHẦN 3
+    ========================= */
+
+    document
+    .querySelectorAll(".order-question")
+    .forEach(question=>{
+
+        const answerArea =
+            question.querySelector(".sentence-answer");
+
+        const feedback =
+            question.querySelector(".answer-feedback");
+
+        const correctAnswer =
+            normalizeText(
+                question.dataset.answer
+            );
+
+
+        let userAnswer = "";
+
+
+        answerArea
+        .querySelectorAll(".answer-chip")
+        .forEach(chip=>{
+
+            userAnswer +=
+                chip.textContent.trim();
+
+        });
+
+
+        userAnswer =
+            normalizeText(userAnswer);
+
+
+        if(
+            userAnswer === correctAnswer
+        ){
+
+            score++;
+
+            answerArea.classList.add("correct");
+
+            feedback.textContent =
+                "✓ Chính xác!";
+
+            feedback.className =
+                "answer-feedback show correct-text";
+
+        }else{
+
+            answerArea.classList.add("wrong");
+
+            feedback.textContent =
+                "✗ Đáp án đúng: " +
+                question.dataset.answer +
+                "。";
+
+            feedback.className =
+                "answer-feedback show wrong-text";
+
+        }
+
+    });
+
+
+    /* =========================
+       CHẤM PHẦN 4
+    ========================= */
+
+    document
+    .querySelectorAll(".reading-question")
+    .forEach(question=>{
+
+        const input =
+            question.querySelector(".text-answer");
+
+        const feedback =
+            question.querySelector(".answer-feedback");
+
+
+        const userAnswer =
+            normalizeText(
+                input.value
+            );
+
+
+        const acceptedAnswers =
+            input.dataset.answers
+            .split("|")
+            .map(
+                answer =>
+                    normalizeText(answer)
+            );
+
+
+        if(
+            acceptedAnswers.includes(
+                userAnswer
+            )
+        ){
+
+            score++;
+
+            input.classList.add("correct");
+
+            feedback.textContent =
+                "✓ Chính xác!";
+
+            feedback.className =
+                "answer-feedback show correct-text";
+
+        }else{
+
+            input.classList.add("wrong");
+
+            feedback.textContent =
+                "✗ Đáp án gợi ý: " +
+                feedback.dataset.correct;
+
+            feedback.className =
+                "answer-feedback show wrong-text";
+
+        }
+
+    });
+
+
+    /* =========================
+       HIỆN KẾT QUẢ
+    ========================= */
+
+    showResult(
+        score,
+        total
+    );
+
+}
+
+
+/* ==================================================
+   KẾT QUẢ
+================================================== */
+
+function showResult(
+    score,
+    total
+){
+
+    const result =
+        document.getElementById(
+            "resultScreen"
+        );
+
+    const title =
+        document.getElementById(
+            "resultTitle"
+        );
+
+    const message =
+        document.getElementById(
+            "resultMessage"
+        );
+
+    const emoji =
+        document.getElementById(
+            "resultEmoji"
+        );
+
+
+    document
+    .getElementById(
+        "scoreDisplay"
+    )
+    .textContent =
+        score + "/" + total;
+
+
+    const percent =
+        score / total * 100;
+
+
+    if(percent >= 90){
+
+        emoji.textContent =
+            "🏆🌟";
+
+        title.textContent =
+            "Xuất sắc!";
+
+        message.innerHTML =
+            "Bạn đã hoàn thành xuất sắc nhiệm vụ của " +
+            "<b>第四课：我有两个孩子</b>.<br>" +
+            "Khả năng ghi nhớ của bạn rất tốt!";
+
+    }
+
+    else if(percent >= 70){
+
+        emoji.textContent =
+            "🎉🌷";
+
+        title.textContent =
+            "Làm tốt lắm!";
+
+        message.innerHTML =
+            "Bạn đã hoàn thành bài luyện tập rất tốt.<br>" +
+            "Xem lại những câu màu đỏ rồi thử thêm một lần nữa nhé!";
+
+    }
+
+    else if(percent >= 50){
+
+        emoji.textContent =
+            "🌱💪";
+
+        title.textContent =
+            "Hoàn thành rồi!";
+
+        message.innerHTML =
+            "Bạn đã đi hết bài luyện tập.<br>" +
+            "Mình xem lại những câu chưa đúng để nhớ bài chắc hơn nhé!";
+
+    }
+
+    else{
+
+        emoji.textContent =
+            "🌼📚";
+
+        title.textContent =
+            "Cố gắng thêm một chút nhé!";
+
+        message.innerHTML =
+            "Bạn đã hoàn thành nhiệm vụ rồi.<br>" +
+            "Hãy xem lại đáp án và thử lại để chinh phục Bài 4 nhé!";
+
+    }
+
+
+    result.classList.add("show");
+
+
+    document
+    .getElementById(
+        "submitArea"
+    )
+    .style.display =
+        "none";
+
+
+    document
+    .getElementById(
+        "progressFill"
+    )
+    .style.width =
+        "100%";
+
+
+    document
+    .getElementById(
+        "progressText"
+    )
+    .textContent =
+        "100%";
+
+
+    setTimeout(()=>{
+
+        result.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },250);
+
+}
+
+
+/* ==================================================
+   LÀM LẠI
+================================================== */
+
+function resetQuiz(){
+
+    window.location.reload();
+
+}
+
+
+/* ==================================================
+   KHỞI ĐỘNG
+================================================== */
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
