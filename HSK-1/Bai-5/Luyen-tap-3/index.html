@@ -1,0 +1,86 @@
+\<!DOCTYPE html>
+
+\<html lang="vi">
+
+\<head>
+
+\<meta charset="UTF-8">\<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+\<title>第五课 · 听力挑战\</title>
+
+\<style>
+
+\*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Nunito","Microsoft YaHei","PingFang SC",Arial,sans-serif;color:#56506f;background:linear-gradient(145deg,#fff2f7,#f1f0ff 48%,#eafaff);padding:28px 16px 70px}.home{position:fixed;top:16px;left:16px;z-index:5;border:0;background:#fff;padding:11px 16px;border-radius:999px;font-weight:900;color:#7066a4;box-shadow:0 5px 18px #74669b22;cursor:pointer}.wrap{width:min(900px,100%);margin:45px auto}.hero{text-align:center}.tag{display:inline-block;background:#fff;padding:8px 16px;border-radius:999px;font-weight:900;color:#8b79b8}.hero h1{font-size:clamp(30px,6vw,46px);margin:12px 0 5px}.hero p{color:#8b849a}.card{background:#ffffffee;border-radius:28px;padding:28px;box-shadow:0 16px 45px #6c5f8c1c;margin:20px 0}.hidden{display:none!important}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fields input{border:2px solid #e8e2f3;border-radius:16px;padding:14px;font-size:16px;outline:none}.primary,.soft{border:0;border-radius:16px;padding:13px 20px;font-size:16px;font-weight:900;cursor:pointer}.primary{background:linear-gradient(135deg,#a991df,#789fe8);color:#fff}.soft{background:#f0ecf8;color:#685e85}.center{text-align:center}.error{color:#d85f70;font-weight:800;min-height:24px}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 5px 18px #74669b16;margin-bottom:12px;font-weight:900}.progress{height:11px;background:#eeeaf6;border-radius:99px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,#f2a8c5,#9298e8);transition:.3s}.part{display:inline-block;padding:7px 13px;background:#fff5d8;color:#88703c;border-radius:99px;font-weight:900;margin-bottom:12px}.qnum{font-size:14px;color:#918aa1;font-weight:900}.prompt{text-align:center;font-size:24px;font-weight:900;margin:8px 0 20px}.listen{display:flex;justify-content:center;margin:18px}.listen button{min-width:210px}.listen-note{text-align:center;color:#91899f;font-size:13px}.options{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:24px 0}.option{border:2px solid #ece7f4;background:#fff;border-radius:20px;padding:18px 12px;min-height:90px;cursor:pointer;font-size:18px;font-weight:900;color:#5e5775;display:flex;align-items:center;justify-content:center;text-align:center;transition:.15s}.option:hover{transform:translateY(-2px)}.option.selected{border-color:#9c8ed0;background:#f0ebff}.option.visual{font-size:42px;flex-direction:column;gap:7px}.option small{font-size:14px;font-weight:800}.nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.result{text-align:center}.score{width:150px;height:150px;margin:18px auto;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#fff0f6,#ece9ff);font-size:38px;font-weight:900;color:#7466a2}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}.stat{background:#faf8ff;padding:16px;border-radius:18px}.stat strong{display:block;font-size:23px;margin-top:5px}.review{text-align:left;margin-top:25px}.review-item{padding:14px;border-radius:15px;background:#faf9ff;margin:9px 0;border-left:5px solid #e36f7d}.review-item.ok{border-color:#68bf8d}.review-item b{color:#4b8061}.audio-warning{background:#fff6dc;padding:12px;border-radius:14px;color:#7e6b3d;font-size:13px;margin-top:15px}@media(max-width:650px){.fields,.options,.stats{grid-template-columns:1fr}.card{padding:20px 14px}.topbar{font-size:13px}.option{min-height:70px}.nav{flex-wrap:wrap}.nav button{flex:1}}
+
+\</style>\</head>
+
+\<body>
+
+\<button class="home" onclick="location.href='../../index.html'">🏠 Trang chủ\</button>
+
+\<div class="wrap">
+
+\<header class="hero">\<span class="tag">第五课 · 听力\</span>\<h1>🎧 听力挑战\</h1>\<p>20 thử thách nghe · Dùng 100% audio gốc · Mỗi câu tối đa 2 lần\</p>\</header>
+
+\<section id="start" class="card center">\<div style="font-size:65px">🎧\</div>\<h2>准备好了吗？\</h2>\<p>Điền thông tin rồi bắt đầu thử thách nghe nhé!\</p>\<div class="fields">\<input id="name" placeholder="✏️ Họ và tên">\<input id="className" placeholder="🏫 Lớp">\</div>\<div id="err" class="error">\</div>\<button class="primary" onclick="startQuiz()">🚀 Bắt đầu\</button>\<div class="audio-warning">📁 Khi tải lên GitHub, đặt \<b>index.html\</b> và \<b>模拟测练.mp3\</b> trong cùng một thư mục.\</div>\</section>
+
+\<div id="quiz" class="hidden">\<div class="topbar">\<span id="student">\</span>\<span>⏱️ \<span id="timer">00:00\</span>\</span>\</div>\<div class="progress">\<div id="bar" class="bar">\</div>\</div>\<section class="card">\<div id="part" class="part">\</div>\<div id="qnum" class="qnum">\</div>\<div id="prompt" class="prompt">\</div>\<div class="listen">\<button id="listenBtn" class="primary" onclick="playCurrent()">🔊 Nghe câu hỏi\</button>\</div>\<div id="listenNote" class="listen-note">\</div>\<div id="options" class="options">\</div>\<div class="nav">\<button class="soft" onclick="prevQ()">← Câu trước\</button>\<button id="nextBtn" class="primary" onclick="nextQ()">Câu tiếp →\</button>\</div>\</section>\</div>
+
+\<section id="result" class="card result hidden">\<div style="font-size:70px">🏆\</div>\<h2>完成啦！Hoàn thành rồi!\</h2>\<div id="who">\</div>\<div id="score" class="score">\</div>\<div class="stats">\<div class="stat">✅ Trả lời đúng\<strong id="correct">\</strong>\</div>\<div class="stat">⏱️ Thời gian\<strong id="finalTime">\</strong>\</div>\</div>\<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">\<button class="primary" onclick="toggleReview()">🔎 Xem đáp án\</button>\<button class="soft" onclick="restart()">🔄 Làm lại\</button>\</div>\<div id="review" class="review hidden">\</div>\</section>
+
+\</div>
+
+\<audio id="audio" preload="metadata" src="模拟测练.mp3">\</audio>
+
+\<script>
+
+/\* Các mốc dưới đây cắt trực tiếp từ file 模拟测练.mp3 người dùng cung cấp.
+
+   Mỗi đoạn giữ nguyên giọng đọc gốc; không dùng TTS. \*/
+
+const qs=[
+{part:"第一部分 · 听短语",prompt:"Nghe và chọn nghĩa/hình phù hợp",start:47.04,end:48.45,answer:0,opts:[{v:"🍳",t:"做菜"},{v:"🍚",t:"吃饭"},{v:"😴",t:"休息"}],text:"做菜"},
+{part:"第一部分 · 听短语",prompt:"Nghe và chọn nghĩa/hình phù hợp",start:52.30,end:54.10,answer:1,opts:[{v:"👨‍👩‍👧",t:"三个人"},{v:"👨‍👩‍👧‍👦",t:"四个人"},{v:"5️⃣",t:"五个人"}],text:"四个人"},
+{part:"第一部分 · 听短语",prompt:"Nghe và chọn ngày bạn nghe được",start:62.26,end:64.20,answer:1,opts:[{t:"六月二日"},{t:"六月十二日"},{t:"十二月六日"}],text:"六月十二日"},
+{part:"第一部分 · 听短语",prompt:"Nghe lại và chọn pinyin đúng",start:66.00,end:67.95,answer:1,opts:[{t:"liù yuè èr rì"},{t:"liù yuè shí'èr rì"},{t:"shí'èr yuè liù rì"}],text:"六月十二日"},
+{part:"第二部分 · 听问题",prompt:"Nghe câu hỏi và chọn câu trả lời phù hợp",start:177.89,end:181.10,answer:0,opts:[{t:"会，我会做饭。"},{t:"今天星期三。"},{t:"我喜欢饺子。"}],text:"你会做饭吗？ → 会，我会做饭。"},
+{part:"第二部分 · 听问题",prompt:"Bạn vừa nghe câu hỏi về nội dung gì?",start:181.46,end:184.05,answer:1,opts:[{t:"Ngày tháng"},{t:"Biết nấu ăn hay không"},{t:"Thích ăn gì"}],text:"你会做饭吗？"},
+{part:"第二部分 · 听问题",prompt:"Nghe câu hỏi và chọn câu trả lời phù hợp",start:186.02,end:189.45,answer:0,opts:[{t:"今天星期三。"},{t:"今天十月七号。"},{t:"我会做饭。"}],text:"今天星期几？ → 今天星期三。"},
+{part:"第二部分 · 听问题",prompt:"Câu hỏi đang hỏi thông tin nào?",start:189.89,end:192.45,answer:2,opts:[{t:"几月几号"},{t:"几岁"},{t:"星期几"}],text:"今天星期几？"},
+{part:"第三部分 · 听对话",prompt:"Nghe hội thoại và chọn ý đúng",start:246.85,end:252.45,answer:1,opts:[{v:"👩‍🍳✅",t:"Biết làm món này"},{v:"👩‍🍳❌",t:"Không biết làm món này"},{v:"🍜❤️",t:"Thích ăn món này"}],text:"你会做这个菜吗？—我不会做。"},
+{part:"第三部分 · 听对话",prompt:"Người trả lời nói câu nào?",start:254.77,end:260.55,answer:2,opts:[{t:"我会做。"},{t:"我喜欢吃。"},{t:"我不会做。"}],text:"我不会做。"},
+{part:"第三部分 · 听对话",prompt:"Nghe hội thoại và chọn ngày đúng",start:277.46,end:282.55,answer:1,opts:[{t:"六月六号"},{t:"六月八号"},{t:"八月六号"}],text:"今天几号？—今天六月八号。"},
+{part:"第三部分 · 听对话",prompt:"Nghe và chọn câu hỏi xuất hiện trong hội thoại",start:284.61,end:289.95,answer:0,opts:[{t:"今天几号？"},{t:"今天星期几？"},{t:"今天休息吗？"}],text:"今天几号？"},
+{part:"第三部分 · 听对话",prompt:"Nghe hội thoại và chọn đồ vật được nhắc đến",start:305.65,end:313.30,answer:2,opts:[{v:"📱",t:"新手机"},{v:"📚",t:"新书"},{v:"💻✨",t:"新电脑"}],text:"这是我的新电脑。—真好看！"},
+{part:"第三部分 · 听对话",prompt:"Người nghe nhận xét thế nào?",start:313.62,end:318.35,answer:0,opts:[{t:"真好看！"},{t:"真好吃！"},{t:"我不会做。"}],text:"真好看！"},
+{part:"第四部分 · 听句子和问题",prompt:"Nghe câu và câu hỏi, chọn đáp án đúng",start:405.33,end:416.50,answer:1,opts:[{t:"面条儿"},{t:"饺子"},{t:"菜"}],text:"我喜欢吃饺子。说话人喜欢吃什么？ → 饺子"},
+{part:"第四部分 · 听句子和问题",prompt:"Câu đầu tiên cho biết điều gì?",start:407.71,end:411.35,answer:0,opts:[{t:"Người nói thích ăn bánh chẻo"},{t:"Người nói biết làm bánh chẻo"},{t:"Người nói không thích bánh chẻo"}],text:"我喜欢吃饺子。"},
+{part:"第四部分 · 听句子和问题",prompt:"Nghe câu và câu hỏi, chọn đáp án đúng",start:418.80,end:427.85,answer:1,opts:[{t:"九号"},{t:"十号"},{t:"十二号"}],text:"明天十号，我休息。说话人几号休息？ → 十号"},
+{part:"第四部分 · 听句子和问题",prompt:"Người nói làm gì vào ngày 10?",start:418.80,end:422.35,answer:2,opts:[{t:"上班"},{t:"做饭"},{t:"休息"}],text:"明天十号，我休息。"},
+{part:"综合挑战 · 听辨",prompt:"Nghe và chọn từ khóa xuất hiện",start:277.46,end:282.55,answer:1,opts:[{t:"星期"},{t:"六月"},{t:"电脑"}],text:"今天六月八号。"},
+{part:"综合挑战 · 听辨",prompt:"Nghe và chọn từ khóa xuất hiện",start:305.65,end:313.30,answer:2,opts:[{t:"饺子"},{t:"休息"},{t:"电脑"}],text:"这是我的新电脑。真好看！"}
+];
+
+let idx=0,answers=Array(qs.length).fill(null),plays=Array(qs.length).fill(0),started=0,timerInt=null,stopTimer=null,name="",clazz="";
+
+const audio=document.getElementById('audio');
+
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+
+function startQuiz(){name=document.getElementById('name').value.trim();clazz=document.getElementById('className').value.trim();if(!name||!clazz){document.getElementById('err').textContent='🌷 Nhập đầy đủ Họ tên và Lớp nha!';return}document.getElementById('start').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');document.getElementById('student').textContent='👤 '+name+' · '+clazz;started=Date.now();timerInt=setInterval(()=>document.getElementById('timer').textContent=fmt(Math.floor((Date.now()-started)/1000)),1000);render()}
+
+function render(){const q=qs[idx];document.getElementById('part').textContent=q.part;document.getElementById('qnum').textContent=\`第 ${idx+1} / ${qs.length} 题\`;document.getElementById('prompt').textContent=q.prompt;document.getElementById('bar').style.width=((idx+1)/qs.length\*100)+'%';document.getElementById('listenNote').textContent=\`Đã nghe: ${plays[idx]} / 2 lần\`;const lb=document.getElementById('listenBtn');lb.disabled=plays[idx]>=2;lb.style.opacity=plays[idx]>=2?'.45':'1';lb.textContent=plays[idx]>=2?'🔒 Đã nghe đủ 2 lần':'🔊 Nghe câu hỏi';const box=document.getElementById('options');box.innerHTML='';q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='option'+(o.v?' visual':'')+(answers[idx]===i?' selected':'');b.innerHTML=(o.v?\`\<span>${o.v}\</span>\`:'')+\`\<small>${String.fromCharCode(65+i)}. ${o.t}\</small>\`;b.onclick=()=>{answers[idx]=i;render()};box.appendChild(b)});document.getElementById('nextBtn').textContent=idx===qs.length-1?'🌟 Nộp bài':'Câu tiếp →'}
+
+function playCurrent(){if(plays[idx]>=2)return;const q=qs[idx];clearTimeout(stopTimer);audio.pause();audio.currentTime=q.start;const go=()=>{audio.play().then(()=>{plays[idx]++;render();stopTimer=setTimeout(()=>audio.pause(),(q.end-q.start)\*1000)}).catch(()=>alert('Không phát được audio. Kiểm tra file 模拟测练.mp3 có nằm cùng thư mục với index.html không.'))};if(audio.seeking)audio.addEventListener('seeked',go,{once:true});else go()}
+
+function prevQ(){audio.pause();clearTimeout(stopTimer);if(idx>0){idx--;render()}}
+
+function nextQ(){audio.pause();clearTimeout(stopTimer);if(answers[idx]===null){document.getElementById('prompt').textContent='🌷 Chọn một đáp án trước khi đi tiếp nha!';return}if(idx\<qs.length-1){idx++;render()}else submit()}
+
+function submit(){clearInterval(timerInt);const secs=Math.floor((Date.now()-started)/1000);let score=0;answers.forEach((a,i)=>{if(a===qs[i].answer)score++});document.getElementById('quiz').classList.add('hidden');document.getElementById('result').classList.remove('hidden');document.getElementById('who').textContent=\`👤 ${name} · 🏫 ${clazz}\`;document.getElementById('score').textContent=score+'/'+qs.length;document.getElementById('correct').textContent=score+'/'+qs.length;document.getElementById('finalTime').textContent=fmt(secs);let html='\<h3>📖 Đáp án chi tiết\</h3>';qs.forEach((q,i)=>{const ok=answers[i]===q.answer;html+=\`\<div class="review-item ${ok?'ok':''}">\<strong>${ok?'✅':'❌'} Câu ${i+1}\</strong>\<div>Bạn chọn: ${String.fromCharCode(65+(answers[i]??0))}. ${answers[i]===null?'Chưa trả lời':q.opts[answers[i]].t}\</div>${ok?'':\`\<div>Đáp án: \<b>${String.fromCharCode(65+q.answer)}. ${q.opts[q.answer].t}\</b>\</div>\`}\<div style="margin-top:5px;color:#8b849a">Nội dung nghe: ${q.text}\</div>\</div>\`});document.getElementById('review').innerHTML=html;window\.scrollTo({top:0,behavior:'smooth'})}
+
+function toggleReview(){document.getElementById('review').classList.toggle('hidden')}
+
+function restart(){location.reload()}
+
+\</script>\</body>\</html>

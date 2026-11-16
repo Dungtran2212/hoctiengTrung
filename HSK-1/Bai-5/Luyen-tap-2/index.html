@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五课：今天我休息</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+    --purple:#7d72c7;
+    --purple2:#a89be5;
+    --pink:#f5a9c6;
+    --blue:#93c9ee;
+    --green:#78c8a0;
+    --yellow:#ffd985;
+    --red:#e96d7b;
+    --text:#504b68;
+}
+
+body{
+    min-height:100vh;
+    font-family:"Nunito","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.85) 0 65px,transparent 66px),
+        radial-gradient(circle at 90% 20%,rgba(255,255,255,.7) 0 90px,transparent 91px),
+        linear-gradient(135deg,#fff1f7,#f2f1ff 45%,#edfbff);
+    padding:25px 16px 80px;
+}
+
+button,input{font-family:inherit}
+
+.cloud{
+    position:fixed;
+    font-size:55px;
+    opacity:.25;
+    pointer-events:none;
+    z-index:-1;
+}
+.c1{top:8%;left:3%}
+.c2{top:32%;right:4%}
+.c3{bottom:8%;left:6%}
+
+.home-btn{
+    position:fixed;
+    top:18px;
+    left:18px;
+    z-index:100;
+    border:none;
+    background:white;
+    color:#7066a4;
+    padding:11px 18px;
+    border-radius:999px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 5px 18px rgba(80,70,120,.14);
+}
+
+.timer-box{
+    position:fixed;
+    top:18px;
+    right:18px;
+    z-index:100;
+    background:white;
+    color:#7468a0;
+    padding:11px 18px;
+    border-radius:999px;
+    font-weight:900;
+    box-shadow:0 5px 18px rgba(80,70,120,.14);
+}
+
+.container{
+    width:min(100%,1000px);
+    margin:45px auto 0;
+}
+
+.hero{text-align:center;margin-bottom:25px}
+
+.lesson-tag{
+    display:inline-block;
+    background:white;
+    padding:8px 18px;
+    border-radius:999px;
+    color:#8a78ba;
+    font-weight:900;
+    box-shadow:0 5px 15px rgba(80,70,120,.08);
+    margin-bottom:12px;
+}
+
+.hero h1{
+    color:#5d577d;
+    font-size:clamp(29px,5vw,44px);
+    margin-bottom:8px;
+}
+
+.hero p{color:#817b94;line-height:1.7}
+
+.card{
+    background:rgba(255,255,255,.95);
+    border-radius:28px;
+    padding:28px;
+    box-shadow:0 14px 40px rgba(70,60,100,.12);
+    margin-bottom:22px;
+}
+
+.hidden{display:none!important}
+
+.section-title{
+    text-align:center;
+    color:#625b83;
+    font-size:26px;
+    margin-bottom:8px;
+}
+
+.instruction{
+    text-align:center;
+    color:#888298;
+    line-height:1.7;
+    margin-bottom:24px;
+}
+
+/* LOGIN */
+
+.student-card{
+    max-width:650px;
+    margin:0 auto 25px;
+    text-align:center;
+}
+
+.student-icon{font-size:65px;margin-bottom:10px}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:22px 0;
+}
+
+.student-input{
+    width:100%;
+    border:2px solid #e8e2f4;
+    background:#fbfaff;
+    border-radius:17px;
+    padding:14px 16px;
+    font-size:16px;
+    outline:none;
+    color:#5d5676;
+}
+
+.student-input:focus{
+    border-color:#aa9add;
+    box-shadow:0 0 0 4px rgba(170,154,221,.12);
+}
+
+.login-error{
+    min-height:24px;
+    color:#d65f70;
+    font-weight:800;
+}
+
+/* STUDENT BAR */
+
+.student-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    background:white;
+    border-radius:20px;
+    padding:13px 18px;
+    margin-bottom:15px;
+    box-shadow:0 5px 20px rgba(70,60,100,.08);
+}
+
+.student-name{font-weight:900;color:#665d8a}
+.student-class{font-size:13px;color:#9992a9}
+
+/* PROGRESS */
+
+.progress-card{
+    background:rgba(255,255,255,.9);
+    padding:14px 18px;
+    border-radius:20px;
+    margin-bottom:18px;
+    box-shadow:0 5px 20px rgba(70,60,100,.08);
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.progress-track{
+    height:12px;
+    background:#efecf7;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:25%;
+    background:linear-gradient(90deg,#f1a6c4,#9b9ee9);
+    transition:.35s;
+}
+
+/* NAV */
+
+.section-nav{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:22px;
+}
+
+.nav-tab{
+    border:none;
+    background:white;
+    border-radius:18px;
+    padding:13px 8px;
+    color:#77708f;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 4px 14px rgba(70,60,100,.08);
+}
+
+.nav-tab.active{
+    color:white;
+    background:linear-gradient(135deg,#a991df,#829fe6);
+}
+
+/* CALENDAR */
+
+.calendar-wrap{max-width:760px;margin:auto}
+
+.calendar-title{
+    text-align:center;
+    font-size:23px;
+    font-weight:900;
+    color:#655c8b;
+    margin-bottom:13px;
+}
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    overflow:hidden;
+    border-radius:20px;
+    border:2px solid #eee9f8;
+    background:white;
+}
+
+.calendar>div{
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-right:1px solid #eeeaf5;
+    font-weight:800;
+}
+
+.weekday{background:#f2effb;color:#716a91;font-size:14px}
+.day{font-size:20px}
+
+.today{
+    position:relative;
+    background:#fff0f5;
+    color:#d36384;
+    font-size:24px;
+}
+
+.today::after{
+    content:"今天";
+    position:absolute;
+    bottom:3px;
+    font-size:10px;
+    background:#e885a3;
+    color:white;
+    border-radius:999px;
+    padding:2px 6px;
+}
+
+.today-text{
+    margin:18px auto 25px;
+    text-align:center;
+    background:#fff7dc;
+    color:#8c7241;
+    padding:13px;
+    border-radius:17px;
+    font-size:20px;
+    font-weight:900;
+}
+
+/* QUESTIONS */
+
+.question{
+    padding:18px;
+    background:#faf9ff;
+    border-radius:20px;
+    margin:12px 0;
+}
+
+.question-number{
+    display:inline-flex;
+    width:28px;
+    height:28px;
+    justify-content:center;
+    align-items:center;
+    background:#ebe6fa;
+    color:#7669a5;
+    border-radius:50%;
+    font-weight:900;
+    margin-right:7px;
+}
+
+.question-text{font-size:18px;font-weight:900}
+
+.options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:14px;
+}
+
+.option{
+    border:2px solid #e8e3f3;
+    background:white;
+    color:#5f5876;
+    border-radius:15px;
+    padding:10px 15px;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.option.selected{
+    background:#ece7fb;
+    border-color:#a896d6;
+}
+
+.correct{
+    background:#e4f7eb!important;
+    border-color:#6fc797!important;
+    color:#397b58!important;
+}
+
+.wrong{
+    background:#ffe8eb!important;
+    border-color:#e67582!important;
+    color:#b74e5d!important;
+}
+
+.answer-note{
+    margin-top:10px;
+    color:#b45162;
+    font-size:14px;
+    font-weight:800;
+}
+
+/* KITCHEN */
+
+.people-cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:22px;
+}
+
+.person{
+    background:#faf8ff;
+    border-radius:20px;
+    padding:17px;
+    text-align:center;
+}
+
+.avatar{font-size:45px}
+.person h3{margin:6px;color:#655e82}
+.person p{color:#7d778d;line-height:1.6;font-size:14px}
+
+.food-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:6px;
+    margin:20px 0;
+}
+
+.food-table th,.food-table td{
+    text-align:center;
+    padding:13px 8px;
+    border-radius:13px;
+}
+
+.food-table th{background:#eeeafb}
+.food-table td{background:#faf9fd}
+.person-name{font-weight:900}
+
+.choice-pair{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+}
+
+.mini-choice{
+    width:38px;
+    height:38px;
+    border:2px solid transparent;
+    border-radius:11px;
+    background:white;
+    font-weight:900;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.mini-choice.selected{
+    background:#e9e4fa;
+    border-color:#a797d6;
+}
+
+/* CHAT */
+
+.word-bank{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:9px;
+    background:#f6f3fc;
+    padding:16px;
+    border-radius:20px;
+    margin-bottom:22px;
+}
+
+.word-chip{
+    border:none;
+    background:white;
+    color:#655c84;
+    border-radius:999px;
+    padding:10px 17px;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(70,60,100,.1);
+}
+
+.word-chip.selected{background:#ddd5f5}
+
+.chat{max-width:730px;margin:auto}
+.bubble-row{display:flex;margin:13px 0}
+.bubble-row.right{justify-content:flex-end}
+
+.bubble{
+    max-width:85%;
+    padding:14px 17px;
+    border-radius:20px;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.bubble.a{background:#edf3ff;border-bottom-left-radius:5px}
+.bubble.b{background:#fff0f5;border-bottom-right-radius:5px}
+
+.blank{
+    display:inline-flex;
+    min-width:85px;
+    min-height:35px;
+    align-items:center;
+    justify-content:center;
+    padding:2px 9px;
+    margin:0 3px;
+    border-radius:9px;
+    background:white;
+    border:2px dashed #c7bbdf;
+    color:#76669c;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.blank.filled{border-style:solid;background:#f7f4ff}
+
+/* SENTENCE */
+
+.sentence-game{max-width:800px;margin:auto}
+
+.sentence-counter{
+    text-align:center;
+    margin-bottom:12px;
+    font-weight:900;
+    color:#7a709d;
+}
+
+.sentence-hint{
+    text-align:center;
+    color:#898298;
+    margin-bottom:14px;
+}
+
+.grammar-tip{
+    background:#fff8dc;
+    border:2px dashed #ebd183;
+    color:#796a43;
+    border-radius:17px;
+    padding:12px 15px;
+    margin-bottom:17px;
+    text-align:center;
+    line-height:1.7;
+}
+
+.answer-zone,.tile-bank{
+    min-height:72px;
+    border-radius:20px;
+    padding:14px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:9px;
+}
+
+.answer-zone{
+    border:2px dashed #c8bde1;
+    background:#fcfbff;
+    margin-bottom:15px;
+}
+
+.tile-bank{background:#f3effa}
+
+.tile{
+    border:none;
+    background:white;
+    color:#574f73;
+    padding:11px 17px;
+    border-radius:14px;
+    font-size:19px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(70,60,100,.1);
+}
+
+.tile:disabled{opacity:.3}
+
+.sentence-feedback{
+    text-align:center;
+    min-height:28px;
+    margin:15px;
+    font-weight:900;
+}
+
+.good{color:#48a873}
+.bad{color:#dc6574}
+
+/* BUTTONS */
+
+.bottom-actions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:25px;
+}
+
+.btn{
+    border:none;
+    border-radius:17px;
+    padding:13px 22px;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+    color:#665e7e;
+    background:#eeeaf7;
+}
+
+.primary{
+    color:white;
+    background:linear-gradient(135deg,#aa91e1,#809ee6);
+}
+
+.submit-btn{
+    display:block;
+    margin:30px auto 0;
+    border:none;
+    border-radius:22px;
+    padding:16px 34px;
+    color:white;
+    font-size:18px;
+    font-weight:900;
+    cursor:pointer;
+    background:linear-gradient(135deg,#e995b8,#9489dc);
+    box-shadow:0 8px 20px rgba(130,100,160,.2);
+}
+
+/* RESULT */
+
+.result-card{text-align:center}
+.result-emoji{font-size:75px}
+
+.result-card h2{
+    font-size:30px;
+    color:#625a83;
+    margin:10px 0;
+}
+
+.student-result{
+    display:inline-block;
+    background:#f7f4ff;
+    padding:10px 22px;
+    border-radius:999px;
+    margin:10px 0;
+    font-weight:900;
+}
+
+.big-score{
+    display:inline-flex;
+    width:145px;
+    height:145px;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:linear-gradient(135deg,#fff0f6,#eeeaff);
+    color:#7667aa;
+    font-size:32px;
+    font-weight:900;
+    margin:20px;
+}
+
+.result-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:18px 0;
+}
+
+.stat-box{
+    background:#faf8ff;
+    border-radius:18px;
+    padding:16px 8px;
+}
+
+.stat-box span{
+    display:block;
+    font-size:13px;
+    color:#928ba1;
+    margin-bottom:5px;
+}
+
+.stat-box strong{
+    font-size:22px;
+    color:#6d6197;
+}
+
+.score-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin:20px 0;
+}
+
+.score-item{
+    background:#faf8ff;
+    padding:15px 8px;
+    border-radius:17px;
+    font-weight:800;
+}
+
+.score-item strong{
+    display:block;
+    margin-top:6px;
+    font-size:21px;
+    color:#7365a1;
+}
+
+/* RANK */
+
+.rank-card{
+    margin-top:25px;
+    background:linear-gradient(135deg,#fff8e7,#fff4fa);
+    border-radius:24px;
+    padding:20px;
+}
+
+.rank-card h3{
+    font-size:22px;
+    margin-bottom:5px;
+    color:#685d88;
+}
+
+.rank-note{
+    font-size:12px;
+    color:#9a92a4;
+    margin-bottom:15px;
+}
+
+.rank-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.rank-table th{
+    color:#81779a;
+    font-size:13px;
+    padding:10px 5px;
+    border-bottom:2px solid #eee6f1;
+}
+
+.rank-table td{
+    padding:12px 5px;
+    border-bottom:1px solid #f0e9f2;
+}
+
+.rank-me{
+    background:#fff2bd;
+    font-weight:900;
+}
+
+/* ANSWER REVIEW */
+
+.review-box{
+    margin-top:25px;
+    text-align:left;
+}
+
+.review-title{
+    text-align:center;
+    margin-bottom:18px;
+    font-size:24px;
+    color:#655a86;
+}
+
+.review-item{
+    padding:15px;
+    border-radius:16px;
+    margin:10px 0;
+    background:#faf9ff;
+}
+
+.review-item.review-correct{border-left:5px solid #6bc291}
+.review-item.review-wrong{border-left:5px solid #e47280}
+
+.review-question{
+    font-weight:900;
+    margin-bottom:6px;
+}
+
+.review-user{color:#81798e;margin:4px 0}
+.review-answer{color:#458363;font-weight:800;margin:4px 0}
+
+/* RESPONSIVE */
+
+@media(max-width:750px){
+    body{padding-top:70px}
+
+    .home-btn,.timer-box{
+        top:10px;
+        padding:9px 12px;
+        font-size:13px;
+    }
+
+    .container{margin-top:10px}
+
+    .form-grid,
+    .people-cards,
+    .result-stats{
+        grid-template-columns:1fr;
+    }
+
+    .section-nav,.score-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .card{padding:20px 13px}
+    .weekday{font-size:10px}
+    .calendar>div{min-height:52px}
+    .food-table{font-size:13px}
+    .bubble{max-width:94%;font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="cloud c1">☁️</div>
+<div class="cloud c2">☁️</div>
+<div class="cloud c3">🌷</div>
+
+<button class="home-btn" onclick="goHome()">🏠 Trang chủ</button>
+<div id="timerBox" class="timer-box hidden">⏱️ <span id="timer">00:00</span></div>
+
+<div class="container">
+
+<header class="hero">
+    <div class="lesson-tag">第五课 · Bài 5</div>
+    <h1>🌼 今天我休息</h1>
+    <p>📅 Xem lịch · 🍜 Vào bếp · 💬 Hội thoại · 🔀 Xếp câu</p>
+</header>
+
+<!-- ĐĂNG NHẬP -->
+
+<section id="startScreen" class="card student-card">
+    <div class="student-icon">🧑‍🎓</div>
+    <h2 class="section-title">准备好了吗？</h2>
+    <p class="instruction">
+        Điền thông tin trước khi bắt đầu.<br>
+        Điểm và thời gian sẽ được dùng để xếp hạng 🏆
+    </p>
+
+    <div class="form-grid">
+        <input id="studentName" class="student-input"
+               placeholder="✏️ Họ và tên">
+
+        <input id="studentClass" class="student-input"
+               placeholder="🏫 Lớp">
+    </div>
+
+    <div id="loginError" class="login-error"></div>
+
+    <button class="submit-btn" onclick="startExercise()">
+        🚀 Bắt đầu làm bài
+    </button>
+</section>
+
+<!-- KHU VỰC BÀI -->
+
+<div id="exerciseArea" class="hidden">
+
+<div class="student-bar">
+    <div>
+        <div id="studentDisplay" class="student-name"></div>
+        <div id="classDisplay" class="student-class"></div>
+    </div>
+    <div>🌟 加油！</div>
+</div>
+
+<div class="progress-card">
+    <div class="progress-info">
+        <span>🌱 Tiến độ bài tập</span>
+        <span id="progressText">Phần 1 / 4</span>
+    </div>
+    <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+</div>
+
+<nav class="section-nav">
+    <button id="tab1" class="nav-tab active" onclick="showSection(1)">📅 Xem lịch</button>
+    <button id="tab2" class="nav-tab" onclick="showSection(2)">🍜 Vào bếp</button>
+    <button id="tab3" class="nav-tab" onclick="showSection(3)">💬 Hội thoại</button>
+    <button id="tab4" class="nav-tab" onclick="showSection(4)">🔀 Xếp câu</button>
+</nav>
+
+<!-- PHẦN 1 -->
+
+<section id="section1" class="card">
+
+<h2 class="section-title">📅 1. Xem lịch và trả lời</h2>
+<p class="instruction">Quan sát lịch rồi chọn đáp án đúng nhé!</p>
+
+<div class="calendar-wrap">
+    <div class="calendar-title">2026年10月</div>
+
+    <div class="calendar">
+        <div class="weekday">星期一</div>
+        <div class="weekday">星期二</div>
+        <div class="weekday">星期三</div>
+        <div class="weekday">星期四</div>
+        <div class="weekday">星期五</div>
+        <div class="weekday">星期六</div>
+        <div class="weekday">星期日</div>
+
+        <div class="day">5</div>
+        <div class="day">6</div>
+        <div class="day today">7</div>
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+        <div class="day">11</div>
+    </div>
+
+    <div class="today-text">🌷 今天是十月七号。</div>
+</div>
+
+<div id="calendarQuestions"></div>
+
+<div class="bottom-actions">
+    <button class="btn primary" onclick="showSection(2)">
+        Tiếp theo · Vào bếp 🍜 →
+    </button>
+</div>
+
+</section>
+
+<!-- PHẦN 2 -->
+
+<section id="section2" class="card hidden">
+
+<h2 class="section-title">🍜 2. 谁会做什么？</h2>
+
+<p class="instruction">
+    Đọc thông tin rồi đánh dấu ✓ hoặc ✗.
+</p>
+
+<div class="people-cards">
+    <div class="person">
+        <div class="avatar">👦🏻</div>
+        <h3>李文</h3>
+        <p>我会做面条儿，<br>不会做饺子，也不会做菜。</p>
+    </div>
+
+    <div class="person">
+        <div class="avatar">👩🏻</div>
+        <h3>王一雪</h3>
+        <p>我不会做面条儿，<br>我会做饺子，也会做一些菜。</p>
+    </div>
+
+    <div class="person">
+        <div class="avatar">🧑🏻</div>
+        <h3>杨同乐</h3>
+        <p>我会做面条儿，也会做饺子，<br>不会做菜。</p>
+    </div>
+</div>
+
+<div style="overflow-x:auto">
+<table class="food-table">
+<thead>
+<tr>
+    <th>👤</th>
+    <th>🍜 面条儿</th>
+    <th>🥟 饺子</th>
+    <th>🥬 菜</th>
+</tr>
+</thead>
+<tbody id="foodTable"></tbody>
+</table>
+</div>
+
+<div class="question">
+    <span class="question-number">★</span>
+    <span class="question-text">谁会做饺子？</span>
+
+    <div class="options" id="dumplingQuestion">
+        <button class="option" onclick="selectDumpling(this,'李文')">李文</button>
+        <button class="option" onclick="selectDumpling(this,'王一雪')">王一雪</button>
+        <button class="option" onclick="selectDumpling(this,'杨同乐')">杨同乐</button>
+        <button class="option" onclick="selectDumpling(this,'王一雪和杨同乐')">王一雪和杨同乐</button>
+    </div>
+</div>
+
+<div class="bottom-actions">
+    <button class="btn" onclick="showSection(1)">← 📅 Quay lại</button>
+    <button class="btn primary" onclick="showSection(3)">Tiếp theo · Hội thoại 💬 →</button>
+</div>
+
+</section>
+
+<!-- PHẦN 3 -->
+
+<section id="section3" class="card hidden">
+
+<h2 class="section-title">💬 3. Hoàn thành hội thoại</h2>
+
+<p class="instruction">
+    Bấm một từ trong khung rồi bấm vào ô trống phù hợp.
+</p>
+
+<div id="wordBank" class="word-bank"></div>
+
+<div class="chat">
+
+    <div class="bubble-row">
+        <div class="bubble a">
+            👧🏻 A：你现在
+            <span class="blank" data-answer="下班" onclick="fillBlank(this)">______</span>
+            了吗？
+        </div>
+    </div>
+
+    <div class="bubble-row right">
+        <div class="bubble b">
+            🧑🏻 B：对，我现在下班了。今天我
+            <span class="blank" data-answer="休息" onclick="fillBlank(this)">______</span>。
+        </div>
+    </div>
+
+    <div class="bubble-row">
+        <div class="bubble a">
+            👧🏻 A：你
+            <span class="blank" data-answer="会" onclick="fillBlank(this)">______</span>
+            做饭吗？
+        </div>
+    </div>
+
+    <div class="bubble-row right">
+        <div class="bubble b">
+            🧑🏻 B：会。我会做面条儿和饺子。
+        </div>
+    </div>
+
+    <div class="bubble-row">
+        <div class="bubble a">
+            👧🏻 A：这是你的
+            <span class="blank" data-answer="新" onclick="fillBlank(this)">______</span>
+            电脑吗？
+        </div>
+    </div>
+
+    <div class="bubble-row right">
+        <div class="bubble b">
+            🧑🏻 B：是，这是我的新电脑。
+        </div>
+    </div>
+
+    <div class="bubble-row">
+        <div class="bubble a">
+            👧🏻 A：
+            <span class="blank" data-answer="真" onclick="fillBlank(this)">______</span>
+            好看！
+        </div>
+    </div>
+
+    <div class="bubble-row right">
+        <div class="bubble b">
+            🧑🏻 B：谢谢，我很
+            <span class="blank" data-answer="喜欢" onclick="fillBlank(this)">______</span>
+            它。
+        </div>
+    </div>
+
+</div>
+
+<div class="bottom-actions">
+    <button class="btn" onclick="clearDialogue()">↺ Làm lại phần này</button>
+    <button class="btn primary" onclick="showSection(4)">Tiếp theo · Xếp câu 🔀 →</button>
+</div>
+
+</section>
+
+<!-- PHẦN 4 -->
+
+<section id="section4" class="card hidden">
+
+<h2 class="section-title">🔀 4. 拼句子 · Xếp từ thành câu</h2>
+
+<p class="instruction">
+    Bấm các thẻ theo đúng thứ tự để tạo câu.
+</p>
+
+<div class="sentence-game">
+
+    <div id="sentenceCounter" class="sentence-counter"></div>
+    <div id="sentenceHint" class="sentence-hint"></div>
+
+    <div id="answerZone" class="answer-zone"></div>
+    <div id="tileBank" class="tile-bank"></div>
+
+    <div id="sentenceFeedback" class="sentence-feedback"></div>
+
+    <div class="bottom-actions">
+        <button class="btn" onclick="resetSentence()">↺ Xếp lại</button>
+        <button id="previousSentenceBtn" class="btn" onclick="previousSentence()">← Câu trước</button>
+        <button id="nextSentenceBtn" class="btn primary" onclick="nextSentence()">Câu tiếp →</button>
+    </div>
+
+</div>
+
+<button class="submit-btn" onclick="submitExercise()">🌟 Nộp bài</button>
+
+</section>
+
+</div>
+
+<!-- KẾT QUẢ -->
+
+<section id="resultSection" class="card result-card hidden">
+
+    <div id="resultEmoji" class="result-emoji">🏆</div>
+
+    <h2 id="resultTitle">太棒了！</h2>
+    <p id="resultMessage"></p>
+
+    <div id="resultStudent" class="student-result"></div>
+
+    <br>
+
+    <div id="bigScore" class="big-score">0/26</div>
+
+    <div class="result-stats">
+        <div class="stat-box">
+            <span>✅ Số câu đúng</span>
+            <strong id="correctStat">0/26</strong>
+        </div>
+
+        <div class="stat-box">
+            <span>⏱️ Thời gian</span>
+            <strong id="timeStat">00:00</strong>
+        </div>
+
+        <div class="stat-box">
+            <span>🏆 Xếp hạng</span>
+            <strong id="rankStat">#1</strong>
+        </div>
+    </div>
+
+    <div class="score-grid">
+        <div class="score-item">📅 Xem lịch<strong id="score1">0/4</strong></div>
+        <div class="score-item">🍜 Vào bếp<strong id="score2">0/10</strong></div>
+        <div class="score-item">💬 Hội thoại<strong id="score3">0/6</strong></div>
+        <div class="score-item">🔀 Xếp câu<strong id="score4">0/6</strong></div>
+    </div>
+
+    <div class="bottom-actions">
+        <button class="btn primary" onclick="toggleReview()">🔎 Xem đáp án</button>
+        <button class="btn" onclick="restartExercise()">🔄 Làm lại</button>
+    </div>
+
+    <div id="answerReview" class="review-box hidden">
+        <h3 class="review-title">📖 Đáp án chi tiết</h3>
+        <div id="reviewContent"></div>
+    </div>
+
+    <div class="rank-card">
+        <h3>🏆 Bảng xếp hạng</h3>
+        <div class="rank-note">
+            Ưu tiên số câu đúng cao hơn, nếu bằng điểm thì người làm nhanh hơn xếp trên.
+        </div>
+
+        <div style="overflow-x:auto">
+            <table class="rank-table">
+                <thead>
+                    <tr>
+                        <th>Hạng</th>
+                        <th>Họ tên</th>
+                        <th>Lớp</th>
+                        <th>Điểm</th>
+                        <th>Thời gian</th>
+                    </tr>
+                </thead>
+                <tbody id="rankBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+</div>
+
+<script>
+
+/* =========================
+   STUDENT + TIMER
+========================= */
+
+let studentName="";
+let studentClass="";
+let startTime=null;
+let timerInterval=null;
+let elapsedSeconds=0;
+let submitted=false;
+
+function startExercise(){
+
+    studentName=document.getElementById("studentName").value.trim();
+    studentClass=document.getElementById("studentClass").value.trim();
+
+    if(!studentName || !studentClass){
+        document.getElementById("loginError").textContent=
+            "🌷 Nhập đầy đủ Họ tên và Lớp trước nha!";
+        return;
+    }
+
+    document.getElementById("startScreen").classList.add("hidden");
+    document.getElementById("exerciseArea").classList.remove("hidden");
+    document.getElementById("timerBox").classList.remove("hidden");
+
+    document.getElementById("studentDisplay").textContent="👤 "+studentName;
+    document.getElementById("classDisplay").textContent="🏫 Lớp: "+studentClass;
+
+    startTime=Date.now();
+    elapsedSeconds=0;
+
+    clearInterval(timerInterval);
+
+    timerInterval=setInterval(()=>{
+        elapsedSeconds=Math.floor((Date.now()-startTime)/1000);
+        document.getElementById("timer").textContent=formatTime(elapsedSeconds);
+    },1000);
+
+    showSection(1);
+}
+
+function formatTime(seconds){
+    const min=Math.floor(seconds/60);
+    const sec=seconds%60;
+
+    return String(min).padStart(2,"0")+":"+
+           String(sec).padStart(2,"0");
+}
+
+/* =========================
+   HOME
+========================= */
+
+function goHome(){
+    history.back();
+}
+
+/* =========================
+   NAV
+========================= */
+
+function showSection(number){
+
+    for(let i=1;i<=4;i++){
+        document.getElementById("section"+i).classList.add("hidden");
+        document.getElementById("tab"+i).classList.remove("active");
+    }
+
+    document.getElementById("section"+number).classList.remove("hidden");
+    document.getElementById("tab"+number).classList.add("active");
+
+    document.getElementById("progressText").textContent="Phần "+number+" / 4";
+    document.getElementById("progressBar").style.width=(number*25)+"%";
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =========================
+   PART 1
+========================= */
+
+const calendarData=[
+    {
+        question:"今天几月几号？",
+        options:["十月七号","十月十号","十一月七号"],
+        answer:"十月七号"
+    },
+    {
+        question:"今天星期几？",
+        options:["星期一","星期三","星期六"],
+        answer:"星期三"
+    },
+    {
+        question:"十月十号星期几？",
+        options:["星期三","星期五","星期六"],
+        answer:"星期六"
+    },
+    {
+        question:"十月十一号星期几？",
+        options:["星期五","星期六","星期日"],
+        answer:"星期日"
+    }
+];
+
+let calendarAnswers=new Array(4).fill(null);
+
+function renderCalendarQuestions(){
+
+    const box=document.getElementById("calendarQuestions");
+    box.innerHTML="";
+
+    calendarData.forEach((item,index)=>{
+
+        const q=document.createElement("div");
+        q.className="question";
+
+        q.innerHTML=
+            `<div>
+                <span class="question-number">${index+1}</span>
+                <span class="question-text">${item.question}</span>
+             </div>`;
+
+        const options=document.createElement("div");
+        options.className="options";
+
+        item.options.forEach(option=>{
+
+            const btn=document.createElement("button");
+            btn.className="option";
+            btn.textContent=option;
+
+            if(calendarAnswers[index]===option){
+                btn.classList.add("selected");
+            }
+
+            btn.onclick=()=>{
+                calendarAnswers[index]=option;
+                renderCalendarQuestions();
+            };
+
+            options.appendChild(btn);
+        });
+
+        q.appendChild(options);
+        box.appendChild(q);
+    });
+}
+
+/* =========================
+   PART 2
+========================= */
+
+const foodPeople=[
+    {name:"李文",answers:["✓","✗","✗"]},
+    {name:"王一雪",answers:["✗","✓","✓"]},
+    {name:"杨同乐",answers:["✓","✓","✗"]}
+];
+
+let foodAnswers=Array.from({length:3},()=>[null,null,null]);
+let dumplingAnswer=null;
+
+function renderFoodTable(){
+
+    const tbody=document.getElementById("foodTable");
+    tbody.innerHTML="";
+
+    foodPeople.forEach((person,row)=>{
+
+        const tr=document.createElement("tr");
+
+        const name=document.createElement("td");
+        name.className="person-name";
+        name.textContent=person.name;
+        tr.appendChild(name);
+
+        for(let col=0;col<3;col++){
+
+            const td=document.createElement("td");
+            const pair=document.createElement("div");
+            pair.className="choice-pair";
+
+            ["✓","✗"].forEach(value=>{
+
+                const btn=document.createElement("button");
+                btn.className="mini-choice";
+                btn.textContent=value;
+
+                if(foodAnswers[row][col]===value){
+                    btn.classList.add("selected");
+                }
+
+                btn.onclick=()=>{
+                    foodAnswers[row][col]=value;
+                    renderFoodTable();
+                };
+
+                pair.appendChild(btn);
+            });
+
+            td.appendChild(pair);
+            tr.appendChild(td);
+        }
+
+        tbody.appendChild(tr);
+    });
+}
+
+function selectDumpling(button,value){
+
+    dumplingAnswer=value;
+
+    document.querySelectorAll("#dumplingQuestion .option")
+        .forEach(btn=>btn.classList.remove("selected"));
+
+    button.classList.add("selected");
+}
+
+/* =========================
+   PART 3
+========================= */
+
+const dialogueWords=[
+    "休息",
+    "会",
+    "做饭",
+    "下班",
+    "新",
+    "真",
+    "喜欢"
+];
+
+let selectedDialogueWord=null;
+
+function renderWordBank(){
+
+    const bank=document.getElementById("wordBank");
+    bank.innerHTML="";
+
+    dialogueWords.forEach(word=>{
+
+        const btn=document.createElement("button");
+        btn.className="word-chip";
+        btn.textContent=word;
+
+        btn.onclick=()=>{
+
+            selectedDialogueWord=word;
+
+            document.querySelectorAll(".word-chip")
+                .forEach(b=>b.classList.remove("selected"));
+
+            btn.classList.add("selected");
+        };
+
+        bank.appendChild(btn);
+    });
+}
+
+function fillBlank(blank){
+
+    if(!selectedDialogueWord){
+        if(blank.dataset.value){
+            blank.textContent="______";
+            delete blank.dataset.value;
+            blank.classList.remove("filled");
+        }
+        return;
+    }
+
+    blank.textContent=selectedDialogueWord;
+    blank.dataset.value=selectedDialogueWord;
+    blank.classList.add("filled");
+
+    selectedDialogueWord=null;
+
+    document.querySelectorAll(".word-chip")
+        .forEach(b=>b.classList.remove("selected"));
+}
+
+function clearDialogue(){
+
+    selectedDialogueWord=null;
+
+    document.querySelectorAll(".blank").forEach(blank=>{
+        blank.textContent="______";
+        delete blank.dataset.value;
+        blank.classList.remove("filled","correct","wrong");
+    });
+
+    renderWordBank();
+}
+
+/* =========================
+   PART 4
+========================= */
+
+const sentenceData=[
+    {
+        words:["今天","几号","是"],
+        answers:[
+            ["今天","是","几号"]
+        ],
+        hint:"Hôm nay là ngày mấy?"
+    },
+    {
+        words:["今天","星期几","是"],
+        answers:[
+            ["今天","是","星期几"]
+        ],
+        hint:"Hôm nay là thứ mấy?"
+    },
+    {
+        words:["我","今天","休息"],
+        answers:[
+            ["我","今天","休息"],
+            ["今天","我","休息"]
+        ],
+        hint:"Hôm nay tôi nghỉ. Có 2 cách đặt 今天 đều đúng ✨"
+    },
+    {
+        words:["会","你","做饭","吗"],
+        answers:[
+            ["你","会","做饭","吗"]
+        ],
+        hint:"Bạn biết nấu ăn không?"
+    },
+    {
+        words:["会","我","做","饺子"],
+        answers:[
+            ["我","会","做","饺子"]
+        ],
+        hint:"Tôi biết làm bánh chẻo."
+    },
+    {
+        words:["很","我","喜欢","它"],
+        answers:[
+            ["我","很","喜欢","它"]
+        ],
+        hint:"Tôi rất thích nó."
+    }
+];
+
+let sentenceIndex=0;
+let sentenceAnswers=Array.from({length:sentenceData.length},()=>[]);
+let sentenceShuffles=[];
+
+function shuffle(array){
+
+    const copy=[...array];
+
+    for(let i=copy.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [copy[i],copy[j]]=[copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+function createSentenceShuffle(index){
+
+    if(sentenceShuffles[index]) return;
+
+    sentenceShuffles[index]=shuffle(
+        sentenceData[index].words.map((word,i)=>({
+            word,
+            id:index+"_"+i
+        }))
+    );
+}
+
+function loadSentence(){
+
+    createSentenceShuffle(sentenceIndex);
+
+    const item=sentenceData[sentenceIndex];
+
+    document.getElementById("sentenceCounter").textContent=
+        `Câu ${sentenceIndex+1} / ${sentenceData.length}`;
+
+    document.getElementById("sentenceHint").textContent="💡 "+item.hint;
+
+    document.getElementById("sentenceFeedback").textContent="";
+
+    document.getElementById("previousSentenceBtn").disabled=
+        sentenceIndex===0;
+
+    document.getElementById("nextSentenceBtn").textContent=
+        sentenceIndex===sentenceData.length-1
+        ? "Câu cuối ✓"
+        : "Câu tiếp →";
+
+    renderSentenceGame();
+}
+
+function renderSentenceGame(){
+
+    const answerZone=document.getElementById("answerZone");
+    const tileBank=document.getElementById("tileBank");
+
+    answerZone.innerHTML="";
+    tileBank.innerHTML="";
+
+    const selected=sentenceAnswers[sentenceIndex];
+
+    if(selected.length===0){
+        answerZone.innerHTML=
+            '<span style="color:#aaa">Câu của bạn sẽ xuất hiện ở đây...</span>';
+    }
+
+    selected.forEach((tile,index)=>{
+
+        const btn=document.createElement("button");
+        btn.className="tile";
+        btn.textContent=tile.word;
+
+        btn.onclick=()=>{
+            selected.splice(index,1);
+            renderSentenceGame();
+        };
+
+        answerZone.appendChild(btn);
+    });
+
+    sentenceShuffles[sentenceIndex].forEach(tile=>{
+
+        const used=selected.some(x=>x.id===tile.id);
+
+        const btn=document.createElement("button");
+        btn.className="tile";
+        btn.textContent=tile.word;
+        btn.disabled=used;
+
+        btn.onclick=()=>{
+            selected.push(tile);
+            renderSentenceGame();
+        };
+
+        tileBank.appendChild(btn);
+    });
+}
+
+function resetSentence(){
+    sentenceAnswers[sentenceIndex]=[];
+    renderSentenceGame();
+}
+
+function nextSentence(){
+    if(sentenceIndex<sentenceData.length-1){
+        sentenceIndex++;
+        loadSentence();
+    }
+}
+
+function previousSentence(){
+    if(sentenceIndex>0){
+        sentenceIndex--;
+        loadSentence();
+    }
+}
+
+function sentenceIsCorrect(index){
+
+    const student=sentenceAnswers[index].map(x=>x.word).join("");
+
+    return sentenceData[index].answers.some(answer=>
+        answer.join("")===student
+    );
+}
+
+/* =========================
+   SUBMIT
+========================= */
+
+function submitExercise(){
+
+    if(submitted) return;
+
+    submitted=true;
+
+    elapsedSeconds=Math.floor((Date.now()-startTime)/1000);
+    clearInterval(timerInterval);
+
+    let s1=0;
+    let s2=0;
+    let s3=0;
+    let s4=0;
+
+    calendarData.forEach((item,index)=>{
+        if(calendarAnswers[index]===item.answer) s1++;
+    });
+
+    foodPeople.forEach((person,row)=>{
+        person.answers.forEach((answer,col)=>{
+            if(foodAnswers[row][col]===answer) s2++;
+        });
+    });
+
+    if(dumplingAnswer==="王一雪和杨同乐") s2++;
+
+    document.querySelectorAll(".blank").forEach(blank=>{
+        if(blank.dataset.value===blank.dataset.answer) s3++;
+    });
+
+    sentenceData.forEach((item,index)=>{
+        if(sentenceIsCorrect(index)) s4++;
+    });
+
+    const total=s1+s2+s3+s4;
+
+    const rank=saveRanking(total,elapsedSeconds);
+
+    showResult(total,s1,s2,s3,s4,rank);
+}
+
+/* =========================
+   LOCAL RANKING
+========================= */
+
+function getRankings(){
+
+    try{
+        return JSON.parse(localStorage.getItem("lesson5Rankings")) || [];
+    }catch(e){
+        return [];
+    }
+}
+
+function saveRanking(score,time){
+
+    let rankings=getRankings();
+
+    const entry={
+        id:Date.now()+"_"+Math.random(),
+        name:studentName,
+        className:studentClass,
+        score,
+        time,
+        date:new Date().toLocaleString()
+    };
+
+    rankings.push(entry);
+
+    rankings.sort((a,b)=>{
+        if(b.score!==a.score) return b.score-a.score;
+        return a.time-b.time;
+    });
+
+    rankings=rankings.slice(0,50);
+
+    localStorage.setItem("lesson5Rankings",JSON.stringify(rankings));
+
+    return rankings.findIndex(x=>x.id===entry.id)+1;
+}
+
+function renderRanking(){
+
+    const rankings=getRankings();
+    const body=document.getElementById("rankBody");
+
+    body.innerHTML="";
+
+    rankings.slice(0,10).forEach((item,index)=>{
+
+        const tr=document.createElement("tr");
+
+        if(
+            item.name===studentName &&
+            item.className===studentClass &&
+            item.score===currentResult.score &&
+            item.time===currentResult.time
+        ){
+            tr.classList.add("rank-me");
+        }
+
+        let medal=index+1;
+
+        if(index===0) medal="🥇";
+        if(index===1) medal="🥈";
+        if(index===2) medal="🥉";
+
+        tr.innerHTML=
+            `<td>${medal}</td>
+             <td>${escapeHTML(item.name)}</td>
+             <td>${escapeHTML(item.className)}</td>
+             <td>${item.score}/26</td>
+             <td>${formatTime(item.time)}</td>`;
+
+        body.appendChild(tr);
+    });
+}
+
+function escapeHTML(text){
+    const div=document.createElement("div");
+    div.textContent=text;
+    return div.innerHTML;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+let currentResult={
+    score:0,
+    time:0,
+    rank:0
+};
+
+function showResult(total,s1,s2,s3,s4,rank){
+
+    document.getElementById("exerciseArea").classList.add("hidden");
+    document.getElementById("timerBox").classList.add("hidden");
+    document.getElementById("resultSection").classList.remove("hidden");
+
+    currentResult={
+        score:total,
+        time:elapsedSeconds,
+        rank
+    };
+
+    document.getElementById("resultStudent").textContent=
+        "👤 "+studentName+" · 🏫 "+studentClass;
+
+    document.getElementById("bigScore").textContent=total+"/26";
+    document.getElementById("correctStat").textContent=total+"/26";
+    document.getElementById("timeStat").textContent=formatTime(elapsedSeconds);
+    document.getElementById("rankStat").textContent="#"+rank;
+
+    document.getElementById("score1").textContent=s1+"/4";
+    document.getElementById("score2").textContent=s2+"/10";
+    document.getElementById("score3").textContent=s3+"/6";
+    document.getElementById("score4").textContent=s4+"/6";
+
+    const percent=total/26;
+
+    let emoji="🌱";
+    let title="继续加油！";
+    let message="Bạn đã hoàn thành bài tập. Xem lại đáp án rồi thử thêm lần nữa nhé!";
+
+    if(percent>=.9){
+        emoji="🏆";
+        title="太棒了！Xuất sắc!";
+        message="Bạn đã hoàn thành xuất sắc nhiệm vụ Bài 5! 🌟";
+    }
+    else if(percent>=.7){
+        emoji="🎉";
+        title="做得很好！Rất tốt!";
+        message="Bạn làm rất tốt! Chỉ còn vài câu cần xem lại thôi.";
+    }
+    else if(percent>=.5){
+        emoji="🌷";
+        title="不错！Khá lắm!";
+        message="Bạn đang tiến bộ rồi. Cùng xem lại những câu chưa đúng nha!";
+    }
+
+    document.getElementById("resultEmoji").textContent=emoji;
+    document.getElementById("resultTitle").textContent=title;
+    document.getElementById("resultMessage").textContent=message;
+
+    buildReview();
+    renderRanking();
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =========================
+   ANSWER REVIEW
+========================= */
+
+function toggleReview(){
+
+    const review=document.getElementById("answerReview");
+    review.classList.toggle("hidden");
+
+    if(!review.classList.contains("hidden")){
+        review.scrollIntoView({behavior:"smooth"});
+    }
+}
+
+function reviewItem(question,userAnswer,correctAnswer,isCorrect){
+
+    return `
+    <div class="review-item ${isCorrect ? "review-correct":"review-wrong"}">
+        <div class="review-question">
+            ${isCorrect ? "✅":"❌"} ${question}
+        </div>
+
+        <div class="review-user">
+            Bạn làm: <b>${userAnswer || "Chưa trả lời"}</b>
+        </div>
+
+        ${isCorrect ? "" :
+        `<div class="review-answer">
+            Đáp án: ${correctAnswer}
+        </div>`}
+    </div>`;
+}
+
+function buildReview(){
+
+    let html="";
+
+    html+="<h4>📅 Phần 1 · Xem lịch</h4>";
+
+    calendarData.forEach((item,index)=>{
+
+        const user=calendarAnswers[index] || "";
+
+        html+=reviewItem(
+            item.question,
+            user,
+            item.answer,
+            user===item.answer
+        );
+    });
+
+    html+="<br><h4>🍜 Phần 2 · 谁会做什么？</h4>";
+
+    const foods=["面条儿","饺子","菜"];
+
+    foodPeople.forEach((person,row)=>{
+
+        foods.forEach((food,col)=>{
+
+            const user=foodAnswers[row][col] || "";
+
+            html+=reviewItem(
+                `${person.name} · ${food}`,
+                user,
+                person.answers[col],
+                user===person.answers[col]
+            );
+        });
+    });
+
+    html+=reviewItem(
+        "谁会做饺子？",
+        dumplingAnswer || "",
+        "王一雪和杨同乐",
+        dumplingAnswer==="王一雪和杨同乐"
+    );
+
+    html+="<br><h4>💬 Phần 3 · Hội thoại</h4>";
+
+    const blanks=[...document.querySelectorAll(".blank")];
+
+    const dialogueQuestions=[
+        "你现在______了吗？",
+        "今天我______。",
+        "你______做饭吗？",
+        "这是你的______电脑吗？",
+        "______好看！",
+        "我很______它。"
+    ];
+
+    blanks.forEach((blank,index)=>{
+
+        const user=blank.dataset.value || "";
+        const correct=blank.dataset.answer;
+
+        html+=reviewItem(
+            dialogueQuestions[index],
+            user,
+            correct,
+            user===correct
+        );
+    });
+
+    html+="<br><h4>🔀 Phần 4 · Xếp câu</h4>";
+
+    sentenceData.forEach((item,index)=>{
+
+        const user=sentenceAnswers[index].map(x=>x.word).join("") || "";
+
+        const correct=item.answers
+            .map(answer=>answer.join("")+"。")
+            .join(" / ");
+
+        html+=reviewItem(
+            `Câu ${index+1}`,
+            user ? user+"。" : "",
+            correct,
+            sentenceIsCorrect(index)
+        );
+    });
+
+    document.getElementById("reviewContent").innerHTML=html;
+}
+
+/* =========================
+   RESTART
+========================= */
+
+function restartExercise(){
+
+    submitted=false;
+
+    calendarAnswers=new Array(4).fill(null);
+    foodAnswers=Array.from({length:3},()=>[null,null,null]);
+    dumplingAnswer=null;
+
+    sentenceAnswers=Array.from({length:sentenceData.length},()=>[]);
+    sentenceShuffles=[];
+    sentenceIndex=0;
+
+    clearDialogue();
+    renderCalendarQuestions();
+    renderFoodTable();
+    loadSentence();
+
+    document.querySelectorAll("#dumplingQuestion .option")
+        .forEach(btn=>btn.classList.remove("selected"));
+
+    document.getElementById("resultSection").classList.add("hidden");
+    document.getElementById("exerciseArea").classList.remove("hidden");
+    document.getElementById("timerBox").classList.remove("hidden");
+    document.getElementById("answerReview").classList.add("hidden");
+
+    startTime=Date.now();
+    elapsedSeconds=0;
+
+    clearInterval(timerInterval);
+
+    document.getElementById("timer").textContent="00:00";
+
+    timerInterval=setInterval(()=>{
+        elapsedSeconds=Math.floor((Date.now()-startTime)/1000);
+        document.getElementById("timer").textContent=formatTime(elapsedSeconds);
+    },1000);
+
+    showSection(1);
+}
+
+/* =========================
+   INIT
+========================= */
+
+renderCalendarQuestions();
+renderFoodTable();
+renderWordBank();
+loadSentence();
+
+</script>
+
+</body>
+</html>

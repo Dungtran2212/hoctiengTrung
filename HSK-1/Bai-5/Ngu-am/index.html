@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSK 1 · Bài 5 · Ngữ âm</title>
+
+<style>
+
+/* =========================================================
+   CÀI ĐẶT CHUNG
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+
+    font-family:
+        "Segoe UI",
+        "Microsoft YaHei",
+        "PingFang SC",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #fff0f2,
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at top right,
+            #eaf8f5,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffafa,
+            #f7fbfa
+        );
+
+    color:#365f5b;
+
+    min-height:100vh;
+}
+
+.page{
+
+    width:min(1180px,94%);
+
+    margin:auto;
+
+    padding:30px 0 70px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+
+    background:
+        rgba(255,255,255,.95);
+
+    border:
+        1px solid #e1ece9;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(65,98,93,.09);
+
+    margin-bottom:25px;
+}
+
+.back{
+
+    color:#64928a;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    font-size:14px;
+}
+
+.hero-label{
+
+    color:#d86f60;
+
+    font-weight:900;
+
+    margin-top:18px;
+
+    font-size:14px;
+}
+
+.hero h1{
+
+    font-size:
+        clamp(34px,5vw,55px);
+
+    margin-top:5px;
+
+    color:#3b6661;
+}
+
+.hero p{
+
+    margin-top:12px;
+
+    line-height:1.7;
+
+    color:#7a8e8a;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #e0ece9;
+
+    border-radius:25px;
+
+    padding:28px;
+
+    margin-bottom:24px;
+
+    box-shadow:
+        0 8px 28px
+        rgba(60,95,90,.06);
+}
+
+.section-tag{
+
+    color:#d96f5c;
+
+    font-weight:900;
+
+    margin-bottom:5px;
+}
+
+.section h2{
+
+    font-size:27px;
+
+    margin-bottom:5px;
+}
+
+.sub{
+
+    color:#9b7b73;
+
+    font-size:14px;
+
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.note{
+
+    background:#fff8f4;
+
+    border-left:
+        4px solid #e69b87;
+
+    border-radius:12px;
+
+    padding:16px 18px;
+
+    line-height:1.8;
+
+    color:#69625e;
+
+    margin-bottom:22px;
+}
+
+.note strong{
+
+    color:#c96c5e;
+}
+
+
+/* =========================================================
+   EXERCISE
+========================================================= */
+
+.exercise{
+
+    border-top:
+        1px dashed #d8e6e3;
+
+    padding-top:24px;
+
+    margin-top:24px;
+}
+
+.exercise-title{
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:flex-start;
+
+    font-weight:800;
+
+    margin-bottom:18px;
+}
+
+.red-dot{
+
+    width:11px;
+
+    height:11px;
+
+    border-radius:3px;
+
+    background:#df4e42;
+
+    flex:none;
+
+    margin-top:6px;
+}
+
+.vi{
+
+    display:block;
+
+    color:#8c9d99;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    margin-top:3px;
+}
+
+
+/* =========================================================
+   RULE DISPLAY
+========================================================= */
+
+.rule-box{
+
+    background:#fffaf7;
+
+    border:
+        1px solid #eedfd9;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    line-height:1.8;
+}
+
+.rule-main{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    color:#c9695b;
+
+    margin:8px 0;
+}
+
+
+/* =========================================================
+   SANDHI GRID
+========================================================= */
+
+.sandhi-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:12px;
+}
+
+.sandhi-grid.three{
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+}
+
+.sandhi-card{
+
+    border:
+        1px solid #d9e9e5;
+
+    background:#f6fbf9;
+
+    border-radius:16px;
+
+    padding:17px 10px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.18s;
+}
+
+.sandhi-card:hover{
+
+    background:#eaf6f3;
+
+    border-color:#bcd9d3;
+
+    transform:
+        translateY(-2px);
+}
+
+.hanzi{
+
+    font-size:27px;
+
+    font-weight:900;
+
+    color:#3f6964;
+
+    margin-bottom:8px;
+}
+
+.original{
+
+    color:#7d918e;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+.arrow{
+
+    color:#d77969;
+
+    font-size:18px;
+
+    font-weight:900;
+}
+
+.changed{
+
+    color:#c96859;
+
+    font-size:16px;
+
+    font-weight:900;
+
+    margin-top:5px;
+}
+
+.listen{
+
+    margin-top:10px;
+
+    color:#57968c;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   SUB RULE
+========================================================= */
+
+.sub-rule{
+
+    margin:25px 0 15px;
+
+    color:#c9695b;
+
+    font-size:18px;
+
+    font-weight:900;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    text-align:center;
+
+    color:#94a4a1;
+
+    font-size:13px;
+
+    padding:20px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px){
+
+    .sandhi-grid,
+    .sandhi-grid.three{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px){
+
+    .hero,
+    .section{
+
+        padding:20px;
+
+        border-radius:20px;
+    }
+
+    .sandhi-grid,
+    .sandhi-grid.three{
+
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="hero">
+
+    <a
+        class="back"
+        href="../../index.html">
+
+        ← 🏠 Về trang chủ
+
+    </a>
+
+
+    <div class="hero-label">
+
+        第五课 · 语音
+
+    </div>
+
+
+    <h1>
+
+        Ngữ âm · Bài 5
+
+    </h1>
+
+
+    <p>
+
+        Luyện quy tắc biến điệu của
+        <b>不</b> và <b>一</b>.
+
+        Bấm từng ô để nghe cách đọc tương ứng
+        trong file <b>语音5.mp3</b>.
+
+    </p>
+
+</header>
+
+
+
+<!-- =========================================================
+     1. 不的变调
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-tag">
+
+        ❶ “不”的变调
+
+    </div>
+
+
+    <h2>
+
+        Biến điệu của “不”
+
+    </h2>
+
+
+    <div class="sub">
+
+        Tone Sandhi of “不”
+
+    </div>
+
+
+    <div class="note">
+
+        <strong>不 (bù)</strong>
+
+        khi đứng một mình hoặc đứng trước
+        âm tiết mang thanh 1, thanh 2 hoặc thanh 3
+        thì vẫn đọc là
+
+        <strong>bù</strong>.
+
+        <br><br>
+
+        Khi đứng trước âm tiết
+        <strong>thanh 4</strong>,
+        不 được đọc thành
+
+        <strong>bú</strong>.
+
+    </div>
+
+
+    <div class="rule-box">
+
+        <div class="rule-main">
+
+            不 (bù) + 四声
+            →
+            不 (bú) + 四声
+
+        </div>
+
+    </div>
+
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+
+                先跟读音节，再大声朗读。注意“不”的变调。
+
+                <span class="vi">
+
+                    Nghe và đọc theo.
+                    Chú ý biến điệu của “不”.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="sandhi-grid">
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('不是')">
+
+                <div class="hanzi">
+                    不是
+                </div>
+
+                <div class="original">
+                    bù + shì
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    bú + shì
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('不会')">
+
+                <div class="hanzi">
+                    不会
+                </div>
+
+                <div class="original">
+                    bù + huì
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    bú + huì
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('不大')">
+
+                <div class="hanzi">
+                    不大
+                </div>
+
+                <div class="original">
+                    bù + dà
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    bú + dà
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('不对')">
+
+                <div class="hanzi">
+                    不对
+                </div>
+
+                <div class="original">
+                    bù + duì
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    bú + duì
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     2. 一的变调
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="section-tag">
+
+        ❷ “一”的变调
+
+    </div>
+
+
+    <h2>
+
+        Biến điệu của “一”
+
+    </h2>
+
+
+    <div class="sub">
+
+        Tone Sandhi of “一”
+
+    </div>
+
+
+    <div class="note">
+
+        <strong>一 (yī)</strong>
+
+        khi đứng một mình hoặc dùng để biểu thị số thứ tự
+        thì vẫn đọc là
+
+        <strong>yī</strong>.
+
+        <br><br>
+
+        Khi kết hợp với âm tiết phía sau,
+        “一” có hai kiểu biến điệu.
+
+    </div>
+
+
+
+    <!-- =====================================================
+         QUY TẮC 1
+    ====================================================== -->
+
+    <div class="sub-rule">
+
+        （1）Trước thanh 1, 2 hoặc 3 → đọc thanh 4
+
+    </div>
+
+
+    <div class="rule-box">
+
+        <div class="rule-main">
+
+            一 (yī) + 一声 / 二声 / 三声
+            →
+            一 (yì) + 一声 / 二声 / 三声
+
+        </div>
+
+    </div>
+
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+
+                先跟读音节，再大声朗读。注意“一”的变调。
+
+                <span class="vi">
+
+                    Nghe và đọc theo.
+                    Chú ý “一” đổi thành thanh 4.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="sandhi-grid three">
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('一些')">
+
+                <div class="hanzi">
+                    一些
+                </div>
+
+                <div class="original">
+                    yī + xiē
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    yì + xiē
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('一年')">
+
+                <div class="hanzi">
+                    一年
+                </div>
+
+                <div class="original">
+                    yī + nián
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    yì + nián
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('一口')">
+
+                <div class="hanzi">
+                    一口
+                </div>
+
+                <div class="original">
+                    yī + kǒu
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    yì + kǒu
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         QUY TẮC 2
+    ====================================================== -->
+
+    <div class="sub-rule">
+
+        （2）Trước thanh 4 → đọc thanh 2
+
+    </div>
+
+
+    <div class="rule-box">
+
+        <div class="rule-main">
+
+            一 (yī) + 四声
+            →
+            一 (yí) + 四声
+
+        </div>
+
+    </div>
+
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+
+                先跟读音节，再大声朗读。注意“一”的变调。
+
+                <span class="vi">
+
+                    Nghe và đọc theo.
+                    Chú ý “一” đổi thành thanh 2.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="sandhi-grid three">
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('一个')">
+
+                <div class="hanzi">
+                    一个
+                </div>
+
+                <div class="original">
+                    yī + gè
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    yí + gè
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('一日')">
+
+                <div class="hanzi">
+                    一日
+                </div>
+
+                <div class="original">
+                    yī + rì
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    yí + rì
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('一岁')">
+
+                <div class="hanzi">
+                    一岁
+                </div>
+
+                <div class="original">
+                    yī + suì
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="changed">
+                    yí + suì
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    HSK 1 · 第五课 · 语音
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     AUDIO
+========================================================= -->
+
+<audio
+    id="lessonAudio"
+    src="语音5.mp3"
+    preload="auto">
+</audio>
+
+
+
+<script>
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+const audio =
+    document.getElementById(
+        "lessonAudio"
+    );
+
+
+let stopTimer = null;
+
+
+/* =========================================================
+   AUDIO MAP
+
+   Đã dò theo chính file 语音5.mp3.
+   Có chừa khoảng đầu nhỏ để tránh hụt phụ âm khi chạy GitHub.
+========================================================= */
+
+const soundAudio = {
+
+    /* =====================================================
+       1. “不”的变调
+       Bắt đầu đọc thật từ khoảng 00:00:59.89
+    ====================================================== */
+
+    "不是": {
+        start:59.72,
+        end:60.82
+    },
+
+    "不会": {
+        start:62.95,
+        end:64.12
+    },
+
+    "不大": {
+        start:66.40,
+        end:67.42
+    },
+
+    "不对": {
+        start:69.55,
+        end:70.68
+    },
+
+
+    /* =====================================================
+       2. “一”的变调
+       Trước thanh 1 / 2 / 3
+       一些 / 一年 / 一口
+    ====================================================== */
+
+    "一些": {
+        start:97.80,
+        end:99.10
+    },
+
+    "一年": {
+        start:101.10,
+        end:102.68
+    },
+
+    "一口": {
+        start:104.78,
+        end:106.42
+    },
+
+
+    /* =====================================================
+       Trước thanh 4
+       一个 / 一日 / 一岁
+    ====================================================== */
+
+    "一个": {
+        start:127.00,
+        end:128.08
+    },
+
+    "一日": {
+        start:130.22,
+        end:131.43
+    },
+
+    "一岁": {
+        start:133.65,
+        end:134.90
+    }
+
+};
+
+/* =========================================================
+   PHÁT ÂM THANH
+========================================================= */
+
+function playSound(key){
+
+    const cut =
+        soundAudio[key];
+
+
+    if(!cut){
+
+        console.warn(
+            "Không tìm thấy audio:",
+            key
+        );
+
+        return;
+
+    }
+
+
+    clearTimeout(
+        stopTimer
+    );
+
+
+    audio.pause();
+
+
+    /*
+       Chừa 0.15 giây phía trước
+       để GitHub Pages không nuốt mất âm đầu.
+    */
+
+    const safeStart =
+        Math.max(
+            0,
+            cut.start - 0.15
+        );
+
+
+    function startPlaying(){
+
+
+        function reallyPlay(){
+
+
+            audio.play()
+
+            .then(() => {
+
+
+                const duration =
+                    (
+                        cut.end
+                        -
+                        safeStart
+                    )
+                    *
+                    1000;
+
+
+                stopTimer =
+                    setTimeout(
+                        () => {
+
+                            audio.pause();
+
+                        },
+                        duration
+                    );
+
+
+            })
+
+            .catch(error => {
+
+
+                console.error(
+                    error
+                );
+
+
+                alert(
+                    "Không phát được file 语音5.mp3."
+                );
+
+
+            });
+
+        }
+
+
+        audio.currentTime =
+            safeStart;
+
+
+        if(
+            audio.seeking
+        ){
+
+            audio.addEventListener(
+                "seeked",
+                reallyPlay,
+                {
+                    once:true
+                }
+            );
+
+        }
+
+        else{
+
+            reallyPlay();
+
+        }
+
+    }
+
+
+    if(
+        audio.readyState >= 1
+    ){
+
+        startPlaying();
+
+    }
+
+    else{
+
+        audio.addEventListener(
+            "loadedmetadata",
+            startPlaying,
+            {
+                once:true
+            }
+        );
+
+
+        audio.load();
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
