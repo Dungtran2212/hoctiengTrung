@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSK 1 · Bài 4 · Ngữ âm</title>
+
+
+<style>
+
+/* =========================================================
+   CÀI ĐẶT CHUNG
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+body{
+
+    font-family:
+        "Segoe UI",
+        "Microsoft YaHei",
+        "PingFang SC",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #fff0f2,
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at top right,
+            #eaf8f5,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffafa,
+            #f7fbfa
+        );
+
+    color:#365f5b;
+
+    min-height:100vh;
+
+}
+
+
+.page{
+
+    width:min(1180px,94%);
+
+    margin:auto;
+
+    padding:30px 0 70px;
+
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+
+    background:
+        rgba(255,255,255,.95);
+
+    border:
+        1px solid #e1ece9;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(65,98,93,.09);
+
+    margin-bottom:25px;
+
+}
+
+
+.back{
+
+    color:#64928a;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+
+.hero-label{
+
+    color:#d86f60;
+
+    font-weight:900;
+
+    margin-top:18px;
+
+    font-size:14px;
+
+}
+
+
+.hero h1{
+
+    font-size:
+        clamp(34px,5vw,55px);
+
+    margin-top:5px;
+
+    color:#3b6661;
+
+}
+
+
+.hero p{
+
+    margin-top:12px;
+
+    line-height:1.7;
+
+    color:#7a8e8a;
+
+}
+
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #e0ece9;
+
+    border-radius:25px;
+
+    padding:28px;
+
+    margin-bottom:24px;
+
+    box-shadow:
+        0 8px 28px
+        rgba(60,95,90,.06);
+
+}
+
+
+.section-tag{
+
+    color:#d96f5c;
+
+    font-weight:900;
+
+    margin-bottom:5px;
+
+}
+
+
+.section h2{
+
+    font-size:27px;
+
+    margin-bottom:5px;
+
+}
+
+
+.sub{
+
+    color:#9b7b73;
+
+    font-size:14px;
+
+    margin-bottom:18px;
+
+}
+
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.note{
+
+    background:#fff8f4;
+
+    border-left:
+        4px solid #e69b87;
+
+    border-radius:12px;
+
+    padding:16px 18px;
+
+    line-height:1.8;
+
+    color:#69625e;
+
+    margin-bottom:22px;
+
+}
+
+
+.note strong{
+
+    color:#c96c5e;
+
+}
+
+
+
+/* =========================================================
+   EXERCISE
+========================================================= */
+
+.exercise{
+
+    border-top:
+        1px dashed #d8e6e3;
+
+    padding-top:24px;
+
+    margin-top:24px;
+
+}
+
+
+.exercise-title{
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:flex-start;
+
+    font-weight:800;
+
+    margin-bottom:18px;
+
+}
+
+
+.red-dot{
+
+    width:11px;
+
+    height:11px;
+
+    border-radius:3px;
+
+    background:#df4e42;
+
+    flex:none;
+
+    margin-top:6px;
+
+}
+
+
+.vi{
+
+    display:block;
+
+    color:#8c9d99;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    margin-top:3px;
+
+}
+
+
+
+/* =========================================================
+   SANDHI CARDS
+========================================================= */
+
+.sandhi-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,minmax(0,1fr));
+
+    gap:12px;
+
+}
+
+
+.sandhi-card{
+
+    border:
+        1px solid #d9e9e5;
+
+    background:#f6fbf9;
+
+    border-radius:16px;
+
+    padding:16px 10px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.18s;
+
+}
+
+
+.sandhi-card:hover{
+
+    background:#eaf6f3;
+
+    border-color:#bcd9d3;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.sandhi-hanzi{
+
+    font-size:25px;
+
+    font-weight:900;
+
+    color:#3f6964;
+
+    margin-bottom:6px;
+
+}
+
+
+.sandhi-old{
+
+    color:#7d918e;
+
+    font-size:13px;
+
+    margin-bottom:4px;
+
+}
+
+
+.arrow{
+
+    color:#d77969;
+
+    font-weight:900;
+
+}
+
+
+.sandhi-new{
+
+    color:#c96859;
+
+    font-size:14px;
+
+    font-weight:900;
+
+}
+
+
+.listen{
+
+    margin-top:9px;
+
+    color:#57968c;
+
+    font-size:12px;
+
+    font-weight:800;
+
+}
+
+
+
+/* =========================================================
+   SOUND GRID
+========================================================= */
+
+.sound-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:11px;
+
+}
+
+
+.sound-btn{
+
+    border:
+        1px solid #d9e9e5;
+
+    background:#f4faf8;
+
+    border-radius:15px;
+
+    min-height:75px;
+
+    cursor:pointer;
+
+    color:#3f6964;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    transition:.18s;
+
+    padding:10px;
+
+}
+
+
+.sound-btn:hover{
+
+    background:#eaf6f3;
+
+    border-color:#bcd9d3;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.sound-btn span{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    color:#90a19e;
+
+}
+
+
+
+/* =========================================================
+   WORD CARDS
+========================================================= */
+
+.word-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:14px;
+
+}
+
+
+.word-card{
+
+    border:
+        1px solid #eed5cb;
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.18s;
+
+    text-align:center;
+
+}
+
+
+.word-card:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(60,95,90,.10);
+
+}
+
+
+.word-icon{
+
+    height:105px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:48px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff6f2,
+            #eef8f5
+        );
+
+}
+
+
+.word-body{
+
+    padding:12px 8px 15px;
+
+}
+
+
+.pinyin{
+
+    color:#6d8581;
+
+    font-size:14px;
+
+}
+
+
+.hanzi{
+
+    font-size:27px;
+
+    font-weight:800;
+
+    margin:3px 0;
+
+}
+
+
+.meaning{
+
+    font-size:12px;
+
+    color:#aa8074;
+
+}
+
+
+.word-listen{
+
+    margin-top:7px;
+
+    color:#57968c;
+
+    font-size:12px;
+
+    font-weight:800;
+
+}
+
+
+
+/* =========================================================
+   NEUTRAL TONE EXAMPLE
+========================================================= */
+
+.neutral-example{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+
+    margin-top:18px;
+
+}
+
+
+.compare-box{
+
+    border:
+        1px solid #eee2dd;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    background:#fffaf8;
+
+    line-height:1.8;
+
+}
+
+
+.compare-title{
+
+    color:#c96c5e;
+
+    font-weight:900;
+
+    margin-bottom:7px;
+
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    text-align:center;
+
+    color:#94a4a1;
+
+    font-size:13px;
+
+    padding:20px;
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .sandhi-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .sound-grid,
+    .word-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:520px){
+
+    .page{
+
+        width:94%;
+
+    }
+
+
+    .hero,
+    .section{
+
+        padding:20px;
+
+        border-radius:20px;
+
+    }
+
+
+    .sandhi-grid,
+    .sound-grid,
+    .word-grid,
+    .neutral-example{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="hero">
+
+
+    <a
+        class="back"
+        href="../../index.html">
+
+        ← 🏠 Về trang chủ
+
+    </a>
+
+
+    <div class="hero-label">
+
+        第四课 · 语音
+
+    </div>
+
+
+    <h1>
+
+        Ngữ âm · Bài 4
+
+    </h1>
+
+
+    <p>
+
+        Bấm trực tiếp vào từng từ hoặc cụm từ
+        để nghe đúng đoạn tương ứng trong file
+        <b>语音4.mp3</b>.
+
+    </p>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     1. 两个三声音节的连续变调
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="section-tag">
+
+        ❶ 两个三声音节的连续变调
+
+    </div>
+
+
+    <h2>
+
+        Biến điệu khi hai âm tiết thanh 3 đứng liền nhau
+
+    </h2>
+
+
+    <div class="sub">
+
+        Tone Sandhi in Two Consecutive Third-Tone Syllables
+
+    </div>
+
+
+
+    <div class="note">
+
+        Khi hai âm tiết đều mang
+        <strong>thanh 3</strong>
+        đứng liên tiếp,
+
+        âm tiết thanh 3 thứ nhất
+        được đọc thành
+        <strong>thanh 2</strong>.
+
+        <br><br>
+
+        Quy tắc:
+
+        <strong>
+            214 + 214 → 35 + 214
+        </strong>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BÀI 1 - PHẦN 1
+    ====================================================== -->
+
+    <div class="exercise">
+
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+
+            <div>
+
+                大声拼读。注意三声变调。
+
+                <span class="vi">
+
+                    Đọc to và chú ý sự biến điệu
+                    của thanh 3.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="sandhi-grid">
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('你好_rule')">
+
+                <div class="sandhi-hanzi">
+                    你好
+                </div>
+
+                <div class="sandhi-old">
+                    nǐ + hǎo
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="sandhi-new">
+                    ní + hǎo
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('哪里_rule')">
+
+                <div class="sandhi-hanzi">
+                    哪里
+                </div>
+
+                <div class="sandhi-old">
+                    nǎ + lǐ
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="sandhi-new">
+                    ná + lǐ
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('可以_rule')">
+
+                <div class="sandhi-hanzi">
+                    可以
+                </div>
+
+                <div class="sandhi-old">
+                    kě + yǐ
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="sandhi-new">
+                    ké + yǐ
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('小语_rule')">
+
+                <div class="sandhi-hanzi">
+                    小语
+                </div>
+
+                <div class="sandhi-old">
+                    Xiǎo + yǔ
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="sandhi-new">
+                    Xiáo + yǔ
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="sandhi-card"
+                onclick="playSound('很好_rule')">
+
+                <div class="sandhi-hanzi">
+                    很好
+                </div>
+
+                <div class="sandhi-old">
+                    hěn + hǎo
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="sandhi-new">
+                    hén + hǎo
+                </div>
+
+                <div class="listen">
+                    🔊 Nghe
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BÀI 1 - PHẦN 2
+    ====================================================== -->
+
+    <div class="exercise">
+
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+
+            <div>
+
+                先跟读，再大声朗读。注意三声变调。
+
+                <span class="vi">
+
+                    Nghe và đọc theo,
+                    chú ý biến điệu thanh 3.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="sound-grid">
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('shuiguo')">
+
+                shuǐguǒ
+
+                <span>
+                    水果 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('nihao')">
+
+                nǐ hǎo
+
+                <span>
+                    你好 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('keyi')">
+
+                kěyǐ
+
+                <span>
+                    可以 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('nali')">
+
+                nǎlǐ
+
+                <span>
+                    哪里 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('henhao')">
+
+                hěn hǎo
+
+                <span>
+                    很好 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('suoyi')">
+
+                suǒyǐ
+
+                <span>
+                    所以 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('qingni')">
+
+                qǐng nǐ
+
+                <span>
+                    请你 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="sound-btn"
+                onclick="playSound('shoubiao')">
+
+                shǒubiǎo
+
+                <span>
+                    手表 · 🔊 Nghe
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BÀI 1 - PHẦN 3
+    ====================================================== -->
+
+    <div class="exercise">
+
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+
+            <div>
+
+                看图片，先跟读，再大声朗读。注意三声变调。
+
+                <span class="vi">
+
+                    Nhìn hình, nghe và đọc theo.
+                    Chú ý biến điệu của thanh 3.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="word-grid">
+
+
+            <div
+                class="word-card"
+                onclick="playSound('你好_pic')">
+
+                <div class="word-icon">
+                    👋
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        nǐ hǎo
+                    </div>
+
+                    <div class="hanzi">
+                        你好
+                    </div>
+
+                    <div class="meaning">
+                        xin chào
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('哪里_pic')">
+
+                <div class="word-icon">
+                    🗺️
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        nǎlǐ
+                    </div>
+
+                    <div class="hanzi">
+                        哪里
+                    </div>
+
+                    <div class="meaning">
+                        ở đâu
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('小语_pic')">
+
+                <div class="word-icon">
+                    👩🏻
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        Xiǎoyǔ
+                    </div>
+
+                    <div class="hanzi">
+                        小语
+                    </div>
+
+                    <div class="meaning">
+                        Tiểu Ngữ
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('水果_pic')">
+
+                <div class="word-icon">
+                    🍎🍊🍌
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        shuǐguǒ
+                    </div>
+
+                    <div class="hanzi">
+                        水果
+                    </div>
+
+                    <div class="meaning">
+                        trái cây
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     2. 轻声
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="section-tag">
+
+        ❷ 轻声
+
+    </div>
+
+
+    <h2>
+
+        Thanh nhẹ
+
+    </h2>
+
+
+    <div class="sub">
+
+        Neutral Tone
+
+    </div>
+
+
+
+    <div class="note">
+
+        Ngoài bốn thanh điệu cơ bản,
+        trong tiếng Trung có một số âm tiết
+        được đọc
+
+        <strong>
+            nhẹ và ngắn
+        </strong>.
+
+        Đó gọi là
+        <strong>thanh nhẹ</strong>.
+
+        <br><br>
+
+        Thanh nhẹ thường
+        <strong>không ghi dấu thanh</strong>.
+
+        Ví dụ:
+
+        <strong>
+            jiǎozi、bàba
+        </strong>.
+
+    </div>
+
+
+
+    <div class="neutral-example">
+
+
+        <div class="compare-box">
+
+            <div class="compare-title">
+
+                Có thanh điệu đầy đủ
+
+            </div>
+
+            东西 · dōng xī
+            — phương đông và phương tây
+
+            <br>
+
+            买卖 · mǎi mài
+            — mua và bán
+
+            <br>
+
+            孙子 · Sūn Zǐ
+            — tên Tôn Tử
+
+        </div>
+
+
+
+        <div class="compare-box">
+
+            <div class="compare-title">
+
+                Có thanh nhẹ
+
+            </div>
+
+            东西 · dōngxi
+            — đồ vật
+
+            <br>
+
+            买卖 · mǎimai
+            — việc buôn bán
+
+            <br>
+
+            孙子 · sūnzi
+            — cháu trai
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="exercise">
+
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+
+            <div>
+
+                看图片，先跟读，再大声朗读。注意轻声发音。
+
+                <span class="vi">
+
+                    Nhìn hình, nghe và đọc theo.
+                    Chú ý cách phát âm thanh nhẹ.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="word-grid">
+
+
+            <div
+                class="word-card"
+                onclick="playSound('妈妈')">
+
+                <div class="word-icon">
+                    👩‍👧
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        māma
+                    </div>
+
+                    <div class="hanzi">
+                        妈妈
+                    </div>
+
+                    <div class="meaning">
+                        mẹ
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('爸爸')">
+
+                <div class="word-icon">
+                    👨‍👧
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        bàba
+                    </div>
+
+                    <div class="hanzi">
+                        爸爸
+                    </div>
+
+                    <div class="meaning">
+                        bố
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('椅子')">
+
+                <div class="word-icon">
+                    🪑
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        yǐzi
+                    </div>
+
+                    <div class="hanzi">
+                        椅子
+                    </div>
+
+                    <div class="meaning">
+                        cái ghế
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('饺子')">
+
+                <div class="word-icon">
+                    🥟
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        jiǎozi
+                    </div>
+
+                    <div class="hanzi">
+                        饺子
+                    </div>
+
+                    <div class="meaning">
+                        bánh chẻo
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('谢谢')">
+
+                <div class="word-icon">
+                    🤝
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        xièxie
+                    </div>
+
+                    <div class="hanzi">
+                        谢谢
+                    </div>
+
+                    <div class="meaning">
+                        cảm ơn
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('衣服')">
+
+                <div class="word-icon">
+                    👕
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        yīfu
+                    </div>
+
+                    <div class="hanzi">
+                        衣服
+                    </div>
+
+                    <div class="meaning">
+                        quần áo
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('漂亮')">
+
+                <div class="word-icon">
+                    🌸
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        piàoliang
+                    </div>
+
+                    <div class="hanzi">
+                        漂亮
+                    </div>
+
+                    <div class="meaning">
+                        xinh đẹp
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="word-card"
+                onclick="playSound('早上')">
+
+                <div class="word-icon">
+                    🌅
+                </div>
+
+                <div class="word-body">
+
+                    <div class="pinyin">
+                        zǎoshang
+                    </div>
+
+                    <div class="hanzi">
+                        早上
+                    </div>
+
+                    <div class="meaning">
+                        buổi sáng
+                    </div>
+
+                    <div class="word-listen">
+                        🔊 Nghe
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<footer>
+
+    HSK 1 · 第四课 · 语音
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     AUDIO
+========================================================= -->
+
+<audio
+    id="lessonAudio"
+    src="语音4.mp3"
+    preload="auto">
+</audio>
+
+
+
+<script>
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+const audio =
+    document.getElementById(
+        "lessonAudio"
+    );
+
+
+let stopTimer = null;
+
+
+
+/* =========================================================
+   CÁC ĐOẠN AUDIO ĐÃ TÁCH TỪ 语音4.mp3
+========================================================= */
+
+const soundAudio = {
+
+
+    /* =====================================================
+       BÀI 1 - PHẦN 1
+       00:49 - 01:14
+    ===================================================== */
+
+    "你好_rule": {
+
+        start:59.65,
+        end:60.95
+
+    },
+
+
+    "哪里_rule": {
+
+        start:62.55,
+        end:64.05
+
+    },
+
+
+    "可以_rule": {
+
+        start:66.00,
+        end:67.55
+
+    },
+
+
+    "小语_rule": {
+
+        start:69.65,
+        end:71.35
+
+    },
+
+
+    "很好_rule": {
+
+        start:73.35,
+        end:75.05
+
+    },
+
+
+
+    /* =====================================================
+       BÀI 1 - PHẦN 2
+       01:15 - 01:56
+    ===================================================== */
+
+    "shuiguo": {
+
+        start:84.15,
+        end:85.75
+
+    },
+
+
+    "nihao": {
+
+        start:87.55,
+        end:89.15
+
+    },
+
+
+    "keyi": {
+
+        start:90.85,
+        end:92.45
+
+    },
+
+
+    "nali": {
+
+        start:94.40,
+        end:96.05
+
+    },
+
+
+    "henhao": {
+
+        start:97.95,
+        end:99.65
+
+    },
+
+
+    "suoyi": {
+
+        start:101.35,
+        end:103.10
+
+    },
+
+
+    "qingni": {
+
+        start:105.15,
+        end:106.95
+
+    },
+
+
+    "shoubiao": {
+
+        start:112.80,
+        end:114.48
+
+    },
+
+
+
+    /* =====================================================
+       BÀI 1 - PHẦN 3
+       01:57 - 02:19
+    ===================================================== */
+
+ "你好_pic": {
+    start:126.28,
+    end:127.82
+},
+
+"哪里_pic": {
+    start:129.65,
+    end:131.12
+},
+
+"小语_pic": {
+    start:133.02,
+    end:134.78
+},
+
+"水果_pic": {
+    start:136.85,
+    end:138.55
+},
+
+    /* =====================================================
+       BÀI 2 - 轻声
+       02:20 - 03:03
+    ===================================================== */
+
+    "妈妈": {
+
+        start:153.45,
+        end:154.50
+
+    },
+
+
+    "爸爸": {
+
+        start:157.45,
+        end:158.60
+
+    },
+
+
+    "椅子": {
+
+        start:161.45,
+        end:162.70
+
+    },
+
+
+    "饺子": {
+
+        start:165.45,
+        end:166.85
+
+    },
+
+
+    "谢谢": {
+
+        start:169.55,
+        end:170.95
+
+    },
+
+
+    "衣服": {
+
+        start:173.65,
+        end:175.00
+
+    },
+
+
+    "漂亮": {
+
+        start:177.60,
+        end:178.95
+
+    },
+
+
+    "早上": {
+
+        start:181.65,
+        end:183.00
+
+    }
+
+};
+
+
+
+/* =========================================================
+   PHÁT AUDIO
+========================================================= */
+
+function playSound(sound){
+
+    const cut =
+        soundAudio[sound];
+
+
+    if(!cut){
+
+        console.warn(
+            "Không có audio:",
+            sound
+        );
+
+        return;
+
+    }
+
+
+    clearTimeout(
+        stopTimer
+    );
+
+
+    audio.pause();
+
+
+    /*
+        Chừa thêm 0.15 giây đầu
+        để hạn chế GitHub Pages cắt hụt phụ âm.
+    */
+
+    const safeStart =
+        Math.max(
+            0,
+            cut.start - 0.15
+        );
+
+
+    function startPlaying(){
+
+
+        function reallyPlay(){
+
+
+            audio.play()
+
+            .then(() => {
+
+
+                const duration =
+                    (
+                        cut.end
+                        -
+                        safeStart
+                    )
+                    *
+                    1000;
+
+
+                stopTimer =
+                    setTimeout(
+                        () => {
+
+                            audio.pause();
+
+                        },
+                        duration
+                    );
+
+
+            })
+
+            .catch(error => {
+
+
+                console.error(
+                    error
+                );
+
+
+                alert(
+                    "Không phát được file 语音4.mp3."
+                );
+
+
+            });
+
+        }
+
+
+
+        audio.currentTime =
+            safeStart;
+
+
+
+        if(
+            audio.seeking
+        ){
+
+            audio.addEventListener(
+                "seeked",
+                reallyPlay,
+                {
+                    once:true
+                }
+            );
+
+        }
+
+        else{
+
+            reallyPlay();
+
+        }
+
+    }
+
+
+
+    if(
+        audio.readyState >= 1
+    ){
+
+        startPlaying();
+
+    }
+
+    else{
+
+        audio.addEventListener(
+            "loadedmetadata",
+            startPlaying,
+            {
+                once:true
+            }
+        );
+
+
+        audio.load();
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
