@@ -1,0 +1,3288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>第二课：我叫李文 · Khu phố giao tiếp</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --green:#5f9473;
+    --green-dark:#46725a;
+    --cream:#fffaf1;
+    --yellow:#ffd875;
+    --pink:#f3a5b5;
+    --blue:#8bc9dc;
+    --purple:#a999cf;
+    --orange:#efa866;
+    --text:#506f63;
+}
+
+body{
+    min-height:100vh;
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    color:var(--text);
+    background:linear-gradient(180deg,#dff5fb 0%,#eef9f2 100%);
+}
+
+button{
+    font-family:inherit;
+}
+
+.page{
+    width:min(1180px,96%);
+    margin:auto;
+    padding:22px 0 50px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:26px;
+    margin-bottom:18px;
+    border-radius:30px;
+    background:rgba(255,255,255,.94);
+    box-shadow:0 14px 35px rgba(66,102,83,.11);
+}
+
+.hero::before{
+    content:"☁️";
+    position:absolute;
+    left:30px;
+    bottom:-13px;
+    font-size:80px;
+    opacity:.17;
+}
+
+.hero::after{
+    content:"🏫";
+    position:absolute;
+    right:30px;
+    bottom:-3px;
+    font-size:80px;
+    opacity:.16;
+}
+
+.home{
+    position:relative;
+    z-index:5;
+    text-decoration:none;
+    color:#6c897c;
+    font-size:14px;
+    font-weight:900;
+}
+
+.hero-main{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.lesson-badge{
+    display:inline-block;
+    margin-bottom:7px;
+    padding:7px 15px;
+    border-radius:999px;
+    background:#fff0c6;
+    color:#936b3d;
+    font-size:13px;
+    font-weight:900;
+}
+
+.hero h1{
+    font-size:clamp(30px,5vw,48px);
+    color:var(--green-dark);
+}
+
+.hero p{
+    margin-top:7px;
+    color:#718d80;
+    line-height:1.6;
+}
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-bottom:18px;
+}
+
+.tab{
+    border:0;
+    padding:12px 17px;
+    border-radius:17px;
+    background:white;
+    color:#668778;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 7px 17px rgba(64,91,76,.09);
+    transition:.2s;
+}
+
+.tab:hover{
+    transform:translateY(-2px);
+}
+
+.tab.active{
+    color:white;
+    background:var(--green);
+}
+
+.panel{
+    display:none;
+}
+
+.panel.active{
+    display:block;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    min-height:680px;
+    border-radius:30px;
+    background:white;
+    box-shadow:0 15px 40px rgba(66,102,83,.12);
+}
+
+.game-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    padding:17px 20px;
+    border-bottom:1px solid #e7eee9;
+}
+
+.game-title{
+    color:var(--green-dark);
+    font-size:20px;
+    font-weight:1000;
+}
+
+.stats{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    padding:8px 13px;
+    border-radius:999px;
+    background:#fff4d9;
+    color:#876c45;
+    font-size:13px;
+    font-weight:900;
+}
+
+.feedback{
+    min-height:40px;
+    margin-top:14px;
+    text-align:center;
+    font-weight:1000;
+}
+
+.complete{
+    display:none;
+    position:absolute;
+    z-index:100;
+    inset:0;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    background:rgba(255,255,255,.96);
+    text-align:center;
+}
+
+.complete.show{
+    display:flex;
+}
+
+.complete-icon{
+    font-size:75px;
+}
+
+.complete h2{
+    margin:8px 0;
+    color:var(--green-dark);
+    font-size:30px;
+}
+
+.complete p{
+    color:#718b7f;
+    line-height:1.7;
+}
+
+.restart{
+    margin-top:15px;
+    border:0;
+    padding:12px 20px;
+    border-radius:15px;
+    background:var(--green);
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+@keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-8px)}
+    75%{transform:translateX(8px)}
+}
+
+/* =========================================================
+   GAME 1
+========================================================= */
+
+.chat-world{
+    position:relative;
+    min-height:620px;
+    padding:35px 20px;
+    background:linear-gradient(
+        180deg,
+        #d8f1f7 0%,
+        #f0f8ec 68%,
+        #a8d789 68%,
+        #8bc46c 100%
+    );
+}
+
+.chat-scene{
+    width:min(800px,100%);
+    margin:auto;
+}
+
+.characters{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:55px;
+    margin-bottom:12px;
+}
+
+.character{
+    text-align:center;
+}
+
+.avatar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100px;
+    height:100px;
+    margin:auto;
+    border:6px solid white;
+    border-radius:50%;
+    background:#fff0d6;
+    font-size:56px;
+    box-shadow:0 8px 18px rgba(68,83,72,.12);
+}
+
+.character-name{
+    display:inline-block;
+    margin-top:7px;
+    padding:5px 12px;
+    border-radius:999px;
+    background:white;
+    font-weight:900;
+}
+
+.chat-box{
+    padding:22px;
+    border-radius:25px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 12px 28px rgba(62,91,74,.12);
+}
+
+.speaker{
+    margin-bottom:6px;
+    color:#6e927c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.question-line{
+    color:#455f54;
+    font-size:25px;
+    font-weight:1000;
+    line-height:1.5;
+}
+
+.answer-grid{
+    display:grid;
+    gap:11px;
+    margin-top:20px;
+}
+
+.answer{
+    border:2px solid #e1ebe4;
+    padding:14px;
+    border-radius:17px;
+    background:white;
+    color:#526f63;
+    font-size:18px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.answer:hover{
+    transform:translateY(-2px);
+    border-color:#a8cfb4;
+}
+
+.answer.good{
+    background:#dff3df;
+    border-color:#9bc59c;
+}
+
+.answer.bad{
+    background:#ffe2df;
+    border-color:#e8aaa5;
+    animation:shake .35s;
+}
+
+/* =========================================================
+   GAME 2
+========================================================= */
+
+.order-world{
+    min-height:620px;
+    padding:35px 20px;
+    background:linear-gradient(
+        180deg,
+        #eee7fa 0%,
+        #faf6fd 68%,
+        #e4cee8 68%,
+        #d7badf 100%
+    );
+}
+
+.order-board{
+    width:min(800px,100%);
+    margin:auto;
+    padding:25px;
+    border-radius:26px;
+    background:white;
+    box-shadow:0 12px 28px rgba(91,70,104,.11);
+}
+
+.order-title{
+    text-align:center;
+    color:#715e91;
+    font-size:22px;
+    font-weight:1000;
+}
+
+.order-tip{
+    margin-top:5px;
+    text-align:center;
+    color:#8b7d9d;
+}
+
+.selected-area{
+    min-height:110px;
+    margin-top:20px;
+    padding:14px;
+    border:2px dashed #cbbbe0;
+    border-radius:18px;
+    background:#faf8fd;
+}
+
+.selected-label{
+    margin-bottom:8px;
+    color:#8d79a5;
+    font-size:12px;
+    font-weight:900;
+}
+
+.selected-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.selected-item{
+    padding:10px 13px;
+    border-radius:12px;
+    background:#eee5f7;
+    color:#66577b;
+    font-weight:800;
+}
+
+.dialogue-options{
+    display:grid;
+    gap:10px;
+    margin-top:20px;
+}
+
+.dialogue-card{
+    border:2px solid #e6ddf0;
+    padding:13px;
+    border-radius:16px;
+    background:white;
+    color:#655776;
+    cursor:pointer;
+    font-size:17px;
+    transition:.2s;
+}
+
+.dialogue-card:hover{
+    transform:translateY(-2px);
+    border-color:#baa6d2;
+}
+
+.dialogue-card.used{
+    opacity:.3;
+    pointer-events:none;
+}
+
+.order-actions{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:18px;
+}
+
+.small-btn{
+    border:0;
+    padding:10px 16px;
+    border-radius:14px;
+    background:#8d78ad;
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.small-btn.secondary{
+    background:#aaa1b6;
+}
+
+/* =========================================================
+   GAME 3
+========================================================= */
+
+.friend-world{
+    min-height:620px;
+    padding:35px 20px;
+    background:linear-gradient(
+        180deg,
+        #ffe9ed 0%,
+        #fff7f4 68%,
+        #f1cf9d 68%,
+        #deb47d 100%
+    );
+}
+
+.friend-scene{
+    width:min(800px,100%);
+    margin:auto;
+}
+
+.friend-people{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:90px;
+    margin:20px 0;
+}
+
+.friend-person{
+    text-align:center;
+    transition:.7s;
+}
+
+.friend-person.left.friend{
+    transform:translateX(35px);
+}
+
+.friend-person.right.friend{
+    transform:translateX(-35px);
+}
+
+.friend-avatar{
+    font-size:80px;
+}
+
+.friend-name{
+    padding:5px 12px;
+    border-radius:999px;
+    background:white;
+    font-weight:900;
+}
+
+.friend-dialogue{
+    padding:23px;
+    border-radius:25px;
+    background:white;
+    box-shadow:0 12px 25px rgba(109,73,75,.1);
+}
+
+.friend-question{
+    color:#815f66;
+    font-size:23px;
+    font-weight:1000;
+    line-height:1.5;
+}
+
+.friend-options{
+    display:grid;
+    gap:10px;
+    margin-top:18px;
+}
+
+.friend-option{
+    border:2px solid #f0d9dd;
+    padding:13px;
+    border-radius:16px;
+    background:#fffafa;
+    color:#765b61;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.friend-option.good{
+    background:#e2f3df;
+    border-color:#a9cca3;
+}
+
+.friend-option.bad{
+    background:#ffe1df;
+    animation:shake .35s;
+}
+
+/* =========================================================
+   GAME 4
+========================================================= */
+
+.svo-world{
+    min-height:620px;
+    padding:35px 20px;
+    background:linear-gradient(
+        180deg,
+        #fff0d4 0%,
+        #fffaf1 68%,
+        #d4b47f 68%,
+        #c29b63 100%
+    );
+}
+
+.svo-board{
+    width:min(850px,100%);
+    margin:auto;
+    padding:27px;
+    border:8px solid #aa7a48;
+    border-radius:26px;
+    background:#fffdf7;
+    box-shadow:0 12px 28px rgba(87,64,38,.13);
+}
+
+.svo-title{
+    text-align:center;
+    color:#795e43;
+    font-size:26px;
+    font-weight:1000;
+}
+
+.formula{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin:15px 0 25px;
+}
+
+.formula-part{
+    padding:8px 15px;
+    border-radius:13px;
+    font-weight:1000;
+}
+
+.s{
+    background:#dff1e3;
+    color:#52775d;
+}
+
+.v{
+    background:#fff0bd;
+    color:#8a713c;
+}
+
+.o{
+    background:#e7dff4;
+    color:#725d8b;
+}
+
+.sentence-slots{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.slot{
+    min-height:100px;
+    padding:10px;
+    border:2px dashed #d6c3a5;
+    border-radius:17px;
+    background:#fff9ec;
+    text-align:center;
+}
+
+.slot-title{
+    display:block;
+    margin-bottom:8px;
+    color:#a28a67;
+    font-size:12px;
+    font-weight:900;
+}
+
+.slot-value{
+    color:#695744;
+    font-size:21px;
+    font-weight:1000;
+}
+
+.word-bank{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.word{
+    border:0;
+    padding:12px 18px;
+    border-radius:15px;
+    background:white;
+    color:#6e5c48;
+    font-size:19px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 6px 15px rgba(92,72,48,.11);
+}
+
+.word.used{
+    opacity:.3;
+    pointer-events:none;
+}
+
+.svo-result{
+    min-height:65px;
+    margin-top:20px;
+    padding:14px;
+    border-radius:17px;
+    background:#fff3d8;
+    text-align:center;
+    font-size:20px;
+    font-weight:900;
+}
+
+/* =========================================================
+   GAME 5 - BA LÔ TỪ VỰNG
+========================================================= */
+
+.vocab-world{
+    min-height:620px;
+    padding:35px 20px;
+    background:
+        radial-gradient(circle at 12% 15%,rgba(255,255,255,.85) 0 45px,transparent 46px),
+        radial-gradient(circle at 87% 20%,rgba(255,255,255,.65) 0 55px,transparent 56px),
+        linear-gradient(
+            180deg,
+            #cfeefa 0%,
+            #eaf8ed 68%,
+            #9bd17e 68%,
+            #80b965 100%
+        );
+}
+
+.vocab-layout{
+    width:min(900px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 210px;
+    gap:24px;
+    align-items:center;
+}
+
+.vocab-card{
+    padding:28px;
+    border-radius:28px;
+    background:rgba(255,255,255,.96);
+    text-align:center;
+    box-shadow:0 12px 28px rgba(62,91,74,.12);
+}
+
+.vocab-label{
+    color:#82998d;
+    font-size:13px;
+    font-weight:900;
+}
+
+.vocab-hanzi{
+    margin-top:8px;
+    color:#47755d;
+    font-size:58px;
+    font-weight:1000;
+}
+
+.vocab-pinyin{
+    margin-top:4px;
+    color:#d18b65;
+    font-size:22px;
+    font-weight:900;
+}
+
+.meaning-options{
+    display:grid;
+    gap:10px;
+    margin-top:23px;
+}
+
+.meaning-option{
+    border:2px solid #dfece3;
+    padding:13px;
+    border-radius:16px;
+    background:white;
+    color:#577365;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.meaning-option:hover{
+    border-color:#a7cfb0;
+}
+
+.meaning-option.good{
+    background:#dff3df;
+    border-color:#9cc69e;
+}
+
+.meaning-option.bad{
+    background:#ffe2df;
+    border-color:#e7aaa5;
+    animation:shake .35s;
+}
+
+.backpack-area{
+    text-align:center;
+}
+
+.backpack{
+    position:relative;
+    width:170px;
+    min-height:220px;
+    margin:auto;
+    padding:80px 15px 18px;
+    border-radius:40px 40px 30px 30px;
+    background:#e99873;
+    border:7px solid #d17c5b;
+    box-shadow:0 12px 20px rgba(79,69,58,.15);
+}
+
+.backpack::before{
+    content:"";
+    position:absolute;
+    top:-35px;
+    left:43px;
+    width:70px;
+    height:55px;
+    border:10px solid #c76e51;
+    border-bottom:0;
+    border-radius:35px 35px 0 0;
+}
+
+.backpack::after{
+    content:"🎒";
+    position:absolute;
+    top:18px;
+    left:0;
+    width:100%;
+    font-size:50px;
+}
+
+.bag-count{
+    position:relative;
+    z-index:3;
+    padding:8px;
+    border-radius:14px;
+    background:rgba(255,255,255,.85);
+    color:#9a5f49;
+    font-weight:1000;
+}
+
+.bag-word{
+    display:inline-block;
+    position:relative;
+    z-index:3;
+    margin:4px 2px;
+    padding:3px 6px;
+    border-radius:7px;
+    background:#fff4e7;
+    color:#8c604e;
+    font-size:12px;
+    font-weight:900;
+}
+
+/* =========================================================
+   GAME 6 - MEMORY
+========================================================= */
+
+.memory-world{
+    min-height:620px;
+    padding:30px 18px;
+    background:linear-gradient(
+        180deg,
+        #e9e4fa 0%,
+        #f8f5ff 100%
+    );
+}
+
+.memory-info{
+    max-width:900px;
+    margin:0 auto 17px;
+    text-align:center;
+    color:#76678f;
+    line-height:1.6;
+}
+
+.memory-board{
+    width:min(1050px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+}
+
+.memory-card{
+    position:relative;
+    min-height:100px;
+    border:0;
+    border-radius:17px;
+    background:#a793cc;
+    color:white;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    box-shadow:0 7px 15px rgba(83,66,110,.12);
+    transition:.25s;
+}
+
+.memory-card:hover{
+    transform:translateY(-2px);
+}
+
+.memory-card.open,
+.memory-card.matched{
+    background:white;
+    color:#66567e;
+    border:2px solid #d8cdec;
+}
+
+.memory-card.matched{
+    background:#e4f3df;
+    color:#557651;
+    border-color:#b5d6ac;
+}
+
+.memory-back{
+    font-size:27px;
+}
+
+.memory-content{
+    display:none;
+    padding:8px;
+    line-height:1.35;
+    font-weight:900;
+}
+
+.memory-card.open .memory-back,
+.memory-card.matched .memory-back{
+    display:none;
+}
+
+.memory-card.open .memory-content,
+.memory-card.matched .memory-content{
+    display:block;
+}
+
+.memory-hanzi{
+    font-size:24px;
+}
+
+.memory-pinyin{
+    margin-top:3px;
+    font-size:12px;
+    color:#9b82b7;
+}
+
+.memory-meaning{
+    font-size:13px;
+}
+
+/* =========================================================
+   GAME 7 - ĐIỆP VIÊN
+========================================================= */
+
+.spy-world{
+    min-height:620px;
+    padding:35px 20px;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(255,255,255,.08) 0 50px,transparent 51px),
+        linear-gradient(
+            145deg,
+            #324f4c,
+            #496d62 55%,
+            #294944
+        );
+}
+
+.spy-board{
+    width:min(850px,100%);
+    margin:auto;
+    padding:28px;
+    border:3px solid #d4c586;
+    border-radius:26px;
+    background:#f8f0cf;
+    box-shadow:0 15px 30px rgba(0,0,0,.18);
+}
+
+.spy-top{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:20px;
+}
+
+.spy-icon{
+    font-size:60px;
+}
+
+.spy-title{
+    color:#64593d;
+    font-size:22px;
+    font-weight:1000;
+}
+
+.spy-sub{
+    margin-top:3px;
+    color:#897b59;
+    font-size:13px;
+}
+
+.spy-sentence{
+    padding:24px;
+    border:2px dashed #b5a46d;
+    border-radius:18px;
+    background:#fffaf0;
+    text-align:center;
+    color:#514b3c;
+    font-size:27px;
+    font-weight:1000;
+    line-height:1.7;
+}
+
+.blank{
+    display:inline-block;
+    min-width:70px;
+    margin:0 4px;
+    padding:0 8px 3px;
+    border-bottom:3px solid #9e8d5e;
+    color:#bf6e58;
+}
+
+.spy-options{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:23px;
+}
+
+.spy-option{
+    border:2px solid #d7c895;
+    padding:12px 19px;
+    border-radius:15px;
+    background:white;
+    color:#64583e;
+    font-size:18px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.spy-option.good{
+    background:#dff1d8;
+    border-color:#9fc092;
+}
+
+.spy-option.bad{
+    background:#f8d9d4;
+    border-color:#db9d93;
+    animation:shake .35s;
+}
+
+.spy-note{
+    min-height:55px;
+    margin-top:18px;
+    padding:12px;
+    border-radius:15px;
+    background:rgba(255,255,255,.5);
+    text-align:center;
+    color:#76694a;
+    font-weight:800;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .memory-board{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .vocab-layout{
+        grid-template-columns:1fr;
+    }
+
+    .backpack{
+        min-height:150px;
+        padding-top:70px;
+    }
+}
+
+@media(max-width:700px){
+
+    .characters{
+        gap:20px;
+    }
+
+    .avatar{
+        width:80px;
+        height:80px;
+        font-size:44px;
+    }
+
+    .friend-people{
+        gap:35px;
+    }
+
+    .sentence-slots{
+        grid-template-columns:1fr;
+    }
+
+    .question-line,
+    .friend-question{
+        font-size:20px;
+    }
+
+    .memory-board{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .memory-card{
+        min-height:92px;
+    }
+
+    .spy-sentence{
+        font-size:21px;
+    }
+}
+
+@media(max-width:450px){
+
+    .memory-board{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .tabs{
+        gap:6px;
+    }
+
+    .tab{
+        padding:10px 12px;
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="hero">
+
+    <a href="../../index.html" class="home">
+        ← 🏠 Về trang chủ
+    </a>
+
+    <div class="hero-main">
+
+        <div class="lesson-badge">
+            第二课 · 我叫李文
+        </div>
+
+        <h1>🏘️ Khu phố giao tiếp</h1>
+
+        <p>
+            Từ vựng · Hội thoại · Phản xạ giao tiếp ·
+            Cấu trúc câu · Ôn tập qua trò chơi
+        </p>
+
+    </div>
+
+</header>
+
+<div class="tabs">
+
+    <button class="tab active"
+        onclick="showGame('game1',this)">
+        💬 Ai đang nói?
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game2',this)">
+        🧩 Xếp hội thoại
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game3',this)">
+        🤝 Kết bạn
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game4',this)">
+        🏗️ S + V + O
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game5',this)">
+        🎒 Ba lô từ vựng
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game6',this)">
+        🧠 Lật thẻ
+    </button>
+
+    <button class="tab"
+        onclick="showGame('game7',this)">
+        🕵️ Điệp viên
+    </button>
+
+</div>
+
+<!-- ======================================================
+     GAME 1
+====================================================== -->
+
+<section id="game1" class="panel active">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            💬 Chọn câu trả lời phù hợp
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                ⭐ <span id="chatScore">0</span>
+            </div>
+            <div class="stat">
+                💬 <span id="chatProgress">0/6</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="chat-world">
+
+        <div class="chat-scene">
+
+            <div class="characters">
+
+                <div class="character">
+                    <div class="avatar">🧑🏻</div>
+                    <div id="speakerName" class="character-name">
+                        王一飞
+                    </div>
+                </div>
+
+                <div class="character">
+                    <div class="avatar">👩🏻</div>
+                    <div class="character-name">?</div>
+                </div>
+
+            </div>
+
+            <div class="chat-box">
+
+                <div id="chatSpeaker" class="speaker"></div>
+                <div id="chatQuestion" class="question-line"></div>
+                <div id="chatAnswers" class="answer-grid"></div>
+                <div id="chatFeedback" class="feedback"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="chatComplete" class="complete">
+        <div>
+            <div class="complete-icon">💬🌟</div>
+            <h2>Phản xạ tốt lắm!</h2>
+            <p id="chatCompleteText"></p>
+            <button class="restart" onclick="restartChat()">
+                🔄 Chơi lại
+            </button>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     GAME 2
+====================================================== -->
+
+<section id="game2" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+        <div class="game-title">🧩 Sắp xếp hội thoại</div>
+        <div class="stats">
+            <div class="stat">🎯 Xếp đúng thứ tự</div>
+        </div>
+    </div>
+
+    <div class="order-world">
+
+        <div class="order-board">
+
+            <div class="order-title">
+                🙈 陈天中 gọi nhầm tên rồi!
+            </div>
+
+            <div class="order-tip">
+                Bấm các câu theo đúng thứ tự cuộc hội thoại.
+            </div>
+
+            <div class="selected-area">
+
+                <div class="selected-label">
+                    CUỘC HỘI THOẠI CỦA BẠN
+                </div>
+
+                <div id="selectedDialogue" class="selected-list"></div>
+
+            </div>
+
+            <div id="dialogueOptions" class="dialogue-options"></div>
+
+            <div class="order-actions">
+
+                <button class="small-btn secondary"
+                    onclick="resetDialogueSelection()">
+                    ↩ Làm lại
+                </button>
+
+                <button class="small-btn"
+                    onclick="checkDialogue()">
+                    ✓ Kiểm tra
+                </button>
+
+            </div>
+
+            <div id="orderFeedback" class="feedback"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     GAME 3
+====================================================== -->
+
+<section id="game3" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+        <div class="game-title">🤝 Làm quen với bạn mới</div>
+
+        <div class="stats">
+            <div class="stat">
+                ❤️ <span id="friendProgress">0/2</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="friend-world">
+
+        <div class="friend-scene">
+
+            <div class="friend-people">
+
+                <div id="friendLeft" class="friend-person left">
+                    <div class="friend-avatar">👦🏻</div>
+                    <div class="friend-name">李文</div>
+                </div>
+
+                <div style="font-size:40px">💬</div>
+
+                <div id="friendRight" class="friend-person right">
+                    <div class="friend-avatar">👧🏻</div>
+                    <div class="friend-name">白家月</div>
+                </div>
+
+            </div>
+
+            <div class="friend-dialogue">
+
+                <div id="friendQuestion" class="friend-question"></div>
+                <div id="friendOptions" class="friend-options"></div>
+                <div id="friendFeedback" class="feedback"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="friendComplete" class="complete">
+
+        <div>
+            <div class="complete-icon">🤝💗✨</div>
+            <h2>认识成功！</h2>
+            <p>李文 và 白家月 đã làm quen với nhau.</p>
+
+            <button class="restart" onclick="restartFriend()">
+                🔄 Chơi lại
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     GAME 4
+====================================================== -->
+
+<section id="game4" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🏗️ Xưởng ráp câu S + V + O
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                ⭐ <span id="svoScore">0</span>
+            </div>
+
+            <div class="stat">
+                🏗️ <span id="svoProgress">0/3</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="svo-world">
+
+        <div class="svo-board">
+
+            <div class="svo-title">
+                汉语的基本句式
+            </div>
+
+            <div class="formula">
+
+                <span class="formula-part s">S · 主语</span>
+                <b>+</b>
+                <span class="formula-part v">V · 谓语</span>
+                <b>+</b>
+                <span class="formula-part o">O · 宾语</span>
+
+            </div>
+
+            <div class="sentence-slots">
+
+                <div class="slot">
+                    <span class="slot-title">S · CHỦ NGỮ</span>
+                    <div id="slotS" class="slot-value">?</div>
+                </div>
+
+                <div class="slot">
+                    <span class="slot-title">V · ĐỘNG TỪ</span>
+                    <div id="slotV" class="slot-value">?</div>
+                </div>
+
+                <div class="slot">
+                    <span class="slot-title">O · TÂN NGỮ</span>
+                    <div id="slotO" class="slot-value">?</div>
+                </div>
+
+            </div>
+
+            <div id="wordBank" class="word-bank"></div>
+
+            <div id="svoResult" class="svo-result">
+                👆 Bấm các khối theo thứ tự S → V → O
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="svoComplete" class="complete">
+
+        <div>
+            <div class="complete-icon">🏗️🎉</div>
+            <h2>Xây câu hoàn thành!</h2>
+            <p id="svoCompleteText"></p>
+
+            <button class="restart" onclick="restartSVO()">
+                🔄 Chơi lại
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     GAME 5
+====================================================== -->
+
+<section id="game5" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🎒 Ba lô từ vựng
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                ⭐ <span id="vocabScore">0</span>
+            </div>
+
+            <div class="stat">
+                🎒 <span id="vocabProgress">0/15</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="vocab-world">
+
+        <div class="vocab-layout">
+
+            <div class="vocab-card">
+
+                <div class="vocab-label">
+                    TỪ NÀY CÓ NGHĨA LÀ GÌ?
+                </div>
+
+                <div id="vocabHanzi" class="vocab-hanzi"></div>
+
+                <div id="vocabPinyin" class="vocab-pinyin"></div>
+
+                <div id="meaningOptions" class="meaning-options"></div>
+
+                <div id="vocabFeedback" class="feedback"></div>
+
+            </div>
+
+            <div class="backpack-area">
+
+                <div class="backpack">
+
+                    <div id="bagCount" class="bag-count">
+                        0 / 15
+                    </div>
+
+                    <div id="bagWords"></div>
+
+                </div>
+
+                <div style="margin-top:15px;font-weight:900;">
+                    📚 Thu thập đủ 15 từ!
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="vocabComplete" class="complete">
+
+        <div>
+
+            <div class="complete-icon">
+                🎒📚🌟
+            </div>
+
+            <h2>Ba lô đầy rồi!</h2>
+
+            <p id="vocabCompleteText"></p>
+
+            <button class="restart" onclick="restartVocab()">
+                🔄 Chơi lại
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     GAME 6
+====================================================== -->
+
+<section id="game6" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🧠 Lật thẻ trí nhớ · 3 lượt
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                💗 <span id="memoryPairs">0/15</span>
+            </div>
+
+            <div class="stat">
+                👆 <span id="memoryMoves">0</span> lượt
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="memory-world">
+
+        <div class="memory-info">
+            Tìm cặp tương ứng:
+            <b>chữ Hán + Pinyin</b>
+            ↔
+            <b>nghĩa tiếng Việt</b>.
+        </div>
+
+        <div id="memoryBoard" class="memory-board"></div>
+
+    </div>
+
+    <div id="memoryComplete" class="complete">
+
+        <div>
+
+            <div class="complete-icon">
+                🧠💗🎉
+            </div>
+
+            <h2>Nhớ hết rồi!</h2>
+
+            <p id="memoryCompleteText"></p>
+
+            <button class="restart" onclick="restartMemory()">
+                🔄 Chơi lại
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     GAME 7
+====================================================== -->
+
+<section id="game7" class="panel">
+
+<div class="card">
+
+    <div class="game-head">
+
+        <div class="game-title">
+            🕵️ Điệp viên điền từ
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                ⭐ <span id="spyScore">0</span>
+            </div>
+
+            <div class="stat">
+                🕵️ <span id="spyProgress">0/9</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="spy-world">
+
+        <div class="spy-board">
+
+            <div class="spy-top">
+
+                <div class="spy-icon">
+                    🕵️‍♀️
+                </div>
+
+                <div>
+                    <div class="spy-title">
+                        Hồ sơ mật · 补充句子
+                    </div>
+
+                    <div class="spy-sub">
+                        Chọn từ thích hợp để khôi phục câu bị mất.
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="spySentence" class="spy-sentence"></div>
+
+            <div id="spyOptions" class="spy-options"></div>
+
+            <div id="spyNote" class="spy-note">
+                🔎 Đọc kỹ ngữ cảnh rồi chọn từ.
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="spyComplete" class="complete">
+
+        <div>
+
+            <div class="complete-icon">
+                🕵️‍♀️🔐🌟
+            </div>
+
+            <h2>Phá án thành công!</h2>
+
+            <p id="spyCompleteText"></p>
+
+            <button class="restart" onclick="restartSpy()">
+                🔄 Chơi lại
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</div>
+
+<script>
+
+/* =========================================================
+   DỮ LIỆU TỪ VỰNG
+========================================================= */
+
+const vocabulary=[
+
+    {
+        hanzi:"请问",
+        pinyin:"qǐngwèn",
+        meaning:"Cho hỏi, xin hỏi"
+    },
+
+    {
+        hanzi:"你",
+        pinyin:"nǐ",
+        meaning:"Bạn, cậu"
+    },
+
+    {
+        hanzi:"叫",
+        pinyin:"jiào",
+        meaning:"Gọi/ tên gọi"
+    },
+
+    {
+        hanzi:"什么",
+        pinyin:"shénme",
+        meaning:"Cái gì (từ để hỏi)"
+    },
+
+    {
+        hanzi:"名字",
+        pinyin:"míngzi",
+        meaning:"Tên"
+    },
+
+    {
+        hanzi:"我",
+        pinyin:"wǒ",
+        meaning:"Tôi, tớ, mình"
+    },
+
+    {
+        hanzi:"不",
+        pinyin:"bù",
+        meaning:"Không, chả, chẳng (phủ định)"
+    },
+
+    {
+        hanzi:"是",
+        pinyin:"shì",
+        meaning:"Thì, là,..."
+    },
+
+    {
+        hanzi:"对不起",
+        pinyin:"duìbuqǐ",
+        meaning:"Xin lỗi"
+    },
+
+    {
+        hanzi:"没关系",
+        pinyin:"méi guānxi",
+        meaning:"Không sao, không vấn đề gì"
+    },
+
+    {
+        hanzi:"没事",
+        pinyin:"méishì",
+        meaning:"Không sao, ko việc gì"
+    },
+
+    {
+        hanzi:"很",
+        pinyin:"hěn",
+        meaning:"Rất, quá, hết sức"
+    },
+
+    {
+        hanzi:"高兴",
+        pinyin:"gāoxìng",
+        meaning:"Vui, vui vẻ"
+    },
+
+    {
+        hanzi:"认识",
+        pinyin:"rènshi",
+        meaning:"Quen biết, nhận biết"
+    },
+
+    {
+        hanzi:"也",
+        pinyin:"yě",
+        meaning:"Cũng, cũng vậy"
+    }
+
+];
+
+/* =========================================================
+   HÀM CHUNG
+========================================================= */
+
+function shuffle(array){
+
+    const copy=[...array];
+
+    for(let i=copy.length-1;i>0;i--){
+
+        const j=Math.floor(
+            Math.random()*(i+1)
+        );
+
+        [copy[i],copy[j]]=
+        [copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+function showGame(id,button){
+
+    document
+    .querySelectorAll(".panel")
+    .forEach(panel=>
+        panel.classList.remove("active")
+    );
+
+    document
+    .querySelectorAll(".tab")
+    .forEach(tab=>
+        tab.classList.remove("active")
+    );
+
+    document
+    .getElementById(id)
+    .classList.add("active");
+
+    button.classList.add("active");
+}
+
+/* =========================================================
+   GAME 1 · HỘI THOẠI
+========================================================= */
+
+const chatQuestions=[
+
+    {
+        speaker:"王一飞",
+        question:"请问，你叫什么名字？",
+        answer:"我叫陈天中。",
+        wrong:[
+            "对不起！",
+            "没关系！"
+        ]
+    },
+
+    {
+        speaker:"陈天中",
+        question:"你好，安妮！",
+        answer:"你好，陈天中！我不是安妮，我是白家月。",
+        wrong:[
+            "我叫陈天中。",
+            "认识你我也很高兴。"
+        ]
+    },
+
+    {
+        speaker:"陈天中",
+        question:"对不起！",
+        answer:"没关系！",
+        wrong:[
+            "请问，你叫什么名字？",
+            "我叫李文。"
+        ]
+    },
+
+    {
+        speaker:"李文",
+        question:"你好！我叫李文。",
+        answer:"你好！我叫白家月。",
+        wrong:[
+            "对不起！",
+            "我叫陈天中。"
+        ]
+    },
+
+    {
+        speaker:"李文",
+        question:"很高兴认识你。",
+        answer:"认识你我也很高兴。",
+        wrong:[
+            "没关系！",
+            "你叫什么名字？"
+        ]
+    },
+
+    {
+        speaker:"白家月",
+        question:"你好！我叫白家月。",
+        answer:"很高兴认识你。",
+        wrong:[
+            "对不起！",
+            "我不是安妮。"
+        ]
+    }
+
+];
+
+let chatQueue=[];
+let chatCurrent=null;
+let chatScore=0;
+let chatDone=0;
+
+function restartChat(){
+
+    chatQueue=shuffle(chatQuestions);
+    chatScore=0;
+    chatDone=0;
+
+    document
+    .getElementById("chatComplete")
+    .classList.remove("show");
+
+    updateChatStats();
+    nextChat();
+}
+
+function nextChat(){
+
+    if(chatQueue.length===0){
+
+        document
+        .getElementById("chatCompleteText")
+        .innerHTML=
+        "Bạn đã hoàn thành <b>"+
+        chatQuestions.length+
+        "</b> tình huống.<br>Điểm: <b>"+
+        chatScore+
+        "</b> ⭐";
+
+        document
+        .getElementById("chatComplete")
+        .classList.add("show");
+
+        return;
+    }
+
+    chatCurrent=chatQueue.shift();
+
+    document
+    .getElementById("speakerName")
+    .textContent=chatCurrent.speaker;
+
+    document
+    .getElementById("chatSpeaker")
+    .textContent=chatCurrent.speaker+"：";
+
+    document
+    .getElementById("chatQuestion")
+    .textContent=chatCurrent.question;
+
+    document
+    .getElementById("chatFeedback")
+    .textContent="";
+
+    const answers=shuffle([
+        chatCurrent.answer,
+        ...chatCurrent.wrong
+    ]);
+
+    const box=document.getElementById("chatAnswers");
+
+    box.innerHTML="";
+
+    answers.forEach(text=>{
+
+        const button=document.createElement("button");
+
+        button.className="answer";
+        button.textContent=text;
+
+        button.onclick=()=>{
+
+            if(!chatCurrent) return;
+
+            if(text===chatCurrent.answer){
+
+                button.classList.add("good");
+
+                chatScore+=10;
+                chatDone++;
+
+                document
+                .getElementById("chatFeedback")
+                .textContent=
+                "🌟 Đúng rồi! Câu đáp rất tự nhiên.";
+
+                chatCurrent=null;
+
+                updateChatStats();
+
+                setTimeout(nextChat,800);
+
+            }else{
+
+                button.classList.remove("bad");
+                void button.offsetWidth;
+                button.classList.add("bad");
+
+                document
+                .getElementById("chatFeedback")
+                .textContent=
+                "🙈 Câu này chưa phù hợp với tình huống.";
+            }
+        };
+
+        box.appendChild(button);
+    });
+}
+
+function updateChatStats(){
+
+    document
+    .getElementById("chatScore")
+    .textContent=chatScore;
+
+    document
+    .getElementById("chatProgress")
+    .textContent=
+    chatDone+"/"+chatQuestions.length;
+}
+
+/* =========================================================
+   GAME 2 · XẾP HỘI THOẠI
+========================================================= */
+
+const dialogueCorrect=[
+
+    {
+        speaker:"陈天中",
+        text:"你好，安妮！"
+    },
+
+    {
+        speaker:"白家月",
+        text:"你好，陈天中！我不是安妮，我是白家月。"
+    },
+
+    {
+        speaker:"陈天中",
+        text:"对不起！"
+    },
+
+    {
+        speaker:"白家月",
+        text:"没关系！"
+    }
+
+];
+
+let dialogueSelection=[];
+
+function renderDialogueGame(){
+
+    dialogueSelection=[];
+
+    document
+    .getElementById("selectedDialogue")
+    .innerHTML="";
+
+    document
+    .getElementById("orderFeedback")
+    .textContent="";
+
+    const box=
+        document.getElementById("dialogueOptions");
+
+    box.innerHTML="";
+
+    shuffle(dialogueCorrect)
+    .forEach(item=>{
+
+        const button=
+            document.createElement("button");
+
+        button.className="dialogue-card";
+
+        button.innerHTML=
+            "<b>"+item.speaker+"：</b> "+item.text;
+
+        button.onclick=()=>{
+
+            dialogueSelection.push(item);
+            button.classList.add("used");
+            renderSelectedDialogue();
+        };
+
+        box.appendChild(button);
+    });
+}
+
+function renderSelectedDialogue(){
+
+    const box=
+        document.getElementById("selectedDialogue");
+
+    box.innerHTML="";
+
+    dialogueSelection.forEach((item,index)=>{
+
+        const div=document.createElement("div");
+
+        div.className="selected-item";
+
+        div.innerHTML=
+            "<b>"+
+            (index+1)+
+            ". "+
+            item.speaker+
+            "：</b> "+
+            item.text;
+
+        box.appendChild(div);
+    });
+}
+
+function resetDialogueSelection(){
+    renderDialogueGame();
+}
+
+function checkDialogue(){
+
+    if(dialogueSelection.length!==dialogueCorrect.length){
+
+        document
+        .getElementById("orderFeedback")
+        .textContent=
+        "👀 Còn thiếu câu thoại đó ní.";
+
+        return;
+    }
+
+    const correct=
+        dialogueSelection.every(
+            (item,index)=>
+            item.text===dialogueCorrect[index].text
+        );
+
+    if(correct){
+
+        document
+        .getElementById("orderFeedback")
+        .textContent=
+        "🎉 Chính xác! Cuộc hội thoại đã đúng thứ tự.";
+
+    }else{
+
+        document
+        .getElementById("orderFeedback")
+        .textContent=
+        "🙈 Thứ tự chưa đúng. Bấm “Làm lại” rồi thử lại nha.";
+    }
+}
+
+/* =========================================================
+   GAME 3 · KẾT BẠN
+========================================================= */
+
+const friendSteps=[
+
+    {
+        speaker:"李文",
+        question:"你好！我叫李文。",
+        answer:"你好！我叫白家月。",
+        wrong:[
+            "没关系！",
+            "对不起！"
+        ]
+    },
+
+    {
+        speaker:"李文",
+        question:"很高兴认识你。",
+        answer:"认识你我也很高兴。",
+        wrong:[
+            "我不是安妮。",
+            "请问，你叫什么名字？"
+        ]
+    }
+
+];
+
+let friendIndex=0;
+
+function restartFriend(){
+
+    friendIndex=0;
+
+    document
+    .getElementById("friendComplete")
+    .classList.remove("show");
+
+    document
+    .getElementById("friendLeft")
+    .classList.remove("friend");
+
+    document
+    .getElementById("friendRight")
+    .classList.remove("friend");
+
+    renderFriend();
+}
+
+function renderFriend(){
+
+    if(friendIndex>=friendSteps.length){
+
+        document
+        .getElementById("friendLeft")
+        .classList.add("friend");
+
+        document
+        .getElementById("friendRight")
+        .classList.add("friend");
+
+        setTimeout(()=>{
+
+            document
+            .getElementById("friendComplete")
+            .classList.add("show");
+
+        },650);
+
+        return;
+    }
+
+    const item=friendSteps[friendIndex];
+
+    document
+    .getElementById("friendProgress")
+    .textContent=
+    friendIndex+"/"+friendSteps.length;
+
+    document
+    .getElementById("friendQuestion")
+    .innerHTML=
+    "<b>"+item.speaker+"：</b> "+item.question;
+
+    document
+    .getElementById("friendFeedback")
+    .textContent="";
+
+    const box=
+        document.getElementById("friendOptions");
+
+    box.innerHTML="";
+
+    shuffle([
+        item.answer,
+        ...item.wrong
+    ])
+    .forEach(text=>{
+
+        const button=
+            document.createElement("button");
+
+        button.className="friend-option";
+        button.textContent=text;
+
+        button.onclick=()=>{
+
+            if(text===item.answer){
+
+                button.classList.add("good");
+
+                document
+                .getElementById("friendFeedback")
+                .textContent=
+                "💗 Đúng rồi! Hai bạn hiểu nhau hơn rồi.";
+
+                friendIndex++;
+
+                document
+                .getElementById("friendProgress")
+                .textContent=
+                friendIndex+"/"+friendSteps.length;
+
+                setTimeout(renderFriend,800);
+
+            }else{
+
+                button.classList.remove("bad");
+                void button.offsetWidth;
+                button.classList.add("bad");
+
+                document
+                .getElementById("friendFeedback")
+                .textContent=
+                "🙈 Câu này chưa hợp tình huống.";
+            }
+        };
+
+        box.appendChild(button);
+    });
+}
+
+/* =========================================================
+   GAME 4 · SVO
+========================================================= */
+
+const svoSentences=[
+
+    {
+        s:"你",
+        v:"叫",
+        o:"什么名字？",
+        sentence:"你叫什么名字？"
+    },
+
+    {
+        s:"我",
+        v:"叫",
+        o:"白家月。",
+        sentence:"我叫白家月。"
+    },
+
+    {
+        s:"我",
+        v:"是",
+        o:"学生。",
+        sentence:"我是学生。"
+    }
+
+];
+
+let svoIndex=0;
+let svoScore=0;
+let svoSelected=[];
+
+function restartSVO(){
+
+    svoIndex=0;
+    svoScore=0;
+    svoSelected=[];
+
+    document
+    .getElementById("svoComplete")
+    .classList.remove("show");
+
+    renderSVO();
+    updateSVO();
+}
+
+function renderSVO(){
+
+    if(svoIndex>=svoSentences.length){
+
+        document
+        .getElementById("svoCompleteText")
+        .innerHTML=
+        "Bạn đã ráp đúng <b>3/3</b> câu.<br>"+
+        "Điểm: <b>"+svoScore+"</b> ⭐";
+
+        document
+        .getElementById("svoComplete")
+        .classList.add("show");
+
+        return;
+    }
+
+    svoSelected=[];
+
+    document.getElementById("slotS").textContent="?";
+    document.getElementById("slotV").textContent="?";
+    document.getElementById("slotO").textContent="?";
+
+    document
+    .getElementById("svoResult")
+    .textContent=
+    "👆 Bấm các khối theo thứ tự S → V → O";
+
+    const current=svoSentences[svoIndex];
+
+    const pieces=[
+        current.s,
+        current.v,
+        current.o
+    ];
+
+    const box=document.getElementById("wordBank");
+
+    box.innerHTML="";
+
+    shuffle(pieces).forEach(word=>{
+
+        const button=document.createElement("button");
+
+        button.className="word";
+        button.textContent=word;
+
+        button.onclick=()=>{
+
+            if(svoSelected.length>=3) return;
+
+            svoSelected.push(word);
+            button.classList.add("used");
+
+            const ids=["slotS","slotV","slotO"];
+
+            document
+            .getElementById(ids[svoSelected.length-1])
+            .textContent=word;
+
+            if(svoSelected.length===3){
+                checkSVO();
+            }
+        };
+
+        box.appendChild(button);
+    });
+}
+
+function checkSVO(){
+
+    const current=svoSentences[svoIndex];
+
+    const correct=
+        svoSelected[0]===current.s &&
+        svoSelected[1]===current.v &&
+        svoSelected[2]===current.o;
+
+    if(correct){
+
+        svoScore+=10;
+
+        document
+        .getElementById("svoResult")
+        .innerHTML=
+        "🌟 Chính xác! <b>"+
+        current.sentence+
+        "</b>";
+
+        svoIndex++;
+
+        updateSVO();
+
+        setTimeout(renderSVO,1000);
+
+    }else{
+
+        document
+        .getElementById("svoResult")
+        .textContent=
+        "🙈 Chưa đúng cấu trúc S + V + O. Thử lại nhé!";
+
+        setTimeout(renderSVO,900);
+    }
+}
+
+function updateSVO(){
+
+    document
+    .getElementById("svoScore")
+    .textContent=svoScore;
+
+    document
+    .getElementById("svoProgress")
+    .textContent=
+    svoIndex+"/"+svoSentences.length;
+}
+
+/* =========================================================
+   GAME 5 · BA LÔ TỪ VỰNG
+========================================================= */
+
+let vocabQueue=[];
+let vocabCurrent=null;
+let vocabScore=0;
+let vocabDone=0;
+let collectedWords=[];
+
+function restartVocab(){
+
+    vocabQueue=shuffle(vocabulary);
+
+    vocabCurrent=null;
+    vocabScore=0;
+    vocabDone=0;
+    collectedWords=[];
+
+    document
+    .getElementById("vocabComplete")
+    .classList.remove("show");
+
+    document
+    .getElementById("bagWords")
+    .innerHTML="";
+
+    updateVocabStats();
+    nextVocab();
+}
+
+function nextVocab(){
+
+    if(vocabQueue.length===0){
+
+        document
+        .getElementById("vocabCompleteText")
+        .innerHTML=
+        "Bạn đã thu thập đủ <b>15/15</b> từ.<br>"+
+        "Điểm: <b>"+vocabScore+"</b> ⭐";
+
+        document
+        .getElementById("vocabComplete")
+        .classList.add("show");
+
+        return;
+    }
+
+    vocabCurrent=vocabQueue.shift();
+
+    document
+    .getElementById("vocabHanzi")
+    .textContent=vocabCurrent.hanzi;
+
+    document
+    .getElementById("vocabPinyin")
+    .textContent=vocabCurrent.pinyin;
+
+    document
+    .getElementById("vocabFeedback")
+    .textContent="";
+
+    const wrongMeanings=
+        shuffle(
+            vocabulary
+            .filter(item=>item.hanzi!==vocabCurrent.hanzi)
+            .map(item=>item.meaning)
+        )
+        .slice(0,3);
+
+    const options=
+        shuffle([
+            vocabCurrent.meaning,
+            ...wrongMeanings
+        ]);
+
+    const box=
+        document.getElementById("meaningOptions");
+
+    box.innerHTML="";
+
+    options.forEach(meaning=>{
+
+        const button=
+            document.createElement("button");
+
+        button.className="meaning-option";
+        button.textContent=meaning;
+
+        button.onclick=()=>{
+
+            if(!vocabCurrent) return;
+
+            if(meaning===vocabCurrent.meaning){
+
+                button.classList.add("good");
+
+                vocabScore+=10;
+                vocabDone++;
+
+                collectedWords.push(vocabCurrent);
+
+                addWordToBag(vocabCurrent);
+                updateVocabStats();
+
+                document
+                .getElementById("vocabFeedback")
+                .textContent=
+                "🎒 Chính xác! Bỏ từ này vào ba lô!";
+
+                vocabCurrent=null;
+
+                setTimeout(nextVocab,700);
+
+            }else{
+
+                button.classList.remove("bad");
+                void button.offsetWidth;
+                button.classList.add("bad");
+
+                document
+                .getElementById("vocabFeedback")
+                .textContent=
+                "🙈 Chưa đúng nghĩa, thử lại nha.";
+            }
+        };
+
+        box.appendChild(button);
+    });
+}
+
+function addWordToBag(word){
+
+    const span=document.createElement("span");
+
+    span.className="bag-word";
+    span.textContent=word.hanzi;
+
+    document
+    .getElementById("bagWords")
+    .appendChild(span);
+}
+
+function updateVocabStats(){
+
+    document
+    .getElementById("vocabScore")
+    .textContent=vocabScore;
+
+    document
+    .getElementById("vocabProgress")
+    .textContent=
+    vocabDone+"/"+vocabulary.length;
+
+    document
+    .getElementById("bagCount")
+    .textContent=
+    vocabDone+" / "+vocabulary.length;
+}
+
+/* =========================================================
+   GAME 6 · MEMORY — 3 LƯỢT, MỖI LƯỢT 5 CẶP
+========================================================= */
+
+let memoryFirst=null;
+let memorySecond=null;
+let memoryLock=false;
+
+let memoryPairs=0;
+let memoryMoves=0;
+
+let memoryRound=1;
+const memoryTotalRounds=3;
+const memoryPairsPerRound=5;
+
+let memoryRoundWords=[];
+
+
+/* =========================
+   BẮT ĐẦU LẠI TOÀN BỘ GAME
+========================= */
+
+function restartMemory(){
+
+    memoryFirst=null;
+    memorySecond=null;
+    memoryLock=false;
+
+    memoryPairs=0;
+    memoryMoves=0;
+
+    memoryRound=1;
+
+    document
+    .getElementById("memoryComplete")
+    .classList.remove("show");
+
+    startMemoryRound();
+
+}
+
+
+/* =========================
+   BẮT ĐẦU MỘT LƯỢT
+========================= */
+
+function startMemoryRound(){
+
+    memoryFirst=null;
+    memorySecond=null;
+    memoryLock=false;
+
+    memoryPairs=0;
+
+    const start=
+        (memoryRound-1)*memoryPairsPerRound;
+
+    const end=
+        start+memoryPairsPerRound;
+
+    memoryRoundWords=
+        vocabulary.slice(start,end);
+
+    const cards=[];
+
+    memoryRoundWords.forEach((item,index)=>{
+
+        /* THẺ CHỮ HÁN + PINYIN */
+
+        cards.push({
+
+            pair:index,
+            type:"word",
+
+            hanzi:item.hanzi,
+            pinyin:item.pinyin
+
+        });
+
+
+        /* THẺ NGHĨA */
+
+        cards.push({
+
+            pair:index,
+            type:"meaning",
+
+            meaning:item.meaning
+
+        });
+
+    });
+
+
+    const board=
+        document.getElementById("memoryBoard");
+
+    board.innerHTML="";
+
+
+    shuffle(cards).forEach(card=>{
+
+        const button=
+            document.createElement("button");
+
+        button.className="memory-card";
+
+        button.dataset.pair=card.pair;
+
+
+        let content="";
+
+
+        if(card.type==="word"){
+
+            content=`
+
+                <div class="memory-hanzi">
+                    ${card.hanzi}
+                </div>
+
+                <div class="memory-pinyin">
+                    ${card.pinyin}
+                </div>
+
+            `;
+
+        }else{
+
+            content=`
+
+                <div class="memory-meaning">
+                    ${card.meaning}
+                </div>
+
+            `;
+
+        }
+
+
+        button.innerHTML=`
+
+            <div class="memory-back">
+                ❓
+            </div>
+
+            <div class="memory-content">
+                ${content}
+            </div>
+
+        `;
+
+
+        button.onclick=
+            ()=>flipMemory(button);
+
+
+        board.appendChild(button);
+
+    });
+
+
+    updateMemoryStats();
+
+}
+
+
+/* =========================
+   LẬT THẺ
+========================= */
+
+function flipMemory(card){
+
+    if(
+        memoryLock ||
+        card.classList.contains("open") ||
+        card.classList.contains("matched")
+    ){
+        return;
+    }
+
+
+    card.classList.add("open");
+
+
+    /* THẺ ĐẦU */
+
+    if(!memoryFirst){
+
+        memoryFirst=card;
+
+        return;
+    }
+
+
+    /* THẺ THỨ HAI */
+
+    memorySecond=card;
+
+    memoryMoves++;
+
+    updateMemoryStats();
+
+
+    /* =====================
+       GHÉP ĐÚNG
+    ===================== */
+
+    if(
+        memoryFirst.dataset.pair===
+        memorySecond.dataset.pair
+    ){
+
+        memoryFirst.classList.add("matched");
+        memorySecond.classList.add("matched");
+
+        memoryFirst.classList.remove("open");
+        memorySecond.classList.remove("open");
+
+        memoryPairs++;
+
+
+        memoryFirst=null;
+        memorySecond=null;
+
+
+        updateMemoryStats();
+
+
+        /* ĐỦ 5 CẶP */
+
+        if(memoryPairs===memoryPairsPerRound){
+
+            setTimeout(()=>{
+
+                finishMemoryRound();
+
+            },600);
+
+        }
+
+    }
+
+
+    /* =====================
+       GHÉP SAI
+    ===================== */
+
+    else{
+
+        memoryLock=true;
+
+
+        setTimeout(()=>{
+
+            memoryFirst.classList.remove("open");
+
+            memorySecond.classList.remove("open");
+
+
+            memoryFirst=null;
+
+            memorySecond=null;
+
+            memoryLock=false;
+
+        },850);
+
+    }
+
+}
+
+
+/* =========================
+   HOÀN THÀNH MỘT LƯỢT
+========================= */
+
+function finishMemoryRound(){
+
+    if(memoryRound < memoryTotalRounds){
+
+        const board=
+            document.getElementById("memoryBoard");
+
+
+        board.innerHTML=`
+
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                background:white;
+                padding:35px 20px;
+                border-radius:25px;
+                box-shadow:0 10px 25px rgba(80,60,110,.12);
+            ">
+
+                <div style="
+                    font-size:60px;
+                    margin-bottom:10px;
+                ">
+                    🎉
+                </div>
+
+                <h2 style="
+                    color:#6d5a89;
+                    margin-bottom:8px;
+                ">
+                    Hoàn thành lượt ${memoryRound}!
+                </h2>
+
+                <p style="
+                    color:#897b9d;
+                    line-height:1.6;
+                ">
+                    Bạn đã ghép đúng
+                    <b>5/5 cặp</b>.
+                </p>
+
+                <button
+                    onclick="nextMemoryRound()"
+                    style="
+                        margin-top:18px;
+                        border:0;
+                        padding:12px 22px;
+                        border-radius:15px;
+                        background:#8d78ad;
+                        color:white;
+                        font-weight:900;
+                        cursor:pointer;
+                        font-size:15px;
+                    "
+                >
+
+                    Lượt tiếp theo
+                    ➜
+
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* HOÀN THÀNH CẢ 3 LƯỢT */
+
+    else{
+
+        document
+        .getElementById("memoryCompleteText")
+        .innerHTML=
+
+        "Bạn đã hoàn thành <b>3 lượt</b> " +
+        "và ghép đủ <b>15/15 cặp từ</b>.<br>" +
+        "Tổng số lượt lật: <b>" +
+        memoryMoves +
+        "</b> 👆";
+
+
+        document
+        .getElementById("memoryComplete")
+        .classList.add("show");
+
+    }
+
+}
+
+
+/* =========================
+   SANG LƯỢT TIẾP THEO
+========================= */
+
+function nextMemoryRound(){
+
+    memoryRound++;
+
+    startMemoryRound();
+
+}
+
+
+/* =========================
+   CẬP NHẬT THỐNG KÊ
+========================= */
+
+function updateMemoryStats(){
+
+    document
+    .getElementById("memoryPairs")
+    .textContent=
+
+    memoryPairs +
+    "/" +
+    memoryPairsPerRound;
+
+
+    document
+    .getElementById("memoryMoves")
+    .textContent=
+    memoryMoves;
+
+}
+
+/* =========================================================
+   GAME 7 · ĐIỆP VIÊN ĐIỀN TỪ
+========================================================= */
+
+const spyQuestions=[
+
+    {
+        sentence:"___，你叫什么名字？",
+        answer:"请问",
+        options:["请问","认识","没事"],
+        result:"请问，你叫什么名字？"
+    },
+
+    {
+        sentence:"请问，___叫什么名字？",
+        answer:"你",
+        options:["我","你","也"],
+        result:"请问，你叫什么名字？"
+    },
+
+    {
+        sentence:"你叫___名字？",
+        answer:"什么",
+        options:["什么","很","不"],
+        result:"你叫什么名字？"
+    },
+
+    {
+        sentence:"你叫什么___？",
+        answer:"名字",
+        options:["名字","高兴","关系"],
+        result:"你叫什么名字？"
+    },
+
+    {
+        sentence:"我___陈天中。",
+        answer:"叫",
+        options:["叫","认识","很"],
+        result:"我叫陈天中。"
+    },
+
+    {
+        sentence:"我___安妮，我是白家月。",
+        answer:"不",
+        options:["不","也","很"],
+        result:"我不是安妮，我是白家月。"
+    },
+
+    {
+        sentence:"___！",
+        answer:"对不起",
+        options:["对不起","请问","高兴"],
+        result:"对不起！"
+    },
+
+    {
+        sentence:"对不起！— ___！",
+        answer:"没关系",
+        options:["没关系","什么","认识"],
+        result:"对不起！— 没关系！"
+    },
+
+    {
+        sentence:"认识你我___很高兴。",
+        answer:"也",
+        options:["也","不","叫"],
+        result:"认识你我也很高兴。"
+    }
+
+];
+
+let spyQueue=[];
+let spyCurrent=null;
+let spyScore=0;
+let spyDone=0;
+
+function restartSpy(){
+
+    spyQueue=shuffle(spyQuestions);
+    spyCurrent=null;
+    spyScore=0;
+    spyDone=0;
+
+    document
+    .getElementById("spyComplete")
+    .classList.remove("show");
+
+    updateSpyStats();
+    nextSpy();
+}
+
+function nextSpy(){
+
+    if(spyQueue.length===0){
+
+        document
+        .getElementById("spyCompleteText")
+        .innerHTML=
+        "Bạn đã khôi phục đúng <b>"+
+        spyQuestions.length+
+        "</b> câu.<br>"+
+        "Điểm: <b>"+
+        spyScore+
+        "</b> ⭐";
+
+        document
+        .getElementById("spyComplete")
+        .classList.add("show");
+
+        return;
+    }
+
+    spyCurrent=spyQueue.shift();
+
+    document
+    .getElementById("spySentence")
+    .innerHTML=
+    spyCurrent.sentence.replace(
+        "___",
+        '<span class="blank">?</span>'
+    );
+
+    document
+    .getElementById("spyNote")
+    .textContent=
+    "🔎 Đọc kỹ ngữ cảnh rồi chọn từ.";
+
+    const box=
+        document.getElementById("spyOptions");
+
+    box.innerHTML="";
+
+    shuffle(spyCurrent.options)
+    .forEach(word=>{
+
+        const button=
+            document.createElement("button");
+
+        button.className="spy-option";
+        button.textContent=word;
+
+        button.onclick=()=>{
+
+            if(!spyCurrent) return;
+
+            if(word===spyCurrent.answer){
+
+                button.classList.add("good");
+
+                spyScore+=10;
+                spyDone++;
+
+                document
+                .getElementById("spySentence")
+                .textContent=
+                spyCurrent.result;
+
+                document
+                .getElementById("spyNote")
+                .textContent=
+                "🔓 Chính xác! Hồ sơ đã được khôi phục.";
+
+                spyCurrent=null;
+
+                updateSpyStats();
+
+                setTimeout(nextSpy,900);
+
+            }else{
+
+                button.classList.remove("bad");
+                void button.offsetWidth;
+                button.classList.add("bad");
+
+                document
+                .getElementById("spyNote")
+                .textContent=
+                "🚨 Sai mật mã rồi. Thử từ khác!";
+            }
+        };
+
+        box.appendChild(button);
+    });
+}
+
+function updateSpyStats(){
+
+    document
+    .getElementById("spyScore")
+    .textContent=spyScore;
+
+    document
+    .getElementById("spyProgress")
+    .textContent=
+    spyDone+"/"+spyQuestions.length;
+}
+
+/* =========================================================
+   KHỞI ĐỘNG
+========================================================= */
+
+restartChat();
+renderDialogueGame();
+restartFriend();
+restartSVO();
+
+restartVocab();
+restartMemory();
+restartSpy();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSK 1 · Bài 2 · Ngữ âm</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    background:
+        radial-gradient(circle at top left,#fff0f2,transparent 28%),
+        radial-gradient(circle at top right,#eaf8f5,transparent 30%),
+        linear-gradient(135deg,#fffafa,#f7fbfa);
+    color:#365f5b;
+    min-height:100vh;
+}
+
+.page{
+    width:min(1180px,94%);
+    margin:auto;
+    padding:30px 0 70px;
+}
+
+/* ================= HEADER ================= */
+
+.hero{
+    background:rgba(255,255,255,.95);
+    border:1px solid #e1ece9;
+    border-radius:30px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(65,98,93,.09);
+    margin-bottom:25px;
+}
+
+.back{
+    color:#64928a;
+    text-decoration:none;
+    font-weight:700;
+    font-size:14px;
+}
+
+.hero-label{
+    color:#d86f60;
+    font-weight:900;
+    margin-top:18px;
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:clamp(34px,5vw,55px);
+    margin-top:5px;
+    color:#3b6661;
+}
+
+.hero p{
+    margin-top:12px;
+    line-height:1.7;
+    color:#7a8e8a;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    background:rgba(255,255,255,.96);
+    border:1px solid #e0ece9;
+    border-radius:25px;
+    padding:28px;
+    margin-bottom:24px;
+    box-shadow:0 8px 28px rgba(60,95,90,.06);
+}
+
+.section-tag{
+    color:#d96f5c;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.section h2{
+    font-size:27px;
+    margin-bottom:5px;
+}
+
+.sub{
+    color:#9b7b73;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.note{
+    background:#fff8f4;
+    border-left:4px solid #e69b87;
+    border-radius:12px;
+    padding:15px 17px;
+    line-height:1.7;
+    color:#69625e;
+    margin-bottom:22px;
+}
+
+/* ================= KHỐI BÀI ================= */
+
+.exercise{
+    border-top:1px dashed #d8e6e3;
+    padding-top:24px;
+    margin-top:24px;
+}
+
+.exercise:first-of-type{
+    margin-top:10px;
+}
+
+.exercise-title{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.red-dot{
+    width:11px;
+    height:11px;
+    border-radius:3px;
+    background:#df4e42;
+    flex:none;
+    margin-top:6px;
+}
+
+.vi{
+    display:block;
+    color:#8c9d99;
+    font-size:13px;
+    font-weight:500;
+    margin-top:3px;
+}
+
+/* ================= SOUND BUTTON ================= */
+
+.sound-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:11px;
+}
+
+.sound-btn{
+    border:1px solid #d9e9e5;
+    background:#f4faf8;
+    border-radius:15px;
+    min-height:67px;
+    cursor:pointer;
+    color:#3f6964;
+    font-size:21px;
+    font-weight:800;
+    transition:.18s;
+}
+
+.sound-btn:hover{
+    background:#eaf6f3;
+    border-color:#bcd9d3;
+    transform:translateY(-2px);
+}
+
+.sound-btn span{
+    display:block;
+    font-size:11px;
+    font-weight:600;
+    color:#90a19e;
+    margin-top:5px;
+}
+
+.initial-grid{
+    grid-template-columns:repeat(3,1fr);
+    max-width:600px;
+}
+
+.initial-grid .sound-btn{
+    font-size:32px;
+}
+
+/* ================= FINALS ================= */
+
+.final-title{
+    margin:22px 0 12px;
+    color:#d17363;
+    font-weight:900;
+}
+
+/* ================= RULE ================= */
+
+.rule{
+    background:#fff9f7;
+    border:1px solid #f0ded8;
+    border-radius:18px;
+    padding:19px;
+    margin:20px 0;
+}
+
+.rule h3{
+    color:#c8695c;
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.rule p{
+    color:#697f7b;
+    line-height:1.7;
+}
+
+.rule-example{
+    background:white;
+    border-radius:12px;
+    padding:11px;
+    margin-top:11px;
+    font-weight:800;
+    color:#47716b;
+}
+
+/* ================= WORD CARDS ================= */
+
+.word-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:14px;
+}
+
+.word-card{
+    border:1px solid #eed5cb;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.18s;
+    text-align:center;
+}
+
+.word-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(60,95,90,.10);
+}
+
+.word-icon{
+    height:95px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    background:linear-gradient(135deg,#fff6f2,#eef8f5);
+}
+
+.word-body{
+    padding:11px 8px 14px;
+}
+
+.pinyin{
+    color:#6d8581;
+    font-size:14px;
+}
+
+.hanzi{
+    font-size:27px;
+    font-weight:800;
+    margin:3px 0;
+}
+
+.meaning{
+    font-size:12px;
+    color:#aa8074;
+}
+
+.listen{
+    margin-top:7px;
+    color:#57968c;
+    font-size:12px;
+    font-weight:800;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    color:#94a4a1;
+    font-size:13px;
+    padding:20px;
+}
+
+@media(max-width:800px){
+    .sound-grid,
+    .word-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .initial-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:520px){
+    .page{
+        width:94%;
+    }
+
+    .hero,
+    .section{
+        padding:20px;
+        border-radius:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="hero">
+
+<a class="back" href="../../index.html">
+    ← 🏠 Về trang chủ
+</a>
+
+    <div class="hero-label">
+        第二课 · 语音
+    </div>
+
+    <h1>Ngữ âm · Bài 2</h1>
+
+    <p>
+        Bấm trực tiếp vào từng thanh mẫu, vận mẫu,
+        âm tiết hoặc từ để nghe riêng đúng âm đó
+        trong file <b>语音2.mp3</b>.
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     1. 声母和韵母
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-tag">
+        ❶ 声母和韵母（2）
+    </div>
+
+    <h2>Thanh mẫu và vận mẫu</h2>
+
+    <div class="sub">
+        Initials and Finals
+    </div>
+
+    <div class="note">
+        Thanh mẫu <b>j、q、x</b> chỉ kết hợp với
+        <b>i、ü</b> và các vận mẫu bắt đầu bằng
+        <b>i / ü</b>.
+    </div>
+
+
+    <!-- CHẤM ĐỎ 1 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                先跟读声母和韵母，再大声朗读。
+                <span class="vi">
+                    Bấm từng âm để nghe và đọc theo.
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="final-title">
+            声母 · Thanh mẫu
+        </div>
+
+        <div class="sound-grid initial-grid">
+
+            <button class="sound-btn"
+                onclick="playSound('j')">
+                j
+                <span>🔊 听 · Nghe</span>
+            </button>
+
+            <button class="sound-btn"
+                onclick="playSound('q')">
+                q
+                <span>🔊 听 · Nghe</span>
+            </button>
+
+            <button class="sound-btn"
+                onclick="playSound('x')">
+                x
+                <span>🔊 听 · Nghe</span>
+            </button>
+
+        </div>
+
+
+        <div class="final-title">
+            韵母 · Vận mẫu
+        </div>
+
+        <div class="sound-grid">
+
+            <button class="sound-btn" onclick="playSound('i')">
+                i
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('ü')">
+                ü
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('ia')">
+                ia
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('ie')">
+                ie
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('iao')">
+                iao
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('iou')">
+                iou (iu)
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('ian')">
+                ian
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('in')">
+                in
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('iang')">
+                iang
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('ing')">
+                ing
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('iong')">
+                iong
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('üe')">
+                üe
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('üan')">
+                üan
+                <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('ün')">
+                ün
+                <span>🔊 Nghe</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 2 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                先跟读音节，再大声朗读。注意“ü”的写法。
+                <span class="vi">
+                    Bấm từng âm tiết để nghe riêng.
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="sound-grid">
+
+            <button class="sound-btn" onclick="playSound('jī')">
+                jī <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jí')">
+                jí <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jǐ')">
+                jǐ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jì')">
+                jì <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qū')">
+                qū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qú')">
+                qú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qǔ')">
+                qǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qù')">
+                qù <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xū')">
+                xū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xú')">
+                xú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xǔ')">
+                xǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xù')">
+                xù <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jiào')">
+                jiào <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jiàn')">
+                jiàn <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('quán')">
+                quán <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qǐng')">
+                qǐng <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xiǎng')">
+                xiǎng <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xīn')">
+                xīn <span>🔊 Nghe</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 3 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+
+            <span class="red-dot"></span>
+
+            <div>
+                看图片，先跟读音节，再大声朗读。
+                <span class="vi">
+                    Bấm từng thẻ để nghe từ.
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="word-grid">
+
+
+            <div class="word-card"
+                 onclick="playSound('鸡')">
+
+                <div class="word-icon">🐓</div>
+
+                <div class="word-body">
+                    <div class="pinyin">jī</div>
+                    <div class="hanzi">鸡</div>
+                    <div class="meaning">gà</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+
+            <div class="word-card"
+                 onclick="playSound('七')">
+
+                <div class="word-icon">7️⃣</div>
+
+                <div class="word-body">
+                    <div class="pinyin">qī</div>
+                    <div class="hanzi">七</div>
+                    <div class="meaning">bảy</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+
+            <div class="word-card"
+                 onclick="playSound('写')">
+
+                <div class="word-icon">✍️</div>
+
+                <div class="word-body">
+                    <div class="pinyin">xiě</div>
+                    <div class="hanzi">写</div>
+                    <div class="meaning">viết</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+
+            <div class="word-card"
+                 onclick="playSound('请')">
+
+                <div class="word-icon">🙇</div>
+
+                <div class="word-body">
+                    <div class="pinyin">qǐng</div>
+                    <div class="hanzi">请</div>
+                    <div class="meaning">mời / xin</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+
+            <div class="word-card"
+                 onclick="playSound('再见')">
+
+                <div class="word-icon">👋</div>
+
+                <div class="word-body">
+                    <div class="pinyin">zàijiàn</div>
+                    <div class="hanzi">再见</div>
+                    <div class="meaning">tạm biệt</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+
+            <div class="word-card"
+                 onclick="playSound('谢谢')">
+
+                <div class="word-icon">🙏</div>
+
+                <div class="word-body">
+                    <div class="pinyin">xièxie</div>
+                    <div class="hanzi">谢谢</div>
+                    <div class="meaning">cảm ơn</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+
+            <div class="word-card"
+                 onclick="playSound('星期')">
+
+                <div class="word-icon">📅</div>
+
+                <div class="word-body">
+                    <div class="pinyin">xīngqī</div>
+                    <div class="hanzi">星期</div>
+                    <div class="meaning">tuần / thứ</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+
+            <div class="word-card"
+                 onclick="playSound('高兴')">
+
+                <div class="word-icon">😄</div>
+
+                <div class="word-body">
+                    <div class="pinyin">gāoxìng</div>
+                    <div class="hanzi">高兴</div>
+                    <div class="meaning">vui</div>
+                    <div class="listen">🔊 听 · Nghe</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     2. 拼写规则
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-tag">
+        ❷ 拼写规则
+    </div>
+
+    <h2>Quy tắc viết âm tiết</h2>
+
+    <div class="sub">
+        Spelling Rules
+    </div>
+
+
+    <!-- RULE 1 -->
+
+    <div class="rule">
+
+        <h3>
+            （1）i、u、ü đứng độc lập thành âm tiết
+        </h3>
+
+        <p>
+            Khi đứng độc lập:
+            <b>i → yi</b>,
+            <b>u → wu</b>,
+            <b>ü → yu</b>.
+        </p>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 1 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+            <span class="red-dot"></span>
+            <div>
+                先跟读音节，再大声朗读。
+                <span class="vi">
+                    Bấm từng âm tiết để nghe.
+                </span>
+            </div>
+        </div>
+
+
+        <div class="sound-grid">
+
+            <button class="sound-btn" onclick="playSound('yī')">
+                yī <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yí')">
+                yí <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yǐ')">
+                yǐ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yì')">
+                yì <span>🔊 Nghe</span>
+            </button>
+
+
+            <button class="sound-btn" onclick="playSound('wū')">
+                wū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('wú')">
+                wú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('wǔ')">
+                wǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('wù')">
+                wù <span>🔊 Nghe</span>
+            </button>
+
+
+            <button class="sound-btn" onclick="playSound('yū')">
+                yū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yú')">
+                yú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yǔ')">
+                yǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yù')">
+                yù <span>🔊 Nghe</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 2 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+            <span class="red-dot"></span>
+            <div>
+                看图片，先跟读音节，再大声朗读。
+                <span class="vi">
+                    Bấm từng thẻ để nghe.
+                </span>
+            </div>
+        </div>
+
+
+        <div class="word-grid">
+
+            <div class="word-card" onclick="playSound('雨')">
+                <div class="word-icon">🌧️</div>
+                <div class="word-body">
+                    <div class="pinyin">yǔ</div>
+                    <div class="hanzi">雨</div>
+                    <div class="meaning">mưa</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+
+            <div class="word-card" onclick="playSound('五')">
+                <div class="word-icon">5️⃣</div>
+                <div class="word-body">
+                    <div class="pinyin">wǔ</div>
+                    <div class="hanzi">五</div>
+                    <div class="meaning">năm</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+
+            <div class="word-card" onclick="playSound('一')">
+                <div class="word-icon">1️⃣</div>
+                <div class="word-body">
+                    <div class="pinyin">yī</div>
+                    <div class="hanzi">一</div>
+                    <div class="meaning">một</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+
+            <div class="word-card" onclick="playSound('椅子')">
+                <div class="word-icon">🪑</div>
+                <div class="word-body">
+                    <div class="pinyin">yǐzi</div>
+                    <div class="hanzi">椅子</div>
+                    <div class="meaning">ghế</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RULE 2 -->
+
+    <div class="rule">
+
+        <h3>
+            （2）j、q、x + ü
+        </h3>
+
+        <p>
+            Khi <b>j、q、x</b> kết hợp với <b>ü</b>,
+            hai dấu chấm của ü được bỏ:
+        </p>
+
+        <div class="rule-example">
+            j + ü → ju　
+            q + ü → qu　
+            x + ü → xu
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 3 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+            <span class="red-dot"></span>
+            <div>
+                先跟读音节，再大声朗读。
+                <span class="vi">
+                    Bấm từng âm tiết để nghe.
+                </span>
+            </div>
+        </div>
+
+
+        <div class="sound-grid">
+
+            <button class="sound-btn" onclick="playSound('jū')">
+                jū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jú')">
+                jú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jǔ')">
+                jǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jù')">
+                jù <span>🔊 Nghe</span>
+            </button>
+
+
+            <button class="sound-btn" onclick="playSound('qū2')">
+                qū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qú2')">
+                qú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qǔ2')">
+                qǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qù2')">
+                qù <span>🔊 Nghe</span>
+            </button>
+
+
+            <button class="sound-btn" onclick="playSound('xū2')">
+                xū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xú2')">
+                xú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xǔ2')">
+                xǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xù2')">
+                xù <span>🔊 Nghe</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RULE 3 -->
+
+    <div class="rule">
+
+        <h3>
+            （3）iou đứng độc lập
+        </h3>
+
+        <p>
+            Khi <b>iou</b> đứng độc lập thành âm tiết,
+            nó được viết thành <b>you</b>.
+        </p>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 4 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+            <span class="red-dot"></span>
+            <div>
+                先跟读音节，再大声朗读。
+                <span class="vi">
+                    Bấm từng âm / từ để nghe.
+                </span>
+            </div>
+        </div>
+
+
+        <div class="sound-grid">
+
+            <button class="sound-btn" onclick="playSound('yōu')">
+                yōu <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yóu')">
+                yóu <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yǒu')">
+                yǒu <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yòu')">
+                yòu <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('yóuyǒng')">
+                yóuyǒng <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('lǚyóu')">
+                lǚyóu <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('péngyouA')">
+                péngyou <span>🔊 Nghe</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RULE 4 -->
+
+    <div class="rule">
+
+        <h3>
+            （4）iou trong âm tiết
+        </h3>
+
+        <p>
+            Khi <b>iou</b> đứng sau thanh mẫu,
+            nó được viết rút gọn thành <b>iu</b>.
+            Dấu thanh đặt trên <b>u</b>.
+        </p>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 5 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+            <span class="red-dot"></span>
+            <div>
+                先跟读音节，再大声朗读。
+                <span class="vi">
+                    Bấm từng âm tiết để nghe.
+                </span>
+            </div>
+        </div>
+
+
+        <div class="sound-grid">
+
+            <button class="sound-btn" onclick="playSound('miù')">
+                miù <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('diū')">
+                diū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('niú')">
+                niú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('liǔ')">
+                liǔ <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('jiù')">
+                jiù <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qiū')">
+                qiū <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('qiú')">
+                qiú <span>🔊 Nghe</span>
+            </button>
+
+            <button class="sound-btn" onclick="playSound('xiǔ')">
+                xiǔ <span>🔊 Nghe</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHẤM ĐỎ 6 -->
+
+    <div class="exercise">
+
+        <div class="exercise-title">
+            <span class="red-dot"></span>
+            <div>
+                看图片，先跟读音节，再大声朗读。
+                <span class="vi">
+                    Bấm từng thẻ để nghe.
+                </span>
+            </div>
+        </div>
+
+
+        <div class="word-grid">
+
+            <div class="word-card" onclick="playSound('九')">
+                <div class="word-icon">9️⃣</div>
+                <div class="word-body">
+                    <div class="pinyin">jiǔ</div>
+                    <div class="hanzi">九</div>
+                    <div class="meaning">chín</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+
+            <div class="word-card" onclick="playSound('朋友2')">
+                <div class="word-icon">👨‍👩‍👧‍👦</div>
+                <div class="word-body">
+                    <div class="pinyin">péngyou</div>
+                    <div class="hanzi">朋友</div>
+                    <div class="meaning">bạn / bạn bè</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+
+            <div class="word-card" onclick="playSound('牛奶')">
+                <div class="word-icon">🥛</div>
+                <div class="word-body">
+                    <div class="pinyin">niúnǎi</div>
+                    <div class="hanzi">牛奶</div>
+                    <div class="meaning">sữa bò</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+
+            <div class="word-card" onclick="playSound('休息')">
+                <div class="word-icon">🛋️</div>
+                <div class="word-body">
+                    <div class="pinyin">xiūxi</div>
+                    <div class="hanzi">休息</div>
+                    <div class="meaning">nghỉ ngơi</div>
+                    <div class="listen">🔊 Nghe</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    HSK 1 · 第二课 · 语音
+</footer>
+
+</div>
+
+
+<audio
+    id="lessonAudio"
+    src="语音2.mp3"
+    preload="metadata">
+</audio>
+
+
+<script>
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+const audio =
+    document.getElementById("lessonAudio");
+
+let stopTimer = null;
+
+
+/* =========================================================
+   TỪNG ÂM ĐÃ TÁCH TỪ 语音2.mp3
+
+   Có chừa một chút đầu/cuối để không cắt hụt âm.
+========================================================= */
+
+const soundAudio = {
+
+    /* =====================================
+       声母
+    ===================================== */
+
+    "j":   { start:62.25, end:63.12 },
+    "q":   { start:64.50, end:65.46 },
+    "x":   { start:66.85, end:67.85 },
+
+
+    /* =====================================
+       韵母
+    ===================================== */
+
+    "i":    { start:71.68, end:72.62 },
+    "ü":    { start:74.00, end:74.96 },
+
+    "ia":   { start:76.30, end:77.23 },
+    "ie":   { start:78.88, end:79.87 },
+
+    "iao":  { start:81.18, end:82.30 },
+    "iou":  { start:83.58, end:84.72 },
+
+    "ian":  { start:86.08, end:87.65 },
+    "in":   { start:88.52, end:89.62 },
+
+    "iang": { start:90.92, end:92.13 },
+    "ing":  { start:93.47, end:94.67 },
+
+    "iong": { start:95.88, end:97.16 },
+    "üe":   { start:98.38, end:99.42 },
+
+    "üan":  { start:100.65, end:101.91 },
+    "ün":   { start:103.18, end:104.38 },
+
+
+    /* =====================================
+       j / q / x + thanh điệu
+    ===================================== */
+
+    "jī": {
+        start:115.00,
+        end:116.38
+    },
+
+    "jí": {
+        start:117.22,
+        end:118.78
+    },
+
+    "jǐ": {
+        start:119.88,
+        end:121.43
+    },
+
+    "jì": {
+        start:122.30,
+        end:123.70
+    },
+
+
+    "qū": {
+        start:126.75,
+        end:128.18
+    },
+
+    "qú": {
+        start:129.30,
+        end:130.87
+    },
+
+    "qǔ": {
+        start:131.78,
+        end:133.47
+    },
+
+    "qù": {
+        start:134.22,
+        end:135.50
+    },
+
+
+    "xū": {
+        start:138.50,
+        end:139.85
+    },
+
+    "xú": {
+        start:140.98,
+        end:142.46
+    },
+
+    "xǔ": {
+        start:143.40,
+        end:145.08
+    },
+
+    "xù": {
+        start:145.95,
+        end:147.18
+    },
+
+
+    "jiào": {
+        start:149.00,
+        end:151.70
+    },
+
+    "jiàn": {
+        start:152.08,
+        end:154.30
+    },
+
+    "quán": {
+        start:155.48,
+        end:157.45
+    },
+
+    "qǐng": {
+        start:159.03,
+        end:160.98
+    },
+
+    "xiǎng": {
+        start:162.62,
+        end:164.55
+    },
+
+    "xīn": {
+        start:166.06,
+        end:167.68
+    },
+
+
+    /* =====================================
+       HÌNH MINH HỌA 1
+    ===================================== */
+
+    "鸡": {
+        start:176.05,
+        end:177.42
+    },
+
+    "七": {
+        start:178.90,
+        end:180.32
+    },
+
+    "写": {
+        start:181.88,
+        end:183.55
+    },
+
+    "请": {
+        start:185.00,
+        end:186.65
+    },
+
+    "再见": {
+        start:188.00,
+        end:189.82
+    },
+
+    "谢谢": {
+        start:191.08,
+        end:192.70
+    },
+
+    "星期": {
+        start:194.12,
+        end:195.95
+    },
+
+    "高兴": {
+        start:197.22,
+        end:199.10
+    },
+
+
+    /* =====================================
+       yi / wu / yu
+    ===================================== */
+
+    "yī": {
+        start:222.00,
+        end:223.12
+    },
+
+    "yí": {
+        start:224.00,
+        end:225.22
+    },
+
+    "yǐ": {
+        start:225.95,
+        end:227.52
+    },
+
+    "yì": {
+        start:228.00,
+        end:229.22
+    },
+
+
+    "wū": {
+        start:232.28,
+        end:233.53
+    },
+
+    "wú": {
+        start:234.87,
+        end:236.17
+    },
+
+    "wǔ": {
+        start:237.48,
+        end:239.08
+    },
+
+    "wù": {
+        start:240.26,
+        end:241.55
+    },
+
+
+    "yū": {
+        start:244.47,
+        end:245.65
+    },
+
+    "yú": {
+        start:246.65,
+        end:247.97
+    },
+
+    "yǔ": {
+        start:249.08,
+        end:250.58
+    },
+
+    "yù": {
+        start:251.40,
+        end:252.80
+    },
+
+
+    /* =====================================
+       HÌNH: 雨 五 一 椅子
+    ===================================== */
+
+    "雨": {
+        start:262.55,
+        end:264.40
+    },
+
+    "五": {
+        start:266.00,
+        end:267.57
+    },
+
+    "一": {
+        start:269.00,
+        end:270.30
+    },
+
+    "椅子": {
+        start:271.53,
+        end:273.40
+    },
+
+
+    /* =====================================
+       j q x + ü
+       Dùng key khác để không trùng qū/xū phía trên
+    ===================================== */
+
+    "jū": {
+        start:293.03,
+        end:294.55
+    },
+
+    "jú": {
+        start:295.15,
+        end:296.98
+    },
+
+    "jǔ": {
+        start:297.34,
+        end:299.28
+    },
+
+    "jù": {
+        start:299.55,
+        end:301.37
+    },
+
+
+    "qū2": {
+        start:303.70,
+        end:305.40
+    },
+
+    "qú2": {
+        start:306.00,
+        end:307.85
+    },
+
+    "qǔ2": {
+        start:308.28,
+        end:310.30
+    },
+
+    "qù2": {
+        start:310.48,
+        end:312.15
+    },
+
+
+    "xū2": {
+        start:314.25,
+        end:316.32
+    },
+
+    "xú2": {
+        start:316.78,
+        end:318.70
+    },
+
+    "xǔ2": {
+        start:319.22,
+        end:321.25
+    },
+
+    "xù2": {
+        start:321.55,
+        end:323.25
+    },
+
+
+    /* =====================================
+       you
+    ===================================== */
+
+    "yōu": {
+        start:340.37,
+        end:342.84
+    },
+
+    "yóu": {
+        start:342.66,
+        end:344.94
+    },
+
+    "yǒu": {
+        start:345.07,
+        end:347.41
+    },
+
+    "yòu": {
+        start:347.68,
+        end:349.74
+    },
+
+    "yóuyǒng": {
+        start:351.25,
+        end:354.65
+    },
+
+    "lǚyóu": {
+        start:354.07,
+        end:357.34
+    },
+
+    "péngyouA": {
+        start:357.00,
+        end:359.65
+    },
+
+
+/* =====================================
+   iu
+===================================== */
+
+"miù": {
+    start: 374.55,
+    end: 376.55
+},
+
+"diū": {
+    start: 377.05,
+    end: 378.45
+},
+
+"niú": {
+    start: 379.25,
+    end: 382.40
+},
+
+"liǔ": {
+    start: 382.90,
+    end: 385.35
+},
+
+"jiù": {
+    start: 385.85,
+    end: 387.50
+},
+
+"qiū": {
+    start: 388.70,
+    end: 391.10
+},
+
+"qiú": {
+    start: 391.55,
+    end: 394.05
+},
+
+"xiǔ": {
+    start: 394.75,
+    end: 398.05
+},
+
+
+/* =====================================
+   HÌNH CUỐI: 九 朋友 牛奶 休息
+===================================== */
+
+"九": {
+    start: 405.15,
+    end: 406.65
+},
+
+"朋友2": {
+    start: 408.10,
+    end: 409.85
+},
+
+"牛奶": {
+    start: 411.25,
+    end: 413.05
+},
+
+"休息": {
+    start: 414.75,
+    end: 416.55
+}
+};
+
+
+
+/* =========================================================
+   PHÁT TỪNG ÂM
+========================================================= */
+
+function playSound(sound){
+
+    const cut =
+        soundAudio[sound];
+
+    if(!cut){
+
+        console.warn(
+            "Không có audio:",
+            sound
+        );
+
+        return;
+    }
+
+
+    clearTimeout(stopTimer);
+
+    audio.pause();
+
+
+    function startPlaying(){
+
+        audio.currentTime =
+            cut.start;
+
+
+        audio.play()
+
+        .then(() => {
+
+            const duration =
+                (cut.end - cut.start)
+                * 1000;
+
+
+            stopTimer =
+                setTimeout(
+                    () => {
+
+                        audio.pause();
+
+                    },
+                    duration
+                );
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Lỗi audio:",
+                error
+            );
+
+            alert(
+                "Không phát được 语音2.mp3."
+            );
+
+        });
+
+    }
+
+
+    if(audio.readyState >= 1){
+
+        startPlaying();
+
+    }
+
+    else{
+
+        audio.addEventListener(
+            "loadedmetadata",
+            startPlaying,
+            {once:true}
+        );
+
+        audio.load();
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
