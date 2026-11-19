@@ -1,1 +1,3 @@
 Đặt tất cả file trong folder Bai-khoa cạnh nhau. Mở index.html bằng Chrome. Không đổi tên track-*.mp3 hoặc warmup-*.png.
+
+Phien am da tach tung am tiet trong 6 sheet. Chu y: 不见 viet bù jiàn theo dang tu dien; khi noi lien am tiet truoc thanh 4 co the bien thanh bu2.

@@ -1,0 +1,1 @@
+Mở index.html bằng Chrome hoặc Edge. Nhấn 开始 để làm bài. Phần nghe dùng Web Speech API, ưu tiên giọng tiếng Trung zh-CN được cài trên máy; không chứa MP3 hay bản thu người thật. Nếu chưa nghe được, cài giọng tiếng Trung trong cài đặt hệ điều hành. Ghi âm micro có thể cần HTTPS hoặc localhost. Gửi email cần thao tác thủ công và đính kèm file ghi âm.
